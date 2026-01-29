@@ -2,16 +2,37 @@
 
 ## Overview
 
-This document summarizes the design token structure from the Almanac DX UI Kit Figma file, with particular attention to the connection between primitive and semantic variable collections.
+This document summarizes the design token structure from the Almanac DX UI Kit Figma file, with particular attention to the connection between primitive and semantic variable collections. The color palette brings unified and recognizable consistency to our internal-facing digital products and interfaces through a simple, intentional color system designed to maintain consistency throughout the design and development process.
+
+## Color System Foundation
+
+Almanac colors are made up of two key parts:
+
+### Brand Colors
+Brand colors are used to theme an application. For example, a Farm Credit Mid-America application vs a Rural 1st application. These themes are referred to as "Modes" in Figma and allow the same design system to adapt across different brand identities while maintaining consistent functionality.
+
+### System Colors
+System colors are the backbone of all our internal applications. They are rooted in a collection of primitive colors that carry no inherent meaning, but are later mapped to role-specific use cases through semantic tokens.
 
 ## Variable Collection Architecture
 
 The design system follows a hierarchical token structure with two primary collection types:
 
 ### 1. Primitive Collections
-Primitive tokens are the foundational design values that define raw design properties without semantic meaning.
+Primitive tokens are the foundational design values that define raw design properties without semantic meaning. **These values are not used directly in the UI components** but are referenced by semantic tokens.
 
 #### Color Primitives
+
+Primitive colors are the raw, base values used within Almanac. These are the actual color hex codes that serve as the foundation for creating more abstract, purpose-driven color values.
+
+**Key Points:**
+- **Purpose**: Raw colors that reflect the brand's visual identity
+- **Use**: NOT used directly in UI components; only referenced by semantic colors
+- **Naming Conventions**: Clear, descriptive name for the color followed by its weight (e.g., `Neutral/500` for a medium neutral tone)
+- **Flexibility**: Provide flexibility for designers to expand the color system as needed
+- **Brand Colors**: Also considered primitive values, but can be mapped as semantic colors to create themeable applications
+
+**Neutral Color Scale:**
 - **Collection**: `Neutral`
 - **Structure**: Numeric scale from lightest to darkest
 - **Tokens**:
@@ -37,29 +58,87 @@ Primitive tokens are the foundational design values that define raw design prope
   - `Size/600`: `24` (24px spacing/sizing unit)
 
 ### 2. Semantic Collections
-Semantic tokens reference primitive values but provide meaning and context for their usage in the UI.
 
-#### Semantic Color Tokens
-These tokens map to specific use cases and reference primitive color values:
+Semantic tokens represent colors based on their functional roles in the UI rather than their actual color values. They map to primitive color values but are named according to the context in which they are used.
 
-- **Text Colors**:
-  - `text-primary`: `#040404` (Primary text color - very dark, near black)
-  - `text-reverse`: `#ffffff` (Text color for use on dark backgrounds - references Neutral/0)
+**Key Points:**
+- **Purpose**: Ensure color choices are contextually appropriate and maintain usability across different themes and accessibility considerations
+- **Use**: Applied directly to UI components; designed to adapt based on themes (e.g., FCMA/Rural 1st)
+- **Contextual Naming**: Named based on the component or state they represent (e.g., `text-primary`, `background-page`, `border-subtle`)
+- **Theme Flexibility**: By abstracting the color meaning, semantic colors can adapt to different themes by switching the primitive reference while retaining consistent functionality
 
-- **Background Colors**:
-  - `background-page`: `#ffffff` (Page background - references Neutral/0)
+#### The Four Pillars of Semantic Variables
 
-- **Border Colors**:
-  - `border-subtle`: `#dee1e1` (Subtle border color - references Neutral/200)
+The Almanac DX semantic variables are comprised of four pillars: **Background**, **Text**, **Border**, and **Icon**. These categories ensure consistent application of color throughout the design system.
 
-- **Icon Colors**:
-  - `icon-reverse`: `#ffffff` (Icon color for use on dark backgrounds - references Neutral/0)
+##### Background Colors
+Background semantic tokens define fills for pages, sections, containers, cards, panels, and interactive elements.
+
+**Examples:**
+- `background-page`: Page background (references `Neutral/0` - `#ffffff`)
+- `background-primary`: Primary background for containers (references `Neutral/0`)
+- `background-light`: Light background variant (references `Neutral/100` - `#f9f9f9`)
+- `background-medium`: Medium background variant (references `Neutral/200` - `#dee1e1`)
+- `background-dark`: Dark background variant (references `Neutral/300` - `#c8cccc`)
+- `background-reverse`: Reverse background for dark themes (references `Neutral/900` - `#273333`)
+- `background-brand`: Brand color for non-action items where brand identity is needed
+- `background-brand-hover`: Hover state for brand backgrounds
+- `background-action`: Button and action element backgrounds
+- `background-action-hover`: Hover state for action elements
+- `background-disabled`: Disabled element backgrounds
+
+##### Text Colors
+Text semantic tokens define text fills for various states and contexts.
+
+**Examples:**
+- `text-primary`: Primary body text (references `Neutral/900` or near-black value)
+- `text-secondary`: Secondary text with reduced emphasis
+- `text-tertiary`: Tertiary text for minimal emphasis
+- `text-reverse`: Text for use on dark backgrounds (references `Neutral/0` - `#ffffff`)
+- `text-brand`: Brand-colored text
+- `text-link`: Link text color
+- `text-link-hover`: Hover state for links
+- `text-success`: Text for success/positive messaging
+- `text-error`: Text for error/destructive messaging
+- `text-warning`: Text for warning messaging
+- `text-information`: Text for informational messaging
+
+##### Border Colors
+Border semantic tokens define borders for sections, containers, panels, and UI elements.
+
+**Examples:**
+- `border-reverse`: Borders on dark backgrounds (references `Neutral/0`)
+- `border-subtle`: Subtle borders for containers (references `Neutral/200` - `#dee1e1`)
+- `border-dark`: Darker borders for emphasis
+- `border-strong`: Strong borders with high contrast (references `Neutral/900`)
+- `border-brand`: Brand-colored borders for non-action items
+- `border-focus`: Focus state borders (typically with additional styling)
+- `border-success`: Borders for success/positive elements
+- `border-error`: Borders for error/destructive elements
+- `border-warning`: Borders for warning elements
+- `border-information`: Borders for informational elements
+
+##### Icon Colors
+Icon semantic tokens define fills for iconography throughout the interface.
+
+**Examples:**
+- `icon-subtle`: Subtle icon color (references `Neutral/500`)
+- `icon-dark`: Dark icon color (references `Neutral/900`)
+- `icon-reverse`: Icons on dark backgrounds (references `Neutral/0` - `#ffffff`)
+- `icon-brand`: Brand-colored icons for static elements
+- `icon-link`: Brand-colored icons for links
+- `icon-success`: Icons for success/positive elements
+- `icon-error`: Icons for error/destructive elements
+- `icon-warning`: Icons for warning elements
+- `icon-information`: Icons for informational elements
 
 ## Connection Point: Primitive → Semantic
 
 ### How Primitives Connect to Semantics
 
-The connection between primitive and semantic collections follows this pattern:
+The connection between primitive and semantic collections is the cornerstone of the Almanac design system. This relationship enables theming, consistency, and scalable design decisions.
+
+**Connection Pattern:**
 
 1. **Direct Reference**: Semantic tokens directly reference primitive values
    - Example: `background-page` → `Neutral/0` → `#ffffff`
@@ -68,14 +147,32 @@ The connection between primitive and semantic collections follows this pattern:
    - Example: `icon-reverse` → `Neutral/0` → `#ffffff`
 
 2. **Derived Values**: Some semantic tokens may use values derived from primitives
-   - Example: `text-primary` uses `#040404`, which may be derived from or related to `Neutral/900` (`#273333`) but is a custom value for optimal text contrast
+   - Example: `text-primary` may use a value derived from or related to `Neutral/900` but optimized for text contrast
+   - Example: Brand color primitives mapped to semantic action tokens for themed experiences
+
+3. **Theme Adaptability**: Semantic tokens remain constant while their primitive references change
+   - Example: `background-brand` in FCMA theme → Green primitive
+   - Example: `background-brand` in Rural 1st theme → Different brand color primitive
+   - The semantic token name stays the same; only the primitive reference changes
+
+### Critical Design Principle
+
+**⚠️ Always use semantic tokens in UI components, never primitive tokens directly.**
+
+This principle ensures:
+- **Consistency**: All instances of a UI element use the same semantic token
+- **Themeability**: Changing themes updates all components automatically
+- **Maintainability**: Updates to color meanings happen in one place
+- **Accessibility**: Semantic tokens can be adjusted for contrast without breaking component logic
 
 ### Benefits of This Structure
 
 1. **Maintainability**: Changes to primitive values automatically cascade to all semantic tokens that reference them
-2. **Consistency**: Ensures consistent color usage across the design system
-3. **Flexibility**: Allows for easy theming by swapping primitive values
+2. **Consistency**: Ensures uniform color usage across the entire design system
+3. **Theme Flexibility**: Enables easy theme switching (FCMA/Rural 1st) by updating primitive references while maintaining semantic meaning
 4. **Scalability**: New semantic tokens can be created by referencing existing primitives
+5. **Accessibility**: Color relationships can be updated system-wide to meet accessibility standards
+6. **Intent-Driven Design**: Designers and developers use tokens that describe purpose, not appearance
 
 ## Token Naming Conventions
 
@@ -207,10 +304,30 @@ Typography tokens are organized by font family and usage context:
 
 ## Recommendations for Token Usage
 
-1. **Always use semantic tokens** in component designs rather than primitive tokens directly
-2. **Reference primitives** when creating new semantic tokens to maintain consistency
-3. **Follow the naming convention** when adding new tokens to the system
-4. **Document relationships** between semantic and primitive tokens for maintainability
+### For Designers and Developers
+
+1. **⚠️ CRITICAL: Always use semantic tokens** in component designs and code - NEVER use primitive tokens directly
+   - ✅ Correct: `color: var(--text-primary);`
+   - ❌ Incorrect: `color: #273333;` or `color: var(--neutral-900);`
+
+2. **Use contextually appropriate tokens** based on the element's purpose
+   - Use `text-primary` for body text, not `border-dark` even if they have the same value
+   - This ensures proper theme adaptation and semantic clarity
+
+3. **Reference primitives only** when creating new semantic tokens to maintain system consistency
+
+4. **Follow the naming convention** when adding new tokens:
+   - Semantic: `{category}-{purpose}` (e.g., `background-action`, `text-error`)
+   - Primitive: `{Category}/{Weight}` (e.g., `Neutral/500`, `Size/600`)
+
+5. **Document relationships** between semantic and primitive tokens when extending the system
+
+### For Design System Maintainers
+
+1. **Expand primitives thoughtfully** - new primitive values should support multiple semantic use cases
+2. **Create semantic tokens** for any new UI pattern or component need
+3. **Update theme mappings** when adding brand-related semantic tokens
+4. **Test accessibility** when updating primitive values that affect contrast ratios
 
 ## Font Assets
 
@@ -222,10 +339,19 @@ All font files are validated OpenType format and ready for use in web and applic
 
 ## Notes
 
+### Design System Architecture
 - The variable structure demonstrates a clear separation of concerns between raw design values (primitives) and contextual usage (semantics)
 - The connection point allows for systematic updates: changing a primitive value updates all dependent semantic tokens
-- This structure supports design system evolution and theming capabilities
+- This structure supports design system evolution and theming capabilities across multiple brand identities
+
+### Documentation Approach
+- **Primitive tokens are intentionally not fully listed** in user-facing documentation to avoid confusion
+- Only semantic tokens should be referenced in component implementation and design handoffs
+- Complete primitive token listings are maintained in Figma for design system maintainers
+
+### Font Assets
 - Brand fonts (Trade Gothic and Rift) are available as .otf files in the project repository
+- Font files are validated and ready for web and application development
 
 ---
 
