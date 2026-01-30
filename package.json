@@ -1,0 +1,38 @@
+{
+  "name": "@almanac/design-tokens",
+  "version": "0.1.0",
+  "description": "Design tokens for Almanac DX UI Kit with FCMA and Rural 1st theming support",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "generate-css": "node scripts/generate-css.js",
+    "prebuild": "npm run generate-css"
+  },
+  "keywords": [
+    "design-tokens",
+    "design-system",
+    "react",
+    "typescript",
+    "css-variables",
+    "theming"
+  ],
+  "author": "rdavis",
+  "license": "UNLICENSED",
+  "private": true,
+  "devDependencies": {
+    "@types/node": "^20.11.0",
+    "@types/react": "^18.2.48",
+    "@types/react-dom": "^18.2.18",
+    "typescript": "^5.3.3"
+  },
+  "peerDependencies": {
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0"
+  },
+  "files": [
+    "dist",
+    "fonts",
+    "README.md"
+  ]
+}

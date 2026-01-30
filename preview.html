@@ -1,0 +1,951 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-fcma">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Almanac DX Design Tokens Preview</title>
+  <link rel="stylesheet" href="src/tokens/styles/fonts.css">
+  <link rel="stylesheet" href="src/tokens/styles/tokens.css">
+  <link rel="stylesheet" href="src/tokens/styles/layout.css">
+  <link rel="stylesheet" href="src/tokens/styles/button.css">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-16);
+      line-height: var(--line-height-150);
+      color: var(--text-primary);
+      background: var(--background-page);
+    }
+
+    /* Top bar styling */
+    .adx-topbar {
+      background: var(--background-primary);
+      border-bottom: var(--border-width-thin) solid var(--border-subtle);
+      justify-content: space-between;
+    }
+
+    .topbar-title {
+      font-size: var(--font-size-14);
+      font-weight: var(--font-weight-bold);
+      letter-spacing: var(--letter-spacing-tight);
+    }
+
+    .theme-switcher {
+      display: flex;
+      gap: var(--spacing-8);
+    }
+
+    .theme-btn {
+      padding: var(--spacing-4) var(--spacing-12);
+      border: var(--border-width-thin) solid var(--border-subtle);
+      border-radius: var(--border-radius-md);
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-12);
+      font-weight: var(--font-weight-medium);
+      cursor: pointer;
+      background: var(--background-primary);
+      color: var(--text-primary);
+      transition: all 0.2s;
+    }
+
+    .theme-btn:hover {
+      border-color: var(--border-brand);
+      color: var(--text-brand);
+    }
+
+    .theme-btn.active {
+      background: var(--background-brand);
+      color: var(--text-reverse);
+      border-color: var(--background-brand);
+    }
+
+    /* Side nav styling */
+    .adx-nav {
+      background: var(--background-light);
+      border-right: var(--border-width-thin) solid var(--border-subtle);
+    }
+
+    .nav-items {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-4);
+      padding: var(--spacing-16) var(--spacing-12);
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-12);
+      padding: var(--spacing-8) var(--spacing-12);
+      border-radius: var(--border-radius-md);
+      font-size: var(--font-size-14);
+      color: var(--text-secondary);
+      cursor: pointer;
+      text-decoration: none;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .nav-item:hover {
+      background: var(--background-medium);
+      color: var(--text-primary);
+    }
+
+    .nav-item.active {
+      background: var(--background-brand-subtle);
+      color: var(--text-brand);
+      font-weight: var(--font-weight-medium);
+    }
+
+    .nav-icon {
+      width: 20px;
+      height: 20px;
+      border-radius: var(--border-radius-sm);
+      background: var(--background-dark);
+      flex-shrink: 0;
+    }
+
+    .nav-item.active .nav-icon {
+      background: var(--background-brand);
+    }
+
+    /* Nav toggle button */
+    .nav-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: var(--spacing-12);
+      border: none;
+      background: none;
+      cursor: pointer;
+      color: var(--text-secondary);
+      font-size: var(--font-size-12);
+      border-top: var(--border-width-thin) solid var(--border-subtle);
+    }
+
+    .nav-toggle:hover {
+      background: var(--background-medium);
+    }
+
+    /* Mobile nav trigger in top bar */
+    .adx-mobile-nav-trigger {
+      align-items: center;
+      gap: var(--spacing-8);
+      background: none;
+      border: var(--border-width-thin) solid var(--border-subtle);
+      border-radius: var(--border-radius-md);
+      padding: var(--spacing-4) var(--spacing-8);
+      cursor: pointer;
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-12);
+      color: var(--text-primary);
+    }
+
+    /* Section content spacing */
+    .section-inner {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-16);
+    }
+
+    .section-title {
+      font-size: var(--font-size-24);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+    }
+
+    .section-subtitle {
+      font-size: var(--font-size-14);
+      color: var(--text-secondary);
+    }
+
+    /* Color swatches */
+    .swatch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: var(--spacing-12);
+    }
+
+    .swatch {
+      border: var(--border-width-thin) solid var(--border-subtle);
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+    }
+
+    .swatch-color {
+      height: 64px;
+    }
+
+    .swatch-info {
+      padding: var(--spacing-8) var(--spacing-12);
+    }
+
+    .swatch-name {
+      font-size: var(--font-size-12);
+      font-weight: var(--font-weight-semibold);
+      color: var(--text-primary);
+    }
+
+    .swatch-var {
+      font-size: var(--font-size-10);
+      color: var(--text-secondary);
+      font-family: monospace;
+    }
+
+    /* Component examples */
+    .component-row {
+      display: flex;
+      gap: var(--spacing-16);
+      flex-wrap: wrap;
+      align-items: flex-start;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--spacing-12) var(--spacing-24);
+      border-radius: var(--border-radius-md);
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-16);
+      font-weight: var(--font-weight-medium);
+      border: var(--border-width-medium) solid transparent;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-primary {
+      background: var(--background-action);
+      color: var(--text-reverse);
+    }
+    .btn-primary:hover {
+      background: var(--background-action-hover);
+    }
+
+    .btn-secondary {
+      background: var(--background-action-secondary);
+      color: var(--text-primary);
+      border-color: var(--border-dark);
+    }
+    .btn-secondary:hover {
+      background: var(--background-action-secondary-hover);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--text-brand);
+      border-color: var(--border-brand);
+    }
+    .btn-outline:hover {
+      background: var(--background-brand);
+      color: var(--text-reverse);
+    }
+
+    .btn-disabled {
+      background: var(--background-action-disabled);
+      color: var(--text-disabled);
+      cursor: not-allowed;
+    }
+
+    /* Card */
+    .card {
+      background: var(--background-primary);
+      border: var(--border-width-thin) solid var(--border-subtle);
+      border-radius: var(--border-radius-lg);
+      padding: var(--spacing-24);
+      box-shadow: var(--elevation-200);
+      max-width: 400px;
+    }
+
+    .card-title {
+      font-size: var(--font-size-20);
+      font-weight: var(--font-weight-semibold);
+      padding-bottom: var(--spacing-8);
+    }
+
+    .card-body {
+      color: var(--text-secondary);
+      font-size: var(--font-size-14);
+      padding-bottom: var(--spacing-16);
+    }
+
+    .card-link {
+      color: var(--text-link);
+      text-decoration: none;
+      font-weight: var(--font-weight-medium);
+    }
+    .card-link:hover {
+      color: var(--text-link-hover);
+      text-decoration: underline;
+    }
+
+    /* Alert boxes */
+    .alert {
+      padding: var(--spacing-12) var(--spacing-16);
+      border-radius: var(--border-radius-md);
+      border-left: var(--border-width-thick) solid;
+      font-size: var(--font-size-14);
+    }
+
+    .alert-success {
+      background: var(--background-success);
+      border-color: var(--border-success);
+      color: var(--text-success);
+    }
+    .alert-error {
+      background: var(--background-error);
+      border-color: var(--border-error);
+      color: var(--text-error);
+    }
+    .alert-warning {
+      background: var(--background-warning);
+      border-color: var(--border-warning);
+      color: var(--text-warning);
+    }
+    .alert-info {
+      background: var(--background-information);
+      border-color: var(--border-information);
+      color: var(--text-information);
+    }
+
+    /* Typography preview */
+    .type-sample {
+      padding-bottom: var(--spacing-16);
+    }
+    .type-label {
+      font-size: var(--font-size-10);
+      text-transform: uppercase;
+      letter-spacing: var(--letter-spacing-loose);
+      color: var(--text-secondary);
+      padding-bottom: var(--spacing-4);
+    }
+
+    /* Elevation preview */
+    .elevation-grid {
+      display: flex;
+      gap: var(--spacing-24);
+      flex-wrap: wrap;
+    }
+    .elevation-box {
+      width: 120px;
+      height: 120px;
+      background: var(--background-primary);
+      border-radius: var(--border-radius-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-size-14);
+      font-weight: var(--font-weight-medium);
+      color: var(--text-secondary);
+    }
+
+    /* Background strips */
+    .bg-strip {
+      display: flex;
+      align-items: center;
+      padding: var(--spacing-12) var(--spacing-16);
+      border-radius: var(--border-radius-md);
+      font-size: var(--font-size-14);
+      font-weight: var(--font-weight-medium);
+    }
+    .bg-strip .label {
+      flex: 1;
+    }
+    .bg-strip .value {
+      font-family: monospace;
+      font-size: var(--font-size-12);
+      opacity: 0.7;
+    }
+    .bg-strips {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-8);
+    }
+
+    /* Focus ring demo */
+    .focus-demo {
+      padding: var(--spacing-8) var(--spacing-16);
+      border: var(--border-width-medium) solid var(--border-subtle);
+      border-radius: var(--border-radius-md);
+      outline: 3px solid var(--border-focus);
+      outline-offset: 2px;
+      display: inline-block;
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-14);
+      background: var(--background-primary);
+    }
+
+    /* Dark section content */
+    .dark-section {
+      background: var(--background-reverse);
+      border-radius: var(--border-radius-lg);
+      padding: var(--spacing-24);
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-16);
+    }
+    .dark-section .section-title {
+      color: var(--text-reverse);
+    }
+    .dark-section p {
+      color: var(--text-reverse);
+      opacity: 0.8;
+      font-size: var(--font-size-14);
+    }
+
+    /* Spacing bars */
+    .spacing-scale {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-4);
+    }
+    .spacing-row {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-12);
+    }
+    .spacing-label {
+      width: 80px;
+      font-size: var(--font-size-12);
+      color: var(--text-secondary);
+      text-align: right;
+    }
+    .spacing-bar {
+      height: 16px;
+      background: var(--background-brand);
+      border-radius: 2px;
+    }
+
+    /* Border radius preview */
+    .radius-grid {
+      display: flex;
+      gap: var(--spacing-16);
+      flex-wrap: wrap;
+      align-items: end;
+    }
+    .radius-item {
+      text-align: center;
+    }
+    .radius-box {
+      width: 48px;
+      height: 48px;
+      background: var(--background-brand);
+    }
+    .radius-label {
+      font-size: var(--font-size-10);
+      color: var(--text-secondary);
+      padding-top: var(--spacing-4);
+    }
+
+    /* Footer text */
+    .footer-text {
+      color: var(--text-tertiary);
+      font-size: var(--font-size-12);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="adx-layout">
+
+    <!-- Top Bar -->
+    <nav class="adx-topbar">
+      <button class="adx-mobile-nav-trigger" onclick="toggleMobileNav()">Menu</button>
+      <span class="topbar-title">Almanac DX Design Tokens</span>
+      <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('fcma')" id="btn-fcma">FCMA</button>
+        <button class="theme-btn" onclick="setTheme('rural-first')" id="btn-rural">Rural 1st</button>
+      </div>
+    </nav>
+
+    <!-- Wrapper: Nav + Content -->
+    <div class="adx-wrapper">
+
+      <!-- Side Navigation -->
+      <nav class="adx-nav adx-nav--open" id="side-nav">
+        <div class="nav-items">
+          <a href="#brand-colors" class="nav-item active">
+            <div class="nav-icon"></div>
+            <span>Brand Colors</span>
+          </a>
+          <a href="#backgrounds" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Backgrounds</span>
+          </a>
+          <a href="#text" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Text</span>
+          </a>
+          <a href="#buttons" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Buttons</span>
+          </a>
+          <a href="#cards" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Cards</span>
+          </a>
+          <a href="#alerts" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Alerts</span>
+          </a>
+          <a href="#borders" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Borders</span>
+          </a>
+          <a href="#typography" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Typography</span>
+          </a>
+          <a href="#elevation" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Elevation</span>
+          </a>
+          <a href="#spacing" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Spacing</span>
+          </a>
+        </div>
+        <button class="nav-toggle" onclick="toggleNav()">
+          <span id="nav-toggle-label">Collapse</span>
+        </button>
+      </nav>
+
+      <!-- Main + Footer wrapper -->
+      <div class="adx-main-wrapper">
+
+        <!-- Main Content -->
+        <main class="adx-main">
+
+          <!-- Brand Colors — content-l, light background -->
+          <section class="adx-section" id="brand-colors" style="background: var(--background-light);">
+            <div class="adx-content-l">
+              <div class="section-inner">
+                <h2 class="section-title">Brand Colors (Theme-Aware)</h2>
+                <p class="section-subtitle">These colors change when switching between FCMA and Rural 1st themes.</p>
+                <div class="swatch-grid">
+                  <div class="swatch">
+                    <div class="swatch-color" style="background: var(--background-brand);"></div>
+                    <div class="swatch-info">
+                      <div class="swatch-name">Brand</div>
+                      <div class="swatch-var">--background-brand</div>
+                    </div>
+                  </div>
+                  <div class="swatch">
+                    <div class="swatch-color" style="background: var(--background-brand-hover);"></div>
+                    <div class="swatch-info">
+                      <div class="swatch-name">Brand Hover</div>
+                      <div class="swatch-var">--background-brand-hover</div>
+                    </div>
+                  </div>
+                  <div class="swatch">
+                    <div class="swatch-color" style="background: var(--background-brand-subtle);"></div>
+                    <div class="swatch-info">
+                      <div class="swatch-name">Brand Subtle</div>
+                      <div class="swatch-var">--background-brand-subtle</div>
+                    </div>
+                  </div>
+                  <div class="swatch">
+                    <div class="swatch-color" style="background: var(--background-action);"></div>
+                    <div class="swatch-info">
+                      <div class="swatch-name">Action</div>
+                      <div class="swatch-var">--background-action</div>
+                    </div>
+                  </div>
+                  <div class="swatch">
+                    <div class="swatch-color" style="background: var(--background-action-hover);"></div>
+                    <div class="swatch-info">
+                      <div class="swatch-name">Action Hover</div>
+                      <div class="swatch-var">--background-action-hover</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Backgrounds — content-m, medium background -->
+          <section class="adx-section" id="backgrounds" style="background: var(--background-medium);">
+            <div class="adx-content-m">
+              <div class="section-inner">
+                <h2 class="section-title">Background Tokens</h2>
+                <p class="section-subtitle">Neutral background scale from lightest to darkest.</p>
+                <div class="bg-strips">
+                  <div class="bg-strip" style="background: var(--background-page); border: 1px solid var(--border-subtle);">
+                    <span class="label">Page</span>
+                    <span class="value">--background-page</span>
+                  </div>
+                  <div class="bg-strip" style="background: var(--background-light); border: 1px solid var(--border-subtle);">
+                    <span class="label">Light</span>
+                    <span class="value">--background-light</span>
+                  </div>
+                  <div class="bg-strip" style="background: var(--background-medium);">
+                    <span class="label">Medium</span>
+                    <span class="value">--background-medium</span>
+                  </div>
+                  <div class="bg-strip" style="background: var(--background-dark);">
+                    <span class="label">Dark</span>
+                    <span class="value">--background-dark</span>
+                  </div>
+                  <div class="bg-strip" style="background: var(--background-darker);">
+                    <span class="label">Darker</span>
+                    <span class="value">--background-darker</span>
+                  </div>
+                  <div class="bg-strip" style="background: var(--background-disabled);">
+                    <span class="label" style="color: var(--text-reverse);">Disabled</span>
+                    <span class="value" style="color: var(--text-reverse);">--background-disabled</span>
+                  </div>
+                  <div class="bg-strip" style="background: var(--background-reverse);">
+                    <span class="label" style="color: var(--text-reverse);">Reverse</span>
+                    <span class="value" style="color: var(--text-reverse);">--background-reverse</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Text — content-m, light background -->
+          <section class="adx-section" id="text" style="background: var(--background-light);">
+            <div class="adx-content-m">
+              <div class="section-inner">
+                <h2 class="section-title">Text Tokens</h2>
+                <div style="background: var(--background-page); padding: var(--spacing-24); border-radius: var(--border-radius-lg); display: flex; flex-direction: column; gap: var(--spacing-8);">
+                  <p style="color: var(--text-primary); font-size: var(--font-size-18);">Primary text - main body content</p>
+                  <p style="color: var(--text-secondary); font-size: var(--font-size-16);">Secondary text - supporting content</p>
+                  <p style="color: var(--text-tertiary); font-size: var(--font-size-14);">Tertiary text - minimal emphasis</p>
+                  <p style="color: var(--text-brand); font-size: var(--font-size-16); font-weight: var(--font-weight-semibold);">Brand text (theme-aware)</p>
+                  <p><a href="#" class="card-link">Link text (theme-aware)</a></p>
+                  <p style="color: var(--text-disabled); font-size: var(--font-size-14);">Disabled text</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Buttons — content-m, medium background -->
+          <section class="adx-section" id="buttons" style="background: var(--background-medium);">
+            <div class="adx-content-m">
+              <div class="section-inner">
+                <h2 class="section-title">Button Components</h2>
+                <p class="section-subtitle">Buttons matching Figma spec — sizes, types, icon variants, and states.</p>
+
+                <div class="type-label">Primary — Sizes</div>
+                <div class="component-row">
+                  <button class="adx-btn adx-btn--primary adx-btn--large">Large</button>
+                  <button class="adx-btn adx-btn--primary adx-btn--medium">Medium</button>
+                  <button class="adx-btn adx-btn--primary adx-btn--small">Small</button>
+                  <button class="adx-btn adx-btn--primary adx-btn--xsmall">XSmall</button>
+                </div>
+
+                <div class="type-label">Secondary — Sizes</div>
+                <div class="component-row">
+                  <button class="adx-btn adx-btn--secondary adx-btn--large">Large</button>
+                  <button class="adx-btn adx-btn--secondary adx-btn--medium">Medium</button>
+                  <button class="adx-btn adx-btn--secondary adx-btn--small">Small</button>
+                  <button class="adx-btn adx-btn--secondary adx-btn--xsmall">XSmall</button>
+                </div>
+
+                <div class="type-label">Icon Buttons</div>
+                <div class="component-row">
+                  <button class="adx-btn adx-btn--icon" aria-label="Menu">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14v2H3V5zm0 4h14v2H3V9zm0 4h14v2H3v-2z"/></svg>
+                  </button>
+                  <button class="adx-btn adx-btn--icon" aria-label="Search">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="2" fill="none"/><line x1="12" y1="12" x2="17" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                  </button>
+                  <button class="adx-btn adx-btn--icon-brand" aria-label="Add">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M9 3v6H3v2h6v6h2v-6h6V9h-6V3H9z"/></svg>
+                  </button>
+                </div>
+
+                <div class="type-label">States</div>
+                <div class="component-row">
+                  <button class="adx-btn adx-btn--primary adx-btn--medium">Default</button>
+                  <button class="adx-btn adx-btn--primary adx-btn--medium" disabled>Disabled</button>
+                  <button class="adx-btn adx-btn--primary adx-btn--medium adx-btn--loading">Loading...</button>
+                  <button class="adx-btn adx-btn--secondary adx-btn--medium" disabled>Disabled</button>
+                  <button class="adx-btn adx-btn--secondary adx-btn--medium adx-btn--loading">Loading...</button>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Cards — content-l, light background -->
+          <section class="adx-section" id="cards" style="background: var(--background-light);">
+            <div class="adx-content-l">
+              <div class="section-inner">
+                <h2 class="section-title">Card Component</h2>
+                <p class="section-subtitle">Combining background, border, text, elevation, and typography tokens.</p>
+                <div class="component-row">
+                  <div class="card">
+                    <div class="card-title">Account Overview</div>
+                    <div class="card-body">
+                      Your Farm Credit account is in good standing. Review your recent transactions and manage your settings.
+                    </div>
+                    <a href="#" class="card-link">View Details &rarr;</a>
+                  </div>
+                  <div class="card" style="box-shadow: var(--elevation-300);">
+                    <div class="card-title">Loan Application</div>
+                    <div class="card-body">
+                      Start your agricultural loan application. Our team will review and respond within 2 business days.
+                    </div>
+                    <button class="btn btn-primary" style="width: 100%; justify-content: center;">Apply Now</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Alerts — content-s, medium background -->
+          <section class="adx-section" id="alerts" style="background: var(--background-medium);">
+            <div class="adx-content-s">
+              <div class="section-inner">
+                <h2 class="section-title">System Status</h2>
+                <p class="section-subtitle">Success, error, warning, and information states.</p>
+                <div style="display: flex; flex-direction: column; gap: var(--spacing-12);">
+                  <div class="alert alert-success">Your changes have been saved successfully.</div>
+                  <div class="alert alert-error">Unable to process your request. Please try again.</div>
+                  <div class="alert alert-warning">Your session will expire in 5 minutes.</div>
+                  <div class="alert alert-info">A new version of the application is available.</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Borders — content-m, light background -->
+          <section class="adx-section" id="borders" style="background: var(--background-light);">
+            <div class="adx-content-m">
+              <div class="section-inner">
+                <h2 class="section-title">Border Tokens</h2>
+                <div class="component-row">
+                  <div style="padding: var(--spacing-16); border: var(--border-width-thin) solid var(--border-subtle); border-radius: var(--border-radius-md);">
+                    <span class="swatch-var">border-subtle</span>
+                  </div>
+                  <div style="padding: var(--spacing-16); border: var(--border-width-medium) solid var(--border-dark); border-radius: var(--border-radius-md);">
+                    <span class="swatch-var">border-dark</span>
+                  </div>
+                  <div style="padding: var(--spacing-16); border: var(--border-width-medium) solid var(--border-strong); border-radius: var(--border-radius-md);">
+                    <span class="swatch-var">border-strong</span>
+                  </div>
+                  <div style="padding: var(--spacing-16); border: var(--border-width-medium) solid var(--border-brand); border-radius: var(--border-radius-md);">
+                    <span class="swatch-var">border-brand</span>
+                  </div>
+                  <div class="focus-demo">Focus ring</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Typography — content-m, medium background -->
+          <section class="adx-section" id="typography" style="background: var(--background-medium);">
+            <div class="adx-content-m">
+              <div class="section-inner">
+                <h2 class="section-title">Typography</h2>
+                <p class="section-subtitle">Trade Gothic Next LT Pro (primary) and Rift (display).</p>
+
+                <div class="type-sample">
+                  <div class="type-label">Display XL - 80px / Rift Bold</div>
+                  <div style="font-family: var(--font-family-rift); font-size: var(--font-size-80); font-weight: var(--font-weight-bold); line-height: var(--line-height-110); letter-spacing: var(--letter-spacing-tight);">Display</div>
+                </div>
+
+                <div class="type-sample">
+                  <div class="type-label">Display MD - 56px / Rift Bold</div>
+                  <div style="font-family: var(--font-family-rift); font-size: var(--font-size-56); font-weight: var(--font-weight-bold); line-height: var(--line-height-110); letter-spacing: var(--letter-spacing-tight);">Display Medium</div>
+                </div>
+
+                <div class="type-sample">
+                  <div class="type-label">Eyebrow LG - 14px / Trade Gothic Semibold / Uppercase</div>
+                  <div style="font-size: var(--font-size-14); font-weight: var(--font-weight-semibold); line-height: var(--line-height-100); text-transform: uppercase; letter-spacing: var(--letter-spacing-loose); color: var(--text-brand);">Category Label</div>
+                </div>
+
+                <div class="type-sample">
+                  <div class="type-label">Heading H1 - 40px / Trade Gothic Bold</div>
+                  <div style="font-size: var(--font-size-40); font-weight: var(--font-weight-bold); line-height: var(--line-height-120);">Page Title Heading</div>
+                </div>
+
+                <div class="type-sample">
+                  <div class="type-label">Heading H3 - 32px / Trade Gothic Semibold</div>
+                  <div style="font-size: var(--font-size-32); font-weight: var(--font-weight-semibold); line-height: var(--line-height-130);">Section Heading</div>
+                </div>
+
+                <div class="type-sample">
+                  <div class="type-label">Label MD - 16px / Trade Gothic Medium</div>
+                  <div style="font-size: var(--font-size-16); font-weight: var(--font-weight-medium);">Button Label Text</div>
+                </div>
+
+                <div class="type-sample">
+                  <div class="type-label">Paragraph MD - 18px / Trade Gothic Regular</div>
+                  <div style="font-size: var(--font-size-18); font-weight: var(--font-weight-regular); line-height: var(--line-height-160); max-width: 640px; color: var(--text-secondary);">
+                    Farm Credit Mid-America provides loans and financial services to farmers, rural residents, and agribusinesses throughout Indiana, Ohio, Kentucky, and Tennessee.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Elevation — content-m, light background -->
+          <section class="adx-section" id="elevation" style="background: var(--background-light);">
+            <div class="adx-content-m">
+              <div class="section-inner">
+                <h2 class="section-title">Elevation</h2>
+                <p class="section-subtitle">Shadow depth levels for visual hierarchy.</p>
+                <div class="elevation-grid">
+                  <div class="elevation-box" style="box-shadow: var(--elevation-100);">100</div>
+                  <div class="elevation-box" style="box-shadow: var(--elevation-200);">200</div>
+                  <div class="elevation-box" style="box-shadow: var(--elevation-300);">300</div>
+                  <div class="elevation-box" style="box-shadow: var(--elevation-400);">400</div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Dark section — content-s, medium background -->
+          <section class="adx-section" style="background: var(--background-medium);">
+            <div class="adx-content-s">
+              <div class="section-inner">
+                <h2 class="section-title">Reverse / Dark Background</h2>
+                <div class="dark-section">
+                  <h2 class="section-title">Dark Background Context</h2>
+                  <p>Use reverse tokens for text and icons on dark backgrounds. Border-reverse provides visible borders.</p>
+                  <div style="display: flex; gap: var(--spacing-12);">
+                    <button class="btn" style="background: var(--background-primary); color: var(--text-brand); border-color: var(--background-primary);">Light Button</button>
+                    <button class="btn" style="background: transparent; color: var(--text-reverse); border: var(--border-width-medium) solid var(--border-reverse);">Outline Button</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Spacing — content-s, light background -->
+          <section class="adx-section" id="spacing" style="background: var(--background-light);">
+            <div class="adx-content-s">
+              <div class="section-inner">
+                <h2 class="section-title">Spacing Scale</h2>
+                <p class="section-subtitle">8px-based spacing rhythm.</p>
+                <div class="spacing-scale">
+                  <div class="spacing-row">
+                    <span class="spacing-label">4px</span>
+                    <div class="spacing-bar" style="width: var(--spacing-4);"></div>
+                  </div>
+                  <div class="spacing-row">
+                    <span class="spacing-label">8px</span>
+                    <div class="spacing-bar" style="width: var(--spacing-8);"></div>
+                  </div>
+                  <div class="spacing-row">
+                    <span class="spacing-label">16px</span>
+                    <div class="spacing-bar" style="width: var(--spacing-16);"></div>
+                  </div>
+                  <div class="spacing-row">
+                    <span class="spacing-label">24px</span>
+                    <div class="spacing-bar" style="width: var(--spacing-24);"></div>
+                  </div>
+                  <div class="spacing-row">
+                    <span class="spacing-label">32px</span>
+                    <div class="spacing-bar" style="width: var(--spacing-32);"></div>
+                  </div>
+                  <div class="spacing-row">
+                    <span class="spacing-label">48px</span>
+                    <div class="spacing-bar" style="width: var(--spacing-48);"></div>
+                  </div>
+                  <div class="spacing-row">
+                    <span class="spacing-label">64px</span>
+                    <div class="spacing-bar" style="width: var(--spacing-64);"></div>
+                  </div>
+                  <div class="spacing-row">
+                    <span class="spacing-label">96px</span>
+                    <div class="spacing-bar" style="width: var(--spacing-96);"></div>
+                  </div>
+                  <div class="spacing-row">
+                    <span class="spacing-label">128px</span>
+                    <div class="spacing-bar" style="width: var(--spacing-128);"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Border Radius — content-xs, medium background -->
+          <section class="adx-section" style="background: var(--background-medium);">
+            <div class="adx-content-xs">
+              <div class="section-inner">
+                <h2 class="section-title">Border Radius</h2>
+                <div class="radius-grid">
+                  <div class="radius-item">
+                    <div class="radius-box" style="border-radius: var(--border-radius-none);"></div>
+                    <div class="radius-label">none</div>
+                  </div>
+                  <div class="radius-item">
+                    <div class="radius-box" style="border-radius: var(--border-radius-sm);"></div>
+                    <div class="radius-label">sm</div>
+                  </div>
+                  <div class="radius-item">
+                    <div class="radius-box" style="border-radius: var(--border-radius-md);"></div>
+                    <div class="radius-label">md</div>
+                  </div>
+                  <div class="radius-item">
+                    <div class="radius-box" style="border-radius: var(--border-radius-lg);"></div>
+                    <div class="radius-label">lg</div>
+                  </div>
+                  <div class="radius-item">
+                    <div class="radius-box" style="border-radius: var(--border-radius-xl);"></div>
+                    <div class="radius-label">xl</div>
+                  </div>
+                  <div class="radius-item">
+                    <div class="radius-box" style="border-radius: var(--border-radius-2xl);"></div>
+                    <div class="radius-label">2xl</div>
+                  </div>
+                  <div class="radius-item">
+                    <div class="radius-box" style="border-radius: var(--border-radius-full);"></div>
+                    <div class="radius-label">full</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Footer — outside main -->
+        <footer class="adx-footer">
+          <section class="adx-section" style="background: var(--background-light);">
+            <div class="adx-content-l">
+              <p class="footer-text">
+                Almanac DX Design Tokens v0.1.0 &mdash; Layout framework preview using <code>layout.css</code> classes
+              </p>
+            </div>
+          </section>
+        </footer>
+
+      </div><!-- /adx-main-wrapper -->
+
+    </div><!-- /adx-wrapper -->
+
+  </div><!-- /adx-layout -->
+
+  <script>
+    function setTheme(themeId) {
+      document.documentElement.className = 'theme-' + themeId;
+      document.getElementById('btn-fcma').classList.toggle('active', themeId === 'fcma');
+      document.getElementById('btn-rural').classList.toggle('active', themeId === 'rural-first');
+    }
+
+    function toggleNav() {
+      var nav = document.getElementById('side-nav');
+      var label = document.getElementById('nav-toggle-label');
+      nav.classList.toggle('adx-nav--open');
+      if (nav.classList.contains('adx-nav--open')) {
+        label.textContent = 'Collapse';
+      } else {
+        label.textContent = 'Expand';
+      }
+    }
+
+    function toggleMobileNav() {
+      var nav = document.getElementById('side-nav');
+      nav.classList.toggle('adx-nav--mobile-open');
+    }
+  </script>
+
+</body>
+</html>

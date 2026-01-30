@@ -1,0 +1,239 @@
+/**
+ * Almanac DX — Page Layout Framework
+ *
+ * Responsive layout classes as defined in Figma (Page Layout Framework).
+ * Uses semantic HTML elements: <nav>, <main>, <section>, <footer>.
+ *
+ * Layout structure:
+ *   .adx-layout
+ *     nav.adx-topbar
+ *     .adx-wrapper
+ *       nav.adx-nav
+ *       .adx-main-wrapper
+ *         main.adx-main
+ *           section.adx-section
+ *             .adx-content-{l|m|s|xs}
+ *         footer.adx-footer
+ *           section.adx-section
+ *             .adx-content-{l|m|s|xs}
+ *
+ * Rules (from Figma):
+ *   - Never use margin — only padding and gap
+ *   - Footer is outside <main> to allow 100vh main content
+ *   - Content wrapper tag should match content type
+ *   - Navigation pattern changes at phone breakpoint
+ */
+
+/* ==========================================================================
+   Layout Shell
+   ========================================================================== */
+
+.adx-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* ==========================================================================
+   Top Bar — fixed navigation bar
+   52px tall across all breakpoints
+   ========================================================================== */
+
+.adx-topbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  padding: var(--component-spacing-l);
+}
+
+/* ==========================================================================
+   Wrapper — contains side nav + main content area
+   Sits below the fixed top bar
+   ========================================================================== */
+
+.adx-wrapper {
+  display: flex;
+  flex: 1 0 auto;
+  padding-top: 52px; /* offset for fixed top bar */
+}
+
+/* ==========================================================================
+   Side Navigation
+   64px collapsed, 200px open
+   Hidden on phone breakpoint
+   ========================================================================== */
+
+.adx-nav {
+  width: 64px;
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: width 0.2s ease;
+}
+
+.adx-nav--open {
+  width: 200px;
+}
+
+/* ==========================================================================
+   Main Content Wrapper — contains <main> and <footer>
+   Fills remaining horizontal space beside the nav
+   ========================================================================== */
+
+.adx-main-wrapper {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   Main — primary content area
+   Can be set to min-height: 100vh to push footer below fold
+   ========================================================================== */
+
+.adx-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+}
+
+/* ==========================================================================
+   Footer — outside <main>, below the content
+   Allows main to be 100vh, pushing footer below the fold
+   ========================================================================== */
+
+.adx-footer {
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Section — full-width container within main or footer
+   Background-agnostic: apply background tokens directly
+   ========================================================================== */
+
+.adx-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+}
+
+/* ==========================================================================
+   Content Width Wrappers
+   Constrain content to readable max-widths, centered within sections.
+   Horizontal padding is responsive per breakpoint.
+   ========================================================================== */
+
+.adx-content-l,
+.adx-content-m,
+.adx-content-s,
+.adx-content-xs {
+  width: 100%;
+}
+
+.adx-content-l {
+  max-width: 1200px;
+}
+
+.adx-content-m {
+  max-width: 1024px;
+}
+
+.adx-content-s {
+  max-width: 768px;
+}
+
+.adx-content-xs {
+  max-width: 500px;
+}
+
+/* ==========================================================================
+   Mobile Nav Trigger — visible only on phone breakpoint
+   ========================================================================== */
+
+.adx-mobile-nav-trigger {
+  display: none;
+}
+
+/* ==========================================================================
+   Responsive Breakpoints
+   ========================================================================== */
+
+/* --- Desktop (1280+) & Tablet (1024–1279) --- */
+@media (min-width: 1024px) {
+  .adx-section {
+    padding-top: var(--layout-spacing-2xs);    /* 40px */
+    padding-bottom: var(--layout-spacing-2xs); /* 40px */
+  }
+
+  .adx-content-l,
+  .adx-content-m,
+  .adx-content-s,
+  .adx-content-xs {
+    padding-left: var(--component-spacing-xl);  /* 24px */
+    padding-right: var(--component-spacing-xl); /* 24px */
+  }
+}
+
+/* --- Small Tablet (768–1023) --- */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .adx-section {
+    padding-top: var(--component-spacing-xl);    /* 24px */
+    padding-bottom: var(--component-spacing-xl); /* 24px */
+  }
+
+  .adx-content-l,
+  .adx-content-m,
+  .adx-content-s,
+  .adx-content-xs {
+    padding-left: var(--component-spacing-l);  /* 16px */
+    padding-right: var(--component-spacing-l); /* 16px */
+  }
+}
+
+/* --- Phone (0–767) --- */
+@media (max-width: 767px) {
+  .adx-section {
+    padding-top: var(--component-spacing-xl);    /* 24px */
+    padding-bottom: var(--component-spacing-xl); /* 24px */
+  }
+
+  .adx-content-l,
+  .adx-content-m,
+  .adx-content-s,
+  .adx-content-xs {
+    padding-left: var(--component-spacing-l);  /* 16px */
+    padding-right: var(--component-spacing-l); /* 16px */
+  }
+
+  /* Hide side nav on phone */
+  .adx-nav {
+    display: none;
+  }
+
+  /* Show mobile nav trigger */
+  .adx-mobile-nav-trigger {
+    display: flex;
+  }
+
+  /* Mobile nav overlay — shown via JS toggle */
+  .adx-nav--mobile-open {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 52px;
+    left: 0;
+    bottom: 0;
+    width: 200px;
+    z-index: 90;
+  }
+}

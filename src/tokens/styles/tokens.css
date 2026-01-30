@@ -1,0 +1,273 @@
+/**
+ * Design Token CSS Custom Properties
+ *
+ * CSS variables for all semantic tokens in the Almanac DX design system.
+ * Organized by the Four Pillars: Background, Text, Border, Icon
+ * Plus typography, elevation, and sizing tokens.
+ *
+ * Values verified against Figma source file (Almanac DX UI Kit).
+ *
+ * ✅ Use these CSS variables in your stylesheets
+ * ❌ Never hardcode color or size values
+ */
+
+/* ==========================================================================
+   ROOT - Default theme values and neutral tokens
+   ========================================================================== */
+
+:root {
+  /* Neutral Colors (primitives - for reference) */
+  --neutral-0: #ffffff;
+  --neutral-50: #f9f9f9;
+  --neutral-100: #f3f4f4;
+  --neutral-200: #dee1e1;
+  --neutral-300: #c8cccc;
+  --neutral-500: #929a9b;
+  --neutral-1100: #040404;
+
+  /* Overlay */
+  --overlay: rgba(4, 4, 4, 0.20);
+
+  /* System Status Colors */
+  --system-success: #28a745;
+  --system-success-light: #d4edda;
+  --system-error: #dc3545;
+  --system-error-light: #f8d7da;
+  --system-warning: #ffc107;
+  --system-warning-light: #fff3cd;
+  --system-info: #17a2b8;
+  --system-info-light: #d1ecf1;
+
+  /* Shadow Color */
+  --shadow-base: rgba(4, 4, 4, 0.24);
+
+  /* Background Tokens */
+  --background-page: var(--neutral-0);
+  --background-primary: var(--neutral-0);
+  --background-light: var(--neutral-50);
+  --background-medium: var(--neutral-100);
+  --background-dark: var(--neutral-200);
+  --background-darker: var(--neutral-300);
+  --background-disabled: var(--neutral-500);
+  --background-reverse: var(--neutral-1100);
+  --background-overlay: var(--overlay);
+  --background-brand: var(--neutral-500); /* Overridden by theme */
+  --background-brand-hover: var(--neutral-1100); /* Overridden by theme */
+  --background-brand-subtle: var(--neutral-50); /* Overridden by theme */
+  --background-action: var(--neutral-500); /* Overridden by theme */
+  --background-action-hover: var(--neutral-1100); /* Overridden by theme */
+  --background-action-disabled: var(--neutral-200);
+  --background-action-secondary: var(--neutral-200);
+  --background-action-secondary-hover: var(--neutral-300);
+  --background-success: var(--system-success-light);
+  --background-error: var(--system-error-light);
+  --background-warning: var(--system-warning-light);
+  --background-information: var(--system-info-light);
+
+  /* Text Tokens */
+  --text-primary: var(--neutral-1100);
+  --text-secondary: var(--neutral-500);
+  --text-tertiary: var(--neutral-300);
+  --text-reverse: var(--neutral-0);
+  --text-brand: var(--neutral-500); /* Overridden by theme */
+  --text-link: var(--neutral-500); /* Overridden by theme */
+  --text-link-hover: var(--neutral-1100); /* Overridden by theme */
+  --text-disabled: var(--neutral-300);
+  --text-success: var(--system-success);
+  --text-error: var(--system-error);
+  --text-warning: var(--system-warning);
+  --text-information: var(--system-info);
+
+  /* Border Tokens */
+  --border-reverse: var(--neutral-0);
+  --border-subtle: var(--neutral-200);
+  --border-dark: var(--neutral-500);
+  --border-strong: var(--neutral-1100);
+  --border-brand: var(--neutral-500); /* Overridden by theme */
+  --border-focus: var(--neutral-500); /* Overridden by theme */
+  --border-success: var(--system-success);
+  --border-error: var(--system-error);
+  --border-warning: var(--system-warning);
+  --border-information: var(--system-info);
+
+  /* Icon Tokens */
+  --icon-subtle: var(--neutral-500);
+  --icon-dark: var(--neutral-1100);
+  --icon-reverse: var(--neutral-0);
+  --icon-brand: var(--neutral-500); /* Overridden by theme */
+  --icon-link: var(--neutral-500); /* Overridden by theme */
+  --icon-disabled: var(--neutral-300);
+  --icon-success: var(--system-success);
+  --icon-error: var(--system-error);
+  --icon-warning: var(--system-warning);
+  --icon-information: var(--system-info);
+
+  /* Elevation/Shadow Tokens */
+  --elevation-100: 0 2px 4px var(--shadow-base);
+  --elevation-200: 0 4px 8px var(--shadow-base);
+  --elevation-300: 0 8px 16px var(--shadow-base);
+  --elevation-400: 0 16px 32px var(--shadow-base);
+
+  /* Typography - Font Families */
+  --font-family-trade-gothic: 'Trade Gothic Next LT Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-rift: 'Rift', Georgia, 'Times New Roman', Times, serif;
+
+  /* Typography - Font Weights */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-heavy: 800;
+
+  /* Typography - Font Sizes */
+  --font-size-8: 0.5rem;
+  --font-size-10: 0.625rem;
+  --font-size-12: 0.75rem;
+  --font-size-14: 0.875rem;
+  --font-size-16: 1rem;
+  --font-size-18: 1.125rem;
+  --font-size-20: 1.25rem;
+  --font-size-24: 1.5rem;
+  --font-size-28: 1.75rem;
+  --font-size-32: 2rem;
+  --font-size-36: 2.25rem;
+  --font-size-40: 2.5rem;
+  --font-size-48: 3rem;
+  --font-size-56: 3.5rem;
+  --font-size-64: 4rem;
+  --font-size-80: 5rem;
+
+  /* Typography - Line Heights */
+  --line-height-100: 100%;
+  --line-height-110: 110%;
+  --line-height-120: 120%;
+  --line-height-130: 130%;
+  --line-height-140: 140%;
+  --line-height-150: 150%;
+  --line-height-160: 160%;
+
+  /* Typography - Letter Spacing */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-loose: 0.02em;
+
+  /* Spacing Scale */
+  --spacing-0: 0;
+  --spacing-2: 0.125rem;
+  --spacing-4: 0.25rem;
+  --spacing-8: 0.5rem;
+  --spacing-12: 0.75rem;
+  --spacing-16: 1rem;
+  --spacing-20: 1.25rem;
+  --spacing-24: 1.5rem;
+  --spacing-32: 2rem;
+  --spacing-40: 2.5rem;
+  --spacing-48: 3rem;
+  --spacing-64: 4rem;
+  --spacing-80: 5rem;
+  --spacing-96: 6rem;
+  --spacing-128: 8rem;
+
+  /* Border Radius */
+  --border-radius-none: 0;
+  --border-radius-sm: 0.125rem;
+  --border-radius-md: 0.25rem;
+  --border-radius-lg: 0.5rem;
+  --border-radius-xl: 0.75rem;
+  --border-radius-2xl: 1rem;
+  --border-radius-full: 9999px;
+
+  /* Border Width */
+  --border-width-none: 0;
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 4px;
+
+  /* Component Spacing (Figma variable names) */
+  --component-spacing-3xs: var(--spacing-2);   /* 2px */
+  --component-spacing-2xs: var(--spacing-4);   /* 4px */
+  --component-spacing-xs: var(--spacing-8);    /* 8px */
+  --component-spacing-s: 0.625rem;             /* 10px — no spacing primitive at this value */
+  --component-spacing-m: var(--spacing-16);    /* 16px */
+  --component-spacing-l: var(--spacing-16);    /* 16px */
+  --component-spacing-xl: var(--spacing-24);   /* 24px */
+  --component-spacing-2xl: var(--spacing-32);  /* 32px */
+  --component-spacing-3xl: var(--spacing-40);  /* 40px */
+
+  /* Layout Spacing (Figma variable names) */
+  --layout-spacing-2xs: var(--spacing-40);     /* 40px */
+
+  /* Radius (Figma variable names) */
+  --radius-2xs: var(--border-radius-md);       /* 4px */
+  --radius-xs: var(--border-radius-lg);        /* 8px */
+  --radius-round: var(--border-radius-full);   /* 9999px */
+
+  /* Focus Ring (Figma focus-100 effect) */
+  --focus-ring: 0 0 0 4px #C7E4F9;
+}
+
+/* ==========================================================================
+   FCMA THEME
+   Farm Credit Mid-America brand color overrides
+   Primary: #5e9732 (brand-600)
+   Hover: #71b33c (brand-500 - lighter per Figma pattern)
+   ========================================================================== */
+
+.theme-fcma {
+  /* FCMA Brand Colors */
+  --fcma-primary: #5e9732;
+  --fcma-hover: #71b33c;
+  --fcma-disabled: #b8de9b;
+  --fcma-light: #e4f2d8;
+
+  /* Override brand/action/link tokens with FCMA green */
+  --background-brand: var(--fcma-primary);
+  --background-brand-hover: var(--fcma-hover);
+  --background-brand-subtle: var(--fcma-light);
+  --background-action: var(--fcma-primary);
+  --background-action-hover: var(--fcma-hover);
+
+  --text-brand: var(--fcma-primary);
+  --text-link: var(--fcma-primary);
+  --text-link-hover: var(--fcma-hover);
+
+  --border-brand: var(--fcma-primary);
+  --border-focus: var(--fcma-primary);
+
+  --icon-brand: var(--fcma-primary);
+  --icon-link: var(--fcma-primary);
+}
+
+/* ==========================================================================
+   RURAL 1ST THEME
+   Rural 1st brand color overrides
+   Primary: #005b94 (Rural 1st Blue)
+   Hover: #0070b8 (lighter shade, calculated)
+   Light: #e5f5f8 (from Figma)
+   ========================================================================== */
+
+.theme-rural-first {
+  /* Rural 1st Brand Colors */
+  --rural1st-primary: #005b94;
+  --rural1st-hover: #0070b8;
+  --rural1st-disabled: #99c4de;
+  --rural1st-light: #e5f5f8;
+
+  /* Override brand/action/link tokens with Rural 1st blue */
+  --background-brand: var(--rural1st-primary);
+  --background-brand-hover: var(--rural1st-hover);
+  --background-brand-subtle: var(--rural1st-light);
+  --background-action: var(--rural1st-primary);
+  --background-action-hover: var(--rural1st-hover);
+
+  --text-brand: var(--rural1st-primary);
+  --text-link: var(--rural1st-primary);
+  --text-link-hover: var(--rural1st-hover);
+
+  --border-brand: var(--rural1st-primary);
+  --border-focus: var(--rural1st-primary);
+
+  --icon-brand: var(--rural1st-primary);
+  --icon-link: var(--rural1st-primary);
+}
