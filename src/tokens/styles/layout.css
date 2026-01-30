@@ -49,7 +49,7 @@
   height: 52px;
   display: flex;
   align-items: center;
-  padding: var(--component-spacing-l);
+  padding: var(--component-space-l);
 }
 
 /* ==========================================================================
@@ -171,48 +171,48 @@
 /* --- Desktop (1280+) & Tablet (1024–1279) --- */
 @media (min-width: 1024px) {
   .adx-section {
-    padding-top: var(--layout-spacing-2xs);    /* 40px */
-    padding-bottom: var(--layout-spacing-2xs); /* 40px */
+    padding-top: var(--layout-space-2xs);    /* 40px */
+    padding-bottom: var(--layout-space-2xs); /* 40px */
   }
 
   .adx-content-l,
   .adx-content-m,
   .adx-content-s,
   .adx-content-xs {
-    padding-left: var(--component-spacing-xl);  /* 24px */
-    padding-right: var(--component-spacing-xl); /* 24px */
+    padding-left: var(--component-space-xl);  /* 24px */
+    padding-right: var(--component-space-xl); /* 24px */
   }
 }
 
 /* --- Small Tablet (768–1023) --- */
 @media (min-width: 768px) and (max-width: 1023px) {
   .adx-section {
-    padding-top: var(--component-spacing-xl);    /* 24px */
-    padding-bottom: var(--component-spacing-xl); /* 24px */
+    padding-top: var(--component-space-xl);    /* 24px */
+    padding-bottom: var(--component-space-xl); /* 24px */
   }
 
   .adx-content-l,
   .adx-content-m,
   .adx-content-s,
   .adx-content-xs {
-    padding-left: var(--component-spacing-l);  /* 16px */
-    padding-right: var(--component-spacing-l); /* 16px */
+    padding-left: var(--component-space-l);  /* 16px */
+    padding-right: var(--component-space-l); /* 16px */
   }
 }
 
 /* --- Phone (0–767) --- */
 @media (max-width: 767px) {
   .adx-section {
-    padding-top: var(--component-spacing-xl);    /* 24px */
-    padding-bottom: var(--component-spacing-xl); /* 24px */
+    padding-top: var(--component-space-xl);    /* 24px */
+    padding-bottom: var(--component-space-xl); /* 24px */
   }
 
   .adx-content-l,
   .adx-content-m,
   .adx-content-s,
   .adx-content-xs {
-    padding-left: var(--component-spacing-l);  /* 16px */
-    padding-right: var(--component-spacing-l); /* 16px */
+    padding-left: var(--component-space-l);  /* 16px */
+    padding-right: var(--component-space-l); /* 16px */
   }
 
   /* Hide side nav on phone */

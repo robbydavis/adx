@@ -30,14 +30,14 @@ export const text = {
    * References: Neutral/500 (#929a9b)
    * Usage: Descriptions, metadata, secondary labels
    */
-  secondary: neutral[500],
+  secondary: neutral[700],
 
   /**
    * Tertiary text - Low-emphasis text for minimal prominence
    * References: Neutral/300 (#c8cccc)
    * Usage: Placeholders, hints, disabled text
    */
-  tertiary: neutral[300],
+  tertiary: neutral[500],
 
   /**
    * Reverse text - Text for use on dark backgrounds
@@ -84,26 +84,32 @@ export const text = {
    */
   success: systemColors.success,
 
-  /**
-   * Error text - Text for error states and destructive messaging
-   * References: System error (#dc3545)
-   * Usage: Error messages, validation errors, destructive actions
-   */
+  /** Success hover text */
+  successHover: '#60b369',
+
+  /** Error text - References: red-800 */
   error: systemColors.error,
 
-  /**
-   * Warning text - Text for warning states and cautionary messaging
-   * References: System warning (#ffc107)
-   * Usage: Warning messages, caution notices, attention states
-   */
+  /** Error hover text */
+  errorHover: '#d83c3e',
+
+  /** Warning text - References: yellow-700 */
   warning: systemColors.warning,
 
-  /**
-   * Information text - Text for informational messaging
-   * References: System info (#17a2b8)
-   * Usage: Info messages, tips, contextual help
-   */
+  /** Warning hover text */
+  warningHover: '#ba750b',
+
+  /** Information text - References: blue-700 */
   information: systemColors.info,
+
+  /** Information hover text */
+  informationHover: systemColors.infoHover,
+
+  /** Discovery text - References: purple-700 */
+  discovery: systemColors.discovery,
+
+  /** Discovery hover text */
+  discoveryHover: systemColors.discoveryHover,
 } as const;
 
 // Type export for TypeScript consumers

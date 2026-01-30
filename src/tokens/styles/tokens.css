@@ -23,20 +23,29 @@
   --neutral-200: #dee1e1;
   --neutral-300: #c8cccc;
   --neutral-500: #929a9b;
+  --neutral-700: #515e5f;
   --neutral-1100: #040404;
 
   /* Overlay */
   --overlay: rgba(4, 4, 4, 0.20);
 
   /* System Status Colors */
-  --system-success: #28a745;
+  --system-success: #2bb656;
   --system-success-light: #d4edda;
-  --system-error: #dc3545;
+  --system-error: #c63434;
+  --system-error-hover: #8d3c3e;
   --system-error-light: #f8d7da;
-  --system-warning: #ffc107;
+  --system-error-disabled: #f3b4b4;
+  --system-warning: #dd9903;
   --system-warning-light: #fff3cd;
-  --system-info: #17a2b8;
+  --system-info: #2079c3;
+  --system-info-hover: #2b67d3;
   --system-info-light: #d1ecf1;
+
+  /* Discovery Colors */
+  --system-discovery: #6f5ed3;
+  --system-discovery-hover: #8187ea;
+  --system-discovery-light: #e8e5f8;
 
   /* Shadow Color */
   --shadow-base: rgba(4, 4, 4, 0.24);
@@ -59,24 +68,38 @@
   --background-action-disabled: var(--neutral-200);
   --background-action-secondary: var(--neutral-200);
   --background-action-secondary-hover: var(--neutral-300);
-  --background-success: var(--system-success-light);
-  --background-error: var(--system-error-light);
-  --background-warning: var(--system-warning-light);
-  --background-information: var(--system-info-light);
+  --background-success: var(--system-success);
+  --background-success-subtle: var(--system-success-light);
+  --background-error: var(--system-error);
+  --background-error-hover: var(--system-error-hover);
+  --background-error-disabled: var(--system-error-disabled);
+  --background-error-subtle: var(--system-error-light);
+  --background-warning: var(--system-warning);
+  --background-warning-subtle: var(--system-warning-light);
+  --background-information: var(--system-info);
+  --background-information-subtle: var(--system-info-light);
+  --background-discovery: var(--system-discovery);
+  --background-discovery-subtle: var(--system-discovery-light);
 
   /* Text Tokens */
   --text-primary: var(--neutral-1100);
-  --text-secondary: var(--neutral-500);
-  --text-tertiary: var(--neutral-300);
+  --text-secondary: var(--neutral-700);
+  --text-tertiary: var(--neutral-500);
   --text-reverse: var(--neutral-0);
   --text-brand: var(--neutral-500); /* Overridden by theme */
   --text-link: var(--neutral-500); /* Overridden by theme */
   --text-link-hover: var(--neutral-1100); /* Overridden by theme */
   --text-disabled: var(--neutral-300);
   --text-success: var(--system-success);
+  --text-success-hover: #60b369;
   --text-error: var(--system-error);
+  --text-error-hover: #d83c3e;
   --text-warning: var(--system-warning);
+  --text-warning-hover: #ba750b;
   --text-information: var(--system-info);
+  --text-information-hover: var(--system-info-hover);
+  --text-discovery: var(--system-discovery);
+  --text-discovery-hover: var(--system-discovery-hover);
 
   /* Border Tokens */
   --border-reverse: var(--neutral-0);
@@ -84,11 +107,12 @@
   --border-dark: var(--neutral-500);
   --border-strong: var(--neutral-1100);
   --border-brand: var(--neutral-500); /* Overridden by theme */
-  --border-focus: var(--neutral-500); /* Overridden by theme */
+  --border-focus: #c7e4f9; /* blue-200, Figma focus ring color */
   --border-success: var(--system-success);
   --border-error: var(--system-error);
   --border-warning: var(--system-warning);
   --border-information: var(--system-info);
+  --border-discovery: var(--system-discovery);
 
   /* Icon Tokens */
   --icon-subtle: var(--neutral-500);
@@ -101,6 +125,7 @@
   --icon-error: var(--system-error);
   --icon-warning: var(--system-warning);
   --icon-information: var(--system-info);
+  --icon-discovery: var(--system-discovery);
 
   /* Elevation/Shadow Tokens */
   --elevation-100: 0 2px 4px var(--shadow-base);
@@ -110,6 +135,7 @@
 
   /* Typography - Font Families */
   --font-family-trade-gothic: 'Trade Gothic Next LT Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-trade-gothic-condensed: 'Trade Gothic Next LT Pro Condensed', 'Trade Gothic Next LT Pro', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-family-rift: 'Rift', Georgia, 'Times New Roman', Times, serif;
 
   /* Typography - Font Weights */
@@ -136,7 +162,10 @@
   --font-size-48: 3rem;
   --font-size-56: 3.5rem;
   --font-size-64: 4rem;
+  --font-size-72: 4.5rem;
   --font-size-80: 5rem;
+  --font-size-96: 6rem;
+  --font-size-104: 6.5rem;
 
   /* Typography - Line Heights */
   --line-height-100: 100%;
@@ -152,30 +181,38 @@
   --letter-spacing-normal: 0;
   --letter-spacing-loose: 0.02em;
 
-  /* Spacing Scale */
+  /* Spacing Scale (Figma size primitives) */
   --spacing-0: 0;
-  --spacing-2: 0.125rem;
-  --spacing-4: 0.25rem;
-  --spacing-8: 0.5rem;
-  --spacing-12: 0.75rem;
-  --spacing-16: 1rem;
-  --spacing-20: 1.25rem;
-  --spacing-24: 1.5rem;
-  --spacing-32: 2rem;
-  --spacing-40: 2.5rem;
-  --spacing-48: 3rem;
-  --spacing-64: 4rem;
+  --spacing-2: 0.125rem;     /* size-50 */
+  --spacing-4: 0.25rem;      /* size-100 */
+  --spacing-8: 0.5rem;       /* size-200 */
+  --spacing-10: 0.625rem;    /* size-250 */
+  --spacing-12: 0.75rem;     /* size-300 */
+  --spacing-16: 1rem;        /* size-400 */
+  --spacing-20: 1.25rem;     /* size-500 */
+  --spacing-24: 1.5rem;      /* size-600 */
+  --spacing-32: 2rem;        /* size-800 */
+  --spacing-40: 2.5rem;      /* size-1000 */
+  --spacing-48: 3rem;        /* size-1200 */
+  --spacing-56: 3.5rem;      /* size-1400 */
+  --spacing-64: 4rem;        /* size-1600 */
+  --spacing-72: 4.5rem;      /* size-1800 */
   --spacing-80: 5rem;
-  --spacing-96: 6rem;
+  --spacing-88: 5.5rem;      /* size-2200 */
+  --spacing-96: 6rem;        /* size-2400 */
+  --spacing-120: 7.5rem;     /* size-3000 */
   --spacing-128: 8rem;
 
   /* Border Radius */
   --border-radius-none: 0;
-  --border-radius-sm: 0.125rem;
-  --border-radius-md: 0.25rem;
-  --border-radius-lg: 0.5rem;
-  --border-radius-xl: 0.75rem;
-  --border-radius-2xl: 1rem;
+  --border-radius-sm: 0.125rem;   /* 2px */
+  --border-radius-md: 0.25rem;    /* 4px */
+  --border-radius-lg: 0.5rem;     /* 8px */
+  --border-radius-xl: 0.75rem;    /* 12px */
+  --border-radius-2xl: 1rem;      /* 16px */
+  --border-radius-3xl: 1.25rem;   /* 20px */
+  --border-radius-4xl: 1.5rem;    /* 24px */
+  --border-radius-5xl: 2rem;      /* 32px */
   --border-radius-full: 9999px;
 
   /* Border Width */
@@ -184,24 +221,42 @@
   --border-width-medium: 2px;
   --border-width-thick: 4px;
 
-  /* Component Spacing (Figma variable names) */
-  --component-spacing-3xs: var(--spacing-2);   /* 2px */
-  --component-spacing-2xs: var(--spacing-4);   /* 4px */
-  --component-spacing-xs: var(--spacing-8);    /* 8px */
-  --component-spacing-s: 0.625rem;             /* 10px — no spacing primitive at this value */
-  --component-spacing-m: var(--spacing-16);    /* 16px */
-  --component-spacing-l: var(--spacing-16);    /* 16px */
-  --component-spacing-xl: var(--spacing-24);   /* 24px */
-  --component-spacing-2xl: var(--spacing-32);  /* 32px */
-  --component-spacing-3xl: var(--spacing-40);  /* 40px */
+  /* Component Space (Figma semantic variable names) */
+  --component-space-3xs: var(--spacing-2);     /* 2px — size-50 */
+  --component-space-2xs: var(--spacing-4);     /* 4px — size-100 */
+  --component-space-xs: var(--spacing-8);      /* 8px — size-200 */
+  --component-space-s: var(--spacing-10);      /* 10px — size-250 */
+  --component-space-m: var(--spacing-12);      /* 12px — size-300 */
+  --component-space-l: var(--spacing-16);      /* 16px — size-400 */
+  --component-space-xl: var(--spacing-24);     /* 24px — size-600 */
+  --component-space-2xl: var(--spacing-32);    /* 32px — size-800 */
+  --component-space-3xl: var(--spacing-40);    /* 40px — size-1000 */
 
-  /* Layout Spacing (Figma variable names) */
-  --layout-spacing-2xs: var(--spacing-40);     /* 40px */
+  /* Layout Space (Figma semantic variable names) */
+  --layout-space-3xs: var(--spacing-32);       /* 32px — size-800 */
+  --layout-space-2xs: var(--spacing-40);       /* 40px — size-1000 */
+  --layout-space-xs: var(--spacing-48);        /* 48px — size-1200 */
+  --layout-space-s: var(--spacing-56);         /* 56px — size-1400 */
+  --layout-space-m: var(--spacing-64);         /* 64px — size-1600 */
+  --layout-space-l: var(--spacing-72);         /* 72px — size-1800 */
+  --layout-space-xl: var(--spacing-88);        /* 88px — size-2200 */
+  --layout-space-2xl: var(--spacing-96);       /* 96px — size-2400 */
+  --layout-space-3xl: var(--spacing-120);      /* 120px — size-3000 */
 
-  /* Radius (Figma variable names) */
-  --radius-2xs: var(--border-radius-md);       /* 4px */
-  --radius-xs: var(--border-radius-lg);        /* 8px */
-  --radius-round: var(--border-radius-full);   /* 9999px */
+  /* Radius (Figma semantic variable names) */
+  --radius-square: var(--border-radius-none);  /* 0px — size-0 */
+  --radius-2xs: var(--border-radius-md);       /* 4px — size-100 */
+  --radius-xs: var(--border-radius-lg);        /* 8px — size-200 */
+  --radius-s: var(--border-radius-xl);         /* 12px — size-300 */
+  --radius-m: var(--border-radius-2xl);        /* 16px — size-400 */
+  --radius-l: var(--border-radius-3xl);        /* 20px — size-500 */
+  --radius-xl: var(--border-radius-4xl);       /* 24px — size-600 */
+  --radius-2xl: var(--border-radius-5xl);      /* 32px — size-800 */
+  --radius-round: var(--border-radius-full);   /* 9999px — size-9999 */
+
+  /* Border Width (Figma semantic variable names) */
+  --border-s: var(--border-width-thin);        /* 1px — size-25 */
+  --border-m: var(--border-width-medium);      /* 2px — size-50 */
 
   /* Focus Ring (Figma focus-100 effect) */
   --focus-ring: 0 0 0 4px #C7E4F9;

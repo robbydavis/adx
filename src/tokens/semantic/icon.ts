@@ -90,6 +90,9 @@ export const icon = {
    * Usage: Info indicators, help icons, contextual tips
    */
   information: systemColors.info,
+
+  /** Discovery icon - References: purple-700 */
+  discovery: systemColors.discovery,
 } as const;
 
 // Type export for TypeScript consumers

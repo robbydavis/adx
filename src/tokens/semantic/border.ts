@@ -60,7 +60,7 @@ export const border = {
    * Default: Placeholder - will be overridden by theme
    * Usage: Focused inputs, buttons, interactive elements (typically with additional ring)
    */
-  focus: neutral[500], // Placeholder - overridden by theme
+  focus: '#c7e4f9', // blue-200, Figma focus ring color
 
   /**
    * Success border - Borders for success states and positive elements
@@ -89,6 +89,9 @@ export const border = {
    * Usage: Info notifications, contextual help elements
    */
   information: systemColors.info,
+
+  /** Discovery border - References: purple-700 */
+  discovery: systemColors.discovery,
 } as const;
 
 // Type export for TypeScript consumers

@@ -85,17 +85,41 @@ export const background = {
   /** Action secondary hover - References: Neutral/300 (#c8cccc) */
   actionSecondaryHover: neutral[300],
 
-  /** Success background - References: System success light (#d4edda) */
-  success: systemColors.successLight,
+  /** Success background - References: green-600 */
+  success: systemColors.success,
 
-  /** Error background - References: System error light (#f8d7da) */
-  error: systemColors.errorLight,
+  /** Success subtle background - References: green light */
+  successSubtle: systemColors.successLight,
 
-  /** Warning background - References: System warning light (#fff3cd) */
-  warning: systemColors.warningLight,
+  /** Error background - References: red-800 */
+  error: systemColors.error,
 
-  /** Information background - References: System info light (#d1ecf1) */
-  information: systemColors.infoLight,
+  /** Error hover background */
+  errorHover: systemColors.errorHover,
+
+  /** Error disabled background */
+  errorDisabled: systemColors.errorDisabled,
+
+  /** Error subtle background - References: error light */
+  errorSubtle: systemColors.errorLight,
+
+  /** Warning background - References: yellow-700 */
+  warning: systemColors.warning,
+
+  /** Warning subtle background - References: warning light */
+  warningSubtle: systemColors.warningLight,
+
+  /** Information background - References: blue-700 */
+  information: systemColors.info,
+
+  /** Information subtle background - References: info light */
+  informationSubtle: systemColors.infoLight,
+
+  /** Discovery background - References: purple-700 */
+  discovery: systemColors.discovery,
+
+  /** Discovery subtle background - References: discovery light */
+  discoverySubtle: systemColors.discoveryLight,
 } as const;
 
 // Type export for TypeScript consumers

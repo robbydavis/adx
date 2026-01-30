@@ -3,6 +3,7 @@
  *
  * Typography styles define the complete typographic system across five semantic categories:
  * Display, Eyebrow, Heading, Label, and Paragraph.
+ * Source: Figma → Typography page (node 13722:1208)
  *
  * ✅ USE THESE TOKENS in your components - they are the public API
  * ❌ NEVER use primitive typography values directly in components
@@ -14,8 +15,6 @@ import {
   fontFamilies,
   fontWeights,
   fontSizes,
-  lineHeights,
-  letterSpacing,
   textTransform,
 } from '../primitives/typography';
 
@@ -35,160 +34,108 @@ export interface TypographyStyle {
 /**
  * DISPLAY STYLES
  *
- * Large headlines, hero text, and prominent display elements.
- * Font: Trade Gothic, Semibold, Uppercase
- * Line Height: 120%, Letter Spacing: -2%
- *
- * Note: Rift is the display typeface for marketing headlines when used sparingly.
- * These Trade Gothic styles are for standard application display text.
+ * Display styles are typically the largest text on the screen,
+ * reserved for short, important text or numerals.
+ * Font: Rift, Bold (700)
  */
 export const display = {
-  /**
-   * Display XL - Largest display size
-   * Size: 80px
-   * Usage: Hero text, landing pages, major marketing moments
-   */
+  /** display-xl — 104px / 44px line-height, Rift 700 */
   xl: {
-    fontFamily: fontFamilies.tradeGothic,
-    fontSize: fontSizes[80],
-    fontWeight: fontWeights.semibold,
-    lineHeight: lineHeights[120],
-    letterSpacing: letterSpacing.tight,
-    textTransform: textTransform.uppercase,
+    fontFamily: fontFamilies.rift,
+    fontSize: fontSizes[104],
+    fontWeight: fontWeights.bold,
+    lineHeight: '2.75rem',
+    letterSpacing: '-0.06rem',
   },
 
-  /**
-   * Display LG
-   * Size: 64px
-   * Usage: Primary headlines, section heroes
-   */
-  lg: {
-    fontFamily: fontFamilies.tradeGothic,
+  /** display-l — 96px / 80px line-height, Rift 700 */
+  l: {
+    fontFamily: fontFamilies.rift,
+    fontSize: fontSizes[96],
+    fontWeight: fontWeights.bold,
+    lineHeight: '5rem',
+    letterSpacing: '-0.11rem',
+  },
+
+  /** display-m — 72px / 64px line-height, Rift 700 */
+  m: {
+    fontFamily: fontFamilies.rift,
+    fontSize: fontSizes[72],
+    fontWeight: fontWeights.bold,
+    lineHeight: '4rem',
+    letterSpacing: '-0.08rem',
+  },
+
+  /** display-m-mobile — 64px / 56px line-height, Rift 700 */
+  mMobile: {
+    fontFamily: fontFamilies.rift,
     fontSize: fontSizes[64],
-    fontWeight: fontWeights.semibold,
-    lineHeight: lineHeights[120],
-    letterSpacing: letterSpacing.tight,
-    textTransform: textTransform.uppercase,
+    fontWeight: fontWeights.bold,
+    lineHeight: '3.5rem',
+    letterSpacing: '-0.08rem',
   },
 
-  /**
-   * Display MD
-   * Size: 56px
-   * Usage: Large section headings
-   */
-  md: {
-    fontFamily: fontFamilies.tradeGothic,
+  /** display-s — 56px / 48px line-height, Rift 700 */
+  s: {
+    fontFamily: fontFamilies.rift,
     fontSize: fontSizes[56],
-    fontWeight: fontWeights.semibold,
-    lineHeight: lineHeights[120],
-    letterSpacing: letterSpacing.tight,
-    textTransform: textTransform.uppercase,
+    fontWeight: fontWeights.bold,
+    lineHeight: '2.5rem',
+    letterSpacing: '-0.07rem',
   },
 
-  /**
-   * Display SM
-   * Size: 48px
-   * Usage: Medium section headings
-   */
-  sm: {
-    fontFamily: fontFamilies.tradeGothic,
-    fontSize: fontSizes[48],
-    fontWeight: fontWeights.semibold,
-    lineHeight: lineHeights[120],
-    letterSpacing: letterSpacing.tight,
-    textTransform: textTransform.uppercase,
-  },
-
-  /**
-   * Display XS
-   * Size: 40px
-   * Usage: Smaller display text
-   */
+  /** display-xs — 48px / 44px line-height, Rift 700 */
   xs: {
-    fontFamily: fontFamilies.tradeGothic,
-    fontSize: fontSizes[40],
-    fontWeight: fontWeights.semibold,
-    lineHeight: lineHeights[120],
-    letterSpacing: letterSpacing.tight,
-    textTransform: textTransform.uppercase,
-  },
-
-  /**
-   * Display XXS - Smallest display size
-   * Size: 32px
-   * Usage: Compact display text, card headers
-   */
-  xxs: {
-    fontFamily: fontFamilies.tradeGothic,
-    fontSize: fontSizes[32],
-    fontWeight: fontWeights.semibold,
-    lineHeight: lineHeights[120],
-    letterSpacing: letterSpacing.tight,
-    textTransform: textTransform.uppercase,
+    fontFamily: fontFamilies.rift,
+    fontSize: fontSizes[48],
+    fontWeight: fontWeights.bold,
+    lineHeight: '1.75rem',
+    letterSpacing: '-0.06rem',
   },
 } as const;
 
 /**
  * EYEBROW STYLES
  *
- * Small labels, category tags, and metadata.
- * Font: Trade Gothic, Semibold, Uppercase
- * Line Height: 100%, Letter Spacing: 0%
+ * Eyebrow styles are often used as a single-line lead-in above a main
+ * headline or section title to provide additional context or categorization.
+ * Font: Rift for L/M/S, Trade Gothic for XS
  */
 export const eyebrow = {
-  /**
-   * Eyebrow LG
-   * Size: 14px
-   * Usage: Large category labels, primary tags
-   */
-  lg: {
-    fontFamily: fontFamilies.tradeGothic,
-    fontSize: fontSizes[14],
+  /** eyebrow-l — 28px / 28px line-height, Rift 600 */
+  l: {
+    fontFamily: fontFamilies.rift,
+    fontSize: fontSizes[28],
     fontWeight: fontWeights.semibold,
-    lineHeight: lineHeights[100],
-    letterSpacing: letterSpacing.normal,
-    textTransform: textTransform.uppercase,
+    lineHeight: '1.75rem',
+    letterSpacing: '-0.0175rem',
   },
 
-  /**
-   * Eyebrow MD
-   * Size: 12px
-   * Usage: Standard category labels, metadata
-   */
-  md: {
-    fontFamily: fontFamilies.tradeGothic,
-    fontSize: fontSizes[12],
-    fontWeight: fontWeights.semibold,
-    lineHeight: lineHeights[100],
-    letterSpacing: letterSpacing.normal,
-    textTransform: textTransform.uppercase,
+  /** eyebrow-m — 24px / 24px line-height, Rift 500 */
+  m: {
+    fontFamily: fontFamilies.rift,
+    fontSize: fontSizes[24],
+    fontWeight: fontWeights.medium,
+    lineHeight: '1.5rem',
+    letterSpacing: '-0.015rem',
   },
 
-  /**
-   * Eyebrow SM
-   * Size: 10px
-   * Usage: Small tags, compact metadata
-   */
-  sm: {
-    fontFamily: fontFamilies.tradeGothic,
-    fontSize: fontSizes[10],
-    fontWeight: fontWeights.semibold,
-    lineHeight: lineHeights[100],
-    letterSpacing: letterSpacing.normal,
-    textTransform: textTransform.uppercase,
+  /** eyebrow-s — 20px / 20px line-height, Rift 500 */
+  s: {
+    fontFamily: fontFamilies.rift,
+    fontSize: fontSizes[20],
+    fontWeight: fontWeights.medium,
+    lineHeight: '1.25rem',
+    letterSpacing: '-0.0125rem',
   },
 
-  /**
-   * Eyebrow XS - Smallest eyebrow
-   * Size: 8px
-   * Usage: Very small tags, micro labels
-   */
+  /** eyebrow-xs — 14px / 16px line-height, Trade Gothic 700, uppercase */
   xs: {
     fontFamily: fontFamilies.tradeGothic,
-    fontSize: fontSizes[8],
-    fontWeight: fontWeights.semibold,
-    lineHeight: lineHeights[100],
-    letterSpacing: letterSpacing.normal,
+    fontSize: fontSizes[14],
+    fontWeight: fontWeights.bold,
+    lineHeight: '1rem',
+    letterSpacing: '0',
     textTransform: textTransform.uppercase,
   },
 } as const;
@@ -196,223 +143,232 @@ export const eyebrow = {
 /**
  * HEADING STYLES
  *
- * Section headings and content hierarchy.
- * Font: Trade Gothic, Semibold, Title case
- * Progressive sizing from H1 (largest) to H6+ (smallest)
+ * Heading styles are used to break up content into sections
+ * and provide a clear hierarchy of information.
+ * Font: Trade Gothic Next LT Pro
  */
 export const heading = {
-  /**
-   * Heading 1 - Largest heading
-   * Size: 40px, Line Height: 120%
-   * Usage: Page titles, primary section headings
-   */
-  h1: {
+  /** heading-xl — 40px / 44px line-height, Trade Gothic 700 */
+  xl: {
     fontFamily: fontFamilies.tradeGothic,
     fontSize: fontSizes[40],
-    fontWeight: fontWeights.semibold,
-    lineHeight: lineHeights[120],
-    letterSpacing: letterSpacing.tight,
+    fontWeight: fontWeights.bold,
+    lineHeight: '2.75rem',
+    letterSpacing: '-0.025rem',
   },
 
-  /**
-   * Heading 2
-   * Size: 36px, Line Height: 120%
-   * Usage: Major section headings
-   */
-  h2: {
+  /** heading-xl-light — 40px / 44px line-height, Trade Gothic 400 */
+  xlLight: {
     fontFamily: fontFamilies.tradeGothic,
-    fontSize: fontSizes[36],
-    fontWeight: fontWeights.semibold,
-    lineHeight: lineHeights[120],
-    letterSpacing: letterSpacing.tight,
+    fontSize: fontSizes[40],
+    fontWeight: fontWeights.regular,
+    lineHeight: '2.75rem',
+    letterSpacing: '-0.025rem',
   },
 
-  /**
-   * Heading 3
-   * Size: 32px, Line Height: 130%
-   * Usage: Sub-section headings
-   */
-  h3: {
+  /** heading-l — 32px / 40px line-height, Trade Gothic 700 */
+  l: {
     fontFamily: fontFamilies.tradeGothic,
     fontSize: fontSizes[32],
-    fontWeight: fontWeights.semibold,
-    lineHeight: lineHeights[130],
-    letterSpacing: letterSpacing.normal,
+    fontWeight: fontWeights.bold,
+    lineHeight: '2.5rem',
+    letterSpacing: '0',
   },
 
-  /**
-   * Heading 4
-   * Size: 28px, Line Height: 130%
-   * Usage: Content section headings
-   */
-  h4: {
+  /** heading-l-light — 32px / 40px line-height, Trade Gothic 400 */
+  lLight: {
+    fontFamily: fontFamilies.tradeGothic,
+    fontSize: fontSizes[32],
+    fontWeight: fontWeights.regular,
+    lineHeight: '2.5rem',
+    letterSpacing: '0',
+  },
+
+  /** heading-m — 28px / 36px line-height, Trade Gothic 700 */
+  m: {
     fontFamily: fontFamilies.tradeGothic,
     fontSize: fontSizes[28],
-    fontWeight: fontWeights.semibold,
-    lineHeight: lineHeights[130],
-    letterSpacing: letterSpacing.normal,
+    fontWeight: fontWeights.bold,
+    lineHeight: '2.25rem',
+    letterSpacing: '0',
   },
 
-  /**
-   * Heading 5
-   * Size: 24px, Line Height: 140%
-   * Usage: Card headings, component titles
-   */
-  h5: {
+  /** heading-m-mobile — 28px / 36px line-height, Trade Gothic 700 */
+  mMobile: {
+    fontFamily: fontFamilies.tradeGothic,
+    fontSize: fontSizes[28],
+    fontWeight: fontWeights.bold,
+    lineHeight: '2.25rem',
+    letterSpacing: '0',
+  },
+
+  /** heading-m-light-mobile — 28px / 36px line-height, Trade Gothic 400 */
+  mLightMobile: {
+    fontFamily: fontFamilies.tradeGothic,
+    fontSize: fontSizes[28],
+    fontWeight: fontWeights.regular,
+    lineHeight: '2.25rem',
+    letterSpacing: '0',
+  },
+
+  /** heading-s — 24px / 32px line-height, Trade Gothic 700 */
+  s: {
     fontFamily: fontFamilies.tradeGothic,
     fontSize: fontSizes[24],
-    fontWeight: fontWeights.semibold,
-    lineHeight: lineHeights[140],
-    letterSpacing: letterSpacing.normal,
+    fontWeight: fontWeights.bold,
+    lineHeight: '2rem',
+    letterSpacing: '0',
   },
 
-  /**
-   * Heading 6 - Smallest standard heading
-   * Size: 20px, Line Height: 140%
-   * Usage: Small component headings, list headers
-   */
-  h6: {
+  /** heading-s-light — 24px / 32px line-height, Trade Gothic 400 */
+  sLight: {
+    fontFamily: fontFamilies.tradeGothic,
+    fontSize: fontSizes[24],
+    fontWeight: fontWeights.regular,
+    lineHeight: '2rem',
+    letterSpacing: '0',
+  },
+
+  /** heading-xs — 20px / 28px line-height, Trade Gothic 700 */
+  xs: {
     fontFamily: fontFamilies.tradeGothic,
     fontSize: fontSizes[20],
-    fontWeight: fontWeights.semibold,
-    lineHeight: lineHeights[140],
-    letterSpacing: letterSpacing.normal,
+    fontWeight: fontWeights.bold,
+    lineHeight: '1.75rem',
+    letterSpacing: '0',
+  },
+
+  /** heading-xxs — 16px / 24px line-height, Trade Gothic 700 */
+  xxs: {
+    fontFamily: fontFamilies.tradeGothic,
+    fontSize: fontSizes[16],
+    fontWeight: fontWeights.bold,
+    lineHeight: '1.5rem',
+    letterSpacing: '0',
   },
 } as const;
 
 /**
  * LABEL STYLES
  *
- * UI element labels, form labels, and button text.
- * Font: Trade Gothic, Regular or Medium
- * Small to very small sizes optimized for UI elements
+ * Label styles are generally short, straightforward, and descriptive,
+ * providing essential information. Used to identify or name elements
+ * within a user interface, such as buttons, form fields, or other UI components.
+ * Font: Trade Gothic Next LT Pro
+ *
+ * Note: Each of these styles supports regular (400) and bold (800) weights.
+ * Default weights have been assigned per Figma.
  */
 export const label = {
-  /**
-   * Label LG
-   * Size: 18px, Weight: Medium
-   * Usage: Large button text, prominent labels
-   */
-  lg: {
+  /** label-xl — 20px / 24px line-height, Trade Gothic 400 */
+  xl: {
+    fontFamily: fontFamilies.tradeGothic,
+    fontSize: fontSizes[20],
+    fontWeight: fontWeights.regular,
+    lineHeight: '1.5rem',
+    letterSpacing: '0',
+  },
+
+  /** label-l — 18px / 24px line-height, Trade Gothic 400 */
+  l: {
     fontFamily: fontFamilies.tradeGothic,
     fontSize: fontSizes[18],
-    fontWeight: fontWeights.medium,
-    lineHeight: lineHeights[140],
-    letterSpacing: letterSpacing.normal,
+    fontWeight: fontWeights.regular,
+    lineHeight: '1.5rem',
+    letterSpacing: '0',
   },
 
-  /**
-   * Label MD
-   * Size: 16px, Weight: Medium
-   * Usage: Standard button text, form labels
-   */
-  md: {
+  /** label-m — 16px / 20px line-height, Trade Gothic 800 */
+  m: {
     fontFamily: fontFamilies.tradeGothic,
     fontSize: fontSizes[16],
-    fontWeight: fontWeights.medium,
-    lineHeight: lineHeights[140],
-    letterSpacing: letterSpacing.normal,
+    fontWeight: fontWeights.heavy,
+    lineHeight: '1.25rem',
+    letterSpacing: '0',
   },
 
-  /**
-   * Label SM
-   * Size: 14px, Weight: Medium
-   * Usage: Small buttons, input labels, UI labels
-   */
-  sm: {
+  /** label-s — 14px / 16px line-height, Trade Gothic 700 */
+  s: {
     fontFamily: fontFamilies.tradeGothic,
     fontSize: fontSizes[14],
-    fontWeight: fontWeights.medium,
-    lineHeight: lineHeights[140],
-    letterSpacing: letterSpacing.normal,
+    fontWeight: fontWeights.bold,
+    lineHeight: '1rem',
+    letterSpacing: '0',
   },
 
-  /**
-   * Label XS - Smallest label
-   * Size: 12px, Weight: Regular
-   * Usage: Tiny labels, field hints, micro UI text
-   */
+  /** label-xs — 12px / 16px line-height, Trade Gothic 700 */
   xs: {
     fontFamily: fontFamilies.tradeGothic,
     fontSize: fontSizes[12],
-    fontWeight: fontWeights.regular,
-    lineHeight: lineHeights[140],
-    letterSpacing: letterSpacing.normal,
+    fontWeight: fontWeights.bold,
+    lineHeight: '1rem',
+    letterSpacing: '0',
   },
 } as const;
 
 /**
  * PARAGRAPH STYLES
  *
- * Body copy, descriptions, and content text.
- * Font: Trade Gothic, Regular
- * Line heights optimized per size for readability
- * Letter Spacing: 0%
+ * Paragraph styles are typically for longer blocks of text,
+ * used for mostly text-based content.
+ * Font: Trade Gothic Next LT Pro (XS uses Condensed variant)
+ *
+ * Note: Each of these styles supports regular (400) and bold (800).
+ * Italic and underline are also supported.
  */
 export const paragraph = {
-  /**
-   * Paragraph XL - Largest body text
-   * Size: 24px, Line Height: 150%
-   * Usage: Lead paragraphs, featured content
-   */
-  xl: {
+  /** paragraph-xxl — 24px / 28px line-height, Trade Gothic 400 */
+  xxl: {
     fontFamily: fontFamilies.tradeGothic,
     fontSize: fontSizes[24],
     fontWeight: fontWeights.regular,
-    lineHeight: lineHeights[150],
-    letterSpacing: letterSpacing.normal,
+    lineHeight: '1.75rem',
+    letterSpacing: '0',
   },
 
-  /**
-   * Paragraph LG
-   * Size: 20px, Line Height: 150%
-   * Usage: Large body text, introductions
-   */
-  lg: {
+  /** paragraph-xl — 20px / 24px line-height, Trade Gothic 400 */
+  xl: {
     fontFamily: fontFamilies.tradeGothic,
     fontSize: fontSizes[20],
     fontWeight: fontWeights.regular,
-    lineHeight: lineHeights[150],
-    letterSpacing: letterSpacing.normal,
+    lineHeight: '1.5rem',
+    letterSpacing: '0',
   },
 
-  /**
-   * Paragraph MD - Default body text
-   * Size: 18px, Line Height: 150%
-   * Usage: Standard paragraphs, content text
-   */
-  md: {
+  /** paragraph-l — 18px / 24px line-height, Trade Gothic 400 */
+  l: {
     fontFamily: fontFamilies.tradeGothic,
     fontSize: fontSizes[18],
     fontWeight: fontWeights.regular,
-    lineHeight: lineHeights[150],
-    letterSpacing: letterSpacing.normal,
+    lineHeight: '1.5rem',
+    letterSpacing: '0',
   },
 
-  /**
-   * Paragraph SM
-   * Size: 16px, Line Height: 160%
-   * Usage: Smaller body text, descriptions
-   */
-  sm: {
+  /** paragraph-m — 16px / 20px line-height, Trade Gothic 400 (default P) */
+  m: {
     fontFamily: fontFamilies.tradeGothic,
     fontSize: fontSizes[16],
     fontWeight: fontWeights.regular,
-    lineHeight: lineHeights[160],
-    letterSpacing: letterSpacing.normal,
+    lineHeight: '1.25rem',
+    letterSpacing: '0',
   },
 
-  /**
-   * Paragraph XS - Smallest body text
-   * Size: 14px, Line Height: 160%
-   * Usage: Small descriptions, captions, metadata
-   */
-  xs: {
+  /** paragraph-s — 14px / 20px line-height, Trade Gothic 400 */
+  s: {
     fontFamily: fontFamilies.tradeGothic,
     fontSize: fontSizes[14],
     fontWeight: fontWeights.regular,
-    lineHeight: lineHeights[160],
-    letterSpacing: letterSpacing.normal,
+    lineHeight: '1.25rem',
+    letterSpacing: '0',
+  },
+
+  /** paragraph-xs — 12px / 16px line-height, Trade Gothic Next Condensed 700 */
+  xs: {
+    fontFamily: fontFamilies.tradeGothicCondensed,
+    fontSize: fontSizes[12],
+    fontWeight: fontWeights.bold,
+    lineHeight: '1rem',
+    letterSpacing: '0',
   },
 } as const;
 

@@ -20,7 +20,8 @@ export const neutral = {
   100: '#f3f4f4',    // Lightest gray (background-medium)
   200: '#dee1e1',    // Light gray (background-dark, border-subtle)
   300: '#c8cccc',    // Medium-light gray (background-darker)
-  500: '#929a9b',    // Medium gray (background-disabled)
+  500: '#929a9b',    // Medium gray (background-disabled, text-tertiary)
+  700: '#515e5f',    // Dark gray (text-secondary)
   1100: '#040404',   // Near-black (background-reverse, text-primary)
 } as const;
 
@@ -57,14 +58,20 @@ export const rural1stBrand = {
  * Used for feedback and messaging throughout the interface
  */
 export const systemColors = {
-  success: '#28a745',      // Green - Success states and positive messaging
-  successLight: '#d4edda', // Light green - Success backgrounds
-  error: '#dc3545',        // Red - Error states and destructive actions
-  errorLight: '#f8d7da',   // Light red - Error backgrounds
-  warning: '#ffc107',      // Yellow - Warning states and cautionary messaging
-  warningLight: '#fff3cd', // Light yellow - Warning backgrounds
-  info: '#17a2b8',         // Blue - Informational messaging
-  infoLight: '#d1ecf1',    // Light blue - Info backgrounds
+  success: '#2bb656',       // green-600 - Success states
+  successLight: '#d4edda',  // Light green - Success backgrounds
+  error: '#c63434',         // red-800 - Error states
+  errorHover: '#8d3c3e',    // Error hover
+  errorLight: '#f8d7da',    // Light red - Error backgrounds
+  errorDisabled: '#f3b4b4', // Error disabled backgrounds
+  warning: '#dd9903',       // yellow-700 - Warning states
+  warningLight: '#fff3cd',  // Light yellow - Warning backgrounds
+  info: '#2079c3',          // blue-700 - Informational messaging
+  infoHover: '#2b67d3',     // blue-600 - Info hover
+  infoLight: '#d1ecf1',     // Light blue - Info backgrounds
+  discovery: '#6f5ed3',     // purple-700 - Discovery states
+  discoveryHover: '#8187ea', // purple-600 - Discovery hover
+  discoveryLight: '#e8e5f8', // Light purple - Discovery backgrounds
 } as const;
 
 /**

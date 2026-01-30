@@ -195,6 +195,88 @@
       font-family: monospace;
     }
 
+    .swatch-hex {
+      font-size: var(--font-size-10);
+      color: var(--text-tertiary);
+      font-family: monospace;
+    }
+
+    /* Color table rows */
+    .color-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--font-size-14);
+    }
+
+    .color-table th {
+      text-align: left;
+      padding: var(--spacing-8) var(--spacing-12);
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-12);
+      color: var(--text-tertiary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border-bottom: var(--border-width-thin) solid var(--border-subtle);
+    }
+
+    .color-table td {
+      padding: var(--spacing-8) var(--spacing-12);
+      border-bottom: var(--border-width-thin) solid var(--border-subtle);
+      vertical-align: middle;
+    }
+
+    .color-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .color-dot {
+      display: inline-block;
+      width: 24px;
+      height: 24px;
+      border-radius: var(--border-radius-md);
+      border: var(--border-width-thin) solid var(--border-subtle);
+      vertical-align: middle;
+    }
+
+    .color-table .token-name {
+      font-family: monospace;
+      font-size: var(--font-size-12);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+    }
+
+    .color-table .primitive-ref {
+      font-family: monospace;
+      font-size: var(--font-size-12);
+      color: var(--text-secondary);
+    }
+
+    .color-table .hex-val {
+      font-family: monospace;
+      font-size: var(--font-size-12);
+      color: var(--text-tertiary);
+    }
+
+    .color-table .theme-badge {
+      display: inline-block;
+      font-size: var(--font-size-10);
+      padding: 1px 6px;
+      border-radius: var(--border-radius-full);
+      background: var(--background-brand-subtle);
+      color: var(--text-brand);
+      font-weight: var(--font-weight-bold);
+      margin-left: 4px;
+    }
+
+    .color-section-label {
+      font-size: var(--font-size-12);
+      font-weight: var(--font-weight-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-tertiary);
+      padding: var(--spacing-16) 0 var(--spacing-4) 0;
+    }
+
     /* Component examples */
     .component-row {
       display: flex;
@@ -211,7 +293,7 @@
       font-family: var(--font-family-trade-gothic);
       font-size: var(--font-size-16);
       font-weight: var(--font-weight-medium);
-      border: var(--border-width-medium) solid transparent;
+      border: var(--border-width-thin) solid transparent;
       cursor: pointer;
       transition: all 0.2s;
     }
@@ -285,29 +367,34 @@
     .alert {
       padding: var(--spacing-12) var(--spacing-16);
       border-radius: var(--border-radius-md);
-      border-left: var(--border-width-thick) solid;
+      border-left: var(--border-width-thin) solid;
       font-size: var(--font-size-14);
     }
 
     .alert-success {
-      background: var(--background-success);
+      background: var(--background-success-subtle);
       border-color: var(--border-success);
       color: var(--text-success);
     }
     .alert-error {
-      background: var(--background-error);
+      background: var(--background-error-subtle);
       border-color: var(--border-error);
       color: var(--text-error);
     }
     .alert-warning {
-      background: var(--background-warning);
+      background: var(--background-warning-subtle);
       border-color: var(--border-warning);
       color: var(--text-warning);
     }
     .alert-info {
-      background: var(--background-information);
+      background: var(--background-information-subtle);
       border-color: var(--border-information);
       color: var(--text-information);
+    }
+    .alert-discovery {
+      background: var(--background-discovery-subtle);
+      border-color: var(--border-discovery);
+      color: var(--text-discovery);
     }
 
     /* Typography preview */
@@ -367,7 +454,7 @@
     /* Focus ring demo */
     .focus-demo {
       padding: var(--spacing-8) var(--spacing-16);
-      border: var(--border-width-medium) solid var(--border-subtle);
+      border: var(--border-width-thin) solid var(--border-subtle);
       border-radius: var(--border-radius-md);
       outline: 3px solid var(--border-focus);
       outline-offset: 2px;
@@ -467,17 +554,9 @@
       <!-- Side Navigation -->
       <nav class="adx-nav adx-nav--open" id="side-nav">
         <div class="nav-items">
-          <a href="#brand-colors" class="nav-item active">
+          <a href="#semantic-colors" class="nav-item active">
             <div class="nav-icon"></div>
-            <span>Brand Colors</span>
-          </a>
-          <a href="#backgrounds" class="nav-item">
-            <div class="nav-icon"></div>
-            <span>Backgrounds</span>
-          </a>
-          <a href="#text" class="nav-item">
-            <div class="nav-icon"></div>
-            <span>Text</span>
+            <span>Semantic Colors</span>
           </a>
           <a href="#buttons" class="nav-item">
             <div class="nav-icon"></div>
@@ -519,106 +598,122 @@
         <!-- Main Content -->
         <main class="adx-main">
 
-          <!-- Brand Colors — content-l, light background -->
-          <section class="adx-section" id="brand-colors" style="background: var(--background-light);">
+          <!-- Semantic Colors — content-l, light background -->
+          <section class="adx-section" id="semantic-colors" style="background: var(--background-light);">
             <div class="adx-content-l">
               <div class="section-inner">
-                <h2 class="section-title">Brand Colors (Theme-Aware)</h2>
-                <p class="section-subtitle">These colors change when switching between FCMA and Rural 1st themes.</p>
-                <div class="swatch-grid">
-                  <div class="swatch">
-                    <div class="swatch-color" style="background: var(--background-brand);"></div>
-                    <div class="swatch-info">
-                      <div class="swatch-name">Brand</div>
-                      <div class="swatch-var">--background-brand</div>
-                    </div>
-                  </div>
-                  <div class="swatch">
-                    <div class="swatch-color" style="background: var(--background-brand-hover);"></div>
-                    <div class="swatch-info">
-                      <div class="swatch-name">Brand Hover</div>
-                      <div class="swatch-var">--background-brand-hover</div>
-                    </div>
-                  </div>
-                  <div class="swatch">
-                    <div class="swatch-color" style="background: var(--background-brand-subtle);"></div>
-                    <div class="swatch-info">
-                      <div class="swatch-name">Brand Subtle</div>
-                      <div class="swatch-var">--background-brand-subtle</div>
-                    </div>
-                  </div>
-                  <div class="swatch">
-                    <div class="swatch-color" style="background: var(--background-action);"></div>
-                    <div class="swatch-info">
-                      <div class="swatch-name">Action</div>
-                      <div class="swatch-var">--background-action</div>
-                    </div>
-                  </div>
-                  <div class="swatch">
-                    <div class="swatch-color" style="background: var(--background-action-hover);"></div>
-                    <div class="swatch-info">
-                      <div class="swatch-name">Action Hover</div>
-                      <div class="swatch-var">--background-action-hover</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+                <h2 class="section-title">Semantic Colors</h2>
+                <p class="section-subtitle">All semantic color tokens organized by pillar, with their primitive references and hex values.</p>
 
-          <!-- Backgrounds — content-m, medium background -->
-          <section class="adx-section" id="backgrounds" style="background: var(--background-medium);">
-            <div class="adx-content-m">
-              <div class="section-inner">
-                <h2 class="section-title">Background Tokens</h2>
-                <p class="section-subtitle">Neutral background scale from lightest to darkest.</p>
-                <div class="bg-strips">
-                  <div class="bg-strip" style="background: var(--background-page); border: 1px solid var(--border-subtle);">
-                    <span class="label">Page</span>
-                    <span class="value">--background-page</span>
-                  </div>
-                  <div class="bg-strip" style="background: var(--background-light); border: 1px solid var(--border-subtle);">
-                    <span class="label">Light</span>
-                    <span class="value">--background-light</span>
-                  </div>
-                  <div class="bg-strip" style="background: var(--background-medium);">
-                    <span class="label">Medium</span>
-                    <span class="value">--background-medium</span>
-                  </div>
-                  <div class="bg-strip" style="background: var(--background-dark);">
-                    <span class="label">Dark</span>
-                    <span class="value">--background-dark</span>
-                  </div>
-                  <div class="bg-strip" style="background: var(--background-darker);">
-                    <span class="label">Darker</span>
-                    <span class="value">--background-darker</span>
-                  </div>
-                  <div class="bg-strip" style="background: var(--background-disabled);">
-                    <span class="label" style="color: var(--text-reverse);">Disabled</span>
-                    <span class="value" style="color: var(--text-reverse);">--background-disabled</span>
-                  </div>
-                  <div class="bg-strip" style="background: var(--background-reverse);">
-                    <span class="label" style="color: var(--text-reverse);">Reverse</span>
-                    <span class="value" style="color: var(--text-reverse);">--background-reverse</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+                <!-- BACKGROUND PILLAR -->
+                <div class="color-section-label">Background</div>
+                <table class="color-table">
+                  <thead>
+                    <tr><th></th><th>Token</th><th>Primitive</th><th>Hex</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><span class="color-dot" style="background: var(--background-page);"></span></td><td class="token-name">--background-page</td><td class="primitive-ref">neutral-0</td><td class="hex-val">#ffffff</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-primary);"></span></td><td class="token-name">--background-primary</td><td class="primitive-ref">neutral-0</td><td class="hex-val">#ffffff</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-light);"></span></td><td class="token-name">--background-light</td><td class="primitive-ref">neutral-50</td><td class="hex-val">#f9f9f9</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-medium);"></span></td><td class="token-name">--background-medium</td><td class="primitive-ref">neutral-100</td><td class="hex-val">#f3f4f4</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-dark);"></span></td><td class="token-name">--background-dark</td><td class="primitive-ref">neutral-200</td><td class="hex-val">#dee1e1</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-darker);"></span></td><td class="token-name">--background-darker</td><td class="primitive-ref">neutral-300</td><td class="hex-val">#c8cccc</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-disabled);"></span></td><td class="token-name">--background-disabled</td><td class="primitive-ref">neutral-500</td><td class="hex-val">#929a9b</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-reverse);"></span></td><td class="token-name">--background-reverse</td><td class="primitive-ref">neutral-1100</td><td class="hex-val">#040404</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-overlay);"></span></td><td class="token-name">--background-overlay</td><td class="primitive-ref">overlay</td><td class="hex-val">rgba(4,4,4,0.20)</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-brand);"></span></td><td class="token-name">--background-brand <span class="theme-badge">theme</span></td><td class="primitive-ref">brand-600</td><td class="hex-val">FCMA #5e9732 / R1st #005b94</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-brand-hover);"></span></td><td class="token-name">--background-brand-hover <span class="theme-badge">theme</span></td><td class="primitive-ref">brand-500</td><td class="hex-val">FCMA #71b33c / R1st #0070b8</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-brand-subtle);"></span></td><td class="token-name">--background-brand-subtle <span class="theme-badge">theme</span></td><td class="primitive-ref">brand-light</td><td class="hex-val">FCMA #e4f2d8 / R1st #e5f5f8</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-action);"></span></td><td class="token-name">--background-action <span class="theme-badge">theme</span></td><td class="primitive-ref">brand-600</td><td class="hex-val">FCMA #5e9732 / R1st #005b94</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-action-hover);"></span></td><td class="token-name">--background-action-hover <span class="theme-badge">theme</span></td><td class="primitive-ref">brand-500</td><td class="hex-val">FCMA #71b33c / R1st #0070b8</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-action-disabled);"></span></td><td class="token-name">--background-action-disabled</td><td class="primitive-ref">neutral-200</td><td class="hex-val">#dee1e1</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-action-secondary);"></span></td><td class="token-name">--background-action-secondary</td><td class="primitive-ref">neutral-200</td><td class="hex-val">#dee1e1</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-action-secondary-hover);"></span></td><td class="token-name">--background-action-secondary-hover</td><td class="primitive-ref">neutral-300</td><td class="hex-val">#c8cccc</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-success);"></span></td><td class="token-name">--background-success</td><td class="primitive-ref">system-success</td><td class="hex-val">#2bb656</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-success-subtle);"></span></td><td class="token-name">--background-success-subtle</td><td class="primitive-ref">system-success-light</td><td class="hex-val">#d4edda</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-error);"></span></td><td class="token-name">--background-error</td><td class="primitive-ref">system-error</td><td class="hex-val">#c63434</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-error-hover);"></span></td><td class="token-name">--background-error-hover</td><td class="primitive-ref">system-error-hover</td><td class="hex-val">#8d3c3e</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-error-disabled);"></span></td><td class="token-name">--background-error-disabled</td><td class="primitive-ref">system-error-disabled</td><td class="hex-val">#f3b4b4</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-error-subtle);"></span></td><td class="token-name">--background-error-subtle</td><td class="primitive-ref">system-error-light</td><td class="hex-val">#f8d7da</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-warning);"></span></td><td class="token-name">--background-warning</td><td class="primitive-ref">system-warning</td><td class="hex-val">#dd9903</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-warning-subtle);"></span></td><td class="token-name">--background-warning-subtle</td><td class="primitive-ref">system-warning-light</td><td class="hex-val">#fff3cd</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-information);"></span></td><td class="token-name">--background-information</td><td class="primitive-ref">system-info</td><td class="hex-val">#2079c3</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-information-subtle);"></span></td><td class="token-name">--background-information-subtle</td><td class="primitive-ref">system-info-light</td><td class="hex-val">#d1ecf1</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-discovery);"></span></td><td class="token-name">--background-discovery</td><td class="primitive-ref">system-discovery</td><td class="hex-val">#6f5ed3</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--background-discovery-subtle);"></span></td><td class="token-name">--background-discovery-subtle</td><td class="primitive-ref">system-discovery-light</td><td class="hex-val">#e8e5f8</td></tr>
+                  </tbody>
+                </table>
 
-          <!-- Text — content-m, light background -->
-          <section class="adx-section" id="text" style="background: var(--background-light);">
-            <div class="adx-content-m">
-              <div class="section-inner">
-                <h2 class="section-title">Text Tokens</h2>
-                <div style="background: var(--background-page); padding: var(--spacing-24); border-radius: var(--border-radius-lg); display: flex; flex-direction: column; gap: var(--spacing-8);">
-                  <p style="color: var(--text-primary); font-size: var(--font-size-18);">Primary text - main body content</p>
-                  <p style="color: var(--text-secondary); font-size: var(--font-size-16);">Secondary text - supporting content</p>
-                  <p style="color: var(--text-tertiary); font-size: var(--font-size-14);">Tertiary text - minimal emphasis</p>
-                  <p style="color: var(--text-brand); font-size: var(--font-size-16); font-weight: var(--font-weight-semibold);">Brand text (theme-aware)</p>
-                  <p><a href="#" class="card-link">Link text (theme-aware)</a></p>
-                  <p style="color: var(--text-disabled); font-size: var(--font-size-14);">Disabled text</p>
-                </div>
+                <!-- TEXT PILLAR -->
+                <div class="color-section-label" style="margin-top: var(--spacing-32);">Text</div>
+                <table class="color-table">
+                  <thead>
+                    <tr><th></th><th>Token</th><th>Primitive</th><th>Hex</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><span class="color-dot" style="background: var(--text-primary);"></span></td><td class="token-name">--text-primary</td><td class="primitive-ref">neutral-1100</td><td class="hex-val">#040404</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--text-secondary);"></span></td><td class="token-name">--text-secondary</td><td class="primitive-ref">neutral-700</td><td class="hex-val">#515e5f</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--text-tertiary);"></span></td><td class="token-name">--text-tertiary</td><td class="primitive-ref">neutral-500</td><td class="hex-val">#929a9b</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--text-reverse); border-color: var(--border-dark);"></span></td><td class="token-name">--text-reverse</td><td class="primitive-ref">neutral-0</td><td class="hex-val">#ffffff</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--text-brand);"></span></td><td class="token-name">--text-brand <span class="theme-badge">theme</span></td><td class="primitive-ref">brand-600</td><td class="hex-val">FCMA #5e9732 / R1st #005b94</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--text-link);"></span></td><td class="token-name">--text-link <span class="theme-badge">theme</span></td><td class="primitive-ref">brand-600</td><td class="hex-val">FCMA #5e9732 / R1st #005b94</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--text-link-hover);"></span></td><td class="token-name">--text-link-hover <span class="theme-badge">theme</span></td><td class="primitive-ref">brand-500</td><td class="hex-val">FCMA #71b33c / R1st #0070b8</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--text-disabled);"></span></td><td class="token-name">--text-disabled</td><td class="primitive-ref">neutral-300</td><td class="hex-val">#c8cccc</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--text-success);"></span></td><td class="token-name">--text-success</td><td class="primitive-ref">system-success</td><td class="hex-val">#2bb656</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--text-success-hover);"></span></td><td class="token-name">--text-success-hover</td><td class="primitive-ref">—</td><td class="hex-val">#60b369</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--text-error);"></span></td><td class="token-name">--text-error</td><td class="primitive-ref">system-error</td><td class="hex-val">#c63434</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--text-error-hover);"></span></td><td class="token-name">--text-error-hover</td><td class="primitive-ref">—</td><td class="hex-val">#d83c3e</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--text-warning);"></span></td><td class="token-name">--text-warning</td><td class="primitive-ref">system-warning</td><td class="hex-val">#dd9903</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--text-warning-hover);"></span></td><td class="token-name">--text-warning-hover</td><td class="primitive-ref">—</td><td class="hex-val">#ba750b</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--text-information);"></span></td><td class="token-name">--text-information</td><td class="primitive-ref">system-info</td><td class="hex-val">#2079c3</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--text-information-hover);"></span></td><td class="token-name">--text-information-hover</td><td class="primitive-ref">system-info-hover</td><td class="hex-val">#2b67d3</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--text-discovery);"></span></td><td class="token-name">--text-discovery</td><td class="primitive-ref">system-discovery</td><td class="hex-val">#6f5ed3</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--text-discovery-hover);"></span></td><td class="token-name">--text-discovery-hover</td><td class="primitive-ref">system-discovery-hover</td><td class="hex-val">#8187ea</td></tr>
+                  </tbody>
+                </table>
+
+                <!-- BORDER PILLAR -->
+                <div class="color-section-label" style="margin-top: var(--spacing-32);">Border</div>
+                <table class="color-table">
+                  <thead>
+                    <tr><th></th><th>Token</th><th>Primitive</th><th>Hex</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><span class="color-dot" style="background: var(--border-reverse); border-color: var(--border-dark);"></span></td><td class="token-name">--border-reverse</td><td class="primitive-ref">neutral-0</td><td class="hex-val">#ffffff</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--border-subtle);"></span></td><td class="token-name">--border-subtle</td><td class="primitive-ref">neutral-200</td><td class="hex-val">#dee1e1</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--border-dark);"></span></td><td class="token-name">--border-dark</td><td class="primitive-ref">neutral-500</td><td class="hex-val">#929a9b</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--border-strong);"></span></td><td class="token-name">--border-strong</td><td class="primitive-ref">neutral-1100</td><td class="hex-val">#040404</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--border-brand);"></span></td><td class="token-name">--border-brand <span class="theme-badge">theme</span></td><td class="primitive-ref">brand-600</td><td class="hex-val">FCMA #5e9732 / R1st #005b94</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--border-focus);"></span></td><td class="token-name">--border-focus <span class="theme-badge">theme</span></td><td class="primitive-ref">blue-200 / brand</td><td class="hex-val">#c7e4f9 (default)</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--border-success);"></span></td><td class="token-name">--border-success</td><td class="primitive-ref">system-success</td><td class="hex-val">#2bb656</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--border-error);"></span></td><td class="token-name">--border-error</td><td class="primitive-ref">system-error</td><td class="hex-val">#c63434</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--border-warning);"></span></td><td class="token-name">--border-warning</td><td class="primitive-ref">system-warning</td><td class="hex-val">#dd9903</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--border-information);"></span></td><td class="token-name">--border-information</td><td class="primitive-ref">system-info</td><td class="hex-val">#2079c3</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--border-discovery);"></span></td><td class="token-name">--border-discovery</td><td class="primitive-ref">system-discovery</td><td class="hex-val">#6f5ed3</td></tr>
+                  </tbody>
+                </table>
+
+                <!-- ICON PILLAR -->
+                <div class="color-section-label" style="margin-top: var(--spacing-32);">Icon</div>
+                <table class="color-table">
+                  <thead>
+                    <tr><th></th><th>Token</th><th>Primitive</th><th>Hex</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><span class="color-dot" style="background: var(--icon-subtle);"></span></td><td class="token-name">--icon-subtle</td><td class="primitive-ref">neutral-500</td><td class="hex-val">#929a9b</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--icon-dark);"></span></td><td class="token-name">--icon-dark</td><td class="primitive-ref">neutral-1100</td><td class="hex-val">#040404</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--icon-reverse); border-color: var(--border-dark);"></span></td><td class="token-name">--icon-reverse</td><td class="primitive-ref">neutral-0</td><td class="hex-val">#ffffff</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--icon-brand);"></span></td><td class="token-name">--icon-brand <span class="theme-badge">theme</span></td><td class="primitive-ref">brand-600</td><td class="hex-val">FCMA #5e9732 / R1st #005b94</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--icon-link);"></span></td><td class="token-name">--icon-link <span class="theme-badge">theme</span></td><td class="primitive-ref">brand-600</td><td class="hex-val">FCMA #5e9732 / R1st #005b94</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--icon-disabled);"></span></td><td class="token-name">--icon-disabled</td><td class="primitive-ref">neutral-300</td><td class="hex-val">#c8cccc</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--icon-success);"></span></td><td class="token-name">--icon-success</td><td class="primitive-ref">system-success</td><td class="hex-val">#2bb656</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--icon-error);"></span></td><td class="token-name">--icon-error</td><td class="primitive-ref">system-error</td><td class="hex-val">#c63434</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--icon-warning);"></span></td><td class="token-name">--icon-warning</td><td class="primitive-ref">system-warning</td><td class="hex-val">#dd9903</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--icon-information);"></span></td><td class="token-name">--icon-information</td><td class="primitive-ref">system-info</td><td class="hex-val">#2079c3</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--icon-discovery);"></span></td><td class="token-name">--icon-discovery</td><td class="primitive-ref">system-discovery</td><td class="hex-val">#6f5ed3</td></tr>
+                  </tbody>
+                </table>
+
               </div>
             </div>
           </section>
@@ -702,12 +797,13 @@
             <div class="adx-content-s">
               <div class="section-inner">
                 <h2 class="section-title">System Status</h2>
-                <p class="section-subtitle">Success, error, warning, and information states.</p>
+                <p class="section-subtitle">Success, error, warning, information, and discovery states.</p>
                 <div style="display: flex; flex-direction: column; gap: var(--spacing-12);">
                   <div class="alert alert-success">Your changes have been saved successfully.</div>
                   <div class="alert alert-error">Unable to process your request. Please try again.</div>
                   <div class="alert alert-warning">Your session will expire in 5 minutes.</div>
                   <div class="alert alert-info">A new version of the application is available.</div>
+                  <div class="alert alert-discovery">Discover new features available in this release.</div>
                 </div>
               </div>
             </div>
@@ -722,13 +818,13 @@
                   <div style="padding: var(--spacing-16); border: var(--border-width-thin) solid var(--border-subtle); border-radius: var(--border-radius-md);">
                     <span class="swatch-var">border-subtle</span>
                   </div>
-                  <div style="padding: var(--spacing-16); border: var(--border-width-medium) solid var(--border-dark); border-radius: var(--border-radius-md);">
+                  <div style="padding: var(--spacing-16); border: var(--border-width-thin) solid var(--border-dark); border-radius: var(--border-radius-md);">
                     <span class="swatch-var">border-dark</span>
                   </div>
-                  <div style="padding: var(--spacing-16); border: var(--border-width-medium) solid var(--border-strong); border-radius: var(--border-radius-md);">
+                  <div style="padding: var(--spacing-16); border: var(--border-width-thin) solid var(--border-strong); border-radius: var(--border-radius-md);">
                     <span class="swatch-var">border-strong</span>
                   </div>
-                  <div style="padding: var(--spacing-16); border: var(--border-width-medium) solid var(--border-brand); border-radius: var(--border-radius-md);">
+                  <div style="padding: var(--spacing-16); border: var(--border-width-thin) solid var(--border-brand); border-radius: var(--border-radius-md);">
                     <span class="swatch-var">border-brand</span>
                   </div>
                   <div class="focus-demo">Focus ring</div>
@@ -737,48 +833,146 @@
             </div>
           </section>
 
-          <!-- Typography — content-m, medium background -->
+          <!-- Typography — content-l, medium background -->
           <section class="adx-section" id="typography" style="background: var(--background-medium);">
-            <div class="adx-content-m">
+            <div class="adx-content-l">
               <div class="section-inner">
                 <h2 class="section-title">Typography</h2>
-                <p class="section-subtitle">Trade Gothic Next LT Pro (primary) and Rift (display).</p>
+                <p class="section-subtitle">Trade Gothic Next LT Pro (primary) and Rift (display/eyebrow).</p>
 
+                <!-- Display -->
+                <div class="type-label">Display — Rift, Bold (700)</div>
                 <div class="type-sample">
-                  <div class="type-label">Display XL - 80px / Rift Bold</div>
-                  <div style="font-family: var(--font-family-rift); font-size: var(--font-size-80); font-weight: var(--font-weight-bold); line-height: var(--line-height-110); letter-spacing: var(--letter-spacing-tight);">Display</div>
+                  <div class="type-label">display-xl — 104px</div>
+                  <div style="font-family: var(--font-family-rift); font-size: var(--font-size-104); font-weight: var(--font-weight-bold); line-height: 2.75rem; letter-spacing: -0.06rem;">Display XL</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">display-l — 96px</div>
+                  <div style="font-family: var(--font-family-rift); font-size: var(--font-size-96); font-weight: var(--font-weight-bold); line-height: 5rem; letter-spacing: -0.11rem;">Display L</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">display-m — 72px</div>
+                  <div style="font-family: var(--font-family-rift); font-size: var(--font-size-72); font-weight: var(--font-weight-bold); line-height: 4rem; letter-spacing: -0.08rem;">Display M</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">display-m-mobile — 64px</div>
+                  <div style="font-family: var(--font-family-rift); font-size: var(--font-size-64); font-weight: var(--font-weight-bold); line-height: 3.5rem; letter-spacing: -0.08rem;">Display M Mobile</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">display-s — 56px</div>
+                  <div style="font-family: var(--font-family-rift); font-size: var(--font-size-56); font-weight: var(--font-weight-bold); line-height: 2.5rem; letter-spacing: -0.07rem;">Display S</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">display-xs — 48px</div>
+                  <div style="font-family: var(--font-family-rift); font-size: var(--font-size-48); font-weight: var(--font-weight-bold); line-height: 1.75rem; letter-spacing: -0.06rem;">Display XS</div>
                 </div>
 
+                <!-- Eyebrow -->
+                <div class="type-label" style="margin-top: var(--spacing-32);">Eyebrow — Rift (L/M/S), Trade Gothic (XS)</div>
                 <div class="type-sample">
-                  <div class="type-label">Display MD - 56px / Rift Bold</div>
-                  <div style="font-family: var(--font-family-rift); font-size: var(--font-size-56); font-weight: var(--font-weight-bold); line-height: var(--line-height-110); letter-spacing: var(--letter-spacing-tight);">Display Medium</div>
+                  <div class="type-label">eyebrow-l — 28px / Rift 600</div>
+                  <div style="font-family: var(--font-family-rift); font-size: var(--font-size-28); font-weight: var(--font-weight-semibold); line-height: 1.75rem; letter-spacing: -0.0175rem;">Eyebrow Large</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">eyebrow-m — 24px / Rift 500</div>
+                  <div style="font-family: var(--font-family-rift); font-size: var(--font-size-24); font-weight: var(--font-weight-medium); line-height: 1.5rem; letter-spacing: -0.015rem;">Eyebrow Medium</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">eyebrow-s — 20px / Rift 500</div>
+                  <div style="font-family: var(--font-family-rift); font-size: var(--font-size-20); font-weight: var(--font-weight-medium); line-height: 1.25rem; letter-spacing: -0.0125rem;">Eyebrow Small</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">eyebrow-xs — 14px / Trade Gothic 700, uppercase</div>
+                  <div style="font-size: var(--font-size-14); font-weight: var(--font-weight-bold); line-height: 1rem; text-transform: uppercase;">Eyebrow XS</div>
                 </div>
 
+                <!-- Heading -->
+                <div class="type-label" style="margin-top: var(--spacing-32);">Heading — Trade Gothic, Bold (700)</div>
                 <div class="type-sample">
-                  <div class="type-label">Eyebrow LG - 14px / Trade Gothic Semibold / Uppercase</div>
-                  <div style="font-size: var(--font-size-14); font-weight: var(--font-weight-semibold); line-height: var(--line-height-100); text-transform: uppercase; letter-spacing: var(--letter-spacing-loose); color: var(--text-brand);">Category Label</div>
+                  <div class="type-label">heading-xl — 40px / 44px</div>
+                  <div style="font-size: var(--font-size-40); font-weight: var(--font-weight-bold); line-height: 2.75rem; letter-spacing: -0.025rem;">Heading XL</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">heading-xl-light — 40px / 44px / 400</div>
+                  <div style="font-size: var(--font-size-40); font-weight: var(--font-weight-regular); line-height: 2.75rem; letter-spacing: -0.025rem;">Heading XL Light</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">heading-l — 32px / 40px</div>
+                  <div style="font-size: var(--font-size-32); font-weight: var(--font-weight-bold); line-height: 2.5rem;">Heading L</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">heading-l-light — 32px / 40px / 400</div>
+                  <div style="font-size: var(--font-size-32); font-weight: var(--font-weight-regular); line-height: 2.5rem;">Heading L Light</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">heading-m — 28px / 36px</div>
+                  <div style="font-size: var(--font-size-28); font-weight: var(--font-weight-bold); line-height: 2.25rem;">Heading M</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">heading-s — 24px / 32px</div>
+                  <div style="font-size: var(--font-size-24); font-weight: var(--font-weight-bold); line-height: 2rem;">Heading S</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">heading-s-light — 24px / 32px / 400</div>
+                  <div style="font-size: var(--font-size-24); font-weight: var(--font-weight-regular); line-height: 2rem;">Heading S Light</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">heading-xs — 20px / 28px</div>
+                  <div style="font-size: var(--font-size-20); font-weight: var(--font-weight-bold); line-height: 1.75rem;">Heading XS</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">heading-xxs — 16px / 24px</div>
+                  <div style="font-size: var(--font-size-16); font-weight: var(--font-weight-bold); line-height: 1.5rem;">Heading XXS</div>
                 </div>
 
+                <!-- Label -->
+                <div class="type-label" style="margin-top: var(--spacing-32);">Label — Trade Gothic (supports regular 400 and bold 800)</div>
                 <div class="type-sample">
-                  <div class="type-label">Heading H1 - 40px / Trade Gothic Bold</div>
-                  <div style="font-size: var(--font-size-40); font-weight: var(--font-weight-bold); line-height: var(--line-height-120);">Page Title Heading</div>
+                  <div class="type-label">label-xl — 20px / 24px / 400</div>
+                  <div style="font-size: var(--font-size-20); font-weight: var(--font-weight-regular); line-height: 1.5rem;">Label XL</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">label-l — 18px / 24px / 400</div>
+                  <div style="font-size: var(--font-size-18); font-weight: var(--font-weight-regular); line-height: 1.5rem;">Label L</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">label-m — 16px / 20px / 800</div>
+                  <div style="font-size: var(--font-size-16); font-weight: var(--font-weight-heavy); line-height: 1.25rem;">Label M</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">label-s — 14px / 16px / 700</div>
+                  <div style="font-size: var(--font-size-14); font-weight: var(--font-weight-bold); line-height: 1rem;">Label S</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">label-xs — 12px / 16px / 700</div>
+                  <div style="font-size: var(--font-size-12); font-weight: var(--font-weight-bold); line-height: 1rem;">Label XS</div>
                 </div>
 
+                <!-- Paragraph -->
+                <div class="type-label" style="margin-top: var(--spacing-32);">Paragraph — Trade Gothic (supports regular 400 and bold 800)</div>
                 <div class="type-sample">
-                  <div class="type-label">Heading H3 - 32px / Trade Gothic Semibold</div>
-                  <div style="font-size: var(--font-size-32); font-weight: var(--font-weight-semibold); line-height: var(--line-height-130);">Section Heading</div>
+                  <div class="type-label">paragraph-xxl — 24px / 28px / 400</div>
+                  <div style="font-size: var(--font-size-24); font-weight: var(--font-weight-regular); line-height: 1.75rem; max-width: 640px;">Brawny mules quickly zip across the farm's long path, their hooves kicking up clouds of dust in the warm afternoon sun.</div>
                 </div>
-
                 <div class="type-sample">
-                  <div class="type-label">Label MD - 16px / Trade Gothic Medium</div>
-                  <div style="font-size: var(--font-size-16); font-weight: var(--font-weight-medium);">Button Label Text</div>
+                  <div class="type-label">paragraph-xl — 20px / 24px / 400</div>
+                  <div style="font-size: var(--font-size-20); font-weight: var(--font-weight-regular); line-height: 1.5rem; max-width: 640px;">Brawny mules quickly zip across the farm's long path, their hooves kicking up clouds of dust in the warm afternoon sun.</div>
                 </div>
-
                 <div class="type-sample">
-                  <div class="type-label">Paragraph MD - 18px / Trade Gothic Regular</div>
-                  <div style="font-size: var(--font-size-18); font-weight: var(--font-weight-regular); line-height: var(--line-height-160); max-width: 640px; color: var(--text-secondary);">
-                    Farm Credit Mid-America provides loans and financial services to farmers, rural residents, and agribusinesses throughout Indiana, Ohio, Kentucky, and Tennessee.
-                  </div>
+                  <div class="type-label">paragraph-l — 18px / 24px / 400</div>
+                  <div style="font-size: var(--font-size-18); font-weight: var(--font-weight-regular); line-height: 1.5rem; max-width: 640px;">Brawny mules quickly zip across the farm's long path, their hooves kicking up clouds of dust in the warm afternoon sun.</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">paragraph-m — 16px / 20px / 400 (default)</div>
+                  <div style="font-size: var(--font-size-16); font-weight: var(--font-weight-regular); line-height: 1.25rem; max-width: 640px;">Brawny mules quickly zip across the farm's long path, their hooves kicking up clouds of dust in the warm afternoon sun.</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">paragraph-s — 14px / 20px / 400</div>
+                  <div style="font-size: var(--font-size-14); font-weight: var(--font-weight-regular); line-height: 1.25rem; max-width: 640px;">Brawny mules quickly zip across the farm's long path, their hooves kicking up clouds of dust in the warm afternoon sun.</div>
+                </div>
+                <div class="type-sample">
+                  <div class="type-label">paragraph-xs — 12px / 16px / Trade Gothic Condensed 700</div>
+                  <div style="font-family: var(--font-family-trade-gothic-condensed); font-size: var(--font-size-12); font-weight: var(--font-weight-bold); line-height: 1rem;">Brawny mules quickly zip across the farm's long path.</div>
                 </div>
               </div>
             </div>
@@ -810,7 +1004,7 @@
                   <p>Use reverse tokens for text and icons on dark backgrounds. Border-reverse provides visible borders.</p>
                   <div style="display: flex; gap: var(--spacing-12);">
                     <button class="btn" style="background: var(--background-primary); color: var(--text-brand); border-color: var(--background-primary);">Light Button</button>
-                    <button class="btn" style="background: transparent; color: var(--text-reverse); border: var(--border-width-medium) solid var(--border-reverse);">Outline Button</button>
+                    <button class="btn" style="background: transparent; color: var(--text-reverse); border: var(--border-width-thin) solid var(--border-reverse);">Outline Button</button>
                   </div>
                 </div>
               </div>

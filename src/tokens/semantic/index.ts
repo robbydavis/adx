@@ -13,6 +13,7 @@
  * Plus additional semantic categories:
  * - Typography: Complete typographic system (Display, Eyebrow, Heading, Label, Paragraph)
  * - Elevation: Shadow styles for visual depth and hierarchy
+ * - Radius: Container corner rounding (square → round)
  */
 
 export * from './background';
@@ -22,3 +23,4 @@ export * from './icon';
 export * from './typography';
 export * from './elevation';
 export * from './layout';
+export * from './radius';

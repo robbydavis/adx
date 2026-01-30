@@ -25,7 +25,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: var(--component-spacing-xs); /* 8px */
+  gap: var(--component-space-xs); /* 8px */
   font-family: var(--font-family-trade-gothic);
   font-weight: var(--font-weight-bold);
   text-decoration: none;
@@ -59,7 +59,7 @@
 .adx-btn--secondary {
   background-color: var(--background-primary);
   color: var(--text-primary);
-  border: var(--border-width-medium) solid var(--border-strong);
+  border: var(--border-width-thin) solid var(--border-strong);
 }
 
 .adx-btn--secondary:hover {
@@ -76,7 +76,7 @@
 
 /* Large — 52px max-height, 20px text */
 .adx-btn--large {
-  padding: var(--component-spacing-m); /* 16px all sides */
+  padding: var(--component-space-l); /* 16px all sides */
   max-height: 52px;
   border-radius: var(--radius-xs); /* 8px */
   font-size: var(--font-size-20);
@@ -85,7 +85,7 @@
 
 /* Medium — 16px horizontal / 10px vertical, 16px text */
 .adx-btn--medium {
-  padding: var(--component-spacing-s) var(--component-spacing-m); /* 10px 16px */
+  padding: var(--component-space-s) var(--component-space-l); /* 10px 16px */
   border-radius: var(--radius-xs); /* 8px */
   font-size: var(--font-size-16);
   line-height: 20px;
@@ -93,7 +93,7 @@
 
 /* Small — 8px all sides, 14px text */
 .adx-btn--small {
-  padding: var(--component-spacing-xs); /* 8px all sides */
+  padding: var(--component-space-xs); /* 8px all sides */
   border-radius: var(--radius-xs); /* 8px */
   font-size: var(--font-size-14);
   line-height: 16px;
@@ -101,7 +101,7 @@
 
 /* XSmall — 2px vertical / 8px horizontal, 12px text */
 .adx-btn--xsmall {
-  padding: var(--component-spacing-3xs) var(--component-spacing-xs); /* 2px 8px */
+  padding: var(--component-space-3xs) var(--component-space-xs); /* 2px 8px */
   border-radius: var(--radius-2xs); /* 4px */
   font-size: var(--font-size-12);
   line-height: 16px;
@@ -113,7 +113,7 @@
 
 /* Icon — default icon button, transparent background */
 .adx-btn--icon {
-  padding: var(--component-spacing-xs); /* 8px */
+  padding: var(--component-space-xs); /* 8px */
   border-radius: var(--radius-round);
   width: 36px;
   height: 36px;
@@ -131,7 +131,7 @@
 
 /* Icon Brand — brand-colored icon button (themeable) */
 .adx-btn--icon-brand {
-  padding: var(--component-spacing-xs); /* 8px */
+  padding: var(--component-space-xs); /* 8px */
   border-radius: var(--radius-round);
   width: 36px;
   height: 36px;

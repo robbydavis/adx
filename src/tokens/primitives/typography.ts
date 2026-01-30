@@ -14,6 +14,7 @@
  */
 export const fontFamilies = {
   tradeGothic: '"Trade Gothic Next LT Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+  tradeGothicCondensed: '"Trade Gothic Next LT Pro Condensed", "Trade Gothic Next LT Pro", -apple-system, BlinkMacSystemFont, sans-serif',
   rift: '"Rift", Georgia, "Times New Roman", Times, serif',
 } as const;
 
@@ -37,22 +38,24 @@ export const fontWeights = {
  * Based on Figma design system specifications
  */
 export const fontSizes = {
-  8: '0.5rem',     // 8px - Eyebrow XS
-  10: '0.625rem',  // 10px - Eyebrow SM
-  12: '0.75rem',   // 12px - Eyebrow MD, Label XS
-  14: '0.875rem',  // 14px - Eyebrow LG, Label SM
-  16: '1rem',      // 16px - Paragraph SM, Label MD
-  18: '1.125rem',  // 18px - Paragraph MD, Label LG
-  20: '1.25rem',   // 20px - Paragraph LG, Heading H6
-  24: '1.5rem',    // 24px - Paragraph XL, Heading H5
-  28: '1.75rem',   // 28px - Heading H4
-  32: '2rem',      // 32px - Heading H3, Display XXS
-  36: '2.25rem',   // 36px - Heading H2
-  40: '2.5rem',    // 40px - Heading H1, Display XS
-  48: '3rem',      // 48px - Display SM
-  56: '3.5rem',    // 56px - Display MD
-  64: '4rem',      // 64px - Display LG
-  80: '5rem',      // 80px - Display XL
+  8: '0.5rem',      // 8px
+  10: '0.625rem',   // 10px
+  12: '0.75rem',    // 12px - Label XS, Paragraph XS
+  14: '0.875rem',   // 14px - Eyebrow XS, Label S, Paragraph S
+  16: '1rem',       // 16px - Label M, Paragraph M, Heading XXS
+  18: '1.125rem',   // 18px - Label L, Paragraph L
+  20: '1.25rem',    // 20px - Label XL, Eyebrow S, Heading XS, Paragraph XL
+  24: '1.5rem',     // 24px - Eyebrow M, Heading S, Paragraph XXL
+  28: '1.75rem',    // 28px - Eyebrow L, Heading M
+  32: '2rem',       // 32px - Heading L
+  36: '2.25rem',    // 36px
+  40: '2.5rem',     // 40px - Heading XL
+  48: '3rem',       // 48px - Display XS
+  56: '3.5rem',     // 56px - Display S
+  64: '4rem',       // 64px - Display M-mobile
+  72: '4.5rem',     // 72px - Display M
+  96: '6rem',       // 96px - Display L
+  104: '6.5rem',    // 104px - Display XL
 } as const;
 
 /**
