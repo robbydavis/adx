@@ -15,7 +15,7 @@
 /* Regular */
 @font-face {
   font-family: 'Trade Gothic Next LT Pro';
-  src: url('../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-Rg.otf') format('opentype');
+  src: url('../../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-Rg.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -24,7 +24,7 @@
 /* Regular Italic */
 @font-face {
   font-family: 'Trade Gothic Next LT Pro';
-  src: url('../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-It.otf') format('opentype');
+  src: url('../../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-It.otf') format('opentype');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -33,7 +33,7 @@
 /* Light */
 @font-face {
   font-family: 'Trade Gothic Next LT Pro';
-  src: url('../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-Lt.otf') format('opentype');
+  src: url('../../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-Lt.otf') format('opentype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -42,7 +42,7 @@
 /* Light Italic */
 @font-face {
   font-family: 'Trade Gothic Next LT Pro';
-  src: url('../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-LtIt.otf') format('opentype');
+  src: url('../../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-LtIt.otf') format('opentype');
   font-weight: 300;
   font-style: italic;
   font-display: swap;
@@ -51,7 +51,7 @@
 /* Bold */
 @font-face {
   font-family: 'Trade Gothic Next LT Pro';
-  src: url('../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-Bd.otf') format('opentype');
+  src: url('../../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-Bd.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -60,7 +60,7 @@
 /* Bold Italic */
 @font-face {
   font-family: 'Trade Gothic Next LT Pro';
-  src: url('../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-BdIt.otf') format('opentype');
+  src: url('../../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-BdIt.otf') format('opentype');
   font-weight: 700;
   font-style: italic;
   font-display: swap;
@@ -69,7 +69,7 @@
 /* Heavy */
 @font-face {
   font-family: 'Trade Gothic Next LT Pro';
-  src: url('../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-Hv.otf') format('opentype');
+  src: url('../../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-Hv.otf') format('opentype');
   font-weight: 800;
   font-style: normal;
   font-display: swap;
@@ -78,7 +78,7 @@
 /* Heavy Italic */
 @font-face {
   font-family: 'Trade Gothic Next LT Pro';
-  src: url('../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-HvIt.otf') format('opentype');
+  src: url('../../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-HvIt.otf') format('opentype');
   font-weight: 800;
   font-style: italic;
   font-display: swap;
@@ -87,7 +87,7 @@
 /* Condensed */
 @font-face {
   font-family: 'Trade Gothic Next LT Pro';
-  src: url('../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-Cn.otf') format('opentype');
+  src: url('../../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-Cn.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-stretch: condensed;
@@ -97,7 +97,7 @@
 /* Condensed Italic */
 @font-face {
   font-family: 'Trade Gothic Next LT Pro';
-  src: url('../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-CnIt.otf') format('opentype');
+  src: url('../../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-CnIt.otf') format('opentype');
   font-weight: 400;
   font-style: italic;
   font-stretch: condensed;
@@ -107,7 +107,7 @@
 /* Bold Condensed */
 @font-face {
   font-family: 'Trade Gothic Next LT Pro';
-  src: url('../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-BdCn.otf') format('opentype');
+  src: url('../../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-BdCn.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-stretch: condensed;
@@ -117,7 +117,7 @@
 /* Bold Condensed Italic */
 @font-face {
   font-family: 'Trade Gothic Next LT Pro';
-  src: url('../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-BdCnIt.otf') format('opentype');
+  src: url('../../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-BdCnIt.otf') format('opentype');
   font-weight: 700;
   font-style: italic;
   font-stretch: condensed;
@@ -127,7 +127,7 @@
 /* Heavy Condensed */
 @font-face {
   font-family: 'Trade Gothic Next LT Pro';
-  src: url('../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-HvCn.otf') format('opentype');
+  src: url('../../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-HvCn.otf') format('opentype');
   font-weight: 800;
   font-style: normal;
   font-stretch: condensed;
@@ -137,7 +137,7 @@
 /* Heavy Condensed Italic */
 @font-face {
   font-family: 'Trade Gothic Next LT Pro';
-  src: url('../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-HvCnIt.otf') format('opentype');
+  src: url('../../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-HvCnIt.otf') format('opentype');
   font-weight: 800;
   font-style: italic;
   font-stretch: condensed;
@@ -147,7 +147,7 @@
 /* Compressed */
 @font-face {
   font-family: 'Trade Gothic Next LT Pro';
-  src: url('../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-Cm.otf') format('opentype');
+  src: url('../../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-Cm.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-stretch: extra-condensed;
@@ -157,7 +157,7 @@
 /* Bold Compressed */
 @font-face {
   font-family: 'Trade Gothic Next LT Pro';
-  src: url('../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-BdCm.otf') format('opentype');
+  src: url('../../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-BdCm.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-stretch: extra-condensed;
@@ -167,7 +167,7 @@
 /* Heavy Compressed */
 @font-face {
   font-family: 'Trade Gothic Next LT Pro';
-  src: url('../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-HvCm.otf') format('opentype');
+  src: url('../../../fonts/trade-gothic/Linotype - TradeGothicNextLTPro-HvCm.otf') format('opentype');
   font-weight: 800;
   font-style: normal;
   font-stretch: extra-condensed;
@@ -183,7 +183,7 @@
 /* Rift Light */
 @font-face {
   font-family: 'Rift';
-  src: url('../../fonts/rift/Rift-Light.otf') format('opentype');
+  src: url('../../../fonts/rift/Rift-Light.otf') format('opentype');
   font-weight: 300;
   font-style: normal;
   font-display: swap;
@@ -192,7 +192,7 @@
 /* Rift Light Italic */
 @font-face {
   font-family: 'Rift';
-  src: url('../../fonts/rift/Rift-LightItalic.otf') format('opentype');
+  src: url('../../../fonts/rift/Rift-LightItalic.otf') format('opentype');
   font-weight: 300;
   font-style: italic;
   font-display: swap;
@@ -201,7 +201,7 @@
 /* Rift Regular */
 @font-face {
   font-family: 'Rift';
-  src: url('../../fonts/rift/Rift-Regular.otf') format('opentype');
+  src: url('../../../fonts/rift/Rift-Regular.otf') format('opentype');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -210,7 +210,7 @@
 /* Rift Regular Italic */
 @font-face {
   font-family: 'Rift';
-  src: url('../../fonts/rift/Rift-Italic.otf') format('opentype');
+  src: url('../../../fonts/rift/Rift-Italic.otf') format('opentype');
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -219,7 +219,7 @@
 /* Rift Medium */
 @font-face {
   font-family: 'Rift';
-  src: url('../../fonts/rift/Rift-Medium.otf') format('opentype');
+  src: url('../../../fonts/rift/Rift-Medium.otf') format('opentype');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -228,7 +228,7 @@
 /* Rift Medium Italic */
 @font-face {
   font-family: 'Rift';
-  src: url('../../fonts/rift/Rift-MediumItalic.otf') format('opentype');
+  src: url('../../../fonts/rift/Rift-MediumItalic.otf') format('opentype');
   font-weight: 500;
   font-style: italic;
   font-display: swap;
@@ -237,7 +237,7 @@
 /* Rift Demi */
 @font-face {
   font-family: 'Rift';
-  src: url('../../fonts/rift/Rift-Demi.otf') format('opentype');
+  src: url('../../../fonts/rift/Rift-Demi.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
   font-display: swap;
@@ -246,7 +246,7 @@
 /* Rift Demi Italic */
 @font-face {
   font-family: 'Rift';
-  src: url('../../fonts/rift/Rift-DemiItalic.otf') format('opentype');
+  src: url('../../../fonts/rift/Rift-DemiItalic.otf') format('opentype');
   font-weight: 600;
   font-style: italic;
   font-display: swap;
@@ -255,7 +255,7 @@
 /* Rift Bold */
 @font-face {
   font-family: 'Rift';
-  src: url('../../fonts/rift/Rift-Bold.otf') format('opentype');
+  src: url('../../../fonts/rift/Rift-Bold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -264,7 +264,7 @@
 /* Rift Bold Italic */
 @font-face {
   font-family: 'Rift';
-  src: url('../../fonts/rift/Rift-BoldItalic.otf') format('opentype');
+  src: url('../../../fonts/rift/Rift-BoldItalic.otf') format('opentype');
   font-weight: 700;
   font-style: italic;
   font-display: swap;

@@ -12,3 +12,4 @@
 export * from './ThemeProvider';
 export * from './useTheme';
 export * from './useTokens';
+export * from './TextInput';

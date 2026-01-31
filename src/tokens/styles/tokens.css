@@ -258,8 +258,8 @@
   --border-s: var(--border-width-thin);        /* 1px — size-25 */
   --border-m: var(--border-width-medium);      /* 2px — size-50 */
 
-  /* Focus Ring (Figma focus-100 effect) */
-  --focus-ring: 0 0 0 4px #C7E4F9;
+  /* Focus Ring (Figma focus-100 effect) — always #C7E4F9 across all themes */
+  --focus-ring: 0 0 0 var(--border-width-thick) var(--border-focus);
 }
 
 /* ==========================================================================
@@ -288,7 +288,6 @@
   --text-link-hover: var(--fcma-hover);
 
   --border-brand: var(--fcma-primary);
-  --border-focus: var(--fcma-primary);
 
   --icon-brand: var(--fcma-primary);
   --icon-link: var(--fcma-primary);
@@ -321,7 +320,6 @@
   --text-link-hover: var(--rural1st-hover);
 
   --border-brand: var(--rural1st-primary);
-  --border-focus: var(--rural1st-primary);
 
   --icon-brand: var(--rural1st-primary);
   --icon-link: var(--rural1st-primary);

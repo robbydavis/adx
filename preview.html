@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="src/tokens/styles/tokens.css">
   <link rel="stylesheet" href="src/tokens/styles/layout.css">
   <link rel="stylesheet" href="src/tokens/styles/button.css">
+  <link rel="stylesheet" href="src/tokens/styles/text-input.css">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -275,6 +276,61 @@
       letter-spacing: 0.05em;
       color: var(--text-tertiary);
       padding: var(--spacing-16) 0 var(--spacing-4) 0;
+    }
+
+    /* Text Input playground controls */
+    .input-playground-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-16);
+      padding-bottom: var(--spacing-16);
+      margin-bottom: var(--spacing-16);
+      border-bottom: var(--border-width-thin) solid var(--border-subtle);
+    }
+
+    .input-control-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-4);
+    }
+
+    .input-control-group label {
+      font-size: var(--font-size-12);
+      font-weight: var(--font-weight-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-tertiary);
+    }
+
+    .input-control-group select,
+    .input-control-group input[type="text"] {
+      padding: var(--spacing-8) var(--spacing-12);
+      border: var(--border-width-thin) solid var(--border-subtle);
+      border-radius: var(--border-radius-md);
+      font-size: var(--font-size-14);
+      font-family: var(--font-family-trade-gothic);
+    }
+
+    .input-states-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: var(--spacing-24);
+    }
+
+    .input-state-card {
+      background: var(--background-primary);
+      border: var(--border-width-thin) solid var(--border-subtle);
+      border-radius: var(--border-radius-lg);
+      padding: var(--spacing-16);
+    }
+
+    .input-state-card__title {
+      font-size: var(--font-size-12);
+      font-weight: var(--font-weight-bold);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-tertiary);
+      margin-bottom: var(--spacing-12);
     }
 
     /* Component examples */
@@ -562,6 +618,10 @@
             <div class="nav-icon"></div>
             <span>Buttons</span>
           </a>
+          <a href="#text-inputs" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Text Inputs</span>
+          </a>
           <a href="#cards" class="nav-item">
             <div class="nav-icon"></div>
             <span>Cards</span>
@@ -684,7 +744,7 @@
                     <tr><td><span class="color-dot" style="background: var(--border-dark);"></span></td><td class="token-name">--border-dark</td><td class="primitive-ref">neutral-500</td><td class="hex-val">#929a9b</td></tr>
                     <tr><td><span class="color-dot" style="background: var(--border-strong);"></span></td><td class="token-name">--border-strong</td><td class="primitive-ref">neutral-1100</td><td class="hex-val">#040404</td></tr>
                     <tr><td><span class="color-dot" style="background: var(--border-brand);"></span></td><td class="token-name">--border-brand <span class="theme-badge">theme</span></td><td class="primitive-ref">brand-600</td><td class="hex-val">FCMA #5e9732 / R1st #005b94</td></tr>
-                    <tr><td><span class="color-dot" style="background: var(--border-focus);"></span></td><td class="token-name">--border-focus <span class="theme-badge">theme</span></td><td class="primitive-ref">blue-200 / brand</td><td class="hex-val">#c7e4f9 (default)</td></tr>
+                    <tr><td><span class="color-dot" style="background: var(--border-focus);"></span></td><td class="token-name">--border-focus</td><td class="primitive-ref">blue-200</td><td class="hex-val">#c7e4f9</td></tr>
                     <tr><td><span class="color-dot" style="background: var(--border-success);"></span></td><td class="token-name">--border-success</td><td class="primitive-ref">system-success</td><td class="hex-val">#2bb656</td></tr>
                     <tr><td><span class="color-dot" style="background: var(--border-error);"></span></td><td class="token-name">--border-error</td><td class="primitive-ref">system-error</td><td class="hex-val">#c63434</td></tr>
                     <tr><td><span class="color-dot" style="background: var(--border-warning);"></span></td><td class="token-name">--border-warning</td><td class="primitive-ref">system-warning</td><td class="hex-val">#dd9903</td></tr>
@@ -762,6 +822,148 @@
                   <button class="adx-btn adx-btn--secondary adx-btn--medium" disabled>Disabled</button>
                   <button class="adx-btn adx-btn--secondary adx-btn--medium adx-btn--loading">Loading...</button>
                 </div>
+              </div>
+            </div>
+          </section>
+
+          <!-- Text Inputs — content-m, light background -->
+          <section class="adx-section" id="text-inputs" style="background: var(--background-light);">
+            <div class="adx-content-m">
+              <div class="section-inner">
+                <h2 class="section-title">Text Input Component</h2>
+                <p class="section-subtitle">Text input fields matching Figma spec — all 6 states with interactive playground.</p>
+
+                <div class="type-label">All States</div>
+                <div class="input-states-grid">
+
+                  <!-- Default -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Default</div>
+                    <div class="adx-text-input">
+                      <label class="adx-text-input__label">Label</label>
+                      <div class="adx-text-input__focus-ring">
+                        <div class="adx-text-input__content">
+                          <input class="adx-text-input__input" placeholder="Hint Text" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Hover -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Hover</div>
+                    <div class="adx-text-input adx-text-input--hover">
+                      <label class="adx-text-input__label">Label</label>
+                      <div class="adx-text-input__focus-ring">
+                        <div class="adx-text-input__content">
+                          <input class="adx-text-input__input" placeholder="Hint Text" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Focus -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Focus</div>
+                    <div class="adx-text-input adx-text-input--focus">
+                      <label class="adx-text-input__label">Label</label>
+                      <div class="adx-text-input__focus-ring">
+                        <div class="adx-text-input__content">
+                          <input class="adx-text-input__input" placeholder="Hint Text" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Warning -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Warning</div>
+                    <div class="adx-text-input adx-text-input--warning">
+                      <label class="adx-text-input__label">Label</label>
+                      <div class="adx-text-input__focus-ring">
+                        <div class="adx-text-input__content">
+                          <input class="adx-text-input__input" placeholder="Hint Text" />
+                          <span class="adx-text-input__trailing-icon">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5L14.5 13H1.5L8 1.5Z" stroke="var(--text-warning)" stroke-width="1.2" stroke-linejoin="round" fill="none"/><line x1="8" y1="6.5" x2="8" y2="9.5" stroke="var(--text-warning)" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="11.25" r="0.75" fill="var(--text-warning)"/></svg>
+                          </span>
+                        </div>
+                      </div>
+                      <p class="adx-text-input__message">Warning Message</p>
+                    </div>
+                  </div>
+
+                  <!-- Error -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Error</div>
+                    <div class="adx-text-input adx-text-input--error">
+                      <label class="adx-text-input__label">Label</label>
+                      <div class="adx-text-input__focus-ring">
+                        <div class="adx-text-input__content">
+                          <input class="adx-text-input__input" placeholder="Hint Text" />
+                          <span class="adx-text-input__trailing-icon">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="var(--text-error)" stroke-width="1.2" fill="none"/><line x1="8" y1="5" x2="8" y2="8.5" stroke="var(--text-error)" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="10.5" r="0.75" fill="var(--text-error)"/></svg>
+                          </span>
+                        </div>
+                      </div>
+                      <p class="adx-text-input__message">Error Message</p>
+                    </div>
+                  </div>
+
+                  <!-- Disabled -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Disabled</div>
+                    <div class="adx-text-input adx-text-input--disabled">
+                      <label class="adx-text-input__label">Label</label>
+                      <div class="adx-text-input__focus-ring">
+                        <div class="adx-text-input__content">
+                          <input class="adx-text-input__input" placeholder="Hint Text" disabled />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="type-label" style="margin-top: var(--spacing-32);">Interactive Playground</div>
+                <div class="input-playground-controls">
+                  <div class="input-control-group">
+                    <label for="ti-ctrl-state">State</label>
+                    <select id="ti-ctrl-state">
+                      <option value="">Default</option>
+                      <option value="adx-text-input--hover">Hover</option>
+                      <option value="adx-text-input--focus">Focus</option>
+                      <option value="adx-text-input--warning">Warning</option>
+                      <option value="adx-text-input--error">Error</option>
+                      <option value="adx-text-input--disabled">Disabled</option>
+                    </select>
+                  </div>
+                  <div class="input-control-group">
+                    <label for="ti-ctrl-label">Label</label>
+                    <input type="text" id="ti-ctrl-label" value="Email Address" />
+                  </div>
+                  <div class="input-control-group">
+                    <label for="ti-ctrl-placeholder">Placeholder</label>
+                    <input type="text" id="ti-ctrl-placeholder" value="you@example.com" />
+                  </div>
+                  <div class="input-control-group">
+                    <label for="ti-ctrl-message">Message</label>
+                    <input type="text" id="ti-ctrl-message" value="This field is required" />
+                  </div>
+                </div>
+
+                <div style="max-width: 360px;">
+                  <div id="ti-live" class="adx-text-input">
+                    <label class="adx-text-input__label" id="ti-live-label">Email Address</label>
+                    <div class="adx-text-input__focus-ring">
+                      <div class="adx-text-input__content">
+                        <input class="adx-text-input__input" id="ti-live-field" placeholder="you@example.com" />
+                        <span class="adx-text-input__trailing-icon" id="ti-live-icon" style="display:none;"></span>
+                      </div>
+                    </div>
+                    <p class="adx-text-input__message" id="ti-live-message" style="display:none;"></p>
+                  </div>
+                </div>
+
               </div>
             </div>
           </section>
@@ -1139,6 +1341,56 @@
       var nav = document.getElementById('side-nav');
       nav.classList.toggle('adx-nav--mobile-open');
     }
+
+    // Text Input interactive playground
+    (function() {
+      var warningIconSVG = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5L14.5 13H1.5L8 1.5Z" stroke="var(--text-warning)" stroke-width="1.2" stroke-linejoin="round" fill="none"/><line x1="8" y1="6.5" x2="8" y2="9.5" stroke="var(--text-warning)" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="11.25" r="0.75" fill="var(--text-warning)"/></svg>';
+      var errorIconSVG = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="var(--text-error)" stroke-width="1.2" fill="none"/><line x1="8" y1="5" x2="8" y2="8.5" stroke="var(--text-error)" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="10.5" r="0.75" fill="var(--text-error)"/></svg>';
+
+      var ctrlState = document.getElementById('ti-ctrl-state');
+      var ctrlLabel = document.getElementById('ti-ctrl-label');
+      var ctrlPlaceholder = document.getElementById('ti-ctrl-placeholder');
+      var ctrlMessage = document.getElementById('ti-ctrl-message');
+      var liveRoot = document.getElementById('ti-live');
+      var liveLabel = document.getElementById('ti-live-label');
+      var liveField = document.getElementById('ti-live-field');
+      var liveIcon = document.getElementById('ti-live-icon');
+      var liveMessage = document.getElementById('ti-live-message');
+
+      function updateTextInput() {
+        liveRoot.className = 'adx-text-input';
+        var stateClass = ctrlState.value;
+        if (stateClass) liveRoot.classList.add(stateClass);
+
+        liveLabel.textContent = ctrlLabel.value;
+        liveField.placeholder = ctrlPlaceholder.value;
+        liveField.disabled = stateClass === 'adx-text-input--disabled';
+
+        var isWarning = stateClass === 'adx-text-input--warning';
+        var isError = stateClass === 'adx-text-input--error';
+        if (isWarning) {
+          liveIcon.innerHTML = warningIconSVG;
+          liveIcon.style.display = '';
+        } else if (isError) {
+          liveIcon.innerHTML = errorIconSVG;
+          liveIcon.style.display = '';
+        } else {
+          liveIcon.style.display = 'none';
+        }
+
+        if ((isWarning || isError) && ctrlMessage.value) {
+          liveMessage.textContent = ctrlMessage.value;
+          liveMessage.style.display = '';
+        } else {
+          liveMessage.style.display = 'none';
+        }
+      }
+
+      ctrlState.addEventListener('change', updateTextInput);
+      ctrlLabel.addEventListener('input', updateTextInput);
+      ctrlPlaceholder.addEventListener('input', updateTextInput);
+      ctrlMessage.addEventListener('input', updateTextInput);
+    })();
   </script>
 
 </body>

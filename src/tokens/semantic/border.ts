@@ -56,9 +56,8 @@ export const border = {
 
   /**
    * Focus border - Border color for keyboard focus states
-   * ⚠️ THEME-AWARE: This value changes based on the active theme
-   * Default: Placeholder - will be overridden by theme
-   * Usage: Focused inputs, buttons, interactive elements (typically with additional ring)
+   * Always #c7e4f9 (blue-200) across all themes — not brand-colored
+   * Usage: Focused inputs, buttons, interactive elements (via --focus-ring box-shadow)
    */
   focus: '#c7e4f9', // blue-200, Figma focus ring color
 

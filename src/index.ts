@@ -162,6 +162,9 @@ export type { Tokens } from './react/useTokens';
 export { Button } from './react/Button';
 export type { ButtonProps } from './react/Button';
 
+export { TextInput } from './react/TextInput';
+export type { TextInputProps, TextInputState } from './react/TextInput';
+
 // ============================================================================
 // NOTE: Primitives are NOT exported
 // ============================================================================
