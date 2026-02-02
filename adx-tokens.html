@@ -3,592 +3,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Almanac DX Design Tokens Preview</title>
+  <title>Tokens — Almanac DX UI Kit</title>
   <link rel="stylesheet" href="src/tokens/styles/fonts.css">
   <link rel="stylesheet" href="src/tokens/styles/tokens.css">
   <link rel="stylesheet" href="src/tokens/styles/layout.css">
   <link rel="stylesheet" href="src/tokens/styles/button.css">
   <link rel="stylesheet" href="src/tokens/styles/text-input.css">
-  <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: var(--font-family-trade-gothic);
-      font-size: var(--font-size-16);
-      line-height: var(--line-height-150);
-      color: var(--text-primary);
-      background: var(--background-page);
-    }
-
-    /* Top bar styling */
-    .adx-topbar {
-      background: var(--background-primary);
-      border-bottom: var(--border-width-thin) solid var(--border-subtle);
-      justify-content: space-between;
-    }
-
-    .topbar-title {
-      font-size: var(--font-size-14);
-      font-weight: var(--font-weight-bold);
-      letter-spacing: var(--letter-spacing-tight);
-    }
-
-    .theme-switcher {
-      display: flex;
-      gap: var(--spacing-8);
-    }
-
-    .theme-btn {
-      padding: var(--spacing-4) var(--spacing-12);
-      border: var(--border-width-thin) solid var(--border-subtle);
-      border-radius: var(--border-radius-md);
-      font-family: var(--font-family-trade-gothic);
-      font-size: var(--font-size-12);
-      font-weight: var(--font-weight-medium);
-      cursor: pointer;
-      background: var(--background-primary);
-      color: var(--text-primary);
-      transition: all 0.2s;
-    }
-
-    .theme-btn:hover {
-      border-color: var(--border-brand);
-      color: var(--text-brand);
-    }
-
-    .theme-btn.active {
-      background: var(--background-brand);
-      color: var(--text-reverse);
-      border-color: var(--background-brand);
-    }
-
-    /* Side nav styling */
-    .adx-nav {
-      background: var(--background-light);
-      border-right: var(--border-width-thin) solid var(--border-subtle);
-    }
-
-    .nav-items {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-4);
-      padding: var(--spacing-16) var(--spacing-12);
-    }
-
-    .nav-item {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-12);
-      padding: var(--spacing-8) var(--spacing-12);
-      border-radius: var(--border-radius-md);
-      font-size: var(--font-size-14);
-      color: var(--text-secondary);
-      cursor: pointer;
-      text-decoration: none;
-      white-space: nowrap;
-      overflow: hidden;
-    }
-
-    .nav-item:hover {
-      background: var(--background-medium);
-      color: var(--text-primary);
-    }
-
-    .nav-item.active {
-      background: var(--background-brand-subtle);
-      color: var(--text-brand);
-      font-weight: var(--font-weight-medium);
-    }
-
-    .nav-icon {
-      width: 20px;
-      height: 20px;
-      border-radius: var(--border-radius-sm);
-      background: var(--background-dark);
-      flex-shrink: 0;
-    }
-
-    .nav-item.active .nav-icon {
-      background: var(--background-brand);
-    }
-
-    /* Nav toggle button */
-    .nav-toggle {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      padding: var(--spacing-12);
-      border: none;
-      background: none;
-      cursor: pointer;
-      color: var(--text-secondary);
-      font-size: var(--font-size-12);
-      border-top: var(--border-width-thin) solid var(--border-subtle);
-    }
-
-    .nav-toggle:hover {
-      background: var(--background-medium);
-    }
-
-    /* Mobile nav trigger in top bar */
-    .adx-mobile-nav-trigger {
-      align-items: center;
-      gap: var(--spacing-8);
-      background: none;
-      border: var(--border-width-thin) solid var(--border-subtle);
-      border-radius: var(--border-radius-md);
-      padding: var(--spacing-4) var(--spacing-8);
-      cursor: pointer;
-      font-family: var(--font-family-trade-gothic);
-      font-size: var(--font-size-12);
-      color: var(--text-primary);
-    }
-
-    /* Section content spacing */
-    .section-inner {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-16);
-    }
-
-    .section-title {
-      font-size: var(--font-size-24);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-primary);
-    }
-
-    .section-subtitle {
-      font-size: var(--font-size-14);
-      color: var(--text-secondary);
-    }
-
-    /* Color swatches */
-    .swatch-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
-      gap: var(--spacing-12);
-    }
-
-    .swatch {
-      border: var(--border-width-thin) solid var(--border-subtle);
-      border-radius: var(--border-radius-lg);
-      overflow: hidden;
-    }
-
-    .swatch-color {
-      height: 64px;
-    }
-
-    .swatch-info {
-      padding: var(--spacing-8) var(--spacing-12);
-    }
-
-    .swatch-name {
-      font-size: var(--font-size-12);
-      font-weight: var(--font-weight-semibold);
-      color: var(--text-primary);
-    }
-
-    .swatch-var {
-      font-size: var(--font-size-10);
-      color: var(--text-secondary);
-      font-family: monospace;
-    }
-
-    .swatch-hex {
-      font-size: var(--font-size-10);
-      color: var(--text-tertiary);
-      font-family: monospace;
-    }
-
-    /* Color table rows */
-    .color-table {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: var(--font-size-14);
-    }
-
-    .color-table th {
-      text-align: left;
-      padding: var(--spacing-8) var(--spacing-12);
-      font-weight: var(--font-weight-bold);
-      font-size: var(--font-size-12);
-      color: var(--text-tertiary);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border-bottom: var(--border-width-thin) solid var(--border-subtle);
-    }
-
-    .color-table td {
-      padding: var(--spacing-8) var(--spacing-12);
-      border-bottom: var(--border-width-thin) solid var(--border-subtle);
-      vertical-align: middle;
-    }
-
-    .color-table tr:last-child td {
-      border-bottom: none;
-    }
-
-    .color-dot {
-      display: inline-block;
-      width: 24px;
-      height: 24px;
-      border-radius: var(--border-radius-md);
-      border: var(--border-width-thin) solid var(--border-subtle);
-      vertical-align: middle;
-    }
-
-    .color-table .token-name {
-      font-family: monospace;
-      font-size: var(--font-size-12);
-      font-weight: var(--font-weight-bold);
-      color: var(--text-primary);
-    }
-
-    .color-table .primitive-ref {
-      font-family: monospace;
-      font-size: var(--font-size-12);
-      color: var(--text-secondary);
-    }
-
-    .color-table .hex-val {
-      font-family: monospace;
-      font-size: var(--font-size-12);
-      color: var(--text-tertiary);
-    }
-
-    .color-table .theme-badge {
-      display: inline-block;
-      font-size: var(--font-size-10);
-      padding: 1px 6px;
-      border-radius: var(--border-radius-full);
-      background: var(--background-brand-subtle);
-      color: var(--text-brand);
-      font-weight: var(--font-weight-bold);
-      margin-left: 4px;
-    }
-
-    .color-section-label {
-      font-size: var(--font-size-12);
-      font-weight: var(--font-weight-bold);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-tertiary);
-      padding: var(--spacing-16) 0 var(--spacing-4) 0;
-    }
-
-    /* Text Input playground controls */
-    .input-playground-controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: var(--spacing-16);
-      padding-bottom: var(--spacing-16);
-      margin-bottom: var(--spacing-16);
-      border-bottom: var(--border-width-thin) solid var(--border-subtle);
-    }
-
-    .input-control-group {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-4);
-    }
-
-    .input-control-group label {
-      font-size: var(--font-size-12);
-      font-weight: var(--font-weight-bold);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-tertiary);
-    }
-
-    .input-control-group select,
-    .input-control-group input[type="text"] {
-      padding: var(--spacing-8) var(--spacing-12);
-      border: var(--border-width-thin) solid var(--border-subtle);
-      border-radius: var(--border-radius-md);
-      font-size: var(--font-size-14);
-      font-family: var(--font-family-trade-gothic);
-    }
-
-    .input-states-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: var(--spacing-24);
-    }
-
-    .input-state-card {
-      background: var(--background-primary);
-      border: var(--border-width-thin) solid var(--border-subtle);
-      border-radius: var(--border-radius-lg);
-      padding: var(--spacing-16);
-    }
-
-    .input-state-card__title {
-      font-size: var(--font-size-12);
-      font-weight: var(--font-weight-bold);
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-tertiary);
-      margin-bottom: var(--spacing-12);
-    }
-
-    /* Component examples */
-    .component-row {
-      display: flex;
-      gap: var(--spacing-16);
-      flex-wrap: wrap;
-      align-items: flex-start;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      padding: var(--spacing-12) var(--spacing-24);
-      border-radius: var(--border-radius-md);
-      font-family: var(--font-family-trade-gothic);
-      font-size: var(--font-size-16);
-      font-weight: var(--font-weight-medium);
-      border: var(--border-width-thin) solid transparent;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-primary {
-      background: var(--background-action);
-      color: var(--text-reverse);
-    }
-    .btn-primary:hover {
-      background: var(--background-action-hover);
-    }
-
-    .btn-secondary {
-      background: var(--background-action-secondary);
-      color: var(--text-primary);
-      border-color: var(--border-dark);
-    }
-    .btn-secondary:hover {
-      background: var(--background-action-secondary-hover);
-    }
-
-    .btn-outline {
-      background: transparent;
-      color: var(--text-brand);
-      border-color: var(--border-brand);
-    }
-    .btn-outline:hover {
-      background: var(--background-brand);
-      color: var(--text-reverse);
-    }
-
-    .btn-disabled {
-      background: var(--background-action-disabled);
-      color: var(--text-disabled);
-      cursor: not-allowed;
-    }
-
-    /* Card */
-    .card {
-      background: var(--background-primary);
-      border: var(--border-width-thin) solid var(--border-subtle);
-      border-radius: var(--border-radius-lg);
-      padding: var(--spacing-24);
-      box-shadow: var(--elevation-200);
-      max-width: 400px;
-    }
-
-    .card-title {
-      font-size: var(--font-size-20);
-      font-weight: var(--font-weight-semibold);
-      padding-bottom: var(--spacing-8);
-    }
-
-    .card-body {
-      color: var(--text-secondary);
-      font-size: var(--font-size-14);
-      padding-bottom: var(--spacing-16);
-    }
-
-    .card-link {
-      color: var(--text-link);
-      text-decoration: none;
-      font-weight: var(--font-weight-medium);
-    }
-    .card-link:hover {
-      color: var(--text-link-hover);
-      text-decoration: underline;
-    }
-
-    /* Alert boxes */
-    .alert {
-      padding: var(--spacing-12) var(--spacing-16);
-      border-radius: var(--border-radius-md);
-      border-left: var(--border-width-thin) solid;
-      font-size: var(--font-size-14);
-    }
-
-    .alert-success {
-      background: var(--background-success-subtle);
-      border-color: var(--border-success);
-      color: var(--text-success);
-    }
-    .alert-error {
-      background: var(--background-error-subtle);
-      border-color: var(--border-error);
-      color: var(--text-error);
-    }
-    .alert-warning {
-      background: var(--background-warning-subtle);
-      border-color: var(--border-warning);
-      color: var(--text-warning);
-    }
-    .alert-info {
-      background: var(--background-information-subtle);
-      border-color: var(--border-information);
-      color: var(--text-information);
-    }
-    .alert-discovery {
-      background: var(--background-discovery-subtle);
-      border-color: var(--border-discovery);
-      color: var(--text-discovery);
-    }
-
-    /* Typography preview */
-    .type-sample {
-      padding-bottom: var(--spacing-16);
-    }
-    .type-label {
-      font-size: var(--font-size-10);
-      text-transform: uppercase;
-      letter-spacing: var(--letter-spacing-loose);
-      color: var(--text-secondary);
-      padding-bottom: var(--spacing-4);
-    }
-
-    /* Elevation preview */
-    .elevation-grid {
-      display: flex;
-      gap: var(--spacing-24);
-      flex-wrap: wrap;
-    }
-    .elevation-box {
-      width: 120px;
-      height: 120px;
-      background: var(--background-primary);
-      border-radius: var(--border-radius-lg);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: var(--font-size-14);
-      font-weight: var(--font-weight-medium);
-      color: var(--text-secondary);
-    }
-
-    /* Background strips */
-    .bg-strip {
-      display: flex;
-      align-items: center;
-      padding: var(--spacing-12) var(--spacing-16);
-      border-radius: var(--border-radius-md);
-      font-size: var(--font-size-14);
-      font-weight: var(--font-weight-medium);
-    }
-    .bg-strip .label {
-      flex: 1;
-    }
-    .bg-strip .value {
-      font-family: monospace;
-      font-size: var(--font-size-12);
-      opacity: 0.7;
-    }
-    .bg-strips {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-8);
-    }
-
-    /* Focus ring demo */
-    .focus-demo {
-      padding: var(--spacing-8) var(--spacing-16);
-      border: var(--border-width-thin) solid var(--border-subtle);
-      border-radius: var(--border-radius-md);
-      outline: 3px solid var(--border-focus);
-      outline-offset: 2px;
-      display: inline-block;
-      font-family: var(--font-family-trade-gothic);
-      font-size: var(--font-size-14);
-      background: var(--background-primary);
-    }
-
-    /* Dark section content */
-    .dark-section {
-      background: var(--background-reverse);
-      border-radius: var(--border-radius-lg);
-      padding: var(--spacing-24);
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-16);
-    }
-    .dark-section .section-title {
-      color: var(--text-reverse);
-    }
-    .dark-section p {
-      color: var(--text-reverse);
-      opacity: 0.8;
-      font-size: var(--font-size-14);
-    }
-
-    /* Spacing bars */
-    .spacing-scale {
-      display: flex;
-      flex-direction: column;
-      gap: var(--spacing-4);
-    }
-    .spacing-row {
-      display: flex;
-      align-items: center;
-      gap: var(--spacing-12);
-    }
-    .spacing-label {
-      width: 80px;
-      font-size: var(--font-size-12);
-      color: var(--text-secondary);
-      text-align: right;
-    }
-    .spacing-bar {
-      height: 16px;
-      background: var(--background-brand);
-      border-radius: 2px;
-    }
-
-    /* Border radius preview */
-    .radius-grid {
-      display: flex;
-      gap: var(--spacing-16);
-      flex-wrap: wrap;
-      align-items: end;
-    }
-    .radius-item {
-      text-align: center;
-    }
-    .radius-box {
-      width: 48px;
-      height: 48px;
-      background: var(--background-brand);
-    }
-    .radius-label {
-      font-size: var(--font-size-10);
-      color: var(--text-secondary);
-      padding-top: var(--spacing-4);
-    }
-
-    /* Footer text */
-    .footer-text {
-      color: var(--text-tertiary);
-      font-size: var(--font-size-12);
-      text-align: center;
-    }
-  </style>
+  <link rel="stylesheet" href="src/tokens/styles/select.css">
+  <link rel="stylesheet" href="adx.css">
 </head>
 <body>
 
@@ -597,7 +19,7 @@
     <!-- Top Bar -->
     <nav class="adx-topbar">
       <button class="adx-mobile-nav-trigger" onclick="toggleMobileNav()">Menu</button>
-      <span class="topbar-title">Almanac DX Design Tokens</span>
+      <span class="topbar-title">Almanac DX UI Kit</span>
       <div class="theme-switcher">
         <button class="theme-btn active" onclick="setTheme('fcma')" id="btn-fcma">FCMA</button>
         <button class="theme-btn" onclick="setTheme('rural-first')" id="btn-rural">Rural 1st</button>
@@ -610,41 +32,37 @@
       <!-- Side Navigation -->
       <nav class="adx-nav adx-nav--open" id="side-nav">
         <div class="nav-items">
-          <a href="#semantic-colors" class="nav-item active">
+          <a href="adx.html" class="nav-item">
             <div class="nav-icon"></div>
-            <span>Semantic Colors</span>
+            <span>Overview</span>
           </a>
-          <a href="#buttons" class="nav-item">
+          <a href="adx-tokens.html" class="nav-item active">
+            <div class="nav-icon"></div>
+            <span>Tokens</span>
+          </a>
+          <a href="adx-buttons.html" class="nav-item">
             <div class="nav-icon"></div>
             <span>Buttons</span>
           </a>
-          <a href="#text-inputs" class="nav-item">
+          <a href="adx-text-inputs.html" class="nav-item">
             <div class="nav-icon"></div>
             <span>Text Inputs</span>
           </a>
-          <a href="#cards" class="nav-item">
+          <a href="adx-selects.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Selects</span>
+          </a>
+          <a href="adx-menus.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Menus</span>
+          </a>
+          <a href="adx-cards.html" class="nav-item">
             <div class="nav-icon"></div>
             <span>Cards</span>
           </a>
-          <a href="#alerts" class="nav-item">
+          <a href="adx-alerts.html" class="nav-item">
             <div class="nav-icon"></div>
             <span>Alerts</span>
-          </a>
-          <a href="#borders" class="nav-item">
-            <div class="nav-icon"></div>
-            <span>Borders</span>
-          </a>
-          <a href="#typography" class="nav-item">
-            <div class="nav-icon"></div>
-            <span>Typography</span>
-          </a>
-          <a href="#elevation" class="nav-item">
-            <div class="nav-icon"></div>
-            <span>Elevation</span>
-          </a>
-          <a href="#spacing" class="nav-item">
-            <div class="nav-icon"></div>
-            <span>Spacing</span>
           </a>
         </div>
         <button class="nav-toggle" onclick="toggleNav()">
@@ -658,7 +76,6 @@
         <!-- Main Content -->
         <main class="adx-main">
 
-          <!-- Semantic Colors — content-l, light background -->
           <section class="adx-section" id="semantic-colors" style="background: var(--background-light);">
             <div class="adx-content-l">
               <div class="section-inner">
@@ -778,240 +195,6 @@
             </div>
           </section>
 
-          <!-- Buttons — content-m, medium background -->
-          <section class="adx-section" id="buttons" style="background: var(--background-medium);">
-            <div class="adx-content-m">
-              <div class="section-inner">
-                <h2 class="section-title">Button Components</h2>
-                <p class="section-subtitle">Buttons matching Figma spec — sizes, types, icon variants, and states.</p>
-
-                <div class="type-label">Primary — Sizes</div>
-                <div class="component-row">
-                  <button class="adx-btn adx-btn--primary adx-btn--large">Large</button>
-                  <button class="adx-btn adx-btn--primary adx-btn--medium">Medium</button>
-                  <button class="adx-btn adx-btn--primary adx-btn--small">Small</button>
-                  <button class="adx-btn adx-btn--primary adx-btn--xsmall">XSmall</button>
-                </div>
-
-                <div class="type-label">Secondary — Sizes</div>
-                <div class="component-row">
-                  <button class="adx-btn adx-btn--secondary adx-btn--large">Large</button>
-                  <button class="adx-btn adx-btn--secondary adx-btn--medium">Medium</button>
-                  <button class="adx-btn adx-btn--secondary adx-btn--small">Small</button>
-                  <button class="adx-btn adx-btn--secondary adx-btn--xsmall">XSmall</button>
-                </div>
-
-                <div class="type-label">Icon Buttons</div>
-                <div class="component-row">
-                  <button class="adx-btn adx-btn--icon" aria-label="Menu">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M3 5h14v2H3V5zm0 4h14v2H3V9zm0 4h14v2H3v-2z"/></svg>
-                  </button>
-                  <button class="adx-btn adx-btn--icon" aria-label="Search">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><circle cx="8" cy="8" r="5.5" stroke="currentColor" stroke-width="2" fill="none"/><line x1="12" y1="12" x2="17" y2="17" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-                  </button>
-                  <button class="adx-btn adx-btn--icon-brand" aria-label="Add">
-                    <svg width="20" height="20" viewBox="0 0 20 20" fill="currentColor"><path d="M9 3v6H3v2h6v6h2v-6h6V9h-6V3H9z"/></svg>
-                  </button>
-                </div>
-
-                <div class="type-label">States</div>
-                <div class="component-row">
-                  <button class="adx-btn adx-btn--primary adx-btn--medium">Default</button>
-                  <button class="adx-btn adx-btn--primary adx-btn--medium" disabled>Disabled</button>
-                  <button class="adx-btn adx-btn--primary adx-btn--medium adx-btn--loading">Loading...</button>
-                  <button class="adx-btn adx-btn--secondary adx-btn--medium" disabled>Disabled</button>
-                  <button class="adx-btn adx-btn--secondary adx-btn--medium adx-btn--loading">Loading...</button>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Text Inputs — content-m, light background -->
-          <section class="adx-section" id="text-inputs" style="background: var(--background-light);">
-            <div class="adx-content-m">
-              <div class="section-inner">
-                <h2 class="section-title">Text Input Component</h2>
-                <p class="section-subtitle">Text input fields matching Figma spec — all 6 states with interactive playground.</p>
-
-                <div class="type-label">All States</div>
-                <div class="input-states-grid">
-
-                  <!-- Default -->
-                  <div class="input-state-card">
-                    <div class="input-state-card__title">Default</div>
-                    <div class="adx-text-input">
-                      <label class="adx-text-input__label">Label</label>
-                      <div class="adx-text-input__focus-ring">
-                        <div class="adx-text-input__content">
-                          <input class="adx-text-input__input" placeholder="Hint Text" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Hover -->
-                  <div class="input-state-card">
-                    <div class="input-state-card__title">Hover</div>
-                    <div class="adx-text-input adx-text-input--hover">
-                      <label class="adx-text-input__label">Label</label>
-                      <div class="adx-text-input__focus-ring">
-                        <div class="adx-text-input__content">
-                          <input class="adx-text-input__input" placeholder="Hint Text" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Focus -->
-                  <div class="input-state-card">
-                    <div class="input-state-card__title">Focus</div>
-                    <div class="adx-text-input adx-text-input--focus">
-                      <label class="adx-text-input__label">Label</label>
-                      <div class="adx-text-input__focus-ring">
-                        <div class="adx-text-input__content">
-                          <input class="adx-text-input__input" placeholder="Hint Text" />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Warning -->
-                  <div class="input-state-card">
-                    <div class="input-state-card__title">Warning</div>
-                    <div class="adx-text-input adx-text-input--warning">
-                      <label class="adx-text-input__label">Label</label>
-                      <div class="adx-text-input__focus-ring">
-                        <div class="adx-text-input__content">
-                          <input class="adx-text-input__input" placeholder="Hint Text" />
-                          <span class="adx-text-input__trailing-icon">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5L14.5 13H1.5L8 1.5Z" stroke="var(--text-warning)" stroke-width="1.2" stroke-linejoin="round" fill="none"/><line x1="8" y1="6.5" x2="8" y2="9.5" stroke="var(--text-warning)" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="11.25" r="0.75" fill="var(--text-warning)"/></svg>
-                          </span>
-                        </div>
-                      </div>
-                      <p class="adx-text-input__message">Warning Message</p>
-                    </div>
-                  </div>
-
-                  <!-- Error -->
-                  <div class="input-state-card">
-                    <div class="input-state-card__title">Error</div>
-                    <div class="adx-text-input adx-text-input--error">
-                      <label class="adx-text-input__label">Label</label>
-                      <div class="adx-text-input__focus-ring">
-                        <div class="adx-text-input__content">
-                          <input class="adx-text-input__input" placeholder="Hint Text" />
-                          <span class="adx-text-input__trailing-icon">
-                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="var(--text-error)" stroke-width="1.2" fill="none"/><line x1="8" y1="5" x2="8" y2="8.5" stroke="var(--text-error)" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="10.5" r="0.75" fill="var(--text-error)"/></svg>
-                          </span>
-                        </div>
-                      </div>
-                      <p class="adx-text-input__message">Error Message</p>
-                    </div>
-                  </div>
-
-                  <!-- Disabled -->
-                  <div class="input-state-card">
-                    <div class="input-state-card__title">Disabled</div>
-                    <div class="adx-text-input adx-text-input--disabled">
-                      <label class="adx-text-input__label">Label</label>
-                      <div class="adx-text-input__focus-ring">
-                        <div class="adx-text-input__content">
-                          <input class="adx-text-input__input" placeholder="Hint Text" disabled />
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-
-                <div class="type-label" style="margin-top: var(--spacing-32);">Interactive Playground</div>
-                <div class="input-playground-controls">
-                  <div class="input-control-group">
-                    <label for="ti-ctrl-state">State</label>
-                    <select id="ti-ctrl-state">
-                      <option value="">Default</option>
-                      <option value="adx-text-input--hover">Hover</option>
-                      <option value="adx-text-input--focus">Focus</option>
-                      <option value="adx-text-input--warning">Warning</option>
-                      <option value="adx-text-input--error">Error</option>
-                      <option value="adx-text-input--disabled">Disabled</option>
-                    </select>
-                  </div>
-                  <div class="input-control-group">
-                    <label for="ti-ctrl-label">Label</label>
-                    <input type="text" id="ti-ctrl-label" value="Email Address" />
-                  </div>
-                  <div class="input-control-group">
-                    <label for="ti-ctrl-placeholder">Placeholder</label>
-                    <input type="text" id="ti-ctrl-placeholder" value="you@example.com" />
-                  </div>
-                  <div class="input-control-group">
-                    <label for="ti-ctrl-message">Message</label>
-                    <input type="text" id="ti-ctrl-message" value="This field is required" />
-                  </div>
-                </div>
-
-                <div style="max-width: 360px;">
-                  <div id="ti-live" class="adx-text-input">
-                    <label class="adx-text-input__label" id="ti-live-label">Email Address</label>
-                    <div class="adx-text-input__focus-ring">
-                      <div class="adx-text-input__content">
-                        <input class="adx-text-input__input" id="ti-live-field" placeholder="you@example.com" />
-                        <span class="adx-text-input__trailing-icon" id="ti-live-icon" style="display:none;"></span>
-                      </div>
-                    </div>
-                    <p class="adx-text-input__message" id="ti-live-message" style="display:none;"></p>
-                  </div>
-                </div>
-
-              </div>
-            </div>
-          </section>
-
-          <!-- Cards — content-l, light background -->
-          <section class="adx-section" id="cards" style="background: var(--background-light);">
-            <div class="adx-content-l">
-              <div class="section-inner">
-                <h2 class="section-title">Card Component</h2>
-                <p class="section-subtitle">Combining background, border, text, elevation, and typography tokens.</p>
-                <div class="component-row">
-                  <div class="card">
-                    <div class="card-title">Account Overview</div>
-                    <div class="card-body">
-                      Your Farm Credit account is in good standing. Review your recent transactions and manage your settings.
-                    </div>
-                    <a href="#" class="card-link">View Details &rarr;</a>
-                  </div>
-                  <div class="card" style="box-shadow: var(--elevation-300);">
-                    <div class="card-title">Loan Application</div>
-                    <div class="card-body">
-                      Start your agricultural loan application. Our team will review and respond within 2 business days.
-                    </div>
-                    <button class="btn btn-primary" style="width: 100%; justify-content: center;">Apply Now</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Alerts — content-s, medium background -->
-          <section class="adx-section" id="alerts" style="background: var(--background-medium);">
-            <div class="adx-content-s">
-              <div class="section-inner">
-                <h2 class="section-title">System Status</h2>
-                <p class="section-subtitle">Success, error, warning, information, and discovery states.</p>
-                <div style="display: flex; flex-direction: column; gap: var(--spacing-12);">
-                  <div class="alert alert-success">Your changes have been saved successfully.</div>
-                  <div class="alert alert-error">Unable to process your request. Please try again.</div>
-                  <div class="alert alert-warning">Your session will expire in 5 minutes.</div>
-                  <div class="alert alert-info">A new version of the application is available.</div>
-                  <div class="alert alert-discovery">Discover new features available in this release.</div>
-                </div>
-              </div>
-            </div>
-          </section>
-
-          <!-- Borders — content-m, light background -->
           <section class="adx-section" id="borders" style="background: var(--background-light);">
             <div class="adx-content-m">
               <div class="section-inner">
@@ -1302,12 +485,12 @@
 
         </main>
 
-        <!-- Footer — outside main -->
+        <!-- Footer -->
         <footer class="adx-footer">
           <section class="adx-section" style="background: var(--background-light);">
             <div class="adx-content-l">
               <p class="footer-text">
-                Almanac DX Design Tokens v0.1.0 &mdash; Layout framework preview using <code>layout.css</code> classes
+                Almanac DX UI Kit v0.1.0
               </p>
             </div>
           </section>
@@ -1325,7 +508,6 @@
       document.getElementById('btn-fcma').classList.toggle('active', themeId === 'fcma');
       document.getElementById('btn-rural').classList.toggle('active', themeId === 'rural-first');
     }
-
     function toggleNav() {
       var nav = document.getElementById('side-nav');
       var label = document.getElementById('nav-toggle-label');
@@ -1336,61 +518,10 @@
         label.textContent = 'Expand';
       }
     }
-
     function toggleMobileNav() {
       var nav = document.getElementById('side-nav');
       nav.classList.toggle('adx-nav--mobile-open');
     }
-
-    // Text Input interactive playground
-    (function() {
-      var warningIconSVG = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5L14.5 13H1.5L8 1.5Z" stroke="var(--text-warning)" stroke-width="1.2" stroke-linejoin="round" fill="none"/><line x1="8" y1="6.5" x2="8" y2="9.5" stroke="var(--text-warning)" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="11.25" r="0.75" fill="var(--text-warning)"/></svg>';
-      var errorIconSVG = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="var(--text-error)" stroke-width="1.2" fill="none"/><line x1="8" y1="5" x2="8" y2="8.5" stroke="var(--text-error)" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="10.5" r="0.75" fill="var(--text-error)"/></svg>';
-
-      var ctrlState = document.getElementById('ti-ctrl-state');
-      var ctrlLabel = document.getElementById('ti-ctrl-label');
-      var ctrlPlaceholder = document.getElementById('ti-ctrl-placeholder');
-      var ctrlMessage = document.getElementById('ti-ctrl-message');
-      var liveRoot = document.getElementById('ti-live');
-      var liveLabel = document.getElementById('ti-live-label');
-      var liveField = document.getElementById('ti-live-field');
-      var liveIcon = document.getElementById('ti-live-icon');
-      var liveMessage = document.getElementById('ti-live-message');
-
-      function updateTextInput() {
-        liveRoot.className = 'adx-text-input';
-        var stateClass = ctrlState.value;
-        if (stateClass) liveRoot.classList.add(stateClass);
-
-        liveLabel.textContent = ctrlLabel.value;
-        liveField.placeholder = ctrlPlaceholder.value;
-        liveField.disabled = stateClass === 'adx-text-input--disabled';
-
-        var isWarning = stateClass === 'adx-text-input--warning';
-        var isError = stateClass === 'adx-text-input--error';
-        if (isWarning) {
-          liveIcon.innerHTML = warningIconSVG;
-          liveIcon.style.display = '';
-        } else if (isError) {
-          liveIcon.innerHTML = errorIconSVG;
-          liveIcon.style.display = '';
-        } else {
-          liveIcon.style.display = 'none';
-        }
-
-        if ((isWarning || isError) && ctrlMessage.value) {
-          liveMessage.textContent = ctrlMessage.value;
-          liveMessage.style.display = '';
-        } else {
-          liveMessage.style.display = 'none';
-        }
-      }
-
-      ctrlState.addEventListener('change', updateTextInput);
-      ctrlLabel.addEventListener('input', updateTextInput);
-      ctrlPlaceholder.addEventListener('input', updateTextInput);
-      ctrlMessage.addEventListener('input', updateTextInput);
-    })();
   </script>
 
 </body>

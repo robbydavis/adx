@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-fcma">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Inputs — Almanac DX UI Kit</title>
+  <link rel="stylesheet" href="src/tokens/styles/fonts.css">
+  <link rel="stylesheet" href="src/tokens/styles/tokens.css">
+  <link rel="stylesheet" href="src/tokens/styles/layout.css">
+  <link rel="stylesheet" href="src/tokens/styles/button.css">
+  <link rel="stylesheet" href="src/tokens/styles/text-input.css">
+  <link rel="stylesheet" href="src/tokens/styles/select.css">
+  <link rel="stylesheet" href="adx.css">
+</head>
+<body>
+
+  <div class="adx-layout">
+
+    <!-- Top Bar -->
+    <nav class="adx-topbar">
+      <button class="adx-mobile-nav-trigger" onclick="toggleMobileNav()">Menu</button>
+      <span class="topbar-title">Almanac DX UI Kit</span>
+      <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('fcma')" id="btn-fcma">FCMA</button>
+        <button class="theme-btn" onclick="setTheme('rural-first')" id="btn-rural">Rural 1st</button>
+      </div>
+    </nav>
+
+    <!-- Wrapper: Nav + Content -->
+    <div class="adx-wrapper">
+
+      <!-- Side Navigation -->
+      <nav class="adx-nav adx-nav--open" id="side-nav">
+        <div class="nav-items">
+          <a href="adx.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Overview</span>
+          </a>
+          <a href="adx-tokens.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Tokens</span>
+          </a>
+          <a href="adx-buttons.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Buttons</span>
+          </a>
+          <a href="adx-text-inputs.html" class="nav-item active">
+            <div class="nav-icon"></div>
+            <span>Text Inputs</span>
+          </a>
+          <a href="adx-selects.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Selects</span>
+          </a>
+          <a href="adx-menus.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Menus</span>
+          </a>
+          <a href="adx-cards.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Cards</span>
+          </a>
+          <a href="adx-alerts.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Alerts</span>
+          </a>
+        </div>
+        <button class="nav-toggle" onclick="toggleNav()">
+          <span id="nav-toggle-label">Collapse</span>
+        </button>
+      </nav>
+
+      <!-- Main + Footer wrapper -->
+      <div class="adx-main-wrapper">
+
+        <!-- Main Content -->
+        <main class="adx-main">
+
+          <section class="adx-section" id="text-inputs" style="background: var(--background-light);">
+            <div class="adx-content-m">
+              <div class="section-inner">
+                <h2 class="section-title">Text Input Component</h2>
+                <p class="section-subtitle">Text input fields matching Figma spec — all 6 states with interactive playground.</p>
+
+                <div class="type-label">All States</div>
+                <div class="input-states-grid">
+
+                  <!-- Default -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Default</div>
+                    <div class="adx-text-input">
+                      <label class="adx-text-input__label">Label</label>
+                      <div class="adx-text-input__focus-ring">
+                        <div class="adx-text-input__content">
+                          <input class="adx-text-input__input" placeholder="Hint Text" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Hover -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Hover</div>
+                    <div class="adx-text-input adx-text-input--hover">
+                      <label class="adx-text-input__label">Label</label>
+                      <div class="adx-text-input__focus-ring">
+                        <div class="adx-text-input__content">
+                          <input class="adx-text-input__input" placeholder="Hint Text" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Focus -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Focus</div>
+                    <div class="adx-text-input adx-text-input--focus">
+                      <label class="adx-text-input__label">Label</label>
+                      <div class="adx-text-input__focus-ring">
+                        <div class="adx-text-input__content">
+                          <input class="adx-text-input__input" placeholder="Hint Text" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Warning -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Warning</div>
+                    <div class="adx-text-input adx-text-input--warning">
+                      <label class="adx-text-input__label">Label</label>
+                      <div class="adx-text-input__focus-ring">
+                        <div class="adx-text-input__content">
+                          <input class="adx-text-input__input" placeholder="Hint Text" />
+                          <span class="adx-text-input__trailing-icon">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5L14.5 13H1.5L8 1.5Z" stroke="var(--text-warning)" stroke-width="1.2" stroke-linejoin="round" fill="none"/><line x1="8" y1="6.5" x2="8" y2="9.5" stroke="var(--text-warning)" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="11.25" r="0.75" fill="var(--text-warning)"/></svg>
+                          </span>
+                        </div>
+                      </div>
+                      <p class="adx-text-input__message">Warning Message</p>
+                    </div>
+                  </div>
+
+                  <!-- Error -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Error</div>
+                    <div class="adx-text-input adx-text-input--error">
+                      <label class="adx-text-input__label">Label</label>
+                      <div class="adx-text-input__focus-ring">
+                        <div class="adx-text-input__content">
+                          <input class="adx-text-input__input" placeholder="Hint Text" />
+                          <span class="adx-text-input__trailing-icon">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="var(--text-error)" stroke-width="1.2" fill="none"/><line x1="8" y1="5" x2="8" y2="8.5" stroke="var(--text-error)" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="10.5" r="0.75" fill="var(--text-error)"/></svg>
+                          </span>
+                        </div>
+                      </div>
+                      <p class="adx-text-input__message">Error Message</p>
+                    </div>
+                  </div>
+
+                  <!-- Disabled -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Disabled</div>
+                    <div class="adx-text-input adx-text-input--disabled">
+                      <label class="adx-text-input__label">Label</label>
+                      <div class="adx-text-input__focus-ring">
+                        <div class="adx-text-input__content">
+                          <input class="adx-text-input__input" placeholder="Hint Text" disabled />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Icon Variants -->
+                <div class="type-label" style="margin-top: var(--spacing-32);">Icon Variants</div>
+                <div class="input-states-grid">
+
+                  <!-- Leading Icon -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Leading Icon</div>
+                    <div class="adx-text-input">
+                      <label class="adx-text-input__label">Search</label>
+                      <div class="adx-text-input__focus-ring">
+                        <div class="adx-text-input__content">
+                          <span class="adx-text-input__leading-icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                          </span>
+                          <input class="adx-text-input__input" placeholder="Search..." />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Trailing Icon -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Trailing Icon</div>
+                    <div class="adx-text-input">
+                      <label class="adx-text-input__label">Email</label>
+                      <div class="adx-text-input__focus-ring">
+                        <div class="adx-text-input__content">
+                          <input class="adx-text-input__input" placeholder="you@example.com" />
+                          <span class="adx-text-input__trailing-icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Both Icons -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Leading + Trailing</div>
+                    <div class="adx-text-input">
+                      <label class="adx-text-input__label">Amount</label>
+                      <div class="adx-text-input__focus-ring">
+                        <div class="adx-text-input__content">
+                          <span class="adx-text-input__leading-icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                          </span>
+                          <input class="adx-text-input__input" placeholder="0.00" />
+                          <span class="adx-text-input__trailing-icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Leading Icon Disabled -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Leading + Disabled</div>
+                    <div class="adx-text-input adx-text-input--disabled">
+                      <label class="adx-text-input__label">Search</label>
+                      <div class="adx-text-input__focus-ring">
+                        <div class="adx-text-input__content">
+                          <span class="adx-text-input__leading-icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                          </span>
+                          <input class="adx-text-input__input" placeholder="Search..." disabled />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="type-label" style="margin-top: var(--spacing-32);">Interactive Playground</div>
+                <div class="input-playground-controls">
+                  <div class="input-control-group">
+                    <label for="ti-ctrl-state">State</label>
+                    <select id="ti-ctrl-state">
+                      <option value="">Default</option>
+                      <option value="adx-text-input--hover">Hover</option>
+                      <option value="adx-text-input--focus">Focus</option>
+                      <option value="adx-text-input--warning">Warning</option>
+                      <option value="adx-text-input--error">Error</option>
+                      <option value="adx-text-input--disabled">Disabled</option>
+                    </select>
+                  </div>
+                  <div class="input-control-group">
+                    <label for="ti-ctrl-label">Label</label>
+                    <input type="text" id="ti-ctrl-label" value="Email Address" />
+                  </div>
+                  <div class="input-control-group">
+                    <label for="ti-ctrl-placeholder">Placeholder</label>
+                    <input type="text" id="ti-ctrl-placeholder" value="you@example.com" />
+                  </div>
+                  <div class="input-control-group">
+                    <label for="ti-ctrl-message">Message</label>
+                    <input type="text" id="ti-ctrl-message" value="This field is required" />
+                  </div>
+                </div>
+
+                <div style="max-width: 360px;">
+                  <div id="ti-live" class="adx-text-input">
+                    <label class="adx-text-input__label" id="ti-live-label">Email Address</label>
+                    <div class="adx-text-input__focus-ring">
+                      <div class="adx-text-input__content">
+                        <input class="adx-text-input__input" id="ti-live-field" placeholder="you@example.com" />
+                        <span class="adx-text-input__trailing-icon" id="ti-live-icon" style="display:none;"></span>
+                      </div>
+                    </div>
+                    <p class="adx-text-input__message" id="ti-live-message" style="display:none;"></p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="adx-footer">
+          <section class="adx-section" style="background: var(--background-light);">
+            <div class="adx-content-l">
+              <p class="footer-text">
+                Almanac DX UI Kit v0.1.0
+              </p>
+            </div>
+          </section>
+        </footer>
+
+      </div><!-- /adx-main-wrapper -->
+
+    </div><!-- /adx-wrapper -->
+
+  </div><!-- /adx-layout -->
+
+  <script>
+    function setTheme(themeId) {
+      document.documentElement.className = 'theme-' + themeId;
+      document.getElementById('btn-fcma').classList.toggle('active', themeId === 'fcma');
+      document.getElementById('btn-rural').classList.toggle('active', themeId === 'rural-first');
+    }
+
+    function toggleNav() {
+      var nav = document.getElementById('side-nav');
+      var label = document.getElementById('nav-toggle-label');
+      nav.classList.toggle('adx-nav--open');
+      if (nav.classList.contains('adx-nav--open')) {
+        label.textContent = 'Collapse';
+      } else {
+        label.textContent = 'Expand';
+      }
+    }
+
+    function toggleMobileNav() {
+      var nav = document.getElementById('side-nav');
+      nav.classList.toggle('adx-nav--mobile-open');
+    }
+
+    // Text Input interactive playground
+    (function() {
+      var warningIconSVG = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5L14.5 13H1.5L8 1.5Z" stroke="var(--text-warning)" stroke-width="1.2" stroke-linejoin="round" fill="none"/><line x1="8" y1="6.5" x2="8" y2="9.5" stroke="var(--text-warning)" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="11.25" r="0.75" fill="var(--text-warning)"/></svg>';
+      var errorIconSVG = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="var(--text-error)" stroke-width="1.2" fill="none"/><line x1="8" y1="5" x2="8" y2="8.5" stroke="var(--text-error)" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="10.5" r="0.75" fill="var(--text-error)"/></svg>';
+
+      var ctrlState = document.getElementById('ti-ctrl-state');
+      var ctrlLabel = document.getElementById('ti-ctrl-label');
+      var ctrlPlaceholder = document.getElementById('ti-ctrl-placeholder');
+      var ctrlMessage = document.getElementById('ti-ctrl-message');
+      var liveRoot = document.getElementById('ti-live');
+      var liveLabel = document.getElementById('ti-live-label');
+      var liveField = document.getElementById('ti-live-field');
+      var liveIcon = document.getElementById('ti-live-icon');
+      var liveMessage = document.getElementById('ti-live-message');
+
+      function updateTextInput() {
+        liveRoot.className = 'adx-text-input';
+        var stateClass = ctrlState.value;
+        if (stateClass) liveRoot.classList.add(stateClass);
+
+        liveLabel.textContent = ctrlLabel.value;
+        liveField.placeholder = ctrlPlaceholder.value;
+        liveField.disabled = stateClass === 'adx-text-input--disabled';
+
+        var isWarning = stateClass === 'adx-text-input--warning';
+        var isError = stateClass === 'adx-text-input--error';
+        if (isWarning) {
+          liveIcon.innerHTML = warningIconSVG;
+          liveIcon.style.display = '';
+        } else if (isError) {
+          liveIcon.innerHTML = errorIconSVG;
+          liveIcon.style.display = '';
+        } else {
+          liveIcon.style.display = 'none';
+        }
+
+        if ((isWarning || isError) && ctrlMessage.value) {
+          liveMessage.textContent = ctrlMessage.value;
+          liveMessage.style.display = '';
+        } else {
+          liveMessage.style.display = 'none';
+        }
+      }
+
+      ctrlState.addEventListener('change', updateTextInput);
+      ctrlLabel.addEventListener('input', updateTextInput);
+      ctrlPlaceholder.addEventListener('input', updateTextInput);
+      ctrlMessage.addEventListener('input', updateTextInput);
+    })();
+  </script>
+
+</body>
+</html>

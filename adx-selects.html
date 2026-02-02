@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-fcma">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selects — Almanac DX UI Kit</title>
+  <link rel="stylesheet" href="src/tokens/styles/fonts.css">
+  <link rel="stylesheet" href="src/tokens/styles/tokens.css">
+  <link rel="stylesheet" href="src/tokens/styles/layout.css">
+  <link rel="stylesheet" href="src/tokens/styles/button.css">
+  <link rel="stylesheet" href="src/tokens/styles/text-input.css">
+  <link rel="stylesheet" href="src/tokens/styles/select.css">
+  <link rel="stylesheet" href="src/tokens/styles/menu.css">
+  <link rel="stylesheet" href="adx.css">
+</head>
+<body>
+
+  <div class="adx-layout">
+
+    <!-- Top Bar -->
+    <nav class="adx-topbar">
+      <button class="adx-mobile-nav-trigger" onclick="toggleMobileNav()">Menu</button>
+      <span class="topbar-title">Almanac DX UI Kit</span>
+      <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('fcma')" id="btn-fcma">FCMA</button>
+        <button class="theme-btn" onclick="setTheme('rural-first')" id="btn-rural">Rural 1st</button>
+      </div>
+    </nav>
+
+    <!-- Wrapper: Nav + Content -->
+    <div class="adx-wrapper">
+
+      <!-- Side Navigation -->
+      <nav class="adx-nav adx-nav--open" id="side-nav">
+        <div class="nav-items">
+          <a href="adx.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Overview</span>
+          </a>
+          <a href="adx-tokens.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Tokens</span>
+          </a>
+          <a href="adx-buttons.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Buttons</span>
+          </a>
+          <a href="adx-text-inputs.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Text Inputs</span>
+          </a>
+          <a href="adx-selects.html" class="nav-item active">
+            <div class="nav-icon"></div>
+            <span>Selects</span>
+          </a>
+          <a href="adx-menus.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Menus</span>
+          </a>
+          <a href="adx-cards.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Cards</span>
+          </a>
+          <a href="adx-alerts.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Alerts</span>
+          </a>
+        </div>
+        <button class="nav-toggle" onclick="toggleNav()">
+          <span id="nav-toggle-label">Collapse</span>
+        </button>
+      </nav>
+
+      <!-- Main + Footer wrapper -->
+      <div class="adx-main-wrapper">
+
+        <!-- Main Content -->
+        <main class="adx-main">
+
+          <section class="adx-section" id="selects" style="background: var(--background-medium);">
+            <div class="adx-content-m">
+              <div class="section-inner">
+                <h2 class="section-title">Select Component</h2>
+                <p class="section-subtitle">Custom select dropdowns with Menu component — all 6 states with interactive playground.</p>
+
+                <div class="type-label">All States</div>
+                <div class="input-states-grid">
+
+                  <!-- Default -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Default</div>
+                    <div class="adx-select">
+                      <label class="adx-select__label" id="state-default-label">Label</label>
+                      <div class="adx-select__focus-ring">
+                        <div class="adx-select__content" tabindex="0" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="state-default-label">
+                          <span class="adx-select__trigger adx-select__trigger--placeholder">Hint Text</span>
+                          <span class="adx-select__chevron" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Hover -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Hover</div>
+                    <div class="adx-select adx-select--hover">
+                      <label class="adx-select__label" id="state-hover-label">Label</label>
+                      <div class="adx-select__focus-ring">
+                        <div class="adx-select__content" tabindex="0" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="state-hover-label">
+                          <span class="adx-select__trigger adx-select__trigger--placeholder">Hint Text</span>
+                          <span class="adx-select__chevron" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Focus -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Focus</div>
+                    <div class="adx-select adx-select--focus">
+                      <label class="adx-select__label" id="state-focus-label">Label</label>
+                      <div class="adx-select__focus-ring">
+                        <div class="adx-select__content" tabindex="0" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="state-focus-label">
+                          <span class="adx-select__trigger adx-select__trigger--placeholder">Hint Text</span>
+                          <span class="adx-select__chevron" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Warning -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Warning</div>
+                    <div class="adx-select adx-select--warning">
+                      <label class="adx-select__label" id="state-warning-label">Label</label>
+                      <div class="adx-select__focus-ring">
+                        <div class="adx-select__content" tabindex="0" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="state-warning-label">
+                          <span class="adx-select__trigger adx-select__trigger--placeholder">Hint Text</span>
+                          <span class="adx-select__trailing-icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                          </span>
+                          <span class="adx-select__chevron" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                          </span>
+                        </div>
+                      </div>
+                      <p class="adx-select__message">Warning Message</p>
+                    </div>
+                  </div>
+
+                  <!-- Error -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Error</div>
+                    <div class="adx-select adx-select--error">
+                      <label class="adx-select__label" id="state-error-label">Label</label>
+                      <div class="adx-select__focus-ring">
+                        <div class="adx-select__content" tabindex="0" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="state-error-label">
+                          <span class="adx-select__trigger adx-select__trigger--placeholder">Hint Text</span>
+                          <span class="adx-select__trailing-icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-error)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                          </span>
+                          <span class="adx-select__chevron" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                          </span>
+                        </div>
+                      </div>
+                      <p class="adx-select__message">Error Message</p>
+                    </div>
+                  </div>
+
+                  <!-- Disabled -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Disabled</div>
+                    <div class="adx-select adx-select--disabled">
+                      <label class="adx-select__label" id="state-disabled-label">Label</label>
+                      <div class="adx-select__focus-ring">
+                        <div class="adx-select__content" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="state-disabled-label" aria-disabled="true">
+                          <span class="adx-select__trigger adx-select__trigger--placeholder">Hint Text</span>
+                          <span class="adx-select__chevron" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Icon Variants -->
+                <div class="type-label" style="margin-top: var(--spacing-32);">Icon Variants</div>
+                <div class="input-states-grid">
+
+                  <!-- Leading Icon -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Leading Icon</div>
+                    <div class="adx-select">
+                      <label class="adx-select__label" id="icon-leading-label">Account</label>
+                      <div class="adx-select__focus-ring">
+                        <div class="adx-select__content" tabindex="0" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="icon-leading-label">
+                          <span class="adx-select__leading-icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                          </span>
+                          <span class="adx-select__trigger adx-select__trigger--placeholder">Select account</span>
+                          <span class="adx-select__chevron" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Trailing Icon -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Trailing Icon</div>
+                    <div class="adx-select">
+                      <label class="adx-select__label" id="icon-trailing-label">Category</label>
+                      <div class="adx-select__focus-ring">
+                        <div class="adx-select__content" tabindex="0" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="icon-trailing-label">
+                          <span class="adx-select__trigger adx-select__trigger--placeholder">Select category</span>
+                          <span class="adx-select__trailing-icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                          </span>
+                          <span class="adx-select__chevron" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Both Icons -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Leading + Trailing</div>
+                    <div class="adx-select">
+                      <label class="adx-select__label" id="icon-both-label">Location</label>
+                      <div class="adx-select__focus-ring">
+                        <div class="adx-select__content" tabindex="0" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="icon-both-label">
+                          <span class="adx-select__leading-icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                          </span>
+                          <span class="adx-select__trigger adx-select__trigger--placeholder">Select location</span>
+                          <span class="adx-select__trailing-icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                          </span>
+                          <span class="adx-select__chevron" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Leading Icon Disabled -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Leading + Disabled</div>
+                    <div class="adx-select adx-select--disabled">
+                      <label class="adx-select__label" id="icon-disabled-label">Account</label>
+                      <div class="adx-select__focus-ring">
+                        <div class="adx-select__content" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="icon-disabled-label" aria-disabled="true">
+                          <span class="adx-select__leading-icon" aria-hidden="true">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                          </span>
+                          <span class="adx-select__trigger adx-select__trigger--placeholder">Select account</span>
+                          <span class="adx-select__chevron" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- Open State Demo -->
+                <div class="type-label" style="margin-top: var(--spacing-32);">Open State with Menu Dropdown</div>
+                <div style="max-width: 360px; margin-bottom: 280px;">
+                  <div class="adx-select adx-select--open">
+                    <label class="adx-select__label" id="open-demo-label">Country</label>
+                    <div class="adx-select__focus-ring">
+                      <div class="adx-select__content" tabindex="0" role="combobox" aria-expanded="true" aria-haspopup="listbox" aria-controls="open-demo-listbox" aria-labelledby="open-demo-label">
+                        <span class="adx-select__trigger">United States</span>
+                        <span class="adx-select__chevron adx-select__chevron--open" aria-hidden="true">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
+                      </div>
+                      <div class="adx-select__dropdown">
+                        <div class="adx-menu" id="open-demo-listbox" role="listbox" aria-labelledby="open-demo-label">
+                          <div class="adx-menu-item adx-menu-item--selected" role="option" aria-selected="true" tabindex="0">
+                            <span class="adx-menu-item__label">United States</span>
+                            <span class="adx-menu-item__icon" aria-hidden="true">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                            </span>
+                          </div>
+                          <div class="adx-menu-item" role="option" aria-selected="false" tabindex="0">
+                            <span class="adx-menu-item__label">Canada</span>
+                          </div>
+                          <div class="adx-menu-item" role="option" aria-selected="false" tabindex="0">
+                            <span class="adx-menu-item__label">Mexico</span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Interactive Playground -->
+                <div class="type-label">Interactive Playground</div>
+                <div class="input-playground-controls">
+                  <div class="input-control-group">
+                    <label for="sel-ctrl-state">State</label>
+                    <select id="sel-ctrl-state">
+                      <option value="">Default</option>
+                      <option value="adx-select--hover">Hover</option>
+                      <option value="adx-select--focus">Focus</option>
+                      <option value="adx-select--warning">Warning</option>
+                      <option value="adx-select--error">Error</option>
+                      <option value="adx-select--disabled">Disabled</option>
+                    </select>
+                  </div>
+                  <div class="input-control-group">
+                    <label for="sel-ctrl-label">Label</label>
+                    <input type="text" id="sel-ctrl-label" value="Country" />
+                  </div>
+                  <div class="input-control-group">
+                    <label for="sel-ctrl-message">Message</label>
+                    <input type="text" id="sel-ctrl-message" value="Please select an option" />
+                  </div>
+                </div>
+
+                <div style="max-width: 360px; min-height: 320px;">
+                  <div id="sel-live" class="adx-select">
+                    <label class="adx-select__label" id="sel-live-label">Country</label>
+                    <div class="adx-select__focus-ring" id="sel-live-focus-ring">
+                      <div class="adx-select__content" id="sel-live-content" tabindex="0" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-controls="sel-live-menu" aria-labelledby="sel-live-label">
+                        <span class="adx-select__trigger adx-select__trigger--placeholder" id="sel-live-trigger">Select an option</span>
+                        <span class="adx-select__trailing-icon" id="sel-live-icon" style="display:none;" aria-hidden="true"></span>
+                        <span class="adx-select__chevron" id="sel-live-chevron" aria-hidden="true">
+                          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
+                      </div>
+                      <div class="adx-select__dropdown" id="sel-live-dropdown" style="display:none;">
+                        <div class="adx-menu" id="sel-live-menu" role="listbox" aria-labelledby="sel-live-label"></div>
+                      </div>
+                    </div>
+                    <p class="adx-select__message" id="sel-live-message" style="display:none;"></p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="adx-footer">
+          <section class="adx-section" style="background: var(--background-light);">
+            <div class="adx-content-l">
+              <p class="footer-text">
+                Almanac DX UI Kit v0.1.0
+              </p>
+            </div>
+          </section>
+        </footer>
+
+      </div><!-- /adx-main-wrapper -->
+
+    </div><!-- /adx-wrapper -->
+
+  </div><!-- /adx-layout -->
+
+  <script>
+    function setTheme(themeId) {
+      document.documentElement.className = 'theme-' + themeId;
+      document.getElementById('btn-fcma').classList.toggle('active', themeId === 'fcma');
+      document.getElementById('btn-rural').classList.toggle('active', themeId === 'rural-first');
+    }
+
+    function toggleNav() {
+      var nav = document.getElementById('side-nav');
+      var label = document.getElementById('nav-toggle-label');
+      nav.classList.toggle('adx-nav--open');
+      if (nav.classList.contains('adx-nav--open')) {
+        label.textContent = 'Collapse';
+      } else {
+        label.textContent = 'Expand';
+      }
+    }
+
+    function toggleMobileNav() {
+      var nav = document.getElementById('side-nav');
+      nav.classList.toggle('adx-nav--mobile-open');
+    }
+
+    // Select interactive playground
+    (function() {
+      var checkSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+      var warningIconSVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-warning)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>';
+      var errorIconSVG = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--text-error)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>';
+      var chevronDefaultSVG = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+      var chevronDisabledSVG = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-tertiary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+
+      var options = [
+        { value: 'us', label: 'United States' },
+        { value: 'ca', label: 'Canada' },
+        { value: 'mx', label: 'Mexico' }
+      ];
+      var selectedValue = '';
+      var isOpen = false;
+
+      var ctrlState = document.getElementById('sel-ctrl-state');
+      var ctrlLabel = document.getElementById('sel-ctrl-label');
+      var ctrlMessage = document.getElementById('sel-ctrl-message');
+      var liveRoot = document.getElementById('sel-live');
+      var liveLabel = document.getElementById('sel-live-label');
+      var liveTrigger = document.getElementById('sel-live-trigger');
+      var liveContent = document.getElementById('sel-live-content');
+      var liveIcon = document.getElementById('sel-live-icon');
+      var liveChevron = document.getElementById('sel-live-chevron');
+      var liveDropdown = document.getElementById('sel-live-dropdown');
+      var liveMenu = document.getElementById('sel-live-menu');
+      var liveMessage = document.getElementById('sel-live-message');
+
+      function renderMenu() {
+        liveMenu.innerHTML = '';
+        options.forEach(function(opt) {
+          var isSelected = opt.value === selectedValue;
+          var item = document.createElement('div');
+          item.className = 'adx-menu-item' + (isSelected ? ' adx-menu-item--selected' : '');
+          item.setAttribute('role', 'option');
+          item.setAttribute('aria-selected', isSelected ? 'true' : 'false');
+          item.setAttribute('tabindex', '0');
+          var labelSpan = document.createElement('span');
+          labelSpan.className = 'adx-menu-item__label';
+          labelSpan.textContent = opt.label;
+          item.appendChild(labelSpan);
+          if (isSelected) {
+            var iconSpan = document.createElement('span');
+            iconSpan.className = 'adx-menu-item__icon';
+            iconSpan.setAttribute('aria-hidden', 'true');
+            iconSpan.innerHTML = checkSVG;
+            item.appendChild(iconSpan);
+          }
+          item.addEventListener('click', function() {
+            selectedValue = opt.value;
+            isOpen = false;
+            updateSelect();
+            liveContent.focus();
+          });
+          item.addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              selectedValue = opt.value;
+              isOpen = false;
+              updateSelect();
+              liveContent.focus();
+            }
+          });
+          liveMenu.appendChild(item);
+        });
+        // Arrow key navigation within the menu
+        liveMenu.addEventListener('keydown', function(e) {
+          if (e.key !== 'ArrowDown' && e.key !== 'ArrowUp' && e.key !== 'Escape') return;
+          e.preventDefault();
+          if (e.key === 'Escape') {
+            isOpen = false;
+            updateSelect();
+            liveContent.focus();
+            return;
+          }
+          var items = Array.from(liveMenu.querySelectorAll('.adx-menu-item'));
+          var idx = items.indexOf(document.activeElement);
+          if (e.key === 'ArrowDown') idx = idx < items.length - 1 ? idx + 1 : 0;
+          else if (e.key === 'ArrowUp') idx = idx > 0 ? idx - 1 : items.length - 1;
+          items[idx].focus();
+        });
+      }
+
+      function updateSelect() {
+        liveRoot.className = 'adx-select';
+        var stateClass = ctrlState.value;
+        if (stateClass) liveRoot.classList.add(stateClass);
+        var isDisabled = stateClass === 'adx-select--disabled';
+
+        if (isOpen && !isDisabled) {
+          liveRoot.classList.add('adx-select--open');
+          liveDropdown.style.display = '';
+          liveChevron.className = 'adx-select__chevron adx-select__chevron--open';
+          liveContent.setAttribute('aria-expanded', 'true');
+          renderMenu();
+          // Focus selected or first item
+          requestAnimationFrame(function() {
+            var target = liveMenu.querySelector('.adx-menu-item--selected') || liveMenu.querySelector('.adx-menu-item');
+            if (target) target.focus();
+          });
+        } else {
+          isOpen = false;
+          liveDropdown.style.display = 'none';
+          liveChevron.className = 'adx-select__chevron';
+          liveContent.setAttribute('aria-expanded', 'false');
+        }
+
+        liveLabel.textContent = ctrlLabel.value;
+
+        // Update trigger text
+        var selected = options.find(function(o) { return o.value === selectedValue; });
+        if (selected) {
+          liveTrigger.textContent = selected.label;
+          liveTrigger.className = 'adx-select__trigger';
+        } else {
+          liveTrigger.textContent = 'Select an option';
+          liveTrigger.className = 'adx-select__trigger adx-select__trigger--placeholder';
+        }
+
+        // Disabled trigger
+        if (isDisabled) {
+          liveContent.removeAttribute('tabindex');
+        } else {
+          liveContent.setAttribute('tabindex', '0');
+        }
+
+        liveChevron.innerHTML = isDisabled ? chevronDisabledSVG : chevronDefaultSVG;
+        if (isOpen && !isDisabled) {
+          liveChevron.className = 'adx-select__chevron adx-select__chevron--open';
+        }
+
+        var isWarning = stateClass === 'adx-select--warning';
+        var isError = stateClass === 'adx-select--error';
+        if (isWarning) {
+          liveIcon.innerHTML = warningIconSVG;
+          liveIcon.style.display = '';
+        } else if (isError) {
+          liveIcon.innerHTML = errorIconSVG;
+          liveIcon.style.display = '';
+        } else {
+          liveIcon.style.display = 'none';
+        }
+
+        if ((isWarning || isError) && ctrlMessage.value) {
+          liveMessage.textContent = ctrlMessage.value;
+          liveMessage.style.display = '';
+        } else {
+          liveMessage.style.display = 'none';
+        }
+      }
+
+      // Toggle dropdown on trigger click
+      liveContent.addEventListener('click', function() {
+        if (ctrlState.value === 'adx-select--disabled') return;
+        isOpen = !isOpen;
+        updateSelect();
+      });
+
+      // Keyboard support on trigger
+      liveContent.addEventListener('keydown', function(e) {
+        if (ctrlState.value === 'adx-select--disabled') return;
+        if (e.key === 'Escape' && isOpen) {
+          isOpen = false;
+          updateSelect();
+          e.preventDefault();
+          return;
+        }
+        if ((e.key === 'Enter' || e.key === ' ' || e.key === 'ArrowDown' || e.key === 'ArrowUp') && !isOpen) {
+          isOpen = true;
+          updateSelect();
+          e.preventDefault();
+        }
+      });
+
+      // Close on click outside
+      document.addEventListener('mousedown', function(e) {
+        var focusRing = document.getElementById('sel-live-focus-ring');
+        if (isOpen && focusRing && !focusRing.contains(e.target)) {
+          isOpen = false;
+          updateSelect();
+        }
+      });
+
+      ctrlState.addEventListener('change', updateSelect);
+      ctrlLabel.addEventListener('input', updateSelect);
+      ctrlMessage.addEventListener('input', updateSelect);
+
+      updateSelect();
+    })();
+  </script>
+
+</body>
+</html>

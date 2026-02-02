@@ -165,6 +165,12 @@ export type { ButtonProps } from './react/Button';
 export { TextInput } from './react/TextInput';
 export type { TextInputProps, TextInputState } from './react/TextInput';
 
+export { Select } from './react/Select';
+export type { SelectProps, SelectState, SelectOption } from './react/Select';
+
+export { Menu, MenuItem } from './react/Menu';
+export type { MenuProps, MenuItemProps } from './react/Menu';
+
 // ============================================================================
 // NOTE: Primitives are NOT exported
 // ============================================================================

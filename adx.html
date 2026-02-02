@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-fcma">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Almanac DX UI Kit</title>
+  <link rel="stylesheet" href="src/tokens/styles/fonts.css">
+  <link rel="stylesheet" href="src/tokens/styles/tokens.css">
+  <link rel="stylesheet" href="src/tokens/styles/layout.css">
+  <link rel="stylesheet" href="src/tokens/styles/button.css">
+  <link rel="stylesheet" href="src/tokens/styles/text-input.css">
+  <link rel="stylesheet" href="src/tokens/styles/select.css">
+  <link rel="stylesheet" href="adx.css">
+</head>
+<body>
+
+  <div class="adx-layout">
+
+    <!-- Top Bar -->
+    <nav class="adx-topbar">
+      <button class="adx-mobile-nav-trigger" onclick="toggleMobileNav()">Menu</button>
+      <span class="topbar-title">Almanac DX UI Kit</span>
+      <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('fcma')" id="btn-fcma">FCMA</button>
+        <button class="theme-btn" onclick="setTheme('rural-first')" id="btn-rural">Rural 1st</button>
+      </div>
+    </nav>
+
+    <!-- Wrapper: Nav + Content -->
+    <div class="adx-wrapper">
+
+      <!-- Side Navigation -->
+      <nav class="adx-nav adx-nav--open" id="side-nav">
+        <div class="nav-items">
+          <a href="adx.html" class="nav-item active">
+            <div class="nav-icon"></div>
+            <span>Overview</span>
+          </a>
+          <a href="adx-tokens.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Tokens</span>
+          </a>
+          <a href="adx-buttons.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Buttons</span>
+          </a>
+          <a href="adx-text-inputs.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Text Inputs</span>
+          </a>
+          <a href="adx-selects.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Selects</span>
+          </a>
+          <a href="adx-menus.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Menus</span>
+          </a>
+          <a href="adx-cards.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Cards</span>
+          </a>
+          <a href="adx-alerts.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Alerts</span>
+          </a>
+        </div>
+        <button class="nav-toggle" onclick="toggleNav()">
+          <span id="nav-toggle-label">Collapse</span>
+        </button>
+      </nav>
+
+      <!-- Main + Footer wrapper -->
+      <div class="adx-main-wrapper">
+
+        <!-- Main Content -->
+        <main class="adx-main">
+
+          <section class="adx-section" style="background: var(--background-light);">
+            <div class="adx-content-l">
+              <div class="section-inner">
+                <h2 class="section-title">Almanac DX UI Kit</h2>
+                <p class="section-subtitle">Design tokens and component library for FCMA and Rural 1st brands.</p>
+
+                <div class="overview-grid">
+                  <a href="adx-tokens.html" class="overview-card">
+                    <div class="overview-card__title">Tokens</div>
+                    <div class="overview-card__desc">Semantic colors, typography, elevation, spacing, and border radius tokens.</div>
+                  </a>
+                  <a href="adx-buttons.html" class="overview-card">
+                    <div class="overview-card__title">Buttons</div>
+                    <div class="overview-card__desc">Primary, secondary, and icon button variants with sizes and states.</div>
+                  </a>
+                  <a href="adx-text-inputs.html" class="overview-card">
+                    <div class="overview-card__title">Text Inputs</div>
+                    <div class="overview-card__desc">Labeled text fields with validation states and interactive playground.</div>
+                  </a>
+                  <a href="adx-selects.html" class="overview-card">
+                    <div class="overview-card__title">Selects</div>
+                    <div class="overview-card__desc">Native select dropdowns with validation states and interactive playground.</div>
+                  </a>
+                  <a href="adx-menus.html" class="overview-card">
+                    <div class="overview-card__title">Menus</div>
+                    <div class="overview-card__desc">Popover-style dropdown menus with selectable items and state variants.</div>
+                  </a>
+                  <a href="adx-cards.html" class="overview-card">
+                    <div class="overview-card__title">Cards</div>
+                    <div class="overview-card__desc">Content cards combining background, border, text, and elevation tokens.</div>
+                  </a>
+                  <a href="adx-alerts.html" class="overview-card">
+                    <div class="overview-card__title">Alerts</div>
+                    <div class="overview-card__desc">System status messages for success, error, warning, information, and discovery.</div>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="adx-footer">
+          <section class="adx-section" style="background: var(--background-light);">
+            <div class="adx-content-l">
+              <p class="footer-text">
+                Almanac DX UI Kit v0.1.0
+              </p>
+            </div>
+          </section>
+        </footer>
+
+      </div><!-- /adx-main-wrapper -->
+
+    </div><!-- /adx-wrapper -->
+
+  </div><!-- /adx-layout -->
+
+  <script>
+    function setTheme(themeId) {
+      document.documentElement.className = 'theme-' + themeId;
+      document.getElementById('btn-fcma').classList.toggle('active', themeId === 'fcma');
+      document.getElementById('btn-rural').classList.toggle('active', themeId === 'rural-first');
+    }
+
+    function toggleNav() {
+      var nav = document.getElementById('side-nav');
+      var label = document.getElementById('nav-toggle-label');
+      nav.classList.toggle('adx-nav--open');
+      if (nav.classList.contains('adx-nav--open')) {
+        label.textContent = 'Collapse';
+      } else {
+        label.textContent = 'Expand';
+      }
+    }
+
+    function toggleMobileNav() {
+      var nav = document.getElementById('side-nav');
+      nav.classList.toggle('adx-nav--mobile-open');
+    }
+  </script>
+
+</body>
+</html>

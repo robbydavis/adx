@@ -15,6 +15,8 @@ const FONTS_CSS = path.join(STYLES_DIR, 'fonts.css');
 const TOKENS_CSS = path.join(STYLES_DIR, 'tokens.css');
 const LAYOUT_CSS = path.join(STYLES_DIR, 'layout.css');
 const BUTTON_CSS = path.join(STYLES_DIR, 'button.css');
+const SELECT_CSS = path.join(STYLES_DIR, 'select.css');
+const MENU_CSS = path.join(STYLES_DIR, 'menu.css');
 const INDEX_CSS = path.join(STYLES_DIR, 'index.css');
 
 console.log('🎨 Validating CSS token files...\n');
@@ -25,6 +27,8 @@ const files = [
   { path: TOKENS_CSS, name: 'tokens.css' },
   { path: LAYOUT_CSS, name: 'layout.css' },
   { path: BUTTON_CSS, name: 'button.css' },
+  { path: SELECT_CSS, name: 'select.css' },
+  { path: MENU_CSS, name: 'menu.css' },
   { path: INDEX_CSS, name: 'index.css' },
 ];
 

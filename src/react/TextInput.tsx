@@ -14,6 +14,7 @@
  */
 
 import React, { forwardRef, InputHTMLAttributes } from 'react';
+import { AlertTriangle, AlertCircle } from 'react-feather';
 
 export type TextInputState = 'default' | 'hover' | 'focus' | 'warning' | 'error' | 'disabled';
 
@@ -26,29 +27,11 @@ export interface TextInputProps extends Omit<InputHTMLAttributes<HTMLInputElemen
   message?: string;
   /** Additional class name for the root element */
   className?: string;
+  /** Optional leading icon rendered before the input (16px) */
+  leadingIcon?: React.ReactNode;
+  /** Optional trailing icon rendered after the input (16px). Overridden by warning/error icons when those states are active. */
+  trailingIcon?: React.ReactNode;
 }
-
-const WarningIcon: React.FC = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path
-      d="M8 1.5L14.5 13H1.5L8 1.5Z"
-      stroke="var(--text-warning)"
-      strokeWidth="1.2"
-      strokeLinejoin="round"
-      fill="none"
-    />
-    <line x1="8" y1="6.5" x2="8" y2="9.5" stroke="var(--text-warning)" strokeWidth="1.2" strokeLinecap="round" />
-    <circle cx="8" cy="11.25" r="0.75" fill="var(--text-warning)" />
-  </svg>
-);
-
-const ErrorIcon: React.FC = () => (
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="8" cy="8" r="6.5" stroke="var(--text-error)" strokeWidth="1.2" fill="none" />
-    <line x1="8" y1="5" x2="8" y2="8.5" stroke="var(--text-error)" strokeWidth="1.2" strokeLinecap="round" />
-    <circle cx="8" cy="10.5" r="0.75" fill="var(--text-error)" />
-  </svg>
-);
 
 /**
  * TextInput Component
@@ -63,6 +46,8 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       state = 'default',
       message,
       className,
+      leadingIcon,
+      trailingIcon,
       disabled = false,
       ...inputProps
     },
@@ -70,7 +55,7 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
   ) => {
     const isDisabled = state === 'disabled' || disabled;
     const showMessage = (state === 'warning' || state === 'error') && message;
-    const showTrailingIcon = state === 'warning' || state === 'error';
+    const showValidationIcon = state === 'warning' || state === 'error';
 
     const classes = ['adx-text-input'];
 
@@ -87,17 +72,28 @@ export const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         <label className="adx-text-input__label">{label}</label>
         <div className="adx-text-input__focus-ring">
           <div className="adx-text-input__content">
+            {leadingIcon && (
+              <span className="adx-text-input__leading-icon" aria-hidden="true">
+                {leadingIcon}
+              </span>
+            )}
             <input
               ref={ref}
               className="adx-text-input__input"
               disabled={isDisabled}
               {...inputProps}
             />
-            {showTrailingIcon && (
-              <span className="adx-text-input__trailing-icon">
-                {state === 'warning' ? <WarningIcon /> : <ErrorIcon />}
+            {showValidationIcon ? (
+              <span className="adx-text-input__trailing-icon" aria-hidden="true">
+                {state === 'warning'
+                  ? <AlertTriangle size={16} color="var(--text-warning)" />
+                  : <AlertCircle size={16} color="var(--text-error)" />}
               </span>
-            )}
+            ) : trailingIcon ? (
+              <span className="adx-text-input__trailing-icon" aria-hidden="true">
+                {trailingIcon}
+              </span>
+            ) : null}
           </div>
         </div>
         {showMessage && (
