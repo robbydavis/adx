@@ -1,0 +1,276 @@
+/**
+ * Almanac DX — Side Navigation Component
+ *
+ * CSS classes matching the Figma Side Nav spec (node 5355:19287).
+ * Uses semantic design tokens for all values.
+ * Supports open and collapsed states with hover/active interactions.
+ *
+ * Components:
+ *   - adx-side-nav: Container component
+ *   - adx-side-nav-item: Navigation item (link)
+ *   - adx-side-nav-toggle: Collapse/expand button
+ *   - adx-badge: Notification badge with count
+ *   - adx-badge-dot: Small notification indicator
+ *
+ * States:
+ *   - --open / --collapsed: Nav width states
+ *   - --active: Currently selected item
+ *   - :hover, :focus-visible: Interactive states
+ *
+ * Usage:
+ *   <nav class="adx-side-nav adx-side-nav--open">
+ *     <div class="adx-side-nav__items">
+ *       <a class="adx-side-nav-item adx-side-nav-item--active" href="#">
+ *         <svg class="adx-side-nav-item__icon">...</svg>
+ *         <span class="adx-side-nav-item__label">Home</span>
+ *       </a>
+ *     </div>
+ *     <button class="adx-side-nav-toggle">
+ *       <svg>...</svg>
+ *     </button>
+ *   </nav>
+ */
+
+/* ==========================================================================
+   Badge — Notification count indicator
+   ========================================================================== */
+
+.adx-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 var(--component-space-2xs); /* 4px horizontal padding for larger numbers */
+  background-color: var(--background-warning);
+  border-radius: var(--radius-round);
+  font-family: var(--font-family-trade-gothic);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-14);
+  line-height: 20px;
+  color: var(--text-reverse);
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* Badge Dot — Small notification indicator */
+.adx-badge-dot {
+  width: 8px;
+  height: 8px;
+  background-color: var(--background-warning);
+  border-radius: var(--radius-round);
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Side Navigation Container
+   ========================================================================== */
+
+.adx-side-nav {
+  display: flex;
+  flex-direction: column;
+  gap: var(--component-space-l); /* 16px */
+  padding: var(--component-space-l); /* 16px */
+  background-color: var(--background-light);
+  border-right: var(--border-width-thin) solid var(--border-subtle);
+  box-sizing: border-box;
+  transition: width 0.2s ease;
+  /* Fill viewport height minus top bar */
+  position: sticky;
+  top: 52px; /* Height of top bar */
+  height: calc(100vh - 52px);
+  flex-shrink: 0;
+  align-self: flex-start;
+}
+
+/* Open state — full width with labels */
+.adx-side-nav--open {
+  width: 200px;
+}
+
+/* Collapsed state — icon-only */
+.adx-side-nav--collapsed {
+  width: 68px; /* 16px padding + 36px item + 16px padding */
+}
+
+/* Items container */
+.adx-side-nav__items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--component-space-l); /* 16px */
+  flex: 1;
+  min-height: 0;
+  overflow: visible;
+}
+
+/* ==========================================================================
+   Side Navigation Item
+   ========================================================================== */
+
+.adx-side-nav-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--component-space-m); /* 12px */
+  padding: var(--component-space-2xs) var(--component-space-xs); /* 4px 8px */
+  border-radius: var(--radius-2xs); /* 4px */
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+/* Open item — full width */
+.adx-side-nav--open .adx-side-nav-item {
+  width: 168px;
+}
+
+/* Collapsed item — icon only */
+.adx-side-nav--collapsed .adx-side-nav-item {
+  width: 36px;
+  justify-content: center;
+}
+
+/* Icon */
+.adx-side-nav-item__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--icon-subtle);
+}
+
+/* Label */
+.adx-side-nav-item__label {
+  flex: 1;
+  font-family: var(--font-family-trade-gothic);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-16);
+  line-height: 20px;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Hide label in collapsed state */
+.adx-side-nav--collapsed .adx-side-nav-item__label {
+  display: none;
+}
+
+/* External link icon */
+.adx-side-nav-item__external {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: var(--icon-subtle);
+}
+
+/* Hide external icon in collapsed state */
+.adx-side-nav--collapsed .adx-side-nav-item__external {
+  display: none;
+}
+
+/* Badge positioning */
+.adx-side-nav-item .adx-badge {
+  flex-shrink: 0;
+}
+
+/* Hide full badge in collapsed state */
+.adx-side-nav--collapsed .adx-side-nav-item .adx-badge {
+  display: none;
+}
+
+/* Badge dot wrapper — hidden by default, shown in collapsed state */
+.adx-side-nav-item__badge-dot {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.adx-side-nav--collapsed .adx-side-nav-item__badge-dot {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   Item States
+   ========================================================================== */
+
+/* Hover — applies to all items */
+.adx-side-nav-item:hover {
+  background-color: var(--background-medium);
+}
+
+/* Active item — no background, bold text, brand icon */
+.adx-side-nav-item--active .adx-side-nav-item__icon {
+  color: var(--icon-brand);
+}
+
+.adx-side-nav-item--active .adx-side-nav-item__label {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Active hover — same as regular hover */
+.adx-side-nav-item--active:hover {
+  background-color: var(--background-medium);
+}
+
+/* Focus */
+.adx-side-nav-item:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* ==========================================================================
+   Side Navigation Toggle Button
+   ========================================================================== */
+
+.adx-side-nav-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--component-space-m); /* 12px */
+  padding: var(--component-space-2xs) var(--component-space-xs); /* 4px 8px */
+  background-color: transparent;
+  border: var(--border-width-thin) solid var(--border-subtle);
+  border-radius: var(--radius-2xs); /* 4px */
+  cursor: pointer;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+/* Open state — full width */
+.adx-side-nav--open .adx-side-nav-toggle {
+  width: 168px;
+}
+
+/* Collapsed state — square */
+.adx-side-nav--collapsed .adx-side-nav-toggle {
+  width: 36px;
+}
+
+/* Toggle icon */
+.adx-side-nav-toggle__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--icon-subtle);
+  transition: transform 0.2s ease;
+}
+
+/* Rotate icon when collapsed */
+.adx-side-nav--collapsed .adx-side-nav-toggle__icon {
+  transform: rotate(180deg);
+}
+
+/* Hover */
+.adx-side-nav-toggle:hover {
+  background-color: var(--background-medium);
+  border-color: transparent;
+}
+
+/* Focus */
+.adx-side-nav-toggle:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}

@@ -13,5 +13,7 @@ export * from './ThemeProvider';
 export * from './useTheme';
 export * from './useTokens';
 export * from './TextInput';
+// export * from './TextArea'; // TODO: Implement TextArea component
 export * from './Select';
 export * from './Menu';
+export * from './SideNav';
