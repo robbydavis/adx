@@ -17,3 +17,4 @@ export * from './TextInput';
 export * from './Select';
 export * from './Menu';
 export * from './SideNav';
+export * from './Tooltip';

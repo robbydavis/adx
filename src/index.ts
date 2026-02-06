@@ -177,6 +177,9 @@ export type { MenuProps, MenuItemProps } from './react/Menu';
 export { SideNav, SideNavItem, SideNavToggle, Badge, BadgeDot } from './react/SideNav';
 export type { SideNavProps, SideNavItemProps, SideNavToggleProps, BadgeProps, BadgeDotProps } from './react/SideNav';
 
+export { Tooltip } from './react/Tooltip';
+export type { TooltipProps, TooltipArrow } from './react/Tooltip';
+
 // ============================================================================
 // NOTE: Primitives are NOT exported
 // ============================================================================
