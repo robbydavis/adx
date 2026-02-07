@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-fcma">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Expansion Panel — Almanac DX UI Kit</title>
+  <link rel="stylesheet" href="src/tokens/styles/fonts.css">
+  <link rel="stylesheet" href="src/tokens/styles/tokens.css">
+  <link rel="stylesheet" href="src/tokens/styles/layout.css">
+  <link rel="stylesheet" href="src/tokens/styles/button.css">
+  <link rel="stylesheet" href="src/tokens/styles/text-input.css">
+  <link rel="stylesheet" href="src/tokens/styles/select.css">
+  <link rel="stylesheet" href="src/tokens/styles/side-nav.css">
+  <link rel="stylesheet" href="src/tokens/styles/expansion-panel.css">
+  <link rel="stylesheet" href="adx.css">
+  <style>
+    /* Sample slot content for demo */
+    .sample-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-8);
+    }
+    .sample-content p {
+      margin: 0;
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-14);
+      line-height: 20px;
+      color: var(--text-primary);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="adx-layout">
+
+    <!-- Top Bar -->
+    <nav class="adx-topbar">
+      <button class="adx-mobile-nav-trigger" onclick="toggleMobileNav()">Menu</button>
+      <span class="topbar-title">Almanac DX UI Kit</span>
+      <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('fcma')" id="btn-fcma">FCMA</button>
+        <button class="theme-btn" onclick="setTheme('rural-first')" id="btn-rural">Rural 1st</button>
+      </div>
+    </nav>
+
+    <!-- Wrapper: Nav + Content -->
+    <div class="adx-wrapper">
+
+      <!-- Side Navigation (rendered by nav.js) -->
+      <nav class="adx-side-nav adx-side-nav--open" id="side-nav"></nav>
+
+      <!-- Main + Footer wrapper -->
+      <div class="adx-main-wrapper">
+
+        <!-- Main Content -->
+        <main class="adx-main">
+
+          <section class="adx-section" id="expansion-panel">
+            <div class="adx-content-l">
+              <div class="section-inner">
+                <h2 class="section-title">Expansion Panel Component</h2>
+                <p class="section-subtitle">A clickable text link with chevron that reveals a content panel. Uses a slot pattern for flexible content.</p>
+
+                <!-- Left Aligned -->
+                <div class="type-label">Left Aligned</div>
+                <div class="component-row">
+                  <div class="adx-expansion-panel" id="demo-left">
+                    <button class="adx-expansion-panel__trigger" aria-expanded="false" onclick="toggleExpansionPanel(this)">
+                      <span class="adx-expansion-panel__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                      </span>
+                      <span class="adx-expansion-panel__label">View additional details</span>
+                    </button>
+                    <div class="adx-expansion-panel__content">
+                      <div class="sample-content">
+                        <p>This content is revealed when the panel is expanded. You can place any content here including text, forms, images, or other components.</p>
+                        <p>The gray background and rounded corners provide visual containment for the expanded content.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Center Aligned -->
+                <div class="type-label">Center Aligned</div>
+                <div class="component-row">
+                  <div class="adx-expansion-panel adx-expansion-panel--center" id="demo-center">
+                    <button class="adx-expansion-panel__trigger" aria-expanded="false" onclick="toggleExpansionPanel(this)">
+                      <span class="adx-expansion-panel__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                      </span>
+                      <span class="adx-expansion-panel__label">Show more information</span>
+                    </button>
+                    <div class="adx-expansion-panel__content">
+                      <div class="sample-content" style="text-align: center;">
+                        <p>Center-aligned panels are useful for callouts or when the trigger appears in a centered layout.</p>
+                        <p>Use the <code>--full-width</code> modifier if you need the panel to span beyond the default 500px max-width.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Pre-expanded Example -->
+                <div class="type-label">Pre-expanded (Open by Default)</div>
+                <div class="component-row">
+                  <div class="adx-expansion-panel adx-expansion-panel--open" id="demo-open">
+                    <button class="adx-expansion-panel__trigger" aria-expanded="true" onclick="toggleExpansionPanel(this)">
+                      <span class="adx-expansion-panel__icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                      </span>
+                      <span class="adx-expansion-panel__label">Why do we ask for this?</span>
+                    </button>
+                    <div class="adx-expansion-panel__content">
+                      <div class="sample-content">
+                        <p>We ask for your Social Security number to verify your identity and comply with federal regulations. This information is securely encrypted and never shared with third parties without your consent.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="adx-footer">
+          <section class="adx-section">
+            <div class="adx-content-l">
+              <p class="footer-text">
+                Almanac DX UI Kit v0.1.0
+              </p>
+            </div>
+          </section>
+        </footer>
+
+      </div><!-- /adx-main-wrapper -->
+
+    </div><!-- /adx-wrapper -->
+
+  </div><!-- /adx-layout -->
+
+  <script src="nav.js"></script>
+  <script>
+    var chevronRightSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>';
+    var chevronDownSVG = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+
+    function toggleExpansionPanel(trigger) {
+      var panel = trigger.closest('.adx-expansion-panel');
+      var isOpen = panel.classList.toggle('adx-expansion-panel--open');
+      trigger.setAttribute('aria-expanded', isOpen);
+
+      // Swap chevron icon
+      var icon = trigger.querySelector('.adx-expansion-panel__icon');
+      icon.innerHTML = isOpen ? chevronDownSVG : chevronRightSVG;
+    }
+  </script>
+
+</body>
+</html>

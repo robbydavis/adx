@@ -1,0 +1,232 @@
+/**
+ * Almanac DX — FAQ Component
+ *
+ * CSS classes matching the Figma FAQ spec (node 16248:848).
+ * Accordion-style FAQ items with question/answer pattern.
+ *
+ * States:
+ *   - default: collapsed, subtle bottom border
+ *   - hover: gray background
+ *   - open: gray header background, answer visible below
+ *
+ * Usage:
+ *   <div class="adx-faq-list">
+ *     <div class="adx-faq">
+ *       <button class="adx-faq__trigger" aria-expanded="false">
+ *         <span class="adx-faq__question">Question text?</span>
+ *         <span class="adx-faq__icon">...</span>
+ *       </button>
+ *       <div class="adx-faq__answer">
+ *         <div class="adx-faq__answer-inner">
+ *           <p>Answer text...</p>
+ *         </div>
+ *       </div>
+ *     </div>
+ *     <!-- More .adx-faq items... -->
+ *   </div>
+ */
+
+/* ==========================================================================
+   FAQ List Container
+   ========================================================================== */
+
+.adx-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  width: 100%;
+  max-width: 500px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Ensure no gaps between FAQ items */
+.adx-faq-list > * {
+  margin: 0;
+}
+
+/* Full width variant */
+.adx-faq-list--full-width {
+  max-width: none;
+}
+
+/* ==========================================================================
+   FAQ Item
+   ========================================================================== */
+
+.adx-faq {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* ==========================================================================
+   Trigger (Question + Icon)
+   ========================================================================== */
+
+.adx-faq__trigger {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-16);
+  width: 100%;
+  margin: 0;
+  padding: var(--component-space-l); /* 16px */
+  background: none;
+  border: none;
+  border-bottom: var(--border-width-thin) solid var(--border-subtle);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.15s ease;
+}
+
+.adx-faq__trigger:hover {
+  background-color: var(--background-dark);
+  border-bottom-color: transparent;
+}
+
+.adx-faq__trigger:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Open state - trigger has gray background */
+.adx-faq--open .adx-faq__trigger {
+  background-color: var(--background-dark);
+  border-bottom-color: transparent;
+}
+
+/* ==========================================================================
+   Question Text
+   ========================================================================== */
+
+.adx-faq__question {
+  flex: 1;
+  font-family: var(--font-family-trade-gothic);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-20);
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Icon
+   ========================================================================== */
+
+.adx-faq__icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  transition: transform 0.25s ease-out;
+}
+
+.adx-faq__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Rotate icon when open */
+.adx-faq--open .adx-faq__icon {
+  transform: rotate(180deg);
+}
+
+/* ==========================================================================
+   Answer
+   ========================================================================== */
+
+.adx-faq__answer {
+  display: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Show answer when open */
+.adx-faq--open .adx-faq__answer {
+  display: block;
+  border-bottom: var(--border-width-thin) solid var(--border-subtle);
+}
+
+/* ==========================================================================
+   Answer Content — Base Typography (paragraph-l: 18px/24px)
+   ========================================================================== */
+
+.adx-faq__answer-inner {
+  padding: var(--component-space-l); /* 16px all sides */
+  font-family: var(--font-family-trade-gothic);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-18);
+  line-height: 24px;
+  color: var(--text-primary);
+  min-height: 0; /* Required for grid animation */
+  overflow: hidden;
+}
+
+.adx-faq__answer-inner p {
+  margin: 0 0 var(--spacing-16) 0;
+}
+
+.adx-faq__answer-inner p:last-child {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Answer Content — Rich Text Support
+   ========================================================================== */
+
+/* Links */
+.adx-faq__answer-inner a {
+  color: var(--text-link);
+  text-decoration: none;
+}
+
+.adx-faq__answer-inner a:hover {
+  text-decoration: underline;
+}
+
+/* Unordered lists */
+.adx-faq__answer-inner ul {
+  margin: 0 0 var(--spacing-16) 0;
+  padding-left: var(--spacing-24);
+  list-style-type: disc;
+}
+
+.adx-faq__answer-inner ul li {
+  margin-bottom: var(--spacing-8);
+}
+
+.adx-faq__answer-inner ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* Ordered lists */
+.adx-faq__answer-inner ol {
+  margin: 0 0 var(--spacing-16) 0;
+  padding-left: var(--spacing-24);
+  list-style-type: decimal;
+}
+
+.adx-faq__answer-inner ol li {
+  margin-bottom: var(--spacing-8);
+}
+
+.adx-faq__answer-inner ol li:last-child {
+  margin-bottom: 0;
+}
+
+/* Strong/bold text */
+.adx-faq__answer-inner strong,
+.adx-faq__answer-inner b {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Emphasis/italic */
+.adx-faq__answer-inner em,
+.adx-faq__answer-inner i {
+  font-style: italic;
+}

@@ -178,7 +178,10 @@ export { SideNav, SideNavItem, SideNavToggle, Badge, BadgeDot } from './react/Si
 export type { SideNavProps, SideNavItemProps, SideNavToggleProps, BadgeProps, BadgeDotProps } from './react/SideNav';
 
 export { Tooltip } from './react/Tooltip';
-export type { TooltipProps, TooltipArrow } from './react/Tooltip';
+export type { TooltipProps, TooltipPosition } from './react/Tooltip';
+
+export { SelectableCard, SelectableCardGroup } from './react/SelectableCard';
+export type { SelectableCardProps, SelectableCardGroupProps } from './react/SelectableCard';
 
 // ============================================================================
 // NOTE: Primitives are NOT exported

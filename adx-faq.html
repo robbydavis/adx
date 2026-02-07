@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-fcma">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — Almanac DX UI Kit</title>
+  <link rel="stylesheet" href="src/tokens/styles/fonts.css">
+  <link rel="stylesheet" href="src/tokens/styles/tokens.css">
+  <link rel="stylesheet" href="src/tokens/styles/layout.css">
+  <link rel="stylesheet" href="src/tokens/styles/button.css">
+  <link rel="stylesheet" href="src/tokens/styles/text-input.css">
+  <link rel="stylesheet" href="src/tokens/styles/select.css">
+  <link rel="stylesheet" href="src/tokens/styles/side-nav.css">
+  <link rel="stylesheet" href="src/tokens/styles/faq.css">
+  <link rel="stylesheet" href="adx.css">
+</head>
+<body>
+
+  <div class="adx-layout">
+
+    <!-- Top Bar -->
+    <nav class="adx-topbar">
+      <button class="adx-mobile-nav-trigger" onclick="toggleMobileNav()">Menu</button>
+      <span class="topbar-title">Almanac DX UI Kit</span>
+      <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('fcma')" id="btn-fcma">FCMA</button>
+        <button class="theme-btn" onclick="setTheme('rural-first')" id="btn-rural">Rural 1st</button>
+      </div>
+    </nav>
+
+    <!-- Wrapper: Nav + Content -->
+    <div class="adx-wrapper">
+
+      <!-- Side Navigation (rendered by nav.js) -->
+      <nav class="adx-side-nav adx-side-nav--open" id="side-nav"></nav>
+
+      <!-- Main + Footer wrapper -->
+      <div class="adx-main-wrapper">
+
+        <!-- Main Content -->
+        <main class="adx-main">
+
+          <section class="adx-section" id="faq">
+            <div class="adx-content-l">
+              <div class="section-inner">
+                <h2 class="section-title">FAQ Component</h2>
+                <p class="section-subtitle">Accordion-style FAQ items with expandable question/answer pattern. Click to toggle.</p>
+
+                <!-- Interactive FAQ List -->
+                <div class="type-label">Interactive FAQ</div>
+                <div class="component-row">
+                  <div class="adx-faq-list">
+
+                    <div class="adx-faq" id="faq-1">
+                      <button class="adx-faq__trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                        <span class="adx-faq__question">What info should I have ready before I apply?</span>
+                        <span class="adx-faq__icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
+                      </button>
+                      <div class="adx-faq__answer">
+                        <div class="adx-faq__answer-inner">
+                          <p>Before applying, please gather the following documents:</p>
+                          <ul>
+                            <li>Social Security number</li>
+                            <li>Proof of income (pay stubs or tax returns)</li>
+                            <li>Bank statements from the past 3 months</li>
+                            <li>Information about existing debts or assets</li>
+                          </ul>
+                          <p>Having these documents ready will help speed up the application process. For more details, visit our <a href="#">application checklist</a>.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="adx-faq" id="faq-2">
+                      <button class="adx-faq__trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                        <span class="adx-faq__question">How long does the approval process take?</span>
+                        <span class="adx-faq__icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
+                      </button>
+                      <div class="adx-faq__answer">
+                        <div class="adx-faq__answer-inner">
+                          <p>Most applications receive a decision within <strong>2-3 business days</strong>. Complex applications may require additional review and documentation.</p>
+                          <p>You'll receive email updates throughout the process, and you can check your application status anytime through your <a href="#">online account</a>.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="adx-faq" id="faq-3">
+                      <button class="adx-faq__trigger" aria-expanded="false" onclick="toggleFaq(this)">
+                        <span class="adx-faq__question">Can I apply if I'm a first-time borrower?</span>
+                        <span class="adx-faq__icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
+                      </button>
+                      <div class="adx-faq__answer">
+                        <div class="adx-faq__answer-inner">
+                          <p>Yes! We welcome first-time borrowers and offer programs specifically designed to help new agricultural producers get started.</p>
+                          <p>Our loan officers can guide you through the process and help identify the best financing options for your situation.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="adx-faq adx-faq--open" id="faq-4">
+                      <button class="adx-faq__trigger" aria-expanded="true" onclick="toggleFaq(this)">
+                        <span class="adx-faq__question">What types of collateral are accepted?</span>
+                        <span class="adx-faq__icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
+                      </button>
+                      <div class="adx-faq__answer">
+                        <div class="adx-faq__answer-inner">
+                          <p>We accept various forms of collateral depending on loan amount and purpose:</p>
+                          <ol>
+                            <li><strong>Real estate</strong> — farmland, residential, or commercial property</li>
+                            <li><strong>Equipment</strong> — tractors, combines, irrigation systems</li>
+                            <li><strong>Livestock</strong> — cattle, hogs, poultry</li>
+                            <li><strong>Crops</strong> — stored grain or growing crops</li>
+                          </ol>
+                          <p>Our team will work with you to determine the best collateral arrangement for your specific loan needs.</p>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="adx-footer">
+          <section class="adx-section">
+            <div class="adx-content-l">
+              <p class="footer-text">
+                Almanac DX UI Kit v0.1.0
+              </p>
+            </div>
+          </section>
+        </footer>
+
+      </div><!-- /adx-main-wrapper -->
+
+    </div><!-- /adx-wrapper -->
+
+  </div><!-- /adx-layout -->
+
+  <script src="nav.js"></script>
+  <script>
+    function toggleFaq(trigger) {
+      var faq = trigger.closest('.adx-faq');
+      var isOpen = faq.classList.toggle('adx-faq--open');
+      trigger.setAttribute('aria-expanded', isOpen);
+      // Icon rotation handled by CSS transition
+    }
+  </script>
+
+</body>
+</html>

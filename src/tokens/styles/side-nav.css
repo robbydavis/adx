@@ -151,9 +151,34 @@
   text-overflow: ellipsis;
 }
 
-/* Hide label in collapsed state */
+/* Hide label in collapsed state — show as tooltip on hover */
 .adx-side-nav--collapsed .adx-side-nav-item__label {
-  display: none;
+  /* Position as tooltip to the right */
+  position: absolute;
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+
+  /* Hidden by default — no transitions, instant hide */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+
+  /* Tooltip styling */
+  padding: var(--component-space-xs); /* 8px */
+  background-color: var(--background-reverse);
+  border-radius: var(--radius-xs); /* 8px */
+  box-shadow: var(--elevation-300);
+  color: var(--text-reverse);
+  font-weight: var(--font-weight-regular);
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+/* Show label as tooltip on hover when collapsed */
+.adx-side-nav--collapsed .adx-side-nav-item:hover .adx-side-nav-item__label {
+  opacity: 1;
+  visibility: visible;
 }
 
 /* External link icon */

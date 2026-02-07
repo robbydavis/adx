@@ -82,6 +82,42 @@ Primitives must never be imported or consumed directly.
 
 ---
 
+## CSS Component Conventions
+
+Component CSS files follow BEM naming and consistent organization.
+
+### Class Naming (BEM)
+
+- **Block:** `adx-{component}` (e.g., `adx-btn`, `adx-select`)
+- **Element:** `adx-{component}__{element}` (e.g., `adx-btn__label`)
+- **Modifier:** `adx-{component}--{modifier}` (e.g., `adx-btn--primary`, `adx-btn--disabled`)
+
+### State Modifiers
+
+Interactive states use these standard modifiers:
+- `--hover`, `--focus`, `--active` — interaction states
+- `--disabled` — non-interactive state
+- `--warning`, `--error` — validation states
+- `--open`, `--selected` — toggle states
+
+### Documentation States
+
+For showing states in preview pages without actual interaction:
+- `--static` — disables pointer events for pure visual display
+- `--hover-preview`, `--focus-preview` — forces state appearance
+
+### File Structure
+
+Component CSS files include a header comment referencing the Figma node,
+followed by sections separated by comment blocks.
+
+### Token Usage
+
+All CSS property values must use semantic tokens from Figma—never hardcoded
+values. This ensures the Figma-to-code connection remains intact.
+
+---
+
 ## Theme System
 
 - Supported themes: `ThemeId = 'fcma' | 'rural-first'`
@@ -90,6 +126,34 @@ Primitives must never be imported or consumed directly.
 - Active theme class is applied to `document.documentElement`
   - Example: `theme-fcma`
 - Theme selection is persisted to `localStorage`
+
+---
+
+## HTML Page Template
+
+All documentation pages follow this structure:
+
+- `<html class="theme-{themeId}">` — theme class on root
+- `<nav class="adx-topbar">` — fixed top bar with theme switcher
+- `<nav class="adx-side-nav" id="side-nav">` — rendered by nav.js
+- `<main class="adx-main">` — primary content
+- `<footer class="adx-footer">` — version info
+
+Stylesheets are included in order: fonts.css, tokens.css, layout.css,
+component CSS files, then adx.css.
+
+Navigation is rendered by `nav.js` — do not duplicate nav markup.
+
+---
+
+## Navigation
+
+Side navigation is centralized in `nav.js`:
+- `NAV_ITEMS` array defines all pages with href, label, and icon
+- Active page is detected automatically from URL
+- Add new pages by updating the single `NAV_ITEMS` array
+
+Do not manually write navigation markup in HTML files.
 
 ---
 

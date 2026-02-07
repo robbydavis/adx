@@ -1,0 +1,270 @@
+/**
+ * Almanac DX — Selectable Card Component
+ *
+ * CSS classes matching the Figma Selectable Card spec (node 13867:498).
+ * Uses a slot pattern: the wrapper handles interactive states while
+ * the inner content is fully flexible.
+ *
+ * Components:
+ *   - adx-selectable-card: Outer wrapper (handles bg, border, shadow, focus)
+ *   - adx-selectable-card__inner: Inner container (handles selected border)
+ *
+ * States:
+ *   - Default (unselected)
+ *   - --selected: Card is selected
+ *   - --error: Selected card has validation error
+ *   - :hover, :focus-visible: Interactive states
+ *
+ * Usage:
+ *   <button class="adx-selectable-card">
+ *     <div class="adx-selectable-card__inner">
+ *       <!-- Your content here -->
+ *     </div>
+ *   </button>
+ *
+ *   <button class="adx-selectable-card adx-selectable-card--selected">
+ *     <div class="adx-selectable-card__inner">
+ *       <!-- Your content here -->
+ *     </div>
+ *   </button>
+ */
+
+/* ==========================================================================
+   Selectable Card — Outer Wrapper
+   ========================================================================== */
+
+.adx-selectable-card {
+  /* Reset button styles */
+  appearance: none;
+  font: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  /* Layout */
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  padding: var(--component-space-xs); /* 8px */
+  border-radius: var(--radius-xs); /* 8px */
+
+  /* Unselected default state */
+  background-color: var(--background-light);
+  border: var(--border-width-thin) solid var(--border-dark);
+  box-shadow: none;
+
+  /* Transitions */
+  transition:
+    background-color 0.15s ease,
+    border-color 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+/* Unselected hover */
+.adx-selectable-card:hover:not(.adx-selectable-card--selected) {
+  background-color: var(--background-brand-subtle);
+  border-color: var(--border-strong);
+}
+
+/* Unselected focus */
+.adx-selectable-card:focus-visible:not(.adx-selectable-card--selected) {
+  outline: none;
+  background-color: var(--background-light);
+  border-color: var(--border-focus);
+  border-width: var(--border-width-thick); /* 4px */
+  /* Adjust padding to compensate for thicker border */
+  padding: calc(var(--component-space-xs) - 3px);
+}
+
+/* ==========================================================================
+   Selected State
+   ========================================================================== */
+
+.adx-selectable-card--selected {
+  background-color: var(--background-primary);
+  border-color: transparent;
+  box-shadow: var(--elevation-200);
+}
+
+/* Selected hover */
+.adx-selectable-card--selected:hover {
+  box-shadow: var(--elevation-300);
+}
+
+/* Selected focus */
+.adx-selectable-card--selected:focus-visible {
+  outline: none;
+  border-color: var(--border-focus);
+  border-width: var(--border-width-thick); /* 4px */
+  /* Adjust padding to compensate for thicker border */
+  padding: calc(var(--component-space-xs) - 3px);
+  box-shadow: var(--elevation-200);
+}
+
+/* ==========================================================================
+   Disabled State
+   ========================================================================== */
+
+.adx-selectable-card:disabled,
+.adx-selectable-card--disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.adx-selectable-card:disabled:hover,
+.adx-selectable-card--disabled:hover {
+  background-color: var(--background-light);
+  border-color: var(--border-dark);
+  box-shadow: none;
+}
+
+/* ==========================================================================
+   Inner Container
+   ========================================================================== */
+
+.adx-selectable-card__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding: var(--component-space-l); /* 16px */
+  border-radius: var(--radius-2xs); /* 4px */
+  border: var(--border-width-thin) solid transparent;
+}
+
+/* Selected — show brand border on inner */
+.adx-selectable-card--selected .adx-selectable-card__inner {
+  border-color: var(--border-brand);
+}
+
+/* Error state — show error border instead of brand */
+.adx-selectable-card--selected.adx-selectable-card--error .adx-selectable-card__inner {
+  border-color: var(--border-error);
+}
+
+/* ==========================================================================
+   Content Styling — Title color changes when selected
+   ========================================================================== */
+
+/* Title text — uses primary color by default */
+.adx-selectable-card__title {
+  font-family: var(--font-family-trade-gothic);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-20);
+  line-height: 24px;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* Selected state — title becomes brand color */
+.adx-selectable-card--selected .adx-selectable-card__title {
+  color: var(--text-brand);
+}
+
+/* Description text */
+.adx-selectable-card__description {
+  font-family: var(--font-family-trade-gothic);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-16);
+  line-height: 20px;
+  color: var(--text-primary);
+  margin: 0;
+}
+
+/* ==========================================================================
+   Content Layout Helpers
+   ========================================================================== */
+
+/* Vertical centered content (icon + title) */
+.adx-selectable-card__content--center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--component-space-xs); /* 8px */
+  text-align: center;
+}
+
+/* Horizontal content (text left, icon right) */
+.adx-selectable-card__content--horizontal {
+  display: flex;
+  align-items: center;
+  gap: var(--component-space-l); /* 16px */
+}
+
+.adx-selectable-card__content--horizontal .adx-selectable-card__text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--component-space-2xs); /* 4px */
+}
+
+/* Icon container */
+.adx-selectable-card__icon {
+  width: 56px;
+  height: 56px;
+  flex-shrink: 0;
+  color: var(--icon-subtle);
+}
+
+.adx-selectable-card--selected .adx-selectable-card__icon {
+  color: var(--icon-brand);
+}
+
+.adx-selectable-card__icon svg,
+.adx-selectable-card__icon img {
+  width: 100%;
+  height: 100%;
+}
+
+/* ==========================================================================
+   Static State (for documentation)
+   Disables all interactivity for pure visual display.
+   ========================================================================== */
+
+.adx-selectable-card--static {
+  cursor: default;
+  pointer-events: none;
+}
+
+/* ==========================================================================
+   Preview States (for documentation)
+   These classes force hover/focus appearance without actual interaction.
+   Use with --static to prevent real hover/focus from interfering.
+   ========================================================================== */
+
+/* Unselected hover preview */
+.adx-selectable-card--hover-preview:not(.adx-selectable-card--selected) {
+  background-color: var(--background-brand-subtle);
+  border-color: var(--border-strong);
+}
+
+/* Unselected focus preview */
+.adx-selectable-card--focus-preview:not(.adx-selectable-card--selected) {
+  background-color: var(--background-light);
+  border-color: var(--border-focus);
+  border-width: var(--border-width-thick);
+  padding: calc(var(--component-space-xs) - 3px);
+}
+
+/* Selected hover preview */
+.adx-selectable-card--selected.adx-selectable-card--hover-preview {
+  box-shadow: var(--elevation-300);
+}
+
+/* Selected focus preview */
+.adx-selectable-card--selected.adx-selectable-card--focus-preview {
+  border-color: var(--border-focus);
+  border-width: var(--border-width-thick);
+  padding: calc(var(--component-space-xs) - 3px);
+}
+
+/* Error hover preview */
+.adx-selectable-card--error.adx-selectable-card--hover-preview {
+  box-shadow: var(--elevation-300);
+}
+
+/* Error focus preview */
+.adx-selectable-card--error.adx-selectable-card--focus-preview {
+  border-color: var(--border-focus);
+  border-width: var(--border-width-thick);
+  padding: calc(var(--component-space-xs) - 3px);
+}

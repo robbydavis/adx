@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-fcma">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selectable Card — Almanac DX UI Kit</title>
+  <link rel="stylesheet" href="src/tokens/styles/fonts.css">
+  <link rel="stylesheet" href="src/tokens/styles/tokens.css">
+  <link rel="stylesheet" href="src/tokens/styles/layout.css">
+  <link rel="stylesheet" href="src/tokens/styles/button.css">
+  <link rel="stylesheet" href="src/tokens/styles/text-input.css">
+  <link rel="stylesheet" href="src/tokens/styles/select.css">
+  <link rel="stylesheet" href="src/tokens/styles/side-nav.css">
+  <link rel="stylesheet" href="src/tokens/styles/selectable-card.css">
+  <link rel="stylesheet" href="adx.css">
+  <style>
+    /* States grid - 3 columns for default/hover/focus */
+    .states-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 160px);
+      gap: var(--spacing-16);
+    }
+    .states-grid-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-8);
+    }
+    /* Variants row */
+    .variants-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-24);
+      align-items: flex-start;
+    }
+    .variant-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-8);
+      width: 200px;
+    }
+    .variant-item--wide {
+      width: 320px;
+    }
+    /* Demo labels */
+    .demo-label {
+      font-family: 'Source Code Pro', monospace;
+      font-size: var(--font-size-12);
+      color: var(--text-tertiary);
+    }
+    /* Interactive demo grid */
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: var(--spacing-16);
+      max-width: 720px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="adx-layout">
+
+    <!-- Top Bar -->
+    <nav class="adx-topbar">
+      <button class="adx-mobile-nav-trigger" onclick="toggleMobileNav()">Menu</button>
+      <span class="topbar-title">Almanac DX UI Kit</span>
+      <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('fcma')" id="btn-fcma">FCMA</button>
+        <button class="theme-btn" onclick="setTheme('rural-first')" id="btn-rural">Rural 1st</button>
+      </div>
+    </nav>
+
+    <!-- Wrapper: Nav + Content -->
+    <div class="adx-wrapper">
+
+      <!-- Side Navigation (rendered by nav.js) -->
+      <nav class="adx-side-nav adx-side-nav--open" id="side-nav"></nav>
+
+      <!-- Main + Footer wrapper -->
+      <div class="adx-main-wrapper">
+
+        <!-- Main Content -->
+        <main class="adx-main">
+
+          <section class="adx-section" id="selectable-card">
+            <div class="adx-content-l">
+              <div class="section-inner">
+                <h2 class="section-title">Selectable Card Component</h2>
+                <p class="section-subtitle">Interactive cards for single or multi-select patterns. Uses a slot pattern for flexible content.</p>
+
+                <!-- ============================================================
+                     SECTION 1: Interactive States
+                     Shows all 9 states of the card wrapper/chrome
+                     ============================================================ -->
+
+                <div class="type-label">Unselected States</div>
+                <div class="states-grid">
+                  <div class="states-grid-item">
+                    <div class="demo-label">default</div>
+                    <div class="adx-selectable-card adx-selectable-card--static">
+                      <div class="adx-selectable-card__inner">
+                        <div class="adx-selectable-card__content--center">
+                          <p class="adx-selectable-card__title">Title</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="states-grid-item">
+                    <div class="demo-label">hover</div>
+                    <div class="adx-selectable-card adx-selectable-card--static adx-selectable-card--hover-preview">
+                      <div class="adx-selectable-card__inner">
+                        <div class="adx-selectable-card__content--center">
+                          <p class="adx-selectable-card__title">Title</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="states-grid-item">
+                    <div class="demo-label">focus</div>
+                    <div class="adx-selectable-card adx-selectable-card--static adx-selectable-card--focus-preview">
+                      <div class="adx-selectable-card__inner">
+                        <div class="adx-selectable-card__content--center">
+                          <p class="adx-selectable-card__title">Title</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="type-label">Selected States</div>
+                <div class="states-grid">
+                  <div class="states-grid-item">
+                    <div class="demo-label">default</div>
+                    <div class="adx-selectable-card adx-selectable-card--static adx-selectable-card--selected">
+                      <div class="adx-selectable-card__inner">
+                        <div class="adx-selectable-card__content--center">
+                          <p class="adx-selectable-card__title">Title</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="states-grid-item">
+                    <div class="demo-label">hover</div>
+                    <div class="adx-selectable-card adx-selectable-card--static adx-selectable-card--selected adx-selectable-card--hover-preview">
+                      <div class="adx-selectable-card__inner">
+                        <div class="adx-selectable-card__content--center">
+                          <p class="adx-selectable-card__title">Title</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="states-grid-item">
+                    <div class="demo-label">focus</div>
+                    <div class="adx-selectable-card adx-selectable-card--static adx-selectable-card--selected adx-selectable-card--focus-preview">
+                      <div class="adx-selectable-card__inner">
+                        <div class="adx-selectable-card__content--center">
+                          <p class="adx-selectable-card__title">Title</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="type-label">Error States (Selected)</div>
+                <div class="states-grid">
+                  <div class="states-grid-item">
+                    <div class="demo-label">default</div>
+                    <div class="adx-selectable-card adx-selectable-card--static adx-selectable-card--selected adx-selectable-card--error">
+                      <div class="adx-selectable-card__inner">
+                        <div class="adx-selectable-card__content--center">
+                          <p class="adx-selectable-card__title">Title</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="states-grid-item">
+                    <div class="demo-label">hover</div>
+                    <div class="adx-selectable-card adx-selectable-card--static adx-selectable-card--selected adx-selectable-card--error adx-selectable-card--hover-preview">
+                      <div class="adx-selectable-card__inner">
+                        <div class="adx-selectable-card__content--center">
+                          <p class="adx-selectable-card__title">Title</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="states-grid-item">
+                    <div class="demo-label">focus</div>
+                    <div class="adx-selectable-card adx-selectable-card--static adx-selectable-card--selected adx-selectable-card--error adx-selectable-card--focus-preview">
+                      <div class="adx-selectable-card__inner">
+                        <div class="adx-selectable-card__content--center">
+                          <p class="adx-selectable-card__title">Title</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ============================================================
+                     SECTION 2: Content Layout Variants
+                     Shows the different content arrangements
+                     ============================================================ -->
+
+                <div class="type-label">Title Only</div>
+                <div class="variants-row">
+                  <div class="variant-item">
+                    <div class="demo-label">unselected</div>
+                    <button class="adx-selectable-card" onclick="toggleCard(this)">
+                      <div class="adx-selectable-card__inner">
+                        <div class="adx-selectable-card__content--center">
+                          <p class="adx-selectable-card__title">Option A</p>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                  <div class="variant-item">
+                    <div class="demo-label">selected</div>
+                    <button class="adx-selectable-card adx-selectable-card--selected" onclick="toggleCard(this)">
+                      <div class="adx-selectable-card__inner">
+                        <div class="adx-selectable-card__content--center">
+                          <p class="adx-selectable-card__title">Option A</p>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="type-label">Icon + Title</div>
+                <div class="variants-row">
+                  <div class="variant-item">
+                    <div class="demo-label">unselected</div>
+                    <button class="adx-selectable-card" onclick="toggleCard(this)">
+                      <div class="adx-selectable-card__inner">
+                        <div class="adx-selectable-card__content--center">
+                          <div class="adx-selectable-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                          </div>
+                          <p class="adx-selectable-card__title">Home Loan</p>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                  <div class="variant-item">
+                    <div class="demo-label">selected</div>
+                    <button class="adx-selectable-card adx-selectable-card--selected" onclick="toggleCard(this)">
+                      <div class="adx-selectable-card__inner">
+                        <div class="adx-selectable-card__content--center">
+                          <div class="adx-selectable-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                          </div>
+                          <p class="adx-selectable-card__title">Home Loan</p>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="type-label">Icon + Title + Description (Vertical)</div>
+                <div class="variants-row">
+                  <div class="variant-item">
+                    <div class="demo-label">unselected</div>
+                    <button class="adx-selectable-card" onclick="toggleCard(this)">
+                      <div class="adx-selectable-card__inner">
+                        <div class="adx-selectable-card__content--center">
+                          <div class="adx-selectable-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                          </div>
+                          <p class="adx-selectable-card__title">Fast Processing</p>
+                          <p class="adx-selectable-card__description">Get approved in 24 hours or less</p>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                  <div class="variant-item">
+                    <div class="demo-label">selected</div>
+                    <button class="adx-selectable-card adx-selectable-card--selected" onclick="toggleCard(this)">
+                      <div class="adx-selectable-card__inner">
+                        <div class="adx-selectable-card__content--center">
+                          <div class="adx-selectable-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                          </div>
+                          <p class="adx-selectable-card__title">Fast Processing</p>
+                          <p class="adx-selectable-card__description">Get approved in 24 hours or less</p>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="type-label">Icon + Title + Description (Horizontal)</div>
+                <div class="variants-row">
+                  <div class="variant-item variant-item--wide">
+                    <div class="demo-label">unselected</div>
+                    <button class="adx-selectable-card" onclick="toggleCard(this)">
+                      <div class="adx-selectable-card__inner">
+                        <div class="adx-selectable-card__content--horizontal">
+                          <div class="adx-selectable-card__text">
+                            <p class="adx-selectable-card__title">Farm Equipment</p>
+                            <p class="adx-selectable-card__description">Loans for tractors, combines, and other equipment</p>
+                          </div>
+                          <div class="adx-selectable-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="2.5"></circle><circle cx="18.5" cy="17.5" r="2.5"></circle><path d="M15 6h4l3 4v7h-2"></path><path d="M4 17h-2v-7l3-4h9v11"></path></svg>
+                          </div>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                  <div class="variant-item variant-item--wide">
+                    <div class="demo-label">selected</div>
+                    <button class="adx-selectable-card adx-selectable-card--selected" onclick="toggleCard(this)">
+                      <div class="adx-selectable-card__inner">
+                        <div class="adx-selectable-card__content--horizontal">
+                          <div class="adx-selectable-card__text">
+                            <p class="adx-selectable-card__title">Farm Equipment</p>
+                            <p class="adx-selectable-card__description">Loans for tractors, combines, and other equipment</p>
+                          </div>
+                          <div class="adx-selectable-card__icon">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="5.5" cy="17.5" r="2.5"></circle><circle cx="18.5" cy="17.5" r="2.5"></circle><path d="M15 6h4l3 4v7h-2"></path><path d="M4 17h-2v-7l3-4h9v11"></path></svg>
+                          </div>
+                        </div>
+                      </div>
+                    </button>
+                  </div>
+                </div>
+
+                <!-- ============================================================
+                     SECTION 3: Interactive Demo
+                     Radio-button style single selection
+                     ============================================================ -->
+
+                <div class="type-label">Interactive Demo (Single Select)</div>
+                <div class="card-grid" role="listbox" aria-label="Loan type selection">
+                  <button class="adx-selectable-card adx-selectable-card--selected" onclick="selectOne(this)" role="option" aria-selected="true">
+                    <div class="adx-selectable-card__inner">
+                      <div class="adx-selectable-card__content--center">
+                        <div class="adx-selectable-card__icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                        </div>
+                        <p class="adx-selectable-card__title">Home</p>
+                      </div>
+                    </div>
+                  </button>
+                  <button class="adx-selectable-card" onclick="selectOne(this)" role="option" aria-selected="false">
+                    <div class="adx-selectable-card__inner">
+                      <div class="adx-selectable-card__content--center">
+                        <div class="adx-selectable-card__icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="5.5" cy="17.5" r="2.5"></circle><circle cx="18.5" cy="17.5" r="2.5"></circle><path d="M15 6h4l3 4v7h-2"></path><path d="M4 17h-2v-7l3-4h9v11"></path></svg>
+                        </div>
+                        <p class="adx-selectable-card__title">Equipment</p>
+                      </div>
+                    </div>
+                  </button>
+                  <button class="adx-selectable-card" onclick="selectOne(this)" role="option" aria-selected="false">
+                    <div class="adx-selectable-card__inner">
+                      <div class="adx-selectable-card__content--center">
+                        <div class="adx-selectable-card__icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                        </div>
+                        <p class="adx-selectable-card__title">Land</p>
+                      </div>
+                    </div>
+                  </button>
+                  <button class="adx-selectable-card" onclick="selectOne(this)" role="option" aria-selected="false">
+                    <div class="adx-selectable-card__inner">
+                      <div class="adx-selectable-card__content--center">
+                        <div class="adx-selectable-card__icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        </div>
+                        <p class="adx-selectable-card__title">Operating</p>
+                      </div>
+                    </div>
+                  </button>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="adx-footer">
+          <section class="adx-section">
+            <div class="adx-content-l">
+              <p class="footer-text">
+                Almanac DX UI Kit v0.1.0
+              </p>
+            </div>
+          </section>
+        </footer>
+
+      </div><!-- /adx-main-wrapper -->
+
+    </div><!-- /adx-wrapper -->
+
+  </div><!-- /adx-layout -->
+
+  <script src="nav.js"></script>
+  <script>
+    function toggleCard(card) {
+      card.classList.toggle('adx-selectable-card--selected');
+      var isSelected = card.classList.contains('adx-selectable-card--selected');
+      card.setAttribute('aria-selected', isSelected);
+    }
+
+    function selectOne(card) {
+      // Single-select: deselect all siblings, select this one
+      var grid = card.closest('.card-grid');
+      var cards = grid.querySelectorAll('.adx-selectable-card');
+      cards.forEach(function(c) {
+        c.classList.remove('adx-selectable-card--selected');
+        c.setAttribute('aria-selected', 'false');
+      });
+      card.classList.add('adx-selectable-card--selected');
+      card.setAttribute('aria-selected', 'true');
+    }
+  </script>
+
+</body>
+</html>
