@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-fcma">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accordion Card — Almanac DX UI Kit</title>
+  <link rel="stylesheet" href="src/tokens/styles/fonts.css">
+  <link rel="stylesheet" href="src/tokens/styles/tokens.css">
+  <link rel="stylesheet" href="src/tokens/styles/layout.css">
+  <link rel="stylesheet" href="src/tokens/styles/button.css">
+  <link rel="stylesheet" href="src/tokens/styles/text-input.css">
+  <link rel="stylesheet" href="src/tokens/styles/select.css">
+  <link rel="stylesheet" href="src/tokens/styles/side-nav.css">
+  <link rel="stylesheet" href="src/tokens/styles/accordion-card.css">
+  <link rel="stylesheet" href="adx.css">
+  <style>
+    /* Demo slot content patterns */
+    .slot-icon-title {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-16);
+    }
+    .slot-icon {
+      width: 40px;
+      height: 40px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: var(--background-action-subtle);
+      border-radius: var(--radius-round);
+      color: var(--icon-brand);
+    }
+    .slot-icon svg {
+      width: 24px;
+      height: 24px;
+    }
+    .slot-title {
+      font-family: var(--font-family-trade-gothic);
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-20);
+      line-height: 24px;
+      color: var(--text-primary);
+    }
+    .slot-subtitle {
+      font-family: var(--font-family-trade-gothic);
+      font-weight: var(--font-weight-regular);
+      font-size: var(--font-size-14);
+      line-height: 20px;
+      color: var(--text-secondary);
+      margin-top: var(--spacing-4);
+    }
+    .slot-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 2px 8px;
+      background-color: var(--background-action-subtle);
+      border-radius: var(--radius-2xs);
+      font-family: var(--font-family-trade-gothic);
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-12);
+      color: var(--text-link);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+    .slot-meta {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-8);
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-14);
+      color: var(--text-secondary);
+    }
+    .slot-meta-divider {
+      width: 1px;
+      height: 16px;
+      background-color: var(--border-subtle);
+    }
+
+    /* Panel content patterns */
+    .panel-text {
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-16);
+      line-height: 24px;
+      color: var(--text-primary);
+    }
+    .panel-text p {
+      margin: 0 0 var(--spacing-12) 0;
+    }
+    .panel-text p:last-child {
+      margin-bottom: 0;
+    }
+    .panel-list {
+      margin: 0;
+      padding: 0 0 0 var(--spacing-20);
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-16);
+      line-height: 24px;
+      color: var(--text-primary);
+    }
+    .panel-list li {
+      margin-bottom: var(--spacing-8);
+    }
+    .panel-list li:last-child {
+      margin-bottom: 0;
+    }
+    .panel-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-16);
+    }
+    .panel-stat {
+      text-align: center;
+    }
+    .panel-stat-value {
+      font-family: var(--font-family-rift);
+      font-weight: var(--font-weight-bold);
+      font-size: 32px;
+      line-height: 1;
+      color: var(--text-link);
+    }
+    .panel-stat-label {
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-12);
+      color: var(--text-secondary);
+      margin-top: var(--spacing-4);
+    }
+
+    /* Demo grid for side-by-side */
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-24);
+    }
+    @media (max-width: 800px) {
+      .demo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="adx-layout">
+
+    <!-- Top Bar -->
+    <nav class="adx-topbar">
+      <button class="adx-mobile-nav-trigger" onclick="toggleMobileNav()">Menu</button>
+      <span class="topbar-title">Almanac DX UI Kit</span>
+      <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('fcma')" id="btn-fcma">FCMA</button>
+        <button class="theme-btn" onclick="setTheme('rural-first')" id="btn-rural">Rural 1st</button>
+      </div>
+    </nav>
+
+    <!-- Wrapper: Nav + Content -->
+    <div class="adx-wrapper">
+
+      <!-- Side Navigation (rendered by nav.js) -->
+      <nav class="adx-side-nav adx-side-nav--open" id="side-nav"></nav>
+
+      <!-- Main + Footer wrapper -->
+      <div class="adx-main-wrapper">
+
+        <!-- Main Content -->
+        <main class="adx-main">
+
+          <section class="adx-section" id="accordion-card">
+            <div class="adx-content-l">
+              <div class="section-inner">
+                <h2 class="section-title">Accordion Card Component</h2>
+                <p class="section-subtitle">A flexible shell component with slot pattern for header and expandable panel content. Click to toggle.</p>
+
+                <!-- Basic Example -->
+                <div class="type-label">Basic Example (Icon + Title)</div>
+                <div class="component-row">
+                  <div class="adx-accordion-card-list" style="max-width: 400px;">
+
+                    <div class="adx-accordion-card">
+                      <button class="adx-accordion-card__trigger" aria-expanded="false" onclick="toggleAccordionCard(this)">
+                        <div class="adx-accordion-card__trigger-content">
+                          <div class="slot-icon-title">
+                            <span class="slot-icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+                            </span>
+                            <span class="slot-title">Real Estate Loans</span>
+                          </div>
+                        </div>
+                        <span class="adx-accordion-card__chevron">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
+                      </button>
+                      <div class="adx-accordion-card__panel">
+                        <div class="adx-accordion-card__panel-content">
+                          <div class="adx-accordion-card__panel-inner">
+                            <div class="panel-text">
+                              <p>Finance the purchase of farmland, rural homes, or commercial agricultural property with competitive rates and flexible terms.</p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="adx-accordion-card adx-accordion-card--open">
+                      <button class="adx-accordion-card__trigger" aria-expanded="true" onclick="toggleAccordionCard(this)">
+                        <div class="adx-accordion-card__trigger-content">
+                          <div class="slot-icon-title">
+                            <span class="slot-icon">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2" ry="2"></rect><line x1="1" y1="10" x2="23" y2="10"></line></svg>
+                            </span>
+                            <span class="slot-title">Lines of Credit</span>
+                          </div>
+                        </div>
+                        <span class="adx-accordion-card__chevron">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                        </span>
+                      </button>
+                      <div class="adx-accordion-card__panel">
+                        <div class="adx-accordion-card__panel-content">
+                          <div class="adx-accordion-card__panel-inner">
+                            <div class="panel-text">
+                              <p>Access flexible financing for operating expenses, seasonal needs, and short-term capital requirements.</p>
+                              <ul class="panel-list">
+                                <li>Draw funds as needed</li>
+                                <li>Pay interest only on what you use</li>
+                                <li>Revolving credit availability</li>
+                              </ul>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <!-- Title + Subtitle Pattern -->
+                <div class="type-label">Title + Subtitle Pattern</div>
+                <div class="component-row">
+                  <div class="adx-accordion-card" style="max-width: 500px;">
+                    <button class="adx-accordion-card__trigger" aria-expanded="false" onclick="toggleAccordionCard(this)">
+                      <div class="adx-accordion-card__trigger-content">
+                        <div class="slot-title">Application Requirements</div>
+                        <div class="slot-subtitle">What you'll need to complete your application</div>
+                      </div>
+                      <span class="adx-accordion-card__chevron">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                      </span>
+                    </button>
+                    <div class="adx-accordion-card__panel">
+                      <div class="adx-accordion-card__panel-content">
+                        <div class="adx-accordion-card__panel-inner">
+                          <ul class="panel-list">
+                            <li>Social Security number for all applicants</li>
+                            <li>Proof of income (pay stubs, tax returns)</li>
+                            <li>Bank statements from the past 3 months</li>
+                            <li>Information about existing debts and assets</li>
+                            <li>Property details (if applicable)</li>
+                          </ul>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Title + Badge Pattern -->
+                <div class="type-label">Title + Badge Pattern</div>
+                <div class="component-row">
+                  <div class="adx-accordion-card" style="max-width: 500px;">
+                    <button class="adx-accordion-card__trigger" aria-expanded="false" onclick="toggleAccordionCard(this)">
+                      <div class="adx-accordion-card__trigger-content">
+                        <div style="display: flex; align-items: center; gap: var(--spacing-12);">
+                          <span class="slot-title">Special Financing Offer</span>
+                          <span class="slot-badge">New</span>
+                        </div>
+                      </div>
+                      <span class="adx-accordion-card__chevron">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                      </span>
+                    </button>
+                    <div class="adx-accordion-card__panel">
+                      <div class="adx-accordion-card__panel-content">
+                        <div class="adx-accordion-card__panel-inner">
+                          <div class="panel-text">
+                            <p>For a limited time, qualified applicants can receive 0.25% off standard rates on new equipment loans. Contact your local loan officer for details.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Complex Header with Metadata -->
+                <div class="type-label">Complex Header with Metadata</div>
+                <div class="component-row">
+                  <div class="adx-accordion-card adx-accordion-card--open" style="max-width: 500px;">
+                    <button class="adx-accordion-card__trigger" aria-expanded="true" onclick="toggleAccordionCard(this)">
+                      <div class="adx-accordion-card__trigger-content">
+                        <div class="slot-title">Quarterly Performance</div>
+                        <div class="slot-meta" style="margin-top: var(--spacing-4);">
+                          <span>Q4 2025</span>
+                          <span class="slot-meta-divider"></span>
+                          <span>Updated Jan 15</span>
+                        </div>
+                      </div>
+                      <span class="adx-accordion-card__chevron">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                      </span>
+                    </button>
+                    <div class="adx-accordion-card__panel">
+                      <div class="adx-accordion-card__panel-content">
+                        <div class="adx-accordion-card__panel-inner">
+                          <div class="panel-stats">
+                            <div class="panel-stat">
+                              <div class="panel-stat-value">$2.4M</div>
+                              <div class="panel-stat-label">Total Loans</div>
+                            </div>
+                            <div class="panel-stat">
+                              <div class="panel-stat-value">142</div>
+                              <div class="panel-stat-label">Applications</div>
+                            </div>
+                            <div class="panel-stat">
+                              <div class="panel-stat-value">94%</div>
+                              <div class="panel-stat-label">Approval Rate</div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Text Only (Simple) -->
+                <div class="type-label">Text Only (Simple)</div>
+                <div class="component-row">
+                  <div class="adx-accordion-card" style="max-width: 500px;">
+                    <button class="adx-accordion-card__trigger" aria-expanded="false" onclick="toggleAccordionCard(this)">
+                      <div class="adx-accordion-card__trigger-content">
+                        <span class="slot-title">How do I check my application status?</span>
+                      </div>
+                      <span class="adx-accordion-card__chevron">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                      </span>
+                    </button>
+                    <div class="adx-accordion-card__panel">
+                      <div class="adx-accordion-card__panel-content">
+                        <div class="adx-accordion-card__panel-inner">
+                          <div class="panel-text">
+                            <p>You can check your application status anytime by logging into your online account or by contacting your local branch directly.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="adx-footer">
+          <section class="adx-section">
+            <div class="adx-content-l">
+              <p class="footer-text">
+                Almanac DX UI Kit v0.1.0
+              </p>
+            </div>
+          </section>
+        </footer>
+
+      </div><!-- /adx-main-wrapper -->
+
+    </div><!-- /adx-wrapper -->
+
+  </div><!-- /adx-layout -->
+
+  <script src="nav.js"></script>
+  <script>
+    function toggleAccordionCard(trigger) {
+      var card = trigger.closest('.adx-accordion-card');
+      var isOpen = card.classList.toggle('adx-accordion-card--open');
+      trigger.setAttribute('aria-expanded', isOpen);
+      // Chevron rotation handled by CSS transition
+    }
+  </script>
+
+</body>
+</html>

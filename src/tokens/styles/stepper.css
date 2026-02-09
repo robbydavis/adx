@@ -1,0 +1,207 @@
+/**
+ * Almanac DX — Stepper Component
+ *
+ * CSS classes matching the Figma Stepper spec (node 13870:570).
+ * A horizontal progress indicator with chevron-shaped steps.
+ *
+ * Supports 2-5 steps with three states:
+ *   - active: current step (brand bg, white text)
+ *   - complete: finished step (brand-subtle bg, brand text, checkmark)
+ *   - incomplete: future step (dark bg, tertiary text)
+ *
+ * Responsive:
+ *   - Default (mobile): compact size, 20px height
+ *   - 500px+: larger size, 28px height
+ *
+ * Usage:
+ *   <div class="adx-stepper">
+ *     <div class="adx-stepper__item adx-stepper__item--complete">
+ *       <span class="adx-stepper__content">
+ *         <svg class="adx-stepper__check">...</svg>
+ *         <span class="adx-stepper__label">Step 1</span>
+ *       </span>
+ *     </div>
+ *     <div class="adx-stepper__item adx-stepper__item--active">
+ *       <span class="adx-stepper__content">
+ *         <span class="adx-stepper__label">Step 2</span>
+ *       </span>
+ *     </div>
+ *     <div class="adx-stepper__item adx-stepper__item--incomplete">
+ *       <span class="adx-stepper__content">
+ *         <span class="adx-stepper__label">Step 3</span>
+ *       </span>
+ *     </div>
+ *   </div>
+ */
+
+/* ==========================================================================
+   Container
+   ========================================================================== */
+
+.adx-stepper {
+  display: flex;
+  width: 100%;
+  max-width: 768px;
+  /* Right padding compensates for last item's missing overlap */
+  padding-right: 6px;
+}
+
+/* ==========================================================================
+   Step Item — Mobile (Default)
+   ========================================================================== */
+
+.adx-stepper__item {
+  flex: 1;
+  position: relative;
+  height: 20px;
+  margin-right: -6px; /* Overlap minus 4px gap */
+  /* Chevron shape: left notch, right arrow */
+  clip-path: polygon(
+    0 0,                    /* top-left */
+    calc(100% - 10px) 0,    /* top before arrow */
+    100% 50%,               /* arrow point */
+    calc(100% - 10px) 100%, /* bottom before arrow */
+    0 100%,                 /* bottom-left */
+    10px 50%                /* left notch */
+  );
+}
+
+/* Reverse z-index so earlier items stack on top (arrows show over notches) */
+.adx-stepper__item:nth-child(1) { z-index: 5; }
+.adx-stepper__item:nth-child(2) { z-index: 4; }
+.adx-stepper__item:nth-child(3) { z-index: 3; }
+.adx-stepper__item:nth-child(4) { z-index: 2; }
+.adx-stepper__item:nth-child(5) { z-index: 1; }
+
+/* Last item: remove negative margin */
+.adx-stepper__item:last-child {
+  margin-right: 0;
+}
+
+/* ==========================================================================
+   Content Area — Mobile (Default)
+   ========================================================================== */
+
+.adx-stepper__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0; /* No gap on mobile */
+  width: 100%;
+  height: 100%;
+  padding: 2px 12px; /* Extra horizontal padding for chevron areas */
+}
+
+/* ==========================================================================
+   Label — Mobile (Default)
+   ========================================================================== */
+
+.adx-stepper__label {
+  font-family: var(--font-family-trade-gothic);
+  font-weight: var(--font-weight-bold);
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==========================================================================
+   Checkmark Icon — Mobile (Default)
+   ========================================================================== */
+
+.adx-stepper__check {
+  display: none; /* Hidden on mobile to save space */
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+/* ==========================================================================
+   State: Active
+   ========================================================================== */
+
+.adx-stepper__item--active {
+  background-color: var(--background-brand);
+}
+
+.adx-stepper__item--active .adx-stepper__label {
+  color: var(--text-reverse);
+}
+
+/* ==========================================================================
+   State: Complete
+   ========================================================================== */
+
+.adx-stepper__item--complete {
+  background-color: var(--background-brand-subtle);
+}
+
+.adx-stepper__item--complete .adx-stepper__label {
+  color: var(--text-brand);
+}
+
+.adx-stepper__item--complete .adx-stepper__check {
+  color: var(--text-brand);
+}
+
+/* ==========================================================================
+   State: Incomplete
+   ========================================================================== */
+
+.adx-stepper__item--incomplete {
+  background-color: var(--background-dark);
+}
+
+.adx-stepper__item--incomplete .adx-stepper__label {
+  color: var(--text-tertiary);
+}
+
+/* ==========================================================================
+   Desktop Styles (500px+)
+   ========================================================================== */
+
+@media (min-width: 500px) {
+  .adx-stepper {
+    padding-right: 16px; /* Larger compensation for desktop */
+  }
+
+  .adx-stepper__item {
+    height: 28px;
+    margin-right: -16px; /* Larger overlap minus 8px gap */
+    /* Chevron shape: larger arrow points */
+    clip-path: polygon(
+      0 0,
+      calc(100% - 24px) 0,
+      100% 50%,
+      calc(100% - 24px) 100%,
+      0 100%,
+      24px 50%
+    );
+  }
+
+  /* Last item: remove negative margin */
+  .adx-stepper__item:last-child {
+    margin-right: 0;
+  }
+
+  .adx-stepper__content {
+    gap: var(--component-space-2xs); /* 4px gap for icon */
+    padding: 4px 28px; /* Larger padding for chevron areas */
+  }
+
+  .adx-stepper__label {
+    font-family: var(--font-family-trade-gothic);
+    font-weight: var(--font-weight-bold);
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  /* Show checkmark on desktop */
+  .adx-stepper__item--complete .adx-stepper__check {
+    display: block;
+    width: 20px;
+    height: 20px;
+  }
+}

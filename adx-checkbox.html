@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-fcma">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkbox — Almanac DX UI Kit</title>
+  <link rel="stylesheet" href="src/tokens/styles/fonts.css">
+  <link rel="stylesheet" href="src/tokens/styles/tokens.css">
+  <link rel="stylesheet" href="src/tokens/styles/layout.css">
+  <link rel="stylesheet" href="src/tokens/styles/button.css">
+  <link rel="stylesheet" href="src/tokens/styles/text-input.css">
+  <link rel="stylesheet" href="src/tokens/styles/select.css">
+  <link rel="stylesheet" href="src/tokens/styles/side-nav.css">
+  <link rel="stylesheet" href="src/tokens/styles/checkbox.css">
+  <link rel="stylesheet" href="adx.css">
+  <style>
+    .checkbox-table {
+      display: grid;
+      grid-template-columns: 80px 80px 80px 120px;
+      gap: var(--spacing-16) var(--spacing-24);
+      align-items: center;
+    }
+    .checkbox-grid-header {
+      font-family: var(--font-family-trade-gothic);
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-12);
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding-bottom: var(--spacing-8);
+      border-bottom: var(--border-width-thin) solid var(--border-subtle);
+    }
+    .state-label {
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-14);
+      color: var(--text-secondary);
+    }
+    .checkbox-cell {
+      display: flex;
+      justify-content: flex-start;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="adx-layout">
+
+    <!-- Top Bar -->
+    <nav class="adx-topbar">
+      <button class="adx-mobile-nav-trigger" onclick="toggleMobileNav()">Menu</button>
+      <span class="topbar-title">Almanac DX UI Kit</span>
+      <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('fcma')" id="btn-fcma">FCMA</button>
+        <button class="theme-btn" onclick="setTheme('rural-first')" id="btn-rural">Rural 1st</button>
+      </div>
+    </nav>
+
+    <!-- Wrapper: Nav + Content -->
+    <div class="adx-wrapper">
+
+      <!-- Side Navigation (rendered by nav.js) -->
+      <nav class="adx-side-nav adx-side-nav--open" id="side-nav"></nav>
+
+      <!-- Main + Footer wrapper -->
+      <div class="adx-main-wrapper">
+
+        <!-- Main Content -->
+        <main class="adx-main">
+
+          <section class="adx-section" id="checkbox">
+            <div class="adx-content-l">
+              <div class="section-inner">
+                <h2 class="section-title">Checkbox Component</h2>
+                <p class="section-subtitle">24×24px checkboxes with three selection states (off, on, intermediate) and multiple interaction states.</p>
+
+                <!-- Checkbox States Grid -->
+                <div class="type-label">Checkbox States</div>
+                <div class="component-row">
+                  <div class="checkbox-table">
+
+                    <!-- Header row -->
+                    <span class="state-label"></span>
+                    <span class="checkbox-grid-header">Off</span>
+                    <span class="checkbox-grid-header">On</span>
+                    <span class="checkbox-grid-header">Intermediate</span>
+
+                    <!-- Default -->
+                    <span class="state-label">Default</span>
+                    <div class="checkbox-cell">
+                      <label class="adx-checkbox" style="pointer-events: none;">
+                        <input type="checkbox" class="adx-checkbox__input" />
+                        <span class="adx-checkbox__box">
+                          <svg class="adx-checkbox__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="checkbox-cell">
+                      <label class="adx-checkbox" style="pointer-events: none;">
+                        <input type="checkbox" class="adx-checkbox__input" checked />
+                        <span class="adx-checkbox__box">
+                          <svg class="adx-checkbox__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="checkbox-cell">
+                      <label class="adx-checkbox adx-checkbox--intermediate" style="pointer-events: none;">
+                        <input type="checkbox" class="adx-checkbox__input" />
+                        <span class="adx-checkbox__box">
+                          <svg class="adx-checkbox__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        </span>
+                      </label>
+                    </div>
+
+                    <!-- Hover -->
+                    <span class="state-label">Hover</span>
+                    <div class="checkbox-cell">
+                      <label class="adx-checkbox" style="pointer-events: none;">
+                        <input type="checkbox" class="adx-checkbox__input" />
+                        <span class="adx-checkbox__box" style="border-color: var(--border-strong);">
+                          <svg class="adx-checkbox__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="checkbox-cell">
+                      <label class="adx-checkbox" style="pointer-events: none;">
+                        <input type="checkbox" class="adx-checkbox__input" checked />
+                        <span class="adx-checkbox__box" style="background-color: var(--background-action-hover); border-color: var(--border-strong);">
+                          <svg class="adx-checkbox__icon" style="opacity: 1;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="checkbox-cell">
+                      <label class="adx-checkbox adx-checkbox--intermediate" style="pointer-events: none;">
+                        <input type="checkbox" class="adx-checkbox__input" />
+                        <span class="adx-checkbox__box" style="border-color: var(--border-strong);">
+                          <svg class="adx-checkbox__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        </span>
+                      </label>
+                    </div>
+
+                    <!-- Focus -->
+                    <span class="state-label">Focus</span>
+                    <div class="checkbox-cell">
+                      <label class="adx-checkbox" style="pointer-events: none;">
+                        <input type="checkbox" class="adx-checkbox__input" />
+                        <span class="adx-checkbox__box" style="border-color: var(--border-strong); box-shadow: var(--focus-ring);">
+                          <svg class="adx-checkbox__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="checkbox-cell">
+                      <label class="adx-checkbox" style="pointer-events: none;">
+                        <input type="checkbox" class="adx-checkbox__input" checked />
+                        <span class="adx-checkbox__box" style="border-color: var(--border-strong); box-shadow: var(--focus-ring);">
+                          <svg class="adx-checkbox__icon" style="opacity: 1;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="checkbox-cell">
+                      <label class="adx-checkbox adx-checkbox--intermediate" style="pointer-events: none;">
+                        <input type="checkbox" class="adx-checkbox__input" />
+                        <span class="adx-checkbox__box" style="border-color: var(--border-strong); box-shadow: var(--focus-ring);">
+                          <svg class="adx-checkbox__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        </span>
+                      </label>
+                    </div>
+
+                    <!-- Warning -->
+                    <span class="state-label">Warning</span>
+                    <div class="checkbox-cell">
+                      <label class="adx-checkbox adx-checkbox--warning" style="pointer-events: none;">
+                        <input type="checkbox" class="adx-checkbox__input" />
+                        <span class="adx-checkbox__box">
+                          <svg class="adx-checkbox__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="checkbox-cell">
+                      <label class="adx-checkbox adx-checkbox--warning" style="pointer-events: none;">
+                        <input type="checkbox" class="adx-checkbox__input" checked />
+                        <span class="adx-checkbox__box">
+                          <svg class="adx-checkbox__icon" style="opacity: 1;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="checkbox-cell">
+                      <label class="adx-checkbox adx-checkbox--intermediate" style="pointer-events: none;">
+                        <input type="checkbox" class="adx-checkbox__input" />
+                        <span class="adx-checkbox__box">
+                          <svg class="adx-checkbox__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        </span>
+                      </label>
+                    </div>
+
+                    <!-- Error -->
+                    <span class="state-label">Error</span>
+                    <div class="checkbox-cell">
+                      <label class="adx-checkbox adx-checkbox--error" style="pointer-events: none;">
+                        <input type="checkbox" class="adx-checkbox__input" />
+                        <span class="adx-checkbox__box">
+                          <svg class="adx-checkbox__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="checkbox-cell">
+                      <label class="adx-checkbox adx-checkbox--error" style="pointer-events: none;">
+                        <input type="checkbox" class="adx-checkbox__input" checked />
+                        <span class="adx-checkbox__box">
+                          <svg class="adx-checkbox__icon" style="opacity: 1;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="checkbox-cell">
+                      <label class="adx-checkbox adx-checkbox--error adx-checkbox--intermediate" style="pointer-events: none;">
+                        <input type="checkbox" class="adx-checkbox__input" />
+                        <span class="adx-checkbox__box">
+                          <svg class="adx-checkbox__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        </span>
+                      </label>
+                    </div>
+
+                    <!-- Disabled -->
+                    <span class="state-label">Disabled</span>
+                    <div class="checkbox-cell">
+                      <label class="adx-checkbox adx-checkbox--disabled">
+                        <input type="checkbox" class="adx-checkbox__input" disabled />
+                        <span class="adx-checkbox__box">
+                          <svg class="adx-checkbox__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="checkbox-cell">
+                      <label class="adx-checkbox adx-checkbox--disabled">
+                        <input type="checkbox" class="adx-checkbox__input" checked disabled />
+                        <span class="adx-checkbox__box">
+                          <svg class="adx-checkbox__icon" style="opacity: 1;" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="checkbox-cell">
+                      <label class="adx-checkbox adx-checkbox--disabled adx-checkbox--intermediate">
+                        <input type="checkbox" class="adx-checkbox__input" disabled />
+                        <span class="adx-checkbox__box">
+                          <svg class="adx-checkbox__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                        </span>
+                      </label>
+                    </div>
+
+                  </div>
+                </div>
+
+                <!-- Interactive Example with Labels -->
+                <div class="type-label">Interactive Examples with Labels</div>
+                <div class="component-row">
+                  <div style="display: flex; flex-direction: column; gap: var(--spacing-16);">
+                    <label class="adx-checkbox">
+                      <input type="checkbox" class="adx-checkbox__input" />
+                      <span class="adx-checkbox__box">
+                        <svg class="adx-checkbox__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      </span>
+                      <span class="adx-checkbox__label">I agree to the terms and conditions</span>
+                    </label>
+
+                    <label class="adx-checkbox">
+                      <input type="checkbox" class="adx-checkbox__input" checked />
+                      <span class="adx-checkbox__box">
+                        <svg class="adx-checkbox__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      </span>
+                      <span class="adx-checkbox__label">Send me promotional emails</span>
+                    </label>
+
+                    <label class="adx-checkbox adx-checkbox--disabled">
+                      <input type="checkbox" class="adx-checkbox__input" disabled />
+                      <span class="adx-checkbox__box">
+                        <svg class="adx-checkbox__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      </span>
+                      <span class="adx-checkbox__label">This option is unavailable</span>
+                    </label>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="adx-footer">
+          <section class="adx-section">
+            <div class="adx-content-l">
+              <p class="footer-text">
+                Almanac DX UI Kit v0.1.0
+              </p>
+            </div>
+          </section>
+        </footer>
+
+      </div><!-- /adx-main-wrapper -->
+
+    </div><!-- /adx-wrapper -->
+
+  </div><!-- /adx-layout -->
+
+  <script src="nav.js"></script>
+
+</body>
+</html>

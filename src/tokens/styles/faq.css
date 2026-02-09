@@ -1,13 +1,12 @@
 /**
  * Almanac DX — FAQ Component
  *
- * CSS classes matching the Figma FAQ spec (node 16248:848).
- * Accordion-style FAQ items with question/answer pattern.
+ * Simple accordion-style FAQ items.
  *
  * States:
- *   - default: collapsed, subtle bottom border
- *   - hover: gray background
- *   - open: gray header background, answer visible below
+ *   - default: collapsed, answer hidden
+ *   - hover: gray background on trigger
+ *   - open: answer visible, icon rotated
  *
  * Usage:
  *   <div class="adx-faq-list">
@@ -22,7 +21,6 @@
  *         </div>
  *       </div>
  *     </div>
- *     <!-- More .adx-faq items... -->
  *   </div>
  */
 
@@ -33,19 +31,10 @@
 .adx-faq-list {
   display: flex;
   flex-direction: column;
-  gap: 0;
   width: 100%;
   max-width: 500px;
-  margin: 0;
-  padding: 0;
 }
 
-/* Ensure no gaps between FAQ items */
-.adx-faq-list > * {
-  margin: 0;
-}
-
-/* Full width variant */
 .adx-faq-list--full-width {
   max-width: none;
 }
@@ -55,15 +44,11 @@
    ========================================================================== */
 
 .adx-faq {
-  display: flex;
-  flex-direction: column;
   width: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 /* ==========================================================================
-   Trigger (Question + Icon)
+   Trigger (Question Row)
    ========================================================================== */
 
 .adx-faq__trigger {
@@ -71,8 +56,7 @@
   align-items: flex-start;
   gap: var(--spacing-16);
   width: 100%;
-  margin: 0;
-  padding: var(--component-space-l); /* 16px */
+  padding: var(--component-space-l);
   background: none;
   border: none;
   border-bottom: var(--border-width-thin) solid var(--border-subtle);
@@ -83,7 +67,6 @@
 
 .adx-faq__trigger:hover {
   background-color: var(--background-dark);
-  border-bottom-color: transparent;
 }
 
 .adx-faq__trigger:focus-visible {
@@ -91,10 +74,8 @@
   box-shadow: var(--focus-ring);
 }
 
-/* Open state - trigger has gray background */
 .adx-faq--open .adx-faq__trigger {
   background-color: var(--background-dark);
-  border-bottom-color: transparent;
 }
 
 /* ==========================================================================
@@ -118,12 +99,11 @@
   flex-shrink: 0;
   width: 20px;
   height: 20px;
-  padding: 2px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: var(--text-primary);
-  transition: transform 0.25s ease-out;
+  transition: transform 150ms ease-out;
 }
 
 .adx-faq__icon svg {
@@ -131,40 +111,38 @@
   height: 20px;
 }
 
-/* Rotate icon when open */
 .adx-faq--open .adx-faq__icon {
   transform: rotate(180deg);
+  transition: transform 200ms ease-out;
 }
 
 /* ==========================================================================
-   Answer
+   Answer (Hidden by default, shown when open)
    ========================================================================== */
 
 .adx-faq__answer {
-  display: none;
-  margin: 0;
-  padding: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 150ms ease-out;
 }
 
-/* Show answer when open */
 .adx-faq--open .adx-faq__answer {
-  display: block;
-  border-bottom: var(--border-width-thin) solid var(--border-subtle);
+  max-height: 1000px; /* Large enough for any content */
+  transition: max-height 200ms ease-out;
 }
 
 /* ==========================================================================
-   Answer Content — Base Typography (paragraph-l: 18px/24px)
+   Answer Content
    ========================================================================== */
 
 .adx-faq__answer-inner {
-  padding: var(--component-space-l); /* 16px all sides */
+  padding: var(--component-space-l);
+  border-bottom: var(--border-width-thin) solid var(--border-subtle);
   font-family: var(--font-family-trade-gothic);
   font-weight: var(--font-weight-regular);
   font-size: var(--font-size-18);
   line-height: 24px;
   color: var(--text-primary);
-  min-height: 0; /* Required for grid animation */
-  overflow: hidden;
 }
 
 .adx-faq__answer-inner p {
@@ -174,10 +152,6 @@
 .adx-faq__answer-inner p:last-child {
   margin-bottom: 0;
 }
-
-/* ==========================================================================
-   Answer Content — Rich Text Support
-   ========================================================================== */
 
 /* Links */
 .adx-faq__answer-inner a {
@@ -219,13 +193,13 @@
   margin-bottom: 0;
 }
 
-/* Strong/bold text */
+/* Bold text */
 .adx-faq__answer-inner strong,
 .adx-faq__answer-inner b {
   font-weight: var(--font-weight-bold);
 }
 
-/* Emphasis/italic */
+/* Italic text */
 .adx-faq__answer-inner em,
 .adx-faq__answer-inner i {
   font-style: italic;

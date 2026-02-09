@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-fcma">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stepper — Almanac DX UI Kit</title>
+  <link rel="stylesheet" href="src/tokens/styles/fonts.css">
+  <link rel="stylesheet" href="src/tokens/styles/tokens.css">
+  <link rel="stylesheet" href="src/tokens/styles/layout.css">
+  <link rel="stylesheet" href="src/tokens/styles/button.css">
+  <link rel="stylesheet" href="src/tokens/styles/text-input.css">
+  <link rel="stylesheet" href="src/tokens/styles/select.css">
+  <link rel="stylesheet" href="src/tokens/styles/side-nav.css">
+  <link rel="stylesheet" href="src/tokens/styles/stepper.css">
+  <link rel="stylesheet" href="adx.css">
+</head>
+<body>
+
+  <div class="adx-layout">
+
+    <!-- Top Bar -->
+    <nav class="adx-topbar">
+      <button class="adx-mobile-nav-trigger" onclick="toggleMobileNav()">Menu</button>
+      <span class="topbar-title">Almanac DX UI Kit</span>
+      <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('fcma')" id="btn-fcma">FCMA</button>
+        <button class="theme-btn" onclick="setTheme('rural-first')" id="btn-rural">Rural 1st</button>
+      </div>
+    </nav>
+
+    <!-- Wrapper: Nav + Content -->
+    <div class="adx-wrapper">
+
+      <!-- Side Navigation (rendered by nav.js) -->
+      <nav class="adx-side-nav adx-side-nav--open" id="side-nav"></nav>
+
+      <!-- Main + Footer wrapper -->
+      <div class="adx-main-wrapper">
+
+        <!-- Main Content -->
+        <main class="adx-main">
+
+          <section class="adx-section" id="stepper">
+            <div class="adx-content-l">
+              <div class="section-inner">
+                <h2 class="section-title">Stepper Component</h2>
+                <p class="section-subtitle">A horizontal progress indicator with chevron-shaped steps. Supports 2-5 steps with active, complete, and incomplete states.</p>
+
+                <!-- 5 Steps Example (from Figma) -->
+                <div class="type-label">5 Steps — Step 3 Active</div>
+                <div class="component-row">
+                  <div class="adx-stepper">
+                    <div class="adx-stepper__item adx-stepper__item--complete">
+                      <span class="adx-stepper__content">
+                        <svg class="adx-stepper__check" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="adx-stepper__label">Loan</span>
+                      </span>
+                    </div>
+                    <div class="adx-stepper__item adx-stepper__item--complete">
+                      <span class="adx-stepper__content">
+                        <svg class="adx-stepper__check" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="adx-stepper__label">Collateral</span>
+                      </span>
+                    </div>
+                    <div class="adx-stepper__item adx-stepper__item--active">
+                      <span class="adx-stepper__content">
+                        <span class="adx-stepper__label">Borrower</span>
+                      </span>
+                    </div>
+                    <div class="adx-stepper__item adx-stepper__item--incomplete">
+                      <span class="adx-stepper__content">
+                        <span class="adx-stepper__label">Financial</span>
+                      </span>
+                    </div>
+                    <div class="adx-stepper__item adx-stepper__item--incomplete">
+                      <span class="adx-stepper__content">
+                        <span class="adx-stepper__label">Review</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 5 Steps — First Step Active -->
+                <div class="type-label">5 Steps — Step 1 Active</div>
+                <div class="component-row">
+                  <div class="adx-stepper">
+                    <div class="adx-stepper__item adx-stepper__item--active">
+                      <span class="adx-stepper__content">
+                        <span class="adx-stepper__label">Loan</span>
+                      </span>
+                    </div>
+                    <div class="adx-stepper__item adx-stepper__item--incomplete">
+                      <span class="adx-stepper__content">
+                        <span class="adx-stepper__label">Collateral</span>
+                      </span>
+                    </div>
+                    <div class="adx-stepper__item adx-stepper__item--incomplete">
+                      <span class="adx-stepper__content">
+                        <span class="adx-stepper__label">Borrower</span>
+                      </span>
+                    </div>
+                    <div class="adx-stepper__item adx-stepper__item--incomplete">
+                      <span class="adx-stepper__content">
+                        <span class="adx-stepper__label">Financial</span>
+                      </span>
+                    </div>
+                    <div class="adx-stepper__item adx-stepper__item--incomplete">
+                      <span class="adx-stepper__content">
+                        <span class="adx-stepper__label">Review</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 5 Steps — Last Step Active -->
+                <div class="type-label">5 Steps — Step 5 Active (Review)</div>
+                <div class="component-row">
+                  <div class="adx-stepper">
+                    <div class="adx-stepper__item adx-stepper__item--complete">
+                      <span class="adx-stepper__content">
+                        <svg class="adx-stepper__check" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="adx-stepper__label">Loan</span>
+                      </span>
+                    </div>
+                    <div class="adx-stepper__item adx-stepper__item--complete">
+                      <span class="adx-stepper__content">
+                        <svg class="adx-stepper__check" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="adx-stepper__label">Collateral</span>
+                      </span>
+                    </div>
+                    <div class="adx-stepper__item adx-stepper__item--complete">
+                      <span class="adx-stepper__content">
+                        <svg class="adx-stepper__check" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="adx-stepper__label">Borrower</span>
+                      </span>
+                    </div>
+                    <div class="adx-stepper__item adx-stepper__item--complete">
+                      <span class="adx-stepper__content">
+                        <svg class="adx-stepper__check" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="adx-stepper__label">Financial</span>
+                      </span>
+                    </div>
+                    <div class="adx-stepper__item adx-stepper__item--active">
+                      <span class="adx-stepper__content">
+                        <span class="adx-stepper__label">Review</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 3 Steps Example -->
+                <div class="type-label">3 Steps — Step 2 Active</div>
+                <div class="component-row">
+                  <div class="adx-stepper">
+                    <div class="adx-stepper__item adx-stepper__item--complete">
+                      <span class="adx-stepper__content">
+                        <svg class="adx-stepper__check" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="adx-stepper__label">Account</span>
+                      </span>
+                    </div>
+                    <div class="adx-stepper__item adx-stepper__item--active">
+                      <span class="adx-stepper__content">
+                        <span class="adx-stepper__label">Details</span>
+                      </span>
+                    </div>
+                    <div class="adx-stepper__item adx-stepper__item--incomplete">
+                      <span class="adx-stepper__content">
+                        <span class="adx-stepper__label">Confirm</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 2 Steps Example -->
+                <div class="type-label">2 Steps — Step 1 Active</div>
+                <div class="component-row">
+                  <div class="adx-stepper">
+                    <div class="adx-stepper__item adx-stepper__item--active">
+                      <span class="adx-stepper__content">
+                        <span class="adx-stepper__label">Enter Information</span>
+                      </span>
+                    </div>
+                    <div class="adx-stepper__item adx-stepper__item--incomplete">
+                      <span class="adx-stepper__content">
+                        <span class="adx-stepper__label">Review & Submit</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- 4 Steps Example -->
+                <div class="type-label">4 Steps — Step 3 Active</div>
+                <div class="component-row">
+                  <div class="adx-stepper">
+                    <div class="adx-stepper__item adx-stepper__item--complete">
+                      <span class="adx-stepper__content">
+                        <svg class="adx-stepper__check" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="adx-stepper__label">Personal</span>
+                      </span>
+                    </div>
+                    <div class="adx-stepper__item adx-stepper__item--complete">
+                      <span class="adx-stepper__content">
+                        <svg class="adx-stepper__check" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        <span class="adx-stepper__label">Business</span>
+                      </span>
+                    </div>
+                    <div class="adx-stepper__item adx-stepper__item--active">
+                      <span class="adx-stepper__content">
+                        <span class="adx-stepper__label">Documents</span>
+                      </span>
+                    </div>
+                    <div class="adx-stepper__item adx-stepper__item--incomplete">
+                      <span class="adx-stepper__content">
+                        <span class="adx-stepper__label">Submit</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="adx-footer">
+          <section class="adx-section">
+            <div class="adx-content-l">
+              <p class="footer-text">
+                Almanac DX UI Kit v0.1.0
+              </p>
+            </div>
+          </section>
+        </footer>
+
+      </div><!-- /adx-main-wrapper -->
+
+    </div><!-- /adx-wrapper -->
+
+  </div><!-- /adx-layout -->
+
+  <script src="nav.js"></script>
+
+</body>
+</html>

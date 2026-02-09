@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-fcma">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Radio Button — Almanac DX UI Kit</title>
+  <link rel="stylesheet" href="src/tokens/styles/fonts.css">
+  <link rel="stylesheet" href="src/tokens/styles/tokens.css">
+  <link rel="stylesheet" href="src/tokens/styles/layout.css">
+  <link rel="stylesheet" href="src/tokens/styles/button.css">
+  <link rel="stylesheet" href="src/tokens/styles/text-input.css">
+  <link rel="stylesheet" href="src/tokens/styles/select.css">
+  <link rel="stylesheet" href="src/tokens/styles/side-nav.css">
+  <link rel="stylesheet" href="src/tokens/styles/radio.css">
+  <link rel="stylesheet" href="adx.css">
+  <style>
+    .radio-table {
+      display: grid;
+      grid-template-columns: 80px 80px 80px;
+      gap: var(--spacing-16) var(--spacing-24);
+      align-items: center;
+    }
+    .radio-grid-header {
+      font-family: var(--font-family-trade-gothic);
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-12);
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding-bottom: var(--spacing-8);
+      border-bottom: var(--border-width-thin) solid var(--border-subtle);
+    }
+    .state-label {
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-14);
+      color: var(--text-secondary);
+    }
+    .radio-cell {
+      display: flex;
+      justify-content: flex-start;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="adx-layout">
+
+    <!-- Top Bar -->
+    <nav class="adx-topbar">
+      <button class="adx-mobile-nav-trigger" onclick="toggleMobileNav()">Menu</button>
+      <span class="topbar-title">Almanac DX UI Kit</span>
+      <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('fcma')" id="btn-fcma">FCMA</button>
+        <button class="theme-btn" onclick="setTheme('rural-first')" id="btn-rural">Rural 1st</button>
+      </div>
+    </nav>
+
+    <!-- Wrapper: Nav + Content -->
+    <div class="adx-wrapper">
+
+      <!-- Side Navigation (rendered by nav.js) -->
+      <nav class="adx-side-nav adx-side-nav--open" id="side-nav"></nav>
+
+      <!-- Main + Footer wrapper -->
+      <div class="adx-main-wrapper">
+
+        <!-- Main Content -->
+        <main class="adx-main">
+
+          <section class="adx-section" id="radio">
+            <div class="adx-content-l">
+              <div class="section-inner">
+                <h2 class="section-title">Radio Button Component</h2>
+                <p class="section-subtitle">24×24px radio buttons with two selection states (off, on) and multiple interaction states.</p>
+
+                <!-- Radio States Grid -->
+                <div class="type-label">Radio Button States</div>
+                <div class="component-row">
+                  <div class="radio-table">
+
+                    <!-- Header row -->
+                    <span class="state-label"></span>
+                    <span class="radio-grid-header">Off</span>
+                    <span class="radio-grid-header">On</span>
+
+                    <!-- Default -->
+                    <span class="state-label">Default</span>
+                    <div class="radio-cell">
+                      <label class="adx-radio" style="pointer-events: none;">
+                        <input type="radio" class="adx-radio__input" name="default" />
+                        <span class="adx-radio__circle">
+                          <span class="adx-radio__dot"></span>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="radio-cell">
+                      <label class="adx-radio" style="pointer-events: none;">
+                        <input type="radio" class="adx-radio__input" name="default-on" checked />
+                        <span class="adx-radio__circle">
+                          <span class="adx-radio__dot"></span>
+                        </span>
+                      </label>
+                    </div>
+
+                    <!-- Hover -->
+                    <span class="state-label">Hover</span>
+                    <div class="radio-cell">
+                      <label class="adx-radio" style="pointer-events: none;">
+                        <input type="radio" class="adx-radio__input" name="hover" />
+                        <span class="adx-radio__circle" style="border-color: var(--border-strong);">
+                          <span class="adx-radio__dot"></span>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="radio-cell">
+                      <label class="adx-radio" style="pointer-events: none;">
+                        <input type="radio" class="adx-radio__input" name="hover-on" checked />
+                        <span class="adx-radio__circle" style="border-color: var(--border-strong);">
+                          <span class="adx-radio__dot" style="opacity: 1;"></span>
+                        </span>
+                      </label>
+                    </div>
+
+                    <!-- Focus -->
+                    <span class="state-label">Focus</span>
+                    <div class="radio-cell">
+                      <label class="adx-radio" style="pointer-events: none;">
+                        <input type="radio" class="adx-radio__input" name="focus" />
+                        <span class="adx-radio__circle" style="border-color: var(--border-strong); box-shadow: var(--focus-ring);">
+                          <span class="adx-radio__dot"></span>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="radio-cell">
+                      <label class="adx-radio" style="pointer-events: none;">
+                        <input type="radio" class="adx-radio__input" name="focus-on" checked />
+                        <span class="adx-radio__circle" style="border-color: var(--border-strong); box-shadow: var(--focus-ring);">
+                          <span class="adx-radio__dot" style="opacity: 1;"></span>
+                        </span>
+                      </label>
+                    </div>
+
+                    <!-- Warning -->
+                    <span class="state-label">Warning</span>
+                    <div class="radio-cell">
+                      <label class="adx-radio adx-radio--warning" style="pointer-events: none;">
+                        <input type="radio" class="adx-radio__input" name="warning" />
+                        <span class="adx-radio__circle">
+                          <span class="adx-radio__dot"></span>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="radio-cell">
+                      <label class="adx-radio adx-radio--warning" style="pointer-events: none;">
+                        <input type="radio" class="adx-radio__input" name="warning-on" checked />
+                        <span class="adx-radio__circle">
+                          <span class="adx-radio__dot" style="opacity: 1;"></span>
+                        </span>
+                      </label>
+                    </div>
+
+                    <!-- Error -->
+                    <span class="state-label">Error</span>
+                    <div class="radio-cell">
+                      <label class="adx-radio adx-radio--error" style="pointer-events: none;">
+                        <input type="radio" class="adx-radio__input" name="error" />
+                        <span class="adx-radio__circle">
+                          <span class="adx-radio__dot"></span>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="radio-cell">
+                      <label class="adx-radio adx-radio--error" style="pointer-events: none;">
+                        <input type="radio" class="adx-radio__input" name="error-on" checked />
+                        <span class="adx-radio__circle">
+                          <span class="adx-radio__dot" style="opacity: 1;"></span>
+                        </span>
+                      </label>
+                    </div>
+
+                    <!-- Disabled -->
+                    <span class="state-label">Disabled</span>
+                    <div class="radio-cell">
+                      <label class="adx-radio adx-radio--disabled">
+                        <input type="radio" class="adx-radio__input" name="disabled" disabled />
+                        <span class="adx-radio__circle">
+                          <span class="adx-radio__dot"></span>
+                        </span>
+                      </label>
+                    </div>
+                    <div class="radio-cell">
+                      <label class="adx-radio adx-radio--disabled">
+                        <input type="radio" class="adx-radio__input" name="disabled-on" checked disabled />
+                        <span class="adx-radio__circle">
+                          <span class="adx-radio__dot" style="opacity: 1;"></span>
+                        </span>
+                      </label>
+                    </div>
+
+                  </div>
+                </div>
+
+                <!-- Interactive Example with Labels -->
+                <div class="type-label">Interactive Examples with Labels</div>
+                <div class="component-row">
+                  <div style="display: flex; flex-direction: column; gap: var(--spacing-16);">
+
+                    <label class="adx-radio">
+                      <input type="radio" class="adx-radio__input" name="interactive-group" value="option1" />
+                      <span class="adx-radio__circle">
+                        <span class="adx-radio__dot"></span>
+                      </span>
+                      <span class="adx-radio__label">Option 1</span>
+                    </label>
+
+                    <label class="adx-radio">
+                      <input type="radio" class="adx-radio__input" name="interactive-group" value="option2" checked />
+                      <span class="adx-radio__circle">
+                        <span class="adx-radio__dot"></span>
+                      </span>
+                      <span class="adx-radio__label">Option 2 (pre-selected)</span>
+                    </label>
+
+                    <label class="adx-radio">
+                      <input type="radio" class="adx-radio__input" name="interactive-group" value="option3" />
+                      <span class="adx-radio__circle">
+                        <span class="adx-radio__dot"></span>
+                      </span>
+                      <span class="adx-radio__label">Option 3</span>
+                    </label>
+
+                    <label class="adx-radio adx-radio--disabled">
+                      <input type="radio" class="adx-radio__input" name="interactive-group" value="option4" disabled />
+                      <span class="adx-radio__circle">
+                        <span class="adx-radio__dot"></span>
+                      </span>
+                      <span class="adx-radio__label">Option 4 (disabled)</span>
+                    </label>
+
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="adx-footer">
+          <section class="adx-section">
+            <div class="adx-content-l">
+              <p class="footer-text">
+                Almanac DX UI Kit v0.1.0
+              </p>
+            </div>
+          </section>
+        </footer>
+
+      </div><!-- /adx-main-wrapper -->
+
+    </div><!-- /adx-wrapper -->
+
+  </div><!-- /adx-layout -->
+
+  <script src="nav.js"></script>
+
+</body>
+</html>

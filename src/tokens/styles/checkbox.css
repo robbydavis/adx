@@ -1,0 +1,242 @@
+/**
+ * Almanac DX — Checkbox Component
+ *
+ * CSS classes matching the Figma Checkbox spec (node 13823:723).
+ * Supports three selection states and multiple interaction states.
+ *
+ * Selection States:
+ *   - off: unchecked (empty box)
+ *   - on: checked (green background + checkmark)
+ *   - intermediate: partial selection (amber background + minus)
+ *
+ * Interaction States:
+ *   - default: normal appearance
+ *   - hover: strong border
+ *   - focus: outer focus ring + strong border
+ *   - warning: warning border/background
+ *   - error: error border/background
+ *   - disabled: subtle styling, non-interactive
+ *
+ * Usage:
+ *   <label class="adx-checkbox">
+ *     <input type="checkbox" class="adx-checkbox__input" />
+ *     <span class="adx-checkbox__box">
+ *       <svg class="adx-checkbox__icon">...</svg>
+ *     </span>
+ *     <span class="adx-checkbox__label">Label text</span>
+ *   </label>
+ */
+
+/* ==========================================================================
+   Base Container
+   ========================================================================== */
+
+.adx-checkbox {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  cursor: pointer;
+  user-select: none;
+}
+
+.adx-checkbox--disabled {
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   Hidden Native Input
+   ========================================================================== */
+
+.adx-checkbox__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   Visual Checkbox Box — Default Unchecked
+   ========================================================================== */
+
+.adx-checkbox__box {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-primary);
+  border: var(--border-width-thin) solid var(--border-dark);
+  border-radius: var(--radius-2xs); /* 4px */
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+/* ==========================================================================
+   Checkmark / Intermediate Icon
+   ========================================================================== */
+
+.adx-checkbox__icon {
+  width: 16px;
+  height: 16px;
+  color: var(--icon-reverse); /* White icon */
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+/* ==========================================================================
+   Selection States — Checked (On)
+   ========================================================================== */
+
+/* Default checked: green background, NO border */
+.adx-checkbox__input:checked + .adx-checkbox__box {
+  background-color: var(--background-action);
+  border-color: transparent;
+}
+
+.adx-checkbox__input:checked + .adx-checkbox__box .adx-checkbox__icon {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Selection States — Intermediate
+   ========================================================================== */
+
+/* Default intermediate: warning/amber background, NO border */
+.adx-checkbox--intermediate .adx-checkbox__box {
+  background-color: var(--background-warning);
+  border-color: transparent;
+}
+
+.adx-checkbox--intermediate .adx-checkbox__icon {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Interaction States — Hover
+   ========================================================================== */
+
+/* Hover unchecked: strong (black) border */
+.adx-checkbox:hover .adx-checkbox__box {
+  border-color: var(--border-strong);
+}
+
+/* Hover checked: action-hover background + strong border */
+.adx-checkbox:hover .adx-checkbox__input:checked + .adx-checkbox__box {
+  background-color: var(--background-action-hover);
+  border-color: var(--border-strong);
+}
+
+/* Hover intermediate: keep warning bg, add strong border */
+.adx-checkbox--intermediate:hover .adx-checkbox__box {
+  border-color: var(--border-strong);
+}
+
+/* ==========================================================================
+   Interaction States — Focus
+   ========================================================================== */
+
+/* Focus ring (outer border effect) */
+.adx-checkbox__input:focus-visible + .adx-checkbox__box {
+  border-color: var(--border-strong);
+  box-shadow: var(--focus-ring);
+}
+
+/* Focus checked: keep action bg + strong border + focus ring */
+.adx-checkbox__input:focus-visible:checked + .adx-checkbox__box {
+  background-color: var(--background-action);
+  border-color: var(--border-strong);
+  box-shadow: var(--focus-ring);
+}
+
+/* Focus intermediate */
+.adx-checkbox--intermediate .adx-checkbox__input:focus-visible + .adx-checkbox__box {
+  border-color: var(--border-strong);
+  box-shadow: var(--focus-ring);
+}
+
+/* ==========================================================================
+   Validation States — Warning
+   ========================================================================== */
+
+/* Warning unchecked: warning border */
+.adx-checkbox--warning .adx-checkbox__box {
+  border-color: var(--border-warning);
+}
+
+/* Warning checked: warning background (not green!) */
+.adx-checkbox--warning .adx-checkbox__input:checked + .adx-checkbox__box {
+  background-color: var(--background-warning);
+  border-color: transparent;
+}
+
+/* Warning intermediate: already has warning bg */
+
+/* ==========================================================================
+   Validation States — Error
+   ========================================================================== */
+
+/* Error unchecked: error border */
+.adx-checkbox--error .adx-checkbox__box {
+  border-color: var(--border-error);
+}
+
+/* Error checked: error background (red, not green!) */
+.adx-checkbox--error .adx-checkbox__input:checked + .adx-checkbox__box {
+  background-color: var(--background-error);
+  border-color: transparent;
+}
+
+/* Error intermediate: error background */
+.adx-checkbox--error.adx-checkbox--intermediate .adx-checkbox__box {
+  background-color: var(--background-error);
+}
+
+/* ==========================================================================
+   Disabled State
+   ========================================================================== */
+
+/* Disabled unchecked: subtle border */
+.adx-checkbox--disabled .adx-checkbox__box {
+  background-color: var(--background-primary);
+  border-color: var(--border-subtle);
+}
+
+/* Disabled checked/intermediate: darker gray background */
+.adx-checkbox--disabled .adx-checkbox__input:checked + .adx-checkbox__box,
+.adx-checkbox--disabled.adx-checkbox--intermediate .adx-checkbox__box {
+  background-color: var(--background-darker);
+  border-color: transparent;
+}
+
+/* Disabled hover - no change */
+.adx-checkbox--disabled:hover .adx-checkbox__box {
+  border-color: var(--border-subtle);
+}
+
+.adx-checkbox--disabled:hover .adx-checkbox__input:checked + .adx-checkbox__box,
+.adx-checkbox--disabled.adx-checkbox--intermediate:hover .adx-checkbox__box {
+  background-color: var(--background-darker);
+  border-color: transparent;
+}
+
+/* ==========================================================================
+   Label Text
+   ========================================================================== */
+
+.adx-checkbox__label {
+  font-family: var(--font-family-trade-gothic);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-14);
+  line-height: 20px;
+  color: var(--text-primary);
+}
+
+.adx-checkbox--disabled .adx-checkbox__label {
+  color: var(--text-secondary);
+}

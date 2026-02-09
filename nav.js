@@ -6,6 +6,7 @@
  */
 
 const NAV_ITEMS = [
+  // Overview & Tokens stay at top
   {
     href: 'adx.html',
     label: 'Overview',
@@ -16,30 +17,21 @@ const NAV_ITEMS = [
     label: 'Tokens',
     icon: '<circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"></line><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"></line><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"></line><line x1="14.83" y1="9.17" x2="18.36" y2="5.64"></line><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"></line>'
   },
+  // Components (alphabetical)
+  {
+    href: 'adx-accordion-card.html',
+    label: 'Accordion Card',
+    icon: '<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><polyline points="8 10 12 14 16 10"></polyline>'
+  },
+  {
+    href: 'adx-alerts.html',
+    label: 'Alerts',
+    icon: '<circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line>'
+  },
   {
     href: 'adx-buttons.html',
     label: 'Buttons',
     icon: '<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>'
-  },
-  {
-    href: 'adx-text-inputs.html',
-    label: 'Text Inputs',
-    icon: '<polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line>'
-  },
-  {
-    href: 'adx-text-areas.html',
-    label: 'Text Areas',
-    icon: '<line x1="17" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="17" y1="18" x2="3" y2="18"></line>'
-  },
-  {
-    href: 'adx-selects.html',
-    label: 'Selects',
-    icon: '<polyline points="6 9 12 15 18 9"></polyline>'
-  },
-  {
-    href: 'adx-menus.html',
-    label: 'Menus',
-    icon: '<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>'
   },
   {
     href: 'adx-cards.html',
@@ -47,9 +39,9 @@ const NAV_ITEMS = [
     icon: '<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line>'
   },
   {
-    href: 'adx-selectable-card.html',
-    label: 'Selectable Card',
-    icon: '<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><polyline points="9 11 12 14 22 4"></polyline>'
+    href: 'adx-checkbox.html',
+    label: 'Checkbox',
+    icon: '<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><polyline points="9 11 12 14 16 10"></polyline>'
   },
   {
     href: 'adx-expansion-panel.html',
@@ -62,19 +54,54 @@ const NAV_ITEMS = [
     icon: '<circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line>'
   },
   {
-    href: 'adx-alerts.html',
-    label: 'Alerts',
-    icon: '<circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line>'
+    href: 'adx-menus.html',
+    label: 'Menus',
+    icon: '<line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line>'
   },
   {
-    href: 'adx-tooltip.html',
-    label: 'Tooltip',
-    icon: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>'
+    href: 'adx-radio.html',
+    label: 'Radio Button',
+    icon: '<circle cx="12" cy="12" r="10"></circle><circle cx="12" cy="12" r="4"></circle>'
+  },
+  {
+    href: 'adx-selectable-card.html',
+    label: 'Selectable Card',
+    icon: '<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><polyline points="9 11 12 14 22 4"></polyline>'
+  },
+  {
+    href: 'adx-selects.html',
+    label: 'Selects',
+    icon: '<polyline points="6 9 12 15 18 9"></polyline>'
   },
   {
     href: 'adx-side-nav.html',
     label: 'Side Nav',
     icon: '<rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="9" y1="3" x2="9" y2="21"></line>'
+  },
+  {
+    href: 'adx-stepper.html',
+    label: 'Stepper',
+    icon: '<polyline points="4 12 8 12 12 12"></polyline><polygon points="12 8 20 12 12 16 12 8"></polygon>'
+  },
+  {
+    href: 'adx-text-areas.html',
+    label: 'Text Areas',
+    icon: '<line x1="17" y1="10" x2="3" y2="10"></line><line x1="21" y1="6" x2="3" y2="6"></line><line x1="21" y1="14" x2="3" y2="14"></line><line x1="17" y1="18" x2="3" y2="18"></line>'
+  },
+  {
+    href: 'adx-text-inputs.html',
+    label: 'Text Inputs',
+    icon: '<polyline points="4 7 4 4 20 4 20 7"></polyline><line x1="9" y1="20" x2="15" y2="20"></line><line x1="12" y1="4" x2="12" y2="20"></line>'
+  },
+  {
+    href: 'adx-toast.html',
+    label: 'Toast',
+    icon: '<path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path>'
+  },
+  {
+    href: 'adx-tooltip.html',
+    label: 'Tooltip',
+    icon: '<path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>'
   }
 ];
 

@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-fcma">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Toast — Almanac DX UI Kit</title>
+  <link rel="stylesheet" href="src/tokens/styles/fonts.css">
+  <link rel="stylesheet" href="src/tokens/styles/tokens.css">
+  <link rel="stylesheet" href="src/tokens/styles/layout.css">
+  <link rel="stylesheet" href="src/tokens/styles/button.css">
+  <link rel="stylesheet" href="src/tokens/styles/text-input.css">
+  <link rel="stylesheet" href="src/tokens/styles/select.css">
+  <link rel="stylesheet" href="src/tokens/styles/checkbox.css">
+  <link rel="stylesheet" href="src/tokens/styles/radio.css">
+  <link rel="stylesheet" href="src/tokens/styles/side-nav.css">
+  <link rel="stylesheet" href="src/tokens/styles/toast.css">
+  <link rel="stylesheet" href="adx.css">
+  <style>
+    .toast-demo-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-16);
+      margin-bottom: var(--spacing-24);
+    }
+
+    /* Static examples container */
+    .toast-static-examples {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-16);
+      max-width: 450px;
+    }
+    .toast-static-examples .adx-toast {
+      position: relative;
+      opacity: 1;
+      transform: none;
+    }
+
+    /* Options panel */
+    .options-panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-24);
+      padding: var(--spacing-16);
+      background-color: var(--background-light);
+      border-radius: var(--radius-xs);
+      margin-bottom: var(--spacing-24);
+    }
+    .option-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-8);
+    }
+    .option-label {
+      font-family: var(--font-family-trade-gothic);
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-12);
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--spacing-4);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="adx-layout">
+
+    <!-- Top Bar -->
+    <nav class="adx-topbar">
+      <button class="adx-mobile-nav-trigger" onclick="toggleMobileNav()">Menu</button>
+      <span class="topbar-title">Almanac DX UI Kit</span>
+      <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('fcma')" id="btn-fcma">FCMA</button>
+        <button class="theme-btn" onclick="setTheme('rural-first')" id="btn-rural">Rural 1st</button>
+      </div>
+    </nav>
+
+    <!-- Wrapper: Nav + Content -->
+    <div class="adx-wrapper">
+
+      <!-- Side Navigation (rendered by nav.js) -->
+      <nav class="adx-side-nav adx-side-nav--open" id="side-nav"></nav>
+
+      <!-- Main + Footer wrapper -->
+      <div class="adx-main-wrapper">
+
+        <!-- Main Content -->
+        <main class="adx-main">
+
+          <section class="adx-section" id="toast">
+            <div class="adx-content-l">
+              <div class="section-inner">
+                <h2 class="section-title">Toast Component</h2>
+                <p class="section-subtitle">Slide-up notifications with four semantic variants. Supports auto-dismiss (5s) or persistent mode requiring manual close. Maximum 3 toasts visible at once.</p>
+
+                <!-- Interactive Demo -->
+                <div class="type-label">Interactive Demo</div>
+                <div class="options-panel">
+                  <div class="option-group">
+                    <span class="option-label">Behavior</span>
+                    <label class="adx-radio">
+                      <input type="radio" class="adx-radio__input" name="toast-mode" value="auto" checked />
+                      <span class="adx-radio__circle">
+                        <span class="adx-radio__dot"></span>
+                      </span>
+                      <span class="adx-radio__label">Auto-dismiss (5s)</span>
+                    </label>
+                    <label class="adx-radio">
+                      <input type="radio" class="adx-radio__input" name="toast-mode" value="persistent" />
+                      <span class="adx-radio__circle">
+                        <span class="adx-radio__dot"></span>
+                      </span>
+                      <span class="adx-radio__label">Persistent</span>
+                    </label>
+                  </div>
+                  <div class="option-group">
+                    <span class="option-label">Content</span>
+                    <label class="adx-checkbox">
+                      <input type="checkbox" class="adx-checkbox__input" id="show-message" checked />
+                      <span class="adx-checkbox__box">
+                        <svg class="adx-checkbox__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      </span>
+                      <span class="adx-checkbox__label">Show message</span>
+                    </label>
+                    <label class="adx-checkbox">
+                      <input type="checkbox" class="adx-checkbox__input" id="show-action" checked />
+                      <span class="adx-checkbox__box">
+                        <svg class="adx-checkbox__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      </span>
+                      <span class="adx-checkbox__label">Show action</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="component-row">
+                  <div class="toast-demo-row">
+                    <button class="adx-btn adx-btn--primary adx-btn--small" onclick="triggerToast('success')">
+                      Show Success
+                    </button>
+                    <button class="adx-btn adx-btn--primary adx-btn--small" onclick="triggerToast('warning')">
+                      Show Warning
+                    </button>
+                    <button class="adx-btn adx-btn--primary adx-btn--small" onclick="triggerToast('error')">
+                      Show Error
+                    </button>
+                    <button class="adx-btn adx-btn--primary adx-btn--small" onclick="triggerToast('info')">
+                      Show Info
+                    </button>
+                  </div>
+                </div>
+
+                <!-- Static Examples -->
+                <div class="type-label">All Variants</div>
+                <div class="component-row">
+                  <div class="toast-static-examples">
+
+                    <!-- Success -->
+                    <div class="adx-toast adx-toast--success" role="alert">
+                      <div class="adx-toast__stripe"></div>
+                      <div class="adx-toast__body">
+                        <span class="adx-toast__icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </span>
+                        <div class="adx-toast__content">
+                          <p class="adx-toast__title">Changes saved</p>
+                          <p class="adx-toast__message">Your application has been updated successfully.</p>
+                          <a class="adx-toast__action" href="#">View changes</a>
+                        </div>
+                      </div>
+                      <button class="adx-btn adx-btn--icon adx-toast__close" aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                      </button>
+                    </div>
+
+                    <!-- Warning -->
+                    <div class="adx-toast adx-toast--warning" role="alert">
+                      <div class="adx-toast__stripe"></div>
+                      <div class="adx-toast__body">
+                        <span class="adx-toast__icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                        </span>
+                        <div class="adx-toast__content">
+                          <p class="adx-toast__title">Session expiring</p>
+                          <p class="adx-toast__message">Your session will expire in 5 minutes.</p>
+                          <a class="adx-toast__action" href="#">Extend session</a>
+                        </div>
+                      </div>
+                      <button class="adx-btn adx-btn--icon adx-toast__close" aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                      </button>
+                    </div>
+
+                    <!-- Error -->
+                    <div class="adx-toast adx-toast--error" role="alert">
+                      <div class="adx-toast__stripe"></div>
+                      <div class="adx-toast__body">
+                        <span class="adx-toast__icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                        </span>
+                        <div class="adx-toast__content">
+                          <p class="adx-toast__title">Unable to save</p>
+                          <p class="adx-toast__message">Please check your connection and try again.</p>
+                          <a class="adx-toast__action" href="#">Retry</a>
+                        </div>
+                      </div>
+                      <button class="adx-btn adx-btn--icon adx-toast__close" aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                      </button>
+                    </div>
+
+                    <!-- Info -->
+                    <div class="adx-toast adx-toast--info" role="alert">
+                      <div class="adx-toast__stripe"></div>
+                      <div class="adx-toast__body">
+                        <span class="adx-toast__icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                        </span>
+                        <div class="adx-toast__content">
+                          <p class="adx-toast__title">New message</p>
+                          <p class="adx-toast__message">You have a new message from your loan officer.</p>
+                          <a class="adx-toast__action" href="#">View message</a>
+                        </div>
+                      </div>
+                      <button class="adx-btn adx-btn--icon adx-toast__close" aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                      </button>
+                    </div>
+
+                  </div>
+                </div>
+
+                <!-- Title Only Example -->
+                <div class="type-label">Title Only (No Message or Action)</div>
+                <div class="component-row">
+                  <div class="toast-static-examples">
+                    <div class="adx-toast adx-toast--success" role="alert">
+                      <div class="adx-toast__stripe"></div>
+                      <div class="adx-toast__body">
+                        <span class="adx-toast__icon">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                        </span>
+                        <div class="adx-toast__content">
+                          <p class="adx-toast__title">Document uploaded</p>
+                        </div>
+                      </div>
+                      <button class="adx-btn adx-btn--icon adx-toast__close" aria-label="Close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="adx-footer">
+          <section class="adx-section">
+            <div class="adx-content-l">
+              <p class="footer-text">
+                Almanac DX UI Kit v0.1.0
+              </p>
+            </div>
+          </section>
+        </footer>
+
+      </div><!-- /adx-main-wrapper -->
+
+    </div><!-- /adx-wrapper -->
+
+  </div><!-- /adx-layout -->
+
+  <!-- Toast Container -->
+  <div class="adx-toast-container" id="toast-container"></div>
+
+  <script src="nav.js"></script>
+  <script>
+    // Toast queue management
+    var MAX_VISIBLE_TOASTS = 3;
+    var visibleToasts = [];
+    var queuedToasts = [];
+
+    // Toast icons by type
+    var TOAST_ICONS = {
+      success: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>',
+      warning: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>',
+      error: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>',
+      info: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>'
+    };
+
+    var CLOSE_ICON = '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>';
+
+    var TOAST_CONTENT = {
+      success: { title: 'Changes saved', message: 'Your application has been updated successfully.', action: 'View changes' },
+      warning: { title: 'Session expiring', message: 'Your session will expire in 5 minutes.', action: 'Extend session' },
+      error: { title: 'Unable to save', message: 'Please check your connection and try again.', action: 'Retry' },
+      info: { title: 'New message', message: 'You have a new message from your loan officer.', action: 'View message' }
+    };
+
+    function showNextQueuedToast() {
+      if (queuedToasts.length > 0 && visibleToasts.length < MAX_VISIBLE_TOASTS) {
+        var nextOptions = queuedToasts.shift();
+        showToast(nextOptions);
+      }
+    }
+
+    function showToast(options) {
+      // If we're at max capacity, queue this toast
+      if (visibleToasts.length >= MAX_VISIBLE_TOASTS) {
+        queuedToasts.push(options);
+        return { close: function() {} };
+      }
+
+      var type = options.type || 'info';
+      var title = options.title;
+      var message = options.message;
+      var action = options.action;
+      var persistent = options.persistent || false;
+      var duration = options.duration || 5000;
+
+      var container = document.getElementById('toast-container');
+
+      // Create toast element
+      var toast = document.createElement('div');
+      toast.className = 'adx-toast adx-toast--' + type;
+      toast.setAttribute('role', 'alert');
+
+      // Build content HTML
+      var contentHTML = '<p class="adx-toast__title">' + title + '</p>';
+      if (message) {
+        contentHTML += '<p class="adx-toast__message">' + message + '</p>';
+      }
+      if (action) {
+        contentHTML += '<a class="adx-toast__action" href="#">' + action + '</a>';
+      }
+
+      toast.innerHTML =
+        '<div class="adx-toast__stripe"></div>' +
+        '<div class="adx-toast__body">' +
+          '<span class="adx-toast__icon">' + TOAST_ICONS[type] + '</span>' +
+          '<div class="adx-toast__content">' + contentHTML + '</div>' +
+        '</div>' +
+        '<button class="adx-btn adx-btn--icon adx-toast__close" aria-label="Close">' + CLOSE_ICON + '</button>';
+
+      // Add to container and track
+      container.appendChild(toast);
+      visibleToasts.push(toast);
+
+      // Trigger enter animation
+      requestAnimationFrame(function() {
+        toast.classList.add('adx-toast--entering');
+        toast.addEventListener('animationend', function onEnterEnd() {
+          toast.removeEventListener('animationend', onEnterEnd);
+          toast.classList.remove('adx-toast--entering');
+          toast.classList.add('adx-toast--visible');
+        });
+      });
+
+      // Close function
+      var timeoutId = null;
+      function closeToast() {
+        if (timeoutId) clearTimeout(timeoutId);
+        toast.classList.remove('adx-toast--visible');
+        toast.classList.add('adx-toast--exiting');
+        toast.addEventListener('animationend', function onExitEnd() {
+          toast.removeEventListener('animationend', onExitEnd);
+          toast.remove();
+          // Remove from visible array
+          var idx = visibleToasts.indexOf(toast);
+          if (idx > -1) {
+            visibleToasts.splice(idx, 1);
+          }
+          // Show next queued toast
+          showNextQueuedToast();
+        });
+      }
+
+      // Close button handler
+      toast.querySelector('.adx-toast__close').addEventListener('click', closeToast);
+
+      // Auto-dismiss
+      if (!persistent) {
+        timeoutId = setTimeout(closeToast, duration);
+      }
+
+      return { close: closeToast };
+    }
+
+    function triggerToast(type) {
+      var content = TOAST_CONTENT[type];
+      var modeEl = document.querySelector('input[name="toast-mode"]:checked');
+      var persistent = modeEl && modeEl.value === 'persistent';
+      var showMessage = document.getElementById('show-message').checked;
+      var showAction = document.getElementById('show-action').checked;
+
+      showToast({
+        type: type,
+        title: content.title,
+        message: showMessage ? content.message : null,
+        action: showAction ? content.action : null,
+        persistent: persistent
+      });
+    }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,249 @@
+/**
+ * Almanac DX — Toast Component
+ *
+ * CSS classes matching the Figma Toast spec (node 16659:1271).
+ * Slide-up notification with four semantic variants.
+ *
+ * Variants: success, warning, error, info
+ * States: entering, visible, exiting
+ *
+ * Usage:
+ *   <div class="adx-toast-container">
+ *     <div class="adx-toast adx-toast--success adx-toast--visible" role="alert">
+ *       <div class="adx-toast__stripe"></div>
+ *       <div class="adx-toast__body">
+ *         <span class="adx-toast__icon">...</span>
+ *         <div class="adx-toast__content">
+ *           <p class="adx-toast__title">Title</p>
+ *           <p class="adx-toast__message">Message</p>
+ *           <a class="adx-toast__action" href="#">Action</a>
+ *         </div>
+ *       </div>
+ *       <button class="adx-toast__close">...</button>
+ *     </div>
+ *   </div>
+ */
+
+/* ==========================================================================
+   Toast Container (Viewport Positioning)
+   ========================================================================== */
+
+.adx-toast-container {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: var(--spacing-12);
+  pointer-events: none; /* Allow clicks through container */
+}
+
+/* Desktop: constrain to right side */
+@media (min-width: 450px) {
+  .adx-toast-container {
+    left: auto;
+    right: 24px;
+  }
+}
+
+/* ==========================================================================
+   Toast Base
+   ========================================================================== */
+
+.adx-toast {
+  display: flex;
+  width: 100%;
+  max-width: 450px;
+  background-color: var(--background-primary);
+  border-radius: var(--radius-xs); /* 8px */
+  box-shadow: 0 8px 16px rgba(39, 51, 51, 0.24); /* elevation-300 */
+  overflow: hidden;
+  pointer-events: auto; /* Re-enable clicks on toast */
+
+  /* Initial state (hidden, below viewport) */
+  opacity: 0;
+  transform: translateY(100%);
+}
+
+/* ==========================================================================
+   Animation States
+   ========================================================================== */
+
+/* Entering: animate in from bottom */
+.adx-toast--entering {
+  animation: toast-enter 200ms ease-out forwards;
+}
+
+/* Visible: fully shown */
+.adx-toast--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Exiting: animate out to bottom */
+.adx-toast--exiting {
+  animation: toast-exit 150ms ease-out forwards;
+}
+
+@keyframes toast-enter {
+  from {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes toast-exit {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(100%);
+  }
+}
+
+/* ==========================================================================
+   Color Stripe
+   ========================================================================== */
+
+.adx-toast__stripe {
+  width: 8px;
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+/* Variant colors */
+.adx-toast--success .adx-toast__stripe {
+  background-color: var(--background-success);
+}
+
+.adx-toast--warning .adx-toast__stripe {
+  background-color: var(--background-warning);
+}
+
+.adx-toast--error .adx-toast__stripe {
+  background-color: var(--background-error);
+}
+
+.adx-toast--info .adx-toast__stripe {
+  background-color: var(--background-information);
+}
+
+/* ==========================================================================
+   Body (Icon + Text)
+   ========================================================================== */
+
+.adx-toast__body {
+  flex: 1;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--component-space-l); /* 16px */
+  padding: var(--component-space-l); /* 16px */
+  min-width: 0;
+}
+
+/* ==========================================================================
+   Icon
+   ========================================================================== */
+
+.adx-toast__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.adx-toast__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Icon colors match stripe */
+.adx-toast--success .adx-toast__icon {
+  color: var(--background-success);
+}
+
+.adx-toast--warning .adx-toast__icon {
+  color: var(--background-warning);
+}
+
+.adx-toast--error .adx-toast__icon {
+  color: var(--background-error);
+}
+
+.adx-toast--info .adx-toast__icon {
+  color: var(--background-information);
+}
+
+/* ==========================================================================
+   Content (Title, Message, Action)
+   ========================================================================== */
+
+.adx-toast__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--component-space-xs); /* 8px */
+  min-width: 0;
+}
+
+.adx-toast__title {
+  margin: 0;
+  font-family: var(--font-family-trade-gothic);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-16);
+  line-height: 20px;
+  color: var(--text-primary);
+}
+
+.adx-toast__message {
+  margin: 0;
+  font-family: var(--font-family-trade-gothic);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-16);
+  line-height: 20px;
+  color: var(--text-secondary);
+}
+
+.adx-toast__action {
+  font-family: var(--font-family-trade-gothic);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-16);
+  line-height: 20px;
+  color: var(--text-link);
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+  text-align: left;
+}
+
+.adx-toast__action:hover {
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   Close Button (uses adx-btn--icon)
+   ========================================================================== */
+
+.adx-toast__close {
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin: var(--component-space-xs); /* 8px from edges */
+}
+
+.adx-toast__close svg {
+  width: 20px;
+  height: 20px;
+}
