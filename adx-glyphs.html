@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-fcma">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Glyphs — Almanac DX UI Kit</title>
+  <link rel="stylesheet" href="src/tokens/styles/fonts.css">
+  <link rel="stylesheet" href="src/tokens/styles/tokens.css">
+  <link rel="stylesheet" href="src/tokens/styles/layout.css">
+  <link rel="stylesheet" href="src/tokens/styles/button.css">
+  <link rel="stylesheet" href="src/tokens/styles/text-input.css">
+  <link rel="stylesheet" href="src/tokens/styles/select.css">
+  <link rel="stylesheet" href="src/tokens/styles/side-nav.css">
+  <link rel="stylesheet" href="adx.css">
+  <script src="https://unpkg.com/feather-icons"></script>
+  <style>
+    .size-selector {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-16);
+      margin-bottom: var(--spacing-32);
+      padding: var(--spacing-16);
+      background-color: var(--background-secondary);
+      border-radius: var(--radius-s);
+    }
+
+    .size-selector__label {
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-14);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+    }
+
+    .size-selector__options {
+      display: flex;
+      gap: var(--spacing-8);
+    }
+
+    .size-note {
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-12);
+      color: var(--text-secondary);
+      margin-left: auto;
+    }
+
+    .glyph-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: var(--spacing-16);
+      margin-bottom: var(--spacing-48);
+    }
+
+    .glyph-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--spacing-16);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-s);
+      background-color: var(--background-primary);
+    }
+
+    .glyph-card__preview {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      margin-bottom: var(--spacing-12);
+      color: var(--text-primary);
+    }
+
+    .glyph-card__name {
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-11);
+      font-weight: var(--font-weight-regular);
+      color: var(--text-secondary);
+      text-align: center;
+      word-break: break-word;
+      margin: 0;
+    }
+
+    .glyph-section {
+      margin-bottom: var(--spacing-48);
+    }
+
+    .glyph-section__title {
+      font-family: var(--font-family-rift);
+      font-size: var(--font-size-24);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin: 0 0 var(--spacing-24) 0;
+      padding-bottom: var(--spacing-12);
+      border-bottom: 2px solid var(--border-subtle);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="adx-layout">
+
+    <!-- Top Bar -->
+    <nav class="adx-topbar">
+      <button class="adx-mobile-nav-trigger" onclick="toggleMobileNav()">Menu</button>
+      <span class="topbar-title">Almanac DX UI Kit</span>
+      <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('fcma')" id="btn-fcma">FCMA</button>
+        <button class="theme-btn" onclick="setTheme('rural-first')" id="btn-rural">Rural 1st</button>
+      </div>
+    </nav>
+
+    <!-- Wrapper: Nav + Content -->
+    <div class="adx-wrapper">
+
+      <!-- Side Navigation (rendered by nav.js) -->
+      <nav class="adx-side-nav adx-side-nav--open" id="side-nav"></nav>
+
+      <!-- Main + Footer wrapper -->
+      <div class="adx-main-wrapper">
+
+        <!-- Main Content -->
+        <main class="adx-main">
+
+          <section class="adx-section">
+            <div class="adx-content-l">
+              <div class="section-inner">
+                <h2 class="section-title">Glyphs</h2>
+                <p class="section-subtitle">Feather icons for UI elements. Available in 12px, 16px, 20px (default), and 24px sizes only.</p>
+
+                <!-- Size Selector -->
+                <div class="size-selector">
+                  <span class="size-selector__label">Size:</span>
+                  <div class="size-selector__options">
+                    <button class="adx-btn adx-btn--secondary adx-btn--small" data-size="12" onclick="setIconSize(12)">12px</button>
+                    <button class="adx-btn adx-btn--secondary adx-btn--small" data-size="16" onclick="setIconSize(16)">16px</button>
+                    <button class="adx-btn adx-btn--primary adx-btn--small" data-size="20" onclick="setIconSize(20)">20px</button>
+                    <button class="adx-btn adx-btn--secondary adx-btn--small" data-size="24" onclick="setIconSize(24)">24px</button>
+                  </div>
+                  <span class="size-note">Only these sizes are permitted</span>
+                </div>
+
+                <!-- Actions -->
+                <div class="glyph-section">
+                  <h3 class="glyph-section__title">Actions</h3>
+                  <div class="glyph-grid" id="actions-grid"></div>
+                </div>
+
+                <!-- Arrows & Navigation -->
+                <div class="glyph-section">
+                  <h3 class="glyph-section__title">Arrows & Navigation</h3>
+                  <div class="glyph-grid" id="arrows-grid"></div>
+                </div>
+
+                <!-- Communication -->
+                <div class="glyph-section">
+                  <h3 class="glyph-section__title">Communication</h3>
+                  <div class="glyph-grid" id="communication-grid"></div>
+                </div>
+
+                <!-- Media -->
+                <div class="glyph-section">
+                  <h3 class="glyph-section__title">Media</h3>
+                  <div class="glyph-grid" id="media-grid"></div>
+                </div>
+
+                <!-- Files & Documents -->
+                <div class="glyph-section">
+                  <h3 class="glyph-section__title">Files & Documents</h3>
+                  <div class="glyph-grid" id="files-grid"></div>
+                </div>
+
+                <!-- Interface -->
+                <div class="glyph-section">
+                  <h3 class="glyph-section__title">Interface</h3>
+                  <div class="glyph-grid" id="interface-grid"></div>
+                </div>
+
+                <!-- Status & Alerts -->
+                <div class="glyph-section">
+                  <h3 class="glyph-section__title">Status & Alerts</h3>
+                  <div class="glyph-grid" id="status-grid"></div>
+                </div>
+
+                <!-- Users & People -->
+                <div class="glyph-section">
+                  <h3 class="glyph-section__title">Users & People</h3>
+                  <div class="glyph-grid" id="users-grid"></div>
+                </div>
+
+                <!-- Misc -->
+                <div class="glyph-section">
+                  <h3 class="glyph-section__title">Misc</h3>
+                  <div class="glyph-grid" id="misc-grid"></div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="adx-footer">
+          <section class="adx-section">
+            <div class="adx-content-l">
+              <p class="footer-text">
+                Almanac DX UI Kit v0.1.0
+              </p>
+            </div>
+          </section>
+        </footer>
+
+      </div><!-- /adx-main-wrapper -->
+
+    </div><!-- /adx-wrapper -->
+
+  </div><!-- /adx-layout -->
+
+  <script src="nav.js"></script>
+  <script>
+    // Icon categories
+    const ICON_CATEGORIES = {
+      actions: [
+        'check', 'x', 'plus', 'minus', 'edit', 'edit-2', 'edit-3', 'trash', 'trash-2',
+        'save', 'download', 'upload', 'copy', 'clipboard', 'scissors', 'refresh-cw',
+        'refresh-ccw', 'rotate-cw', 'rotate-ccw', 'repeat', 'shuffle', 'maximize',
+        'minimize', 'maximize-2', 'minimize-2', 'zoom-in', 'zoom-out', 'search',
+        'filter', 'sliders', 'settings', 'tool', 'log-in', 'log-out', 'power',
+        'share', 'share-2', 'external-link', 'link', 'link-2', 'paperclip', 'send'
+      ],
+      arrows: [
+        'arrow-up', 'arrow-down', 'arrow-left', 'arrow-right', 'arrow-up-left',
+        'arrow-up-right', 'arrow-down-left', 'arrow-down-right', 'chevron-up',
+        'chevron-down', 'chevron-left', 'chevron-right', 'chevrons-up', 'chevrons-down',
+        'chevrons-left', 'chevrons-right', 'corner-up-left', 'corner-up-right',
+        'corner-down-left', 'corner-down-right', 'corner-left-up', 'corner-left-down',
+        'corner-right-up', 'corner-right-down', 'move', 'navigation', 'navigation-2',
+        'compass', 'map', 'map-pin', 'home'
+      ],
+      communication: [
+        'mail', 'inbox', 'send', 'message-square', 'message-circle', 'phone',
+        'phone-call', 'phone-incoming', 'phone-outgoing', 'phone-off', 'phone-missed',
+        'phone-forwarded', 'voicemail', 'at-sign', 'hash', 'bell', 'bell-off',
+        'rss', 'wifi', 'wifi-off', 'bluetooth', 'radio', 'cast'
+      ],
+      media: [
+        'image', 'camera', 'camera-off', 'video', 'video-off', 'film', 'tv',
+        'monitor', 'play', 'pause', 'play-circle', 'pause-circle', 'stop-circle',
+        'skip-back', 'skip-forward', 'rewind', 'fast-forward', 'volume', 'volume-1',
+        'volume-2', 'volume-x', 'mic', 'mic-off', 'music', 'headphones', 'speaker'
+      ],
+      files: [
+        'file', 'file-text', 'file-plus', 'file-minus', 'folder', 'folder-plus',
+        'folder-minus', 'archive', 'book', 'book-open', 'bookmark', 'database',
+        'hard-drive', 'server', 'cloud', 'cloud-off', 'cloud-rain', 'cloud-snow',
+        'cloud-drizzle', 'cloud-lightning', 'download-cloud', 'upload-cloud'
+      ],
+      interface: [
+        'menu', 'more-horizontal', 'more-vertical', 'grid', 'list', 'layout',
+        'sidebar', 'columns', 'square', 'circle', 'triangle', 'octagon', 'hexagon',
+        'star', 'heart', 'thumbs-up', 'thumbs-down', 'flag', 'tag', 'bookmark',
+        'eye', 'eye-off', 'lock', 'unlock', 'key', 'shield', 'shield-off'
+      ],
+      status: [
+        'check-circle', 'check-square', 'x-circle', 'x-square', 'alert-circle',
+        'alert-octagon', 'alert-triangle', 'info', 'help-circle', 'loader',
+        'battery', 'battery-charging', 'zap', 'zap-off', 'activity', 'trending-up',
+        'trending-down', 'bar-chart', 'bar-chart-2', 'pie-chart', 'percent'
+      ],
+      users: [
+        'user', 'user-plus', 'user-minus', 'user-check', 'user-x', 'users'
+      ],
+      misc: [
+        'calendar', 'clock', 'watch', 'sun', 'moon', 'sunrise', 'sunset',
+        'thermometer', 'umbrella', 'wind', 'droplet', 'anchor', 'award', 'box',
+        'briefcase', 'coffee', 'credit-card', 'dollar-sign', 'gift', 'globe',
+        'layers', 'life-buoy', 'package', 'printer', 'shopping-bag', 'shopping-cart',
+        'target', 'truck', 'type', 'feather'
+      ]
+    };
+
+    // Current icon size (allowed: 12, 16, 20, 24)
+    let currentSize = 20;
+
+    function createGlyphCard(iconName) {
+      return `
+        <div class="glyph-card">
+          <div class="glyph-card__preview">
+            <i data-feather="${iconName}"></i>
+          </div>
+          <p class="glyph-card__name">${iconName}</p>
+        </div>
+      `;
+    }
+
+    function renderIcons() {
+      // Render each category
+      document.getElementById('actions-grid').innerHTML =
+        ICON_CATEGORIES.actions.map(createGlyphCard).join('');
+      document.getElementById('arrows-grid').innerHTML =
+        ICON_CATEGORIES.arrows.map(createGlyphCard).join('');
+      document.getElementById('communication-grid').innerHTML =
+        ICON_CATEGORIES.communication.map(createGlyphCard).join('');
+      document.getElementById('media-grid').innerHTML =
+        ICON_CATEGORIES.media.map(createGlyphCard).join('');
+      document.getElementById('files-grid').innerHTML =
+        ICON_CATEGORIES.files.map(createGlyphCard).join('');
+      document.getElementById('interface-grid').innerHTML =
+        ICON_CATEGORIES.interface.map(createGlyphCard).join('');
+      document.getElementById('status-grid').innerHTML =
+        ICON_CATEGORIES.status.map(createGlyphCard).join('');
+      document.getElementById('users-grid').innerHTML =
+        ICON_CATEGORIES.users.map(createGlyphCard).join('');
+      document.getElementById('misc-grid').innerHTML =
+        ICON_CATEGORIES.misc.map(createGlyphCard).join('');
+
+      // Replace feather icons
+      feather.replace({
+        width: currentSize,
+        height: currentSize,
+        'stroke-width': 2
+      });
+    }
+
+    function setIconSize(size) {
+      // Only allow permitted sizes
+      const allowedSizes = [12, 16, 20, 24];
+      if (!allowedSizes.includes(size)) {
+        console.warn('Icon size must be 12, 16, 20, or 24px');
+        return;
+      }
+
+      currentSize = size;
+
+      // Update button states - toggle between primary (selected) and secondary (unselected)
+      document.querySelectorAll('.size-selector__options .adx-btn').forEach(btn => {
+        const isSelected = parseInt(btn.dataset.size) === size;
+        btn.classList.toggle('adx-btn--primary', isSelected);
+        btn.classList.toggle('adx-btn--secondary', !isSelected);
+      });
+
+      // Re-render icons with new size (must regenerate HTML since feather.replace() already ran)
+      renderIcons();
+    }
+
+    // Initial render
+    document.addEventListener('DOMContentLoaded', renderIcons);
+  </script>
+
+</body>
+</html>

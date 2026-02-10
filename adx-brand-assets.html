@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-fcma">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brand Assets — Almanac DX UI Kit</title>
+  <link rel="stylesheet" href="src/tokens/styles/fonts.css">
+  <link rel="stylesheet" href="src/tokens/styles/tokens.css">
+  <link rel="stylesheet" href="src/tokens/styles/layout.css">
+  <link rel="stylesheet" href="src/tokens/styles/button.css">
+  <link rel="stylesheet" href="src/tokens/styles/text-input.css">
+  <link rel="stylesheet" href="src/tokens/styles/select.css">
+  <link rel="stylesheet" href="src/tokens/styles/side-nav.css">
+  <link rel="stylesheet" href="adx.css">
+  <style>
+    .logo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: var(--spacing-24);
+      margin-bottom: var(--spacing-32);
+    }
+
+    .logo-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-s);
+      overflow: hidden;
+    }
+
+    .logo-card__preview {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--spacing-32);
+      min-height: 120px;
+    }
+
+    .logo-card__preview--light {
+      background-color: #ffffff;
+    }
+
+    .logo-card__preview--dark {
+      background-color: #1a1a1a;
+    }
+
+    .logo-card__preview--brand {
+      background-color: var(--background-brand);
+    }
+
+    .logo-card__preview img {
+      max-width: 100%;
+      max-height: 80px;
+      object-fit: contain;
+    }
+
+    .logo-card__info {
+      padding: var(--spacing-12) var(--spacing-16);
+      background-color: var(--background-secondary);
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .logo-card__name {
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-14);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin: 0;
+    }
+
+    .logo-card__file {
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-12);
+      color: var(--text-secondary);
+      margin: var(--spacing-4) 0 0 0;
+      word-break: break-all;
+    }
+
+    .brand-section {
+      margin-bottom: var(--spacing-48);
+    }
+
+    .brand-section__title {
+      font-family: var(--font-family-rift);
+      font-size: var(--font-size-24);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin: 0 0 var(--spacing-24) 0;
+      padding-bottom: var(--spacing-12);
+      border-bottom: 2px solid var(--border-subtle);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="adx-layout">
+
+    <!-- Top Bar -->
+    <nav class="adx-topbar">
+      <button class="adx-mobile-nav-trigger" onclick="toggleMobileNav()">Menu</button>
+      <span class="topbar-title">Almanac DX UI Kit</span>
+      <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('fcma')" id="btn-fcma">FCMA</button>
+        <button class="theme-btn" onclick="setTheme('rural-first')" id="btn-rural">Rural 1st</button>
+      </div>
+    </nav>
+
+    <!-- Wrapper: Nav + Content -->
+    <div class="adx-wrapper">
+
+      <!-- Side Navigation (rendered by nav.js) -->
+      <nav class="adx-side-nav adx-side-nav--open" id="side-nav"></nav>
+
+      <!-- Main + Footer wrapper -->
+      <div class="adx-main-wrapper">
+
+        <!-- Main Content -->
+        <main class="adx-main">
+
+          <section class="adx-section">
+            <div class="adx-content-l">
+              <div class="section-inner">
+                <h2 class="section-title">Brand Assets</h2>
+                <p class="section-subtitle">Official logos for FCMA and Rural 1st brands in various color modes.</p>
+
+                <!-- FCMA Logos -->
+                <div class="brand-section">
+                  <h3 class="brand-section__title">FCMA Logos</h3>
+                  <div class="logo-grid">
+                    <div class="logo-card">
+                      <div class="logo-card__preview logo-card__preview--light">
+                        <img src="src/assets/logos/fcma-logo-2c-light-mode.svg" alt="FCMA Logo 2-Color Light Mode">
+                      </div>
+                      <div class="logo-card__info">
+                        <p class="logo-card__name">2-Color (Light Mode)</p>
+                        <p class="logo-card__file">fcma-logo-2c-light-mode.svg</p>
+                      </div>
+                    </div>
+                    <div class="logo-card">
+                      <div class="logo-card__preview logo-card__preview--dark">
+                        <img src="src/assets/logos/fcma-logo-2c-dark-mode.svg" alt="FCMA Logo 2-Color Dark Mode">
+                      </div>
+                      <div class="logo-card__info">
+                        <p class="logo-card__name">2-Color (Dark Mode)</p>
+                        <p class="logo-card__file">fcma-logo-2c-dark-mode.svg</p>
+                      </div>
+                    </div>
+                    <div class="logo-card">
+                      <div class="logo-card__preview logo-card__preview--light">
+                        <img src="src/assets/logos/fcma-logo-blk.svg" alt="FCMA Logo Black">
+                      </div>
+                      <div class="logo-card__info">
+                        <p class="logo-card__name">Black</p>
+                        <p class="logo-card__file">fcma-logo-blk.svg</p>
+                      </div>
+                    </div>
+                    <div class="logo-card">
+                      <div class="logo-card__preview logo-card__preview--dark">
+                        <img src="src/assets/logos/fcma-logo-rev.svg" alt="FCMA Logo Reverse">
+                      </div>
+                      <div class="logo-card__info">
+                        <p class="logo-card__name">Reverse (White)</p>
+                        <p class="logo-card__file">fcma-logo-rev.svg</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="type-label">FCMA Bio Star</div>
+                  <div class="logo-grid">
+                    <div class="logo-card">
+                      <div class="logo-card__preview logo-card__preview--light">
+                        <img src="src/assets/logos/fcma-bio-blk.svg" alt="FCMA Bio Mark Black">
+                      </div>
+                      <div class="logo-card__info">
+                        <p class="logo-card__name">Bio Star — Black</p>
+                        <p class="logo-card__file">fcma-bio-blk.svg</p>
+                      </div>
+                    </div>
+                    <div class="logo-card">
+                      <div class="logo-card__preview logo-card__preview--dark">
+                        <img src="src/assets/logos/fcma-bio-rev.svg" alt="FCMA Bio Mark Reverse">
+                      </div>
+                      <div class="logo-card__info">
+                        <p class="logo-card__name">Bio Star — Reverse</p>
+                        <p class="logo-card__file">fcma-bio-rev.svg</p>
+                      </div>
+                    </div>
+                    <div class="logo-card">
+                      <div class="logo-card__preview logo-card__preview--light">
+                        <img src="src/assets/logos/fcma-bio-green.svg" alt="FCMA Bio Mark Green">
+                      </div>
+                      <div class="logo-card__info">
+                        <p class="logo-card__name">Bio Star — Green</p>
+                        <p class="logo-card__file">fcma-bio-green.svg</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Rural 1st Logos -->
+                <div class="brand-section">
+                  <h3 class="brand-section__title">Rural 1st Logos</h3>
+                  <div class="logo-grid">
+                    <div class="logo-card">
+                      <div class="logo-card__preview logo-card__preview--light">
+                        <img src="src/assets/logos/r1st-logo-2c-light-mode.svg" alt="Rural 1st Logo 2-Color Light Mode">
+                      </div>
+                      <div class="logo-card__info">
+                        <p class="logo-card__name">2-Color (Light Mode)</p>
+                        <p class="logo-card__file">r1st-logo-2c-light-mode.svg</p>
+                      </div>
+                    </div>
+                    <div class="logo-card">
+                      <div class="logo-card__preview logo-card__preview--dark">
+                        <img src="src/assets/logos/r1st-logo-2c-dark-mode.svg" alt="Rural 1st Logo 2-Color Dark Mode">
+                      </div>
+                      <div class="logo-card__info">
+                        <p class="logo-card__name">2-Color (Dark Mode)</p>
+                        <p class="logo-card__file">r1st-logo-2c-dark-mode.svg</p>
+                      </div>
+                    </div>
+                    <div class="logo-card">
+                      <div class="logo-card__preview logo-card__preview--light">
+                        <img src="src/assets/logos/r1st-logo-blk.svg" alt="Rural 1st Logo Black">
+                      </div>
+                      <div class="logo-card__info">
+                        <p class="logo-card__name">Black</p>
+                        <p class="logo-card__file">r1st-logo-blk.svg</p>
+                      </div>
+                    </div>
+                    <div class="logo-card">
+                      <div class="logo-card__preview logo-card__preview--dark">
+                        <img src="src/assets/logos/r1st-logo-rev.svg" alt="Rural 1st Logo Reverse">
+                      </div>
+                      <div class="logo-card__info">
+                        <p class="logo-card__name">Reverse (White)</p>
+                        <p class="logo-card__file">r1st-logo-rev.svg</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="type-label">Rural 1st Hills Mark</div>
+                  <div class="logo-grid">
+                    <div class="logo-card">
+                      <div class="logo-card__preview logo-card__preview--light">
+                        <img src="src/assets/logos/r1st-hills-blk.svg" alt="Rural 1st Hills Black">
+                      </div>
+                      <div class="logo-card__info">
+                        <p class="logo-card__name">Hills — Black</p>
+                        <p class="logo-card__file">r1st-hills-blk.svg</p>
+                      </div>
+                    </div>
+                    <div class="logo-card">
+                      <div class="logo-card__preview logo-card__preview--dark">
+                        <img src="src/assets/logos/r1st-hills-rev.svg" alt="Rural 1st Hills Reverse">
+                      </div>
+                      <div class="logo-card__info">
+                        <p class="logo-card__name">Hills — Reverse</p>
+                        <p class="logo-card__file">r1st-hills-rev.svg</p>
+                      </div>
+                    </div>
+                    <div class="logo-card">
+                      <div class="logo-card__preview logo-card__preview--light">
+                        <img src="src/assets/logos/r1st-hills-color.svg" alt="Rural 1st Hills Color">
+                      </div>
+                      <div class="logo-card__info">
+                        <p class="logo-card__name">Hills — Color</p>
+                        <p class="logo-card__file">r1st-hills-color.svg</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="adx-footer">
+          <section class="adx-section">
+            <div class="adx-content-l">
+              <p class="footer-text">
+                Almanac DX UI Kit v0.1.0
+              </p>
+            </div>
+          </section>
+        </footer>
+
+      </div><!-- /adx-main-wrapper -->
+
+    </div><!-- /adx-wrapper -->
+
+  </div><!-- /adx-layout -->
+
+  <script src="nav.js"></script>
+
+</body>
+</html>

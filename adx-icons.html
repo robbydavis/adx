@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-fcma">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Icons — Almanac DX UI Kit</title>
+  <link rel="stylesheet" href="src/tokens/styles/fonts.css">
+  <link rel="stylesheet" href="src/tokens/styles/tokens.css">
+  <link rel="stylesheet" href="src/tokens/styles/layout.css">
+  <link rel="stylesheet" href="src/tokens/styles/button.css">
+  <link rel="stylesheet" href="src/tokens/styles/text-input.css">
+  <link rel="stylesheet" href="src/tokens/styles/select.css">
+  <link rel="stylesheet" href="src/tokens/styles/side-nav.css">
+  <link rel="stylesheet" href="adx.css">
+  <style>
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: var(--spacing-16);
+      margin-bottom: var(--spacing-48);
+    }
+
+    .icon-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: var(--spacing-16);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-s);
+      background-color: var(--background-primary);
+    }
+
+    .icon-card__preview {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 64px;
+      height: 64px;
+      margin-bottom: var(--spacing-12);
+    }
+
+    .icon-card__preview img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .icon-card__name {
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-12);
+      font-weight: var(--font-weight-regular);
+      color: var(--text-secondary);
+      text-align: center;
+      word-break: break-word;
+      margin: 0;
+    }
+
+    .icon-section {
+      margin-bottom: var(--spacing-48);
+    }
+
+    .icon-section__title {
+      font-family: var(--font-family-rift);
+      font-size: var(--font-size-24);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin: 0 0 var(--spacing-24) 0;
+      padding-bottom: var(--spacing-12);
+      border-bottom: 2px solid var(--border-subtle);
+    }
+
+    .icon-section__count {
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-16);
+      font-weight: var(--font-weight-regular);
+      color: var(--text-secondary);
+      margin-left: var(--spacing-8);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="adx-layout">
+
+    <!-- Top Bar -->
+    <nav class="adx-topbar">
+      <button class="adx-mobile-nav-trigger" onclick="toggleMobileNav()">Menu</button>
+      <span class="topbar-title">Almanac DX UI Kit</span>
+      <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('fcma')" id="btn-fcma">FCMA</button>
+        <button class="theme-btn" onclick="setTheme('rural-first')" id="btn-rural">Rural 1st</button>
+      </div>
+    </nav>
+
+    <!-- Wrapper: Nav + Content -->
+    <div class="adx-wrapper">
+
+      <!-- Side Navigation (rendered by nav.js) -->
+      <nav class="adx-side-nav adx-side-nav--open" id="side-nav"></nav>
+
+      <!-- Main + Footer wrapper -->
+      <div class="adx-main-wrapper">
+
+        <!-- Main Content -->
+        <main class="adx-main">
+
+          <section class="adx-section">
+            <div class="adx-content-l">
+              <div class="section-inner">
+                <h2 class="section-title">Icons</h2>
+                <p class="section-subtitle">Domain-specific icons for agriculture, loans, payments, and more. Each icon has default and selected states.</p>
+
+                <!-- Unselected Icons -->
+                <div class="icon-section">
+                  <h3 class="icon-section__title">Default State <span class="icon-section__count">(35 icons)</span></h3>
+                  <div class="icon-grid">
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/agriculture-loans.svg" alt="Agriculture Loans">
+                      </div>
+                      <p class="icon-card__name">agriculture-loans</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/apply.svg" alt="Apply">
+                      </div>
+                      <p class="icon-card__name">apply</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/beef-cattle.svg" alt="Beef Cattle">
+                      </div>
+                      <p class="icon-card__name">beef-cattle</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/commercial.svg" alt="Commercial">
+                      </div>
+                      <p class="icon-card__name">commercial</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/conversation.svg" alt="Conversation">
+                      </div>
+                      <p class="icon-card__name">conversation</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/cooperative.svg" alt="Cooperative">
+                      </div>
+                      <p class="icon-card__name">cooperative</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/corn.svg" alt="Corn">
+                      </div>
+                      <p class="icon-card__name">corn</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/cotton.svg" alt="Cotton">
+                      </div>
+                      <p class="icon-card__name">cotton</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/dairy.svg" alt="Dairy">
+                      </div>
+                      <p class="icon-card__name">dairy</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/elections.svg" alt="Elections">
+                      </div>
+                      <p class="icon-card__name">elections</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/equipment.svg" alt="Equipment">
+                      </div>
+                      <p class="icon-card__name">equipment</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/family-need.svg" alt="Family Need">
+                      </div>
+                      <p class="icon-card__name">family-need</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/farm-improvement.svg" alt="Farm Improvement">
+                      </div>
+                      <p class="icon-card__name">farm-improvement</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/farm-vehicle.svg" alt="Farm Vehicle">
+                      </div>
+                      <p class="icon-card__name">farm-vehicle</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/field-crops.svg" alt="Field Crops">
+                      </div>
+                      <p class="icon-card__name">field-crops</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/grain.svg" alt="Grain">
+                      </div>
+                      <p class="icon-card__name">grain</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/hogs.svg" alt="Hogs">
+                      </div>
+                      <p class="icon-card__name">hogs</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/just-me.svg" alt="Just Me">
+                      </div>
+                      <p class="icon-card__name">just-me</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/landlord.svg" alt="Landlord">
+                      </div>
+                      <p class="icon-card__name">landlord</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/leasing.svg" alt="Leasing">
+                      </div>
+                      <p class="icon-card__name">leasing</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/line-of-credit.svg" alt="Line of Credit">
+                      </div>
+                      <p class="icon-card__name">line-of-credit</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/livestock.svg" alt="Livestock">
+                      </div>
+                      <p class="icon-card__name">livestock</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/non-farm-biz.svg" alt="Non-Farm Business">
+                      </div>
+                      <p class="icon-card__name">non-farm-biz</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/patronage.svg" alt="Patronage">
+                      </div>
+                      <p class="icon-card__name">patronage</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/personal-vehicle.svg" alt="Personal Vehicle">
+                      </div>
+                      <p class="icon-card__name">personal-vehicle</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/poultry.svg" alt="Poultry">
+                      </div>
+                      <p class="icon-card__name">poultry</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/purchase.svg" alt="Purchase">
+                      </div>
+                      <p class="icon-card__name">purchase</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/real-estate.svg" alt="Real Estate">
+                      </div>
+                      <p class="icon-card__name">real-estate</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/real-estate-new.svg" alt="Real Estate New">
+                      </div>
+                      <p class="icon-card__name">real-estate-new</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/refinance.svg" alt="Refinance">
+                      </div>
+                      <p class="icon-card__name">refinance</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/rice.svg" alt="Rice">
+                      </div>
+                      <p class="icon-card__name">rice</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/soybeans.svg" alt="Soybeans">
+                      </div>
+                      <p class="icon-card__name">soybeans</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/stories.svg" alt="Stories">
+                      </div>
+                      <p class="icon-card__name">stories</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/term-loan.svg" alt="Term Loan">
+                      </div>
+                      <p class="icon-card__name">term-loan</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/two-of-us.svg" alt="Two of Us">
+                      </div>
+                      <p class="icon-card__name">two-of-us</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Selected Icons -->
+                <div class="icon-section">
+                  <h3 class="icon-section__title">Selected State <span class="icon-section__count">(49 icons)</span></h3>
+                  <div class="icon-grid">
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/4h-selected.svg" alt="4H Selected">
+                      </div>
+                      <p class="icon-card__name">4h</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/agriculture-loans-selected.svg" alt="Agriculture Loans Selected">
+                      </div>
+                      <p class="icon-card__name">agriculture-loans</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/apply-selected.svg" alt="Apply Selected">
+                      </div>
+                      <p class="icon-card__name">apply</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/beef-cattle-selected.svg" alt="Beef Cattle Selected">
+                      </div>
+                      <p class="icon-card__name">beef-cattle</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/commercial-selected.svg" alt="Commercial Selected">
+                      </div>
+                      <p class="icon-card__name">commercial</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/conversation-selected.svg" alt="Conversation Selected">
+                      </div>
+                      <p class="icon-card__name">conversation</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/cooperative-selected.svg" alt="Cooperative Selected">
+                      </div>
+                      <p class="icon-card__name">cooperative</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/corn-selected.svg" alt="Corn Selected">
+                      </div>
+                      <p class="icon-card__name">corn</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/cotton-selected.svg" alt="Cotton Selected">
+                      </div>
+                      <p class="icon-card__name">cotton</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/dairy-selected.svg" alt="Dairy Selected">
+                      </div>
+                      <p class="icon-card__name">dairy</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/elections-selected.svg" alt="Elections Selected">
+                      </div>
+                      <p class="icon-card__name">elections</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/equipment-selected.svg" alt="Equipment Selected">
+                      </div>
+                      <p class="icon-card__name">equipment</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/family-need-selected.svg" alt="Family Need Selected">
+                      </div>
+                      <p class="icon-card__name">family-need</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/farm-improvement-selected.svg" alt="Farm Improvement Selected">
+                      </div>
+                      <p class="icon-card__name">farm-improvement</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/farm-vehicle-selected.svg" alt="Farm Vehicle Selected">
+                      </div>
+                      <p class="icon-card__name">farm-vehicle</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/ffa-degree-selected.svg" alt="FFA Degree Selected">
+                      </div>
+                      <p class="icon-card__name">ffa-degree</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/field-crops-selected.svg" alt="Field Crops Selected">
+                      </div>
+                      <p class="icon-card__name">field-crops</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/food-bank-selected.svg" alt="Food Bank Selected">
+                      </div>
+                      <p class="icon-card__name">food-bank</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/future-farmer-selected.svg" alt="Future Farmer Selected">
+                      </div>
+                      <p class="icon-card__name">future-farmer</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/grain-selected.svg" alt="Grain Selected">
+                      </div>
+                      <p class="icon-card__name">grain</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/hogs-selected.svg" alt="Hogs Selected">
+                      </div>
+                      <p class="icon-card__name">hogs</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/icon-other-income-selected.svg" alt="Other Income Selected">
+                      </div>
+                      <p class="icon-card__name">other-income</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/just-me-selected.svg" alt="Just Me Selected">
+                      </div>
+                      <p class="icon-card__name">just-me</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/landlord-selected.svg" alt="Landlord Selected">
+                      </div>
+                      <p class="icon-card__name">landlord</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/leasing-selected.svg" alt="Leasing Selected">
+                      </div>
+                      <p class="icon-card__name">leasing</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/line-of-credit-selected.svg" alt="Line of Credit Selected">
+                      </div>
+                      <p class="icon-card__name">line-of-credit</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/livestock-selected.svg" alt="Livestock Selected">
+                      </div>
+                      <p class="icon-card__name">livestock</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/myaccount-signin-selected.svg" alt="MyAccount Sign In Selected">
+                      </div>
+                      <p class="icon-card__name">myaccount-signin</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/non-farm-biz-selected.svg" alt="Non-Farm Business Selected">
+                      </div>
+                      <p class="icon-card__name">non-farm-biz</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/online-banking-sign-in-selected.svg" alt="Online Banking Sign In Selected">
+                      </div>
+                      <p class="icon-card__name">online-banking-sign-in</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/patronage-selected.svg" alt="Patronage Selected">
+                      </div>
+                      <p class="icon-card__name">patronage</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/payment-auto-selected.svg" alt="Payment Auto Selected">
+                      </div>
+                      <p class="icon-card__name">payment-auto</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/payment-check-selected.svg" alt="Payment Check Selected">
+                      </div>
+                      <p class="icon-card__name">payment-check</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/payment-debit-selected.svg" alt="Payment Debit Selected">
+                      </div>
+                      <p class="icon-card__name">payment-debit</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/payment-online-selected.svg" alt="Payment Online Selected">
+                      </div>
+                      <p class="icon-card__name">payment-online</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/payment-options-selected.svg" alt="Payment Options Selected">
+                      </div>
+                      <p class="icon-card__name">payment-options</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/personal-vehicle-selected.svg" alt="Personal Vehicle Selected">
+                      </div>
+                      <p class="icon-card__name">personal-vehicle</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/poultry-selected.svg" alt="Poultry Selected">
+                      </div>
+                      <p class="icon-card__name">poultry</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/purchase-selected.svg" alt="Purchase Selected">
+                      </div>
+                      <p class="icon-card__name">purchase</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/real-estate-selected.svg" alt="Real Estate Selected">
+                      </div>
+                      <p class="icon-card__name">real-estate</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/real-estate-new-selected.svg" alt="Real Estate New Selected">
+                      </div>
+                      <p class="icon-card__name">real-estate-new</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/refinance-selected.svg" alt="Refinance Selected">
+                      </div>
+                      <p class="icon-card__name">refinance</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/rice-selected.svg" alt="Rice Selected">
+                      </div>
+                      <p class="icon-card__name">rice</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/scholarships-selected.svg" alt="Scholarships Selected">
+                      </div>
+                      <p class="icon-card__name">scholarships</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/soybeans-selected.svg" alt="Soybeans Selected">
+                      </div>
+                      <p class="icon-card__name">soybeans</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/stories-selected.svg" alt="Stories Selected">
+                      </div>
+                      <p class="icon-card__name">stories</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/term-loan-selected.svg" alt="Term Loan Selected">
+                      </div>
+                      <p class="icon-card__name">term-loan</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/two-of-us-selected.svg" alt="Two of Us Selected">
+                      </div>
+                      <p class="icon-card__name">two-of-us</p>
+                    </div>
+                    <div class="icon-card">
+                      <div class="icon-card__preview">
+                        <img src="src/assets/icons/young-and-beginning-farmers-selected.svg" alt="Young and Beginning Farmers Selected">
+                      </div>
+                      <p class="icon-card__name">young-and-beginning-farmers</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="adx-footer">
+          <section class="adx-section">
+            <div class="adx-content-l">
+              <p class="footer-text">
+                Almanac DX UI Kit v0.1.0
+              </p>
+            </div>
+          </section>
+        </footer>
+
+      </div><!-- /adx-main-wrapper -->
+
+    </div><!-- /adx-wrapper -->
+
+  </div><!-- /adx-layout -->
+
+  <script src="nav.js"></script>
+
+</body>
+</html>
