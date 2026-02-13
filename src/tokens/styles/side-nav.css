@@ -102,9 +102,9 @@
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
-  /* Ensure scroll doesn't cut off focus rings or tooltips */
-  padding-right: var(--component-space-2xs); /* 4px */
-  margin-right: calc(-1 * var(--component-space-2xs)); /* -4px offset */
+  /* Push scrollbar closer to nav border (4px gap from divider line) */
+  padding-right: var(--component-space-m); /* 12px - room for focus rings */
+  margin-right: calc(-1 * var(--component-space-m)); /* -12px to position scrollbar */
 
   /* Modern thin scrollbar — Firefox */
   scrollbar-width: thin;
