@@ -6,7 +6,7 @@
  *
  * Usage:
  * ```tsx
- * import { Button } from '@almanac/design-tokens';
+ * import { Button } from '@almanac/adx';
  *
  * <Button variant="primary" size="medium">Label</Button>
  * <Button variant="secondary" size="small">Label</Button>

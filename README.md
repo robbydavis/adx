@@ -19,7 +19,7 @@ This package provides a comprehensive design token system built on a **primitive
 ## Installation
 
 ```bash
-npm install @almanac/design-tokens
+npm install @almanac/adx
 ```
 
 ## Quick Start
@@ -28,13 +28,13 @@ npm install @almanac/design-tokens
 
 ```tsx
 // In your app entry point
-import '@almanac/design-tokens/dist/tokens/styles/index.css';
+import '@almanac/adx/dist/tokens/styles/index.css';
 ```
 
 ### 2. Wrap Your App with ThemeProvider
 
 ```tsx
-import { ThemeProvider } from '@almanac/design-tokens';
+import { ThemeProvider } from '@almanac/adx';
 
 function App() {
   return (
@@ -70,7 +70,7 @@ function App() {
 #### Option B: TypeScript Tokens
 
 ```tsx
-import { background, text, border, typography, elevation } from '@almanac/design-tokens';
+import { background, text, border, typography, elevation } from '@almanac/adx';
 
 const Button = () => (
   <button style={{
@@ -98,7 +98,7 @@ The Almanac DX semantic variables are organized into four pillars for consistent
 Page, container, and element fills.
 
 ```tsx
-import { background } from '@almanac/design-tokens';
+import { background } from '@almanac/adx';
 
 // Available tokens:
 background.page          // Page background (#ffffff)
@@ -123,7 +123,7 @@ background.information   // Info state background
 Text colors for all contexts.
 
 ```tsx
-import { text } from '@almanac/design-tokens';
+import { text } from '@almanac/adx';
 
 // Available tokens:
 text.primary          // Primary body text
@@ -145,7 +145,7 @@ text.information      // Info message text
 Border colors and focus states.
 
 ```tsx
-import { border } from '@almanac/design-tokens';
+import { border } from '@almanac/adx';
 
 // Available tokens:
 border.reverse        // Borders on dark backgrounds
@@ -165,7 +165,7 @@ border.information    // Info state borders
 Icon fills and states.
 
 ```tsx
-import { icon } from '@almanac/design-tokens';
+import { icon } from '@almanac/adx';
 
 // Available tokens:
 icon.subtle           // Low-emphasis icons
@@ -185,7 +185,7 @@ icon.information      // Info state icons
 Complete typographic system with 5 categories and 31 total styles.
 
 ```tsx
-import { typography } from '@almanac/design-tokens';
+import { typography } from '@almanac/adx';
 
 // Display styles (6 variants)
 typography.display.xl    // 80px - Hero text
@@ -231,7 +231,7 @@ typography.paragraph.xs  // 14px - Small descriptions
 Shadow styles for visual depth and hierarchy.
 
 ```tsx
-import { elevation } from '@almanac/design-tokens';
+import { elevation } from '@almanac/adx';
 
 // Available levels:
 elevation[100]    // Y: 2px, Blur: 4px - Container/card hover
@@ -258,7 +258,7 @@ elevation[400]    // Y: 16px, Blur: 32px - Modals, dialogs
 #### In React
 
 ```tsx
-import { useTheme } from '@almanac/design-tokens';
+import { useTheme } from '@almanac/adx';
 
 function ThemeSwitcher() {
   const { themeId, theme, setTheme } = useTheme();
@@ -301,7 +301,7 @@ document.documentElement.className = 'theme-rural-first';
 Access current theme and switch themes.
 
 ```tsx
-import { useTheme } from '@almanac/design-tokens';
+import { useTheme } from '@almanac/adx';
 
 const { themeId, theme, setTheme } = useTheme();
 // themeId: 'fcma' | 'rural-first'
@@ -314,7 +314,7 @@ const { themeId, theme, setTheme } = useTheme();
 Access all semantic tokens.
 
 ```tsx
-import { useTokens } from '@almanac/design-tokens';
+import { useTokens } from '@almanac/adx';
 
 const tokens = useTokens();
 // Returns: { background, text, border, icon, typography, elevation }
@@ -435,10 +435,10 @@ const tokens = useTokens();
 1. **Never import primitive tokens**
    ```tsx
    // ❌ WRONG
-   import { neutral } from '@almanac/design-tokens/primitives';
+   import { neutral } from '@almanac/adx/primitives';
 
    // ✅ CORRECT
-   import { background } from '@almanac/design-tokens';
+   import { background } from '@almanac/adx';
    ```
 
 2. **Never hardcode colors or sizes**
@@ -508,7 +508,7 @@ import type {
   Theme,
   ThemeId,
   Tokens,
-} from '@almanac/design-tokens';
+} from '@almanac/adx';
 ```
 
 ## Architecture

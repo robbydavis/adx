@@ -7,7 +7,7 @@
  *
  * Usage:
  * ```tsx
- * import { useTokens } from '@almanac/design-tokens';
+ * import { useTokens } from '@almanac/adx';
  *
  * function MyComponent() {
  *   const tokens = useTokens();

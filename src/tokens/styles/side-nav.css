@@ -93,14 +93,18 @@
   width: 68px; /* 16px padding + 36px item + 16px padding */
 }
 
-/* Items container */
+/* Items container — scrollable when content exceeds viewport */
 .adx-side-nav__items {
   display: flex;
   flex-direction: column;
   gap: var(--component-space-l); /* 16px */
   flex: 1;
   min-height: 0;
-  overflow: visible;
+  overflow-y: auto;
+  overflow-x: hidden;
+  /* Ensure scroll doesn't cut off focus rings or tooltips */
+  padding-right: var(--component-space-2xs); /* 4px */
+  margin-right: calc(-1 * var(--component-space-2xs)); /* -4px offset */
 }
 
 /* ==========================================================================

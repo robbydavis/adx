@@ -12,7 +12,7 @@
  *
  * Usage:
  * ```tsx
- * import { SelectableCard } from '@almanac/design-tokens';
+ * import { SelectableCard } from '@almanac/adx';
  *
  * // Basic usage with custom content
  * <SelectableCard selected={isSelected} onClick={() => setSelected(!isSelected)}>

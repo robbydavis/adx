@@ -6,7 +6,7 @@
  *
  * Usage:
  * ```tsx
- * import { useTheme } from '@almanac/design-tokens';
+ * import { useTheme } from '@almanac/adx';
  *
  * function MyComponent() {
  *   const { themeId, theme, setTheme } = useTheme();

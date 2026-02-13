@@ -1,13 +1,29 @@
 {
-  "name": "@almanac/design-tokens",
+  "name": "@almanac/adx",
   "version": "0.1.0",
   "description": "Design tokens for Almanac DX UI Kit with FCMA and Rural 1st theming support",
   "main": "dist/index.js",
+  "module": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.js"
+    },
+    "./styles": "./dist/tokens/styles/index.css",
+    "./styles/*": "./dist/tokens/styles/*",
+    "./assets/*": "./dist/assets/*",
+    "./fonts/*": "./fonts/*"
+  },
   "scripts": {
-    "build": "tsc",
+    "clean": "rm -rf dist",
+    "copy-css": "mkdir -p dist/tokens && cp -r src/tokens/styles dist/tokens/",
+    "copy-assets": "cp -r src/assets dist/",
+    "build": "npm run clean && tsc && npm run copy-css && npm run copy-assets",
     "generate-css": "node scripts/generate-css.js",
-    "prebuild": "npm run generate-css"
+    "prebuild": "npm run generate-css",
+    "prepublishOnly": "npm run build"
   },
   "keywords": [
     "design-tokens",
@@ -19,7 +35,6 @@
   ],
   "author": "rdavis",
   "license": "UNLICENSED",
-  "private": true,
   "devDependencies": {
     "@types/node": "^20.11.0",
     "@types/react": "^18.2.48",

@@ -13,7 +13,7 @@
  *
  * Usage:
  * ```tsx
- * import { Menu, MenuItem } from '@almanac/design-tokens';
+ * import { Menu, MenuItem } from '@almanac/adx';
  *
  * <Menu aria-label="Options">
  *   <MenuItem label="Option one" onClick={() => {}} />

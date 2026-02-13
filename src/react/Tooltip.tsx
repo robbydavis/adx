@@ -6,7 +6,7 @@
  *
  * Usage:
  * ```tsx
- * import { Tooltip } from '@almanac/design-tokens';
+ * import { Tooltip } from '@almanac/adx';
  *
  * <Tooltip>Simple tooltip text</Tooltip>
  * <Tooltip position="top">Tooltip appears above trigger</Tooltip>

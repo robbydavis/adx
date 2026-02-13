@@ -13,7 +13,7 @@
  *
  * Usage:
  * ```tsx
- * import { Select } from '@almanac/design-tokens';
+ * import { Select } from '@almanac/adx';
  *
  * <Select
  *   label="Country"

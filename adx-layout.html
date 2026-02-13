@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-fcma">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Layout — Almanac DX UI Kit</title>
+  <link rel="stylesheet" href="src/tokens/styles/fonts.css">
+  <link rel="stylesheet" href="src/tokens/styles/tokens.css">
+  <link rel="stylesheet" href="src/tokens/styles/layout.css">
+  <link rel="stylesheet" href="src/tokens/styles/button.css">
+  <link rel="stylesheet" href="src/tokens/styles/side-nav.css">
+  <link rel="stylesheet" href="adx.css">
+  <style>
+    /* Demo placeholder styles */
+    .placeholder {
+      background-color: var(--background-discovery-subtle);
+      border: 1px dashed var(--border-discovery);
+      border-radius: var(--radius-s);
+      padding: var(--spacing-24);
+      text-align: center;
+    }
+
+    .placeholder__title {
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-16);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      margin-bottom: var(--spacing-4);
+    }
+
+    .placeholder__detail {
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-14);
+      color: var(--text-secondary);
+    }
+
+    /* Layout structure diagram */
+    .layout-diagram {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-8);
+      padding: var(--spacing-24);
+      background: var(--background-light);
+      border-radius: var(--radius-m);
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-14);
+      margin-bottom: var(--spacing-24);
+    }
+
+    .layout-diagram__row {
+      display: flex;
+      gap: var(--spacing-8);
+    }
+
+    .layout-diagram__box {
+      padding: var(--spacing-12) var(--spacing-16);
+      border-radius: var(--radius-xs);
+      text-align: center;
+    }
+
+    .layout-diagram__box--topbar {
+      background: var(--background-warning-subtle);
+      flex: 1;
+    }
+
+    .layout-diagram__box--nav {
+      background: var(--background-information-subtle);
+      width: 120px;
+    }
+
+    .layout-diagram__box--main {
+      background: var(--background-light);
+      border: 1px solid var(--border-subtle);
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-8);
+      padding: var(--spacing-8);
+    }
+
+    .layout-diagram__box--section {
+      background: var(--background-medium);
+      padding: var(--spacing-8);
+    }
+
+    .layout-diagram__box--footer {
+      background: var(--background-success-subtle);
+      flex: 1;
+    }
+
+    .layout-diagram__label {
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+    }
+
+    .layout-diagram__sublabel {
+      font-size: var(--font-size-12);
+      color: var(--text-secondary);
+    }
+
+    /* Specs table */
+    .specs-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: var(--spacing-24);
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-14);
+    }
+
+    .specs-table th,
+    .specs-table td {
+      padding: var(--spacing-12) var(--spacing-16);
+      text-align: left;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .specs-table th {
+      font-weight: var(--font-weight-bold);
+      color: var(--text-primary);
+      background: var(--background-light);
+    }
+
+    .specs-table td {
+      color: var(--text-secondary);
+    }
+
+    .specs-table code {
+      font-family: monospace;
+      font-size: var(--font-size-12);
+      background: var(--background-light);
+      padding: 2px 6px;
+      border-radius: var(--radius-xs);
+    }
+
+    /* Width indicator for demo sections */
+    .width-indicator {
+      position: absolute;
+      top: var(--spacing-8);
+      right: var(--spacing-8);
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-12);
+      color: var(--text-tertiary);
+      background: var(--background-primary);
+      padding: 2px 8px;
+      border-radius: var(--radius-xs);
+    }
+
+    /* Demo section wrapper */
+    .demo-section {
+      position: relative;
+    }
+
+    /* Section label */
+    .section-label {
+      font-family: var(--font-family-trade-gothic);
+      font-size: var(--font-size-12);
+      font-weight: var(--font-weight-bold);
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--spacing-16);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="adx-layout">
+
+    <!-- Top Bar -->
+    <nav class="adx-topbar">
+      <button class="adx-mobile-nav-trigger" onclick="toggleMobileNav()">Menu</button>
+      <span class="topbar-title">Almanac DX UI Kit</span>
+      <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('fcma')" id="btn-fcma">FCMA</button>
+        <button class="theme-btn" onclick="setTheme('rural-first')" id="btn-rural">Rural 1st</button>
+      </div>
+    </nav>
+
+    <!-- Wrapper: Nav + Content -->
+    <div class="adx-wrapper">
+
+      <!-- Side Navigation (rendered by nav.js) -->
+      <nav class="adx-side-nav adx-side-nav--open" id="side-nav"></nav>
+
+      <!-- Main + Footer wrapper -->
+      <div class="adx-main-wrapper">
+
+        <!-- Main Content -->
+        <main class="adx-main">
+
+          <!-- Overview Section -->
+          <section class="adx-section">
+            <div class="adx-content-l">
+              <div class="section-inner">
+                <h2 class="section-title">Page Layout Framework</h2>
+                <p class="section-subtitle">Responsive layout system with four breakpoints, semantic HTML structure, and content width containers.</p>
+
+                <!-- Layout Structure Diagram -->
+                <div class="section-label">Layout Structure</div>
+                <div class="layout-diagram">
+                  <div class="layout-diagram__row">
+                    <div class="layout-diagram__box layout-diagram__box--topbar">
+                      <span class="layout-diagram__label">&lt;nav&gt; topbar</span>
+                      <span class="layout-diagram__sublabel">52px fixed</span>
+                    </div>
+                  </div>
+                  <div class="layout-diagram__row" style="min-height: 200px;">
+                    <div class="layout-diagram__box layout-diagram__box--nav">
+                      <span class="layout-diagram__label">&lt;nav&gt;</span>
+                      <span class="layout-diagram__sublabel">64px / 200px</span>
+                    </div>
+                    <div class="layout-diagram__box layout-diagram__box--main">
+                      <div class="layout-diagram__label">&lt;main&gt;</div>
+                      <div class="layout-diagram__box layout-diagram__box--section">
+                        <span class="layout-diagram__sublabel">&lt;section&gt; + content wrapper</span>
+                      </div>
+                      <div class="layout-diagram__box layout-diagram__box--section">
+                        <span class="layout-diagram__sublabel">&lt;section&gt; + content wrapper</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="layout-diagram__row">
+                    <div class="layout-diagram__box layout-diagram__box--nav" style="visibility: hidden;"></div>
+                    <div class="layout-diagram__box layout-diagram__box--footer">
+                      <span class="layout-diagram__label">&lt;footer&gt;</span>
+                      <span class="layout-diagram__sublabel">Outside main for 100vh option</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Breakpoints -->
+                <div class="section-label">Breakpoints</div>
+                <table class="specs-table">
+                  <thead>
+                    <tr>
+                      <th>Tier</th>
+                      <th>Range</th>
+                      <th>Section Padding</th>
+                      <th>Content Padding</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Desktop</td>
+                      <td>1280px+</td>
+                      <td>40px top/bottom</td>
+                      <td>24px left/right</td>
+                    </tr>
+                    <tr>
+                      <td>Tablet</td>
+                      <td>1024–1279px</td>
+                      <td>40px top/bottom</td>
+                      <td>24px left/right</td>
+                    </tr>
+                    <tr>
+                      <td>Small Tablet</td>
+                      <td>768–1023px</td>
+                      <td>24px top/bottom</td>
+                      <td>16px left/right</td>
+                    </tr>
+                    <tr>
+                      <td>Phone</td>
+                      <td>0–767px</td>
+                      <td>24px top/bottom</td>
+                      <td>16px left/right</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <!-- Content Widths -->
+                <div class="section-label">Content Width Classes</div>
+                <table class="specs-table">
+                  <thead>
+                    <tr>
+                      <th>Class</th>
+                      <th>Max Width</th>
+                      <th>Use Case</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><code>.adx-content-l</code></td>
+                      <td>1200px</td>
+                      <td>Full-width content, dashboards, data tables</td>
+                    </tr>
+                    <tr>
+                      <td><code>.adx-content-m</code></td>
+                      <td>1024px</td>
+                      <td>Standard content pages, mixed layouts</td>
+                    </tr>
+                    <tr>
+                      <td><code>.adx-content-s</code></td>
+                      <td>768px</td>
+                      <td>Text-heavy content, articles, documentation</td>
+                    </tr>
+                    <tr>
+                      <td><code>.adx-content-xs</code></td>
+                      <td>500px</td>
+                      <td>Forms, login pages, focused tasks</td>
+                    </tr>
+                  </tbody>
+                </table>
+
+                <!-- Navigation Dimensions -->
+                <div class="section-label">Navigation Dimensions</div>
+                <table class="specs-table">
+                  <thead>
+                    <tr>
+                      <th>Element</th>
+                      <th>Dimension</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Top Bar</td>
+                      <td>52px tall</td>
+                      <td>Fixed position, consistent across all breakpoints</td>
+                    </tr>
+                    <tr>
+                      <td>Side Nav (collapsed)</td>
+                      <td>64px wide</td>
+                      <td>Icon-only state</td>
+                    </tr>
+                    <tr>
+                      <td>Side Nav (open)</td>
+                      <td>200px wide</td>
+                      <td>Icon + label state</td>
+                    </tr>
+                    <tr>
+                      <td>Side Nav (phone)</td>
+                      <td>Hidden</td>
+                      <td>Replaced by mobile nav trigger in top bar</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+          <!-- Content-L Demo -->
+          <section class="adx-section demo-section" style="background: var(--background-light);">
+            <span class="width-indicator">content-l: 1200px</span>
+            <div class="adx-content-l">
+              <div class="placeholder">
+                <p class="placeholder__title">content-l</p>
+                <p class="placeholder__detail">max-width: 1200px</p>
+                <p class="placeholder__detail">Best for: Dashboards, data tables, full-width layouts</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Content-M Demo -->
+          <section class="adx-section demo-section" style="background: var(--background-medium);">
+            <span class="width-indicator">content-m: 1024px</span>
+            <div class="adx-content-m">
+              <div class="placeholder">
+                <p class="placeholder__title">content-m</p>
+                <p class="placeholder__detail">max-width: 1024px</p>
+                <p class="placeholder__detail">Best for: Standard content pages, mixed layouts</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Content-S Demo -->
+          <section class="adx-section demo-section" style="background: var(--background-light);">
+            <span class="width-indicator">content-s: 768px</span>
+            <div class="adx-content-s">
+              <div class="placeholder">
+                <p class="placeholder__title">content-s</p>
+                <p class="placeholder__detail">max-width: 768px</p>
+                <p class="placeholder__detail">Best for: Text-heavy content, articles, documentation</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Content-XS Demo -->
+          <section class="adx-section demo-section" style="background: var(--background-medium);">
+            <span class="width-indicator">content-xs: 500px</span>
+            <div class="adx-content-xs">
+              <div class="placeholder">
+                <p class="placeholder__title">content-xs</p>
+                <p class="placeholder__detail">max-width: 500px</p>
+                <p class="placeholder__detail">Best for: Forms, login pages, focused tasks</p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Usage Guidelines -->
+          <section class="adx-section">
+            <div class="adx-content-l">
+              <div class="section-inner">
+                <h3 class="section-title">Usage Guidelines</h3>
+
+                <div class="section-label">HTML Structure</div>
+                <pre style="background: var(--background-light); padding: var(--spacing-16); border-radius: var(--radius-s); overflow-x: auto; font-size: var(--font-size-14); margin-bottom: var(--spacing-24);"><code>&lt;div class="adx-layout"&gt;
+  &lt;nav class="adx-topbar"&gt;...&lt;/nav&gt;
+  &lt;div class="adx-wrapper"&gt;
+    &lt;nav class="adx-side-nav adx-side-nav--open"&gt;...&lt;/nav&gt;
+    &lt;div class="adx-main-wrapper"&gt;
+      &lt;main class="adx-main"&gt;
+        &lt;section class="adx-section"&gt;
+          &lt;div class="adx-content-l"&gt;
+            &lt;!-- Your content here --&gt;
+          &lt;/div&gt;
+        &lt;/section&gt;
+      &lt;/main&gt;
+      &lt;footer class="adx-footer"&gt;
+        &lt;section class="adx-section"&gt;
+          &lt;div class="adx-content-l"&gt;...&lt;/div&gt;
+        &lt;/section&gt;
+      &lt;/footer&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+
+                <div class="section-label">Rules from Figma</div>
+                <ul style="font-family: var(--font-family-trade-gothic); font-size: var(--font-size-16); line-height: 1.6; color: var(--text-secondary); padding-left: var(--spacing-24); margin-bottom: var(--spacing-24);">
+                  <li>Never use margin — only padding and gap to space content</li>
+                  <li>Footer is outside &lt;main&gt; to allow 100vh main content</li>
+                  <li>Content wrapper tag should match content type (div, article, etc.)</li>
+                  <li>Navigation pattern changes at phone breakpoint (side nav hidden)</li>
+                  <li>Padding and gap for a given class will change across breakpoints</li>
+                  <li>Use semantic HTML tags (&lt;nav&gt;, &lt;main&gt;, &lt;section&gt;, &lt;footer&gt;) for accessibility</li>
+                </ul>
+
+                <div class="section-label">CSS Classes Reference</div>
+                <table class="specs-table">
+                  <thead>
+                    <tr>
+                      <th>Class</th>
+                      <th>Purpose</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr><td><code>.adx-layout</code></td><td>Root container, full viewport height</td></tr>
+                    <tr><td><code>.adx-topbar</code></td><td>Fixed top navigation bar (52px)</td></tr>
+                    <tr><td><code>.adx-wrapper</code></td><td>Contains side nav + main content area</td></tr>
+                    <tr><td><code>.adx-side-nav</code></td><td>Side navigation (64px collapsed)</td></tr>
+                    <tr><td><code>.adx-side-nav--open</code></td><td>Side navigation expanded (200px)</td></tr>
+                    <tr><td><code>.adx-main-wrapper</code></td><td>Contains main + footer</td></tr>
+                    <tr><td><code>.adx-main</code></td><td>Primary content area</td></tr>
+                    <tr><td><code>.adx-section</code></td><td>Full-width section with vertical padding</td></tr>
+                    <tr><td><code>.adx-content-{l|m|s|xs}</code></td><td>Max-width content wrapper</td></tr>
+                    <tr><td><code>.adx-footer</code></td><td>Footer area (outside main)</td></tr>
+                    <tr><td><code>.adx-mobile-nav-trigger</code></td><td>Mobile nav button (phone only)</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="adx-footer">
+          <section class="adx-section" style="background: var(--background-medium);">
+            <div class="adx-content-l">
+              <p style="font-family: var(--font-family-trade-gothic); font-size: var(--font-size-14); color: var(--text-secondary); text-align: center;">
+                Almanac DX UI Kit v0.1.0
+              </p>
+            </div>
+          </section>
+        </footer>
+
+      </div><!-- /adx-main-wrapper -->
+
+    </div><!-- /adx-wrapper -->
+
+  </div><!-- /adx-layout -->
+
+  <script src="nav.js"></script>
+
+</body>
+</html>

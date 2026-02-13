@@ -7,7 +7,7 @@
  * - Theme classes (theme-fcma, theme-rural-first)
  *
  * Usage in your application:
- * import '@almanac/design-tokens/dist/tokens/styles/index.css';
+ * import '@almanac/adx/dist/tokens/styles/index.css';
  */
 
 @import './fonts.css';

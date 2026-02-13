@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-`@almanac/design-tokens` is the design token and theming foundation for the
+`@almanac/adx` is the design token and theming foundation for the
 Almanac DX UI Kit. It provides a theme-aware semantic token system supporting
 multiple brands (FCMA, Rural 1st) with runtime theme switching.
 

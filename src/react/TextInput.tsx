@@ -6,7 +6,7 @@
  *
  * Usage:
  * ```tsx
- * import { TextInput } from '@almanac/design-tokens';
+ * import { TextInput } from '@almanac/adx';
  *
  * <TextInput label="Email" placeholder="you@example.com" />
  * <TextInput label="Password" state="error" message="Required field" />

@@ -6,7 +6,7 @@
  *
  * Usage:
  * ```tsx
- * import { SideNav, SideNavItem, SideNavToggle, Badge, BadgeDot } from '@almanac/design-tokens';
+ * import { SideNav, SideNavItem, SideNavToggle, Badge, BadgeDot } from '@almanac/adx';
  * import { Home, Clipboard, FileText, DollarSign } from 'react-feather';
  *
  * <SideNav collapsed={isCollapsed}>

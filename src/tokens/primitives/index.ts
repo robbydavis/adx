@@ -9,10 +9,10 @@
  * be referenced when creating semantic tokens or themes.
  *
  * ✅ CORRECT: Use semantic tokens in components
- *    import { background, text } from '@almanac/design-tokens';
+ *    import { background, text } from '@almanac/adx';
  *
  * ❌ WRONG: Never import primitives in components
- *    import { neutral } from '@almanac/design-tokens/primitives';
+ *    import { neutral } from '@almanac/adx/primitives';
  */
 
 export * from './colors';

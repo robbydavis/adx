@@ -6,7 +6,7 @@
  *
  * Usage:
  * ```tsx
- * import { ThemeProvider } from '@almanac/design-tokens';
+ * import { ThemeProvider } from '@almanac/adx';
  *
  * function App() {
  *   return (

@@ -27,14 +27,14 @@
  * ### CSS Variables
  * Import the CSS file to use tokens as CSS custom properties:
  * ```
- * import '@almanac/design-tokens/dist/tokens/styles/index.css';
+ * import '@almanac/adx/dist/tokens/styles/index.css';
  * ```
  *
  * ## Usage Examples
  *
  * ### TypeScript Tokens
  * ```tsx
- * import { background, text, typography } from '@almanac/design-tokens';
+ * import { background, text, typography } from '@almanac/adx';
  *
  * const Button = () => (
  *   <button style={{
@@ -60,7 +60,7 @@
  *
  * ### Theme Provider
  * ```tsx
- * import { ThemeProvider } from '@almanac/design-tokens';
+ * import { ThemeProvider } from '@almanac/adx';
  *
  * function App() {
  *   return (
@@ -190,5 +190,5 @@ export type { SelectableCardProps, SelectableCardGroupProps } from './react/Sele
 // Primitive tokens (colors, typography, sizing) are internal-only.
 // They should NEVER be imported directly in components.
 //
-// ❌ WRONG: import { neutral } from '@almanac/design-tokens/primitives';
-// ✅ CORRECT: import { background, text } from '@almanac/design-tokens';
+// ❌ WRONG: import { neutral } from '@almanac/adx/primitives';
+// ✅ CORRECT: import { background, text } from '@almanac/adx';

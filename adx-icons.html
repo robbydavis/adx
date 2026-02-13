@@ -76,6 +76,11 @@
       color: var(--text-secondary);
       margin-left: var(--spacing-8);
     }
+
+    /* Selected icons use brand color via inline SVG */
+    #selected-icons .icon-card__preview svg {
+      color: var(--icon-brand);
+    }
   </style>
 </head>
 <body>
@@ -328,7 +333,7 @@
                 </div>
 
                 <!-- Selected Icons -->
-                <div class="icon-section">
+                <div class="icon-section" id="selected-icons">
                   <h3 class="icon-section__title">Selected State <span class="icon-section__count">(49 icons)</span></h3>
                   <div class="icon-grid">
                     <div class="icon-card">
@@ -652,6 +657,51 @@
   </div><!-- /adx-layout -->
 
   <script src="nav.js"></script>
+  <script>
+    /**
+     * Inline selected icons and replace FCMA green with currentColor
+     * This allows the icons to use the --icon-brand token for theme-aware coloring
+     */
+    async function inlineSelectedIcons() {
+      const container = document.getElementById('selected-icons');
+      if (!container) return;
+
+      const images = container.querySelectorAll('img');
+
+      for (const img of images) {
+        try {
+          const response = await fetch(img.src);
+          let svgText = await response.text();
+
+          // Replace FCMA green (#5E9732 or #5e9732) with currentColor
+          svgText = svgText.replace(/#5[Ee]9732/g, 'currentColor');
+
+          // Parse and inject the SVG
+          const parser = new DOMParser();
+          const svgDoc = parser.parseFromString(svgText, 'image/svg+xml');
+          const svg = svgDoc.documentElement;
+
+          // Copy alt text to aria-label for accessibility
+          if (img.alt) {
+            svg.setAttribute('aria-label', img.alt);
+            svg.setAttribute('role', 'img');
+          }
+
+          // Replace the img with the inline SVG
+          img.parentNode.replaceChild(svg, img);
+        } catch (err) {
+          console.warn('Failed to inline icon:', img.src, err);
+        }
+      }
+    }
+
+    // Run after DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', inlineSelectedIcons);
+    } else {
+      inlineSelectedIcons();
+    }
+  </script>
 
 </body>
 </html>
