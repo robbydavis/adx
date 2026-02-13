@@ -182,6 +182,45 @@ Docs should help teams make good design and UX decisions.
 
 ---
 
+## Component Implementation Workflow
+
+When building or modifying components:
+
+1. **Verify in Figma first** — Use the Figma MCP tools to inspect the source node
+2. **Confirm all tokens exist** — Every value must map to a semantic token
+3. **Match the spec exactly** — Dimensions, spacing, colors, typography
+4. **Implement all states** — Default, hover, focus, active, disabled as defined
+5. **Test theme switching** — Verify both FCMA and Rural 1st render correctly
+
+Do not extrapolate or "complete" designs that appear unfinished.
+
+---
+
+## Accessibility Requirements
+
+All interactive components must include:
+
+- Visible focus states using `--focus-ring`
+- Keyboard navigation (Tab, Enter, Space, Escape as appropriate)
+- ARIA attributes when semantic HTML is insufficient
+- Color contrast meeting WCAG AA (handled by token system)
+
+---
+
+## Protected Patterns
+
+Do not modify without explicit design approval:
+
+- Token names or values in `src/tokens/`
+- Theme color mappings in `src/tokens/themes/`
+- Typography scale (font sizes, line heights, weights)
+- Spacing scale values
+- Border radius values
+- Elevation drop shadows
+- Layout framework (breakpoints, content widths, nav dimensions)
+
+---
+
 ## Build & Development
 
 ```bash
