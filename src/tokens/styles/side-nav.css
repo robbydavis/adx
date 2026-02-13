@@ -105,6 +105,28 @@
   /* Ensure scroll doesn't cut off focus rings or tooltips */
   padding-right: var(--component-space-2xs); /* 4px */
   margin-right: calc(-1 * var(--component-space-2xs)); /* -4px offset */
+
+  /* Modern thin scrollbar — Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-subtle) transparent;
+}
+
+/* Modern thin scrollbar — Webkit (Chrome, Safari, Edge) */
+.adx-side-nav__items::-webkit-scrollbar {
+  width: 6px;
+}
+
+.adx-side-nav__items::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.adx-side-nav__items::-webkit-scrollbar-thumb {
+  background-color: var(--border-subtle);
+  border-radius: var(--radius-round);
+}
+
+.adx-side-nav__items::-webkit-scrollbar-thumb:hover {
+  background-color: var(--border-default);
 }
 
 /* ==========================================================================
