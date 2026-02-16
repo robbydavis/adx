@@ -62,7 +62,7 @@
   border-bottom: var(--border-width-thin) solid var(--border-subtle);
   cursor: pointer;
   text-align: left;
-  transition: background-color 0.15s ease;
+  transition: background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .adx-faq__trigger:hover {

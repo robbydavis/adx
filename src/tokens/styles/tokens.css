@@ -324,3 +324,19 @@
   --icon-brand: var(--rural1st-primary);
   --icon-link: var(--rural1st-primary);
 }
+
+/* ==========================================================================
+   REDUCED MOTION
+   Accessibility: Disable animations for users who prefer reduced motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

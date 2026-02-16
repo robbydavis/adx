@@ -74,7 +74,7 @@
   background-color: var(--background-primary);
   border: var(--border-width-thin) solid var(--border-dark);
   border-radius: var(--radius-2xs); /* 4px */
-  transition: background-color 0.15s ease, border-color 0.15s ease;
+  transition: background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ==========================================================================
@@ -86,7 +86,7 @@
   height: 16px;
   color: var(--icon-reverse); /* White icon */
   opacity: 0;
-  transition: opacity 0.15s ease;
+  transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ==========================================================================

@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-fcma">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Text Areas — Almanac DX UI Kit</title>
+  <link rel="stylesheet" href="src/tokens/styles/fonts.css">
+  <link rel="stylesheet" href="src/tokens/styles/tokens.css">
+  <link rel="stylesheet" href="src/tokens/styles/layout.css">
+  <link rel="stylesheet" href="src/tokens/styles/button.css">
+  <link rel="stylesheet" href="src/tokens/styles/text-input.css">
+  <link rel="stylesheet" href="src/tokens/styles/text-area.css">
+  <link rel="stylesheet" href="src/tokens/styles/select.css">
+  <link rel="stylesheet" href="src/tokens/styles/menu.css">
+  <link rel="stylesheet" href="adx.css">
+</head>
+<body>
+
+  <div class="adx-layout">
+
+    <!-- Top Bar -->
+    <nav class="adx-topbar">
+      <button class="adx-mobile-nav-trigger" onclick="toggleMobileNav()">Menu</button>
+      <span class="topbar-title">Almanac DX UI Kit</span>
+      <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('fcma')" id="btn-fcma">FCMA</button>
+        <button class="theme-btn" onclick="setTheme('rural-first')" id="btn-rural">Rural 1st</button>
+      </div>
+    </nav>
+
+    <!-- Wrapper: Nav + Content -->
+    <div class="adx-wrapper">
+
+      <!-- Side Navigation -->
+      <nav class="adx-nav adx-nav--open" id="side-nav">
+        <div class="nav-items">
+          <a href="adx.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Overview</span>
+          </a>
+          <a href="adx-tokens.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Tokens</span>
+          </a>
+          <a href="adx-buttons.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Buttons</span>
+          </a>
+          <a href="adx-text-inputs.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Text Inputs</span>
+          </a>
+          <a href="adx-text-areas.html" class="nav-item active">
+            <div class="nav-icon"></div>
+            <span>Text Areas</span>
+          </a>
+          <a href="adx-selects.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Selects</span>
+          </a>
+          <a href="adx-menus.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Menus</span>
+          </a>
+          <a href="adx-cards.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Cards</span>
+          </a>
+          <a href="adx-alerts.html" class="nav-item">
+            <div class="nav-icon"></div>
+            <span>Alerts</span>
+          </a>
+        </div>
+        <button class="nav-toggle" onclick="toggleNav()">
+          <span id="nav-toggle-label">Collapse</span>
+        </button>
+      </nav>
+
+      <!-- Main + Footer wrapper -->
+      <div class="adx-main-wrapper">
+
+        <!-- Main Content -->
+        <main class="adx-main">
+
+          <section class="adx-section" id="text-areas" style="background: var(--background-light);">
+            <div class="adx-content-m">
+              <div class="section-inner">
+                <h2 class="section-title">Text Area Component</h2>
+                <p class="section-subtitle">Multi-line text area matching Figma spec — all 6 states with interactive playground.</p>
+
+                <div class="type-label">All States</div>
+                <div class="input-states-grid">
+
+                  <!-- Default -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Default</div>
+                    <div class="adx-text-area">
+                      <label class="adx-text-area__label">Label</label>
+                      <div class="adx-text-area__focus-ring">
+                        <div class="adx-text-area__content">
+                          <textarea class="adx-text-area__input" placeholder="Hint Text"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Hover -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Hover</div>
+                    <div class="adx-text-area adx-text-area--hover">
+                      <label class="adx-text-area__label">Label</label>
+                      <div class="adx-text-area__focus-ring">
+                        <div class="adx-text-area__content">
+                          <textarea class="adx-text-area__input" placeholder="Hint Text"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Focus -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Focus</div>
+                    <div class="adx-text-area adx-text-area--focus">
+                      <label class="adx-text-area__label">Label</label>
+                      <div class="adx-text-area__focus-ring">
+                        <div class="adx-text-area__content">
+                          <textarea class="adx-text-area__input" placeholder="Hint Text"></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Warning -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Warning</div>
+                    <div class="adx-text-area adx-text-area--warning">
+                      <label class="adx-text-area__label">Label</label>
+                      <div class="adx-text-area__focus-ring">
+                        <div class="adx-text-area__content">
+                          <textarea class="adx-text-area__input" placeholder="Hint Text"></textarea>
+                          <span class="adx-text-area__trailing-icon">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5L14.5 13H1.5L8 1.5Z" stroke="var(--text-warning)" stroke-width="1.2" stroke-linejoin="round" fill="none"/><line x1="8" y1="6.5" x2="8" y2="9.5" stroke="var(--text-warning)" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="11.25" r="0.75" fill="var(--text-warning)"/></svg>
+                          </span>
+                        </div>
+                      </div>
+                      <p class="adx-text-area__message">Warning Message</p>
+                    </div>
+                  </div>
+
+                  <!-- Error -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Error</div>
+                    <div class="adx-text-area adx-text-area--error">
+                      <label class="adx-text-area__label">Label</label>
+                      <div class="adx-text-area__focus-ring">
+                        <div class="adx-text-area__content">
+                          <textarea class="adx-text-area__input" placeholder="Hint Text"></textarea>
+                          <span class="adx-text-area__trailing-icon">
+                            <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="var(--text-error)" stroke-width="1.2" fill="none"/><line x1="8" y1="5" x2="8" y2="8.5" stroke="var(--text-error)" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="10.5" r="0.75" fill="var(--text-error)"/></svg>
+                          </span>
+                        </div>
+                      </div>
+                      <p class="adx-text-area__message">Error Message</p>
+                    </div>
+                  </div>
+
+                  <!-- Disabled -->
+                  <div class="input-state-card">
+                    <div class="input-state-card__title">Disabled</div>
+                    <div class="adx-text-area adx-text-area--disabled">
+                      <label class="adx-text-area__label">Label</label>
+                      <div class="adx-text-area__focus-ring">
+                        <div class="adx-text-area__content">
+                          <textarea class="adx-text-area__input" placeholder="Hint Text" disabled></textarea>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="type-label" style="margin-top: var(--spacing-32);">Interactive Playground</div>
+                <div class="input-playground-controls">
+                  <div class="input-control-group">
+                    <div class="adx-select" id="ta-ctrl-state" style="width: 200px;">
+                      <label class="adx-select__label" id="ta-ctrl-state-label">State</label>
+                      <div class="adx-select__focus-ring">
+                        <div class="adx-select__content" tabindex="0" role="combobox" aria-expanded="false" aria-haspopup="listbox" aria-labelledby="ta-ctrl-state-label">
+                          <span class="adx-select__trigger">Default</span>
+                          <span class="adx-select__chevron" aria-hidden="true">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                          </span>
+                        </div>
+                        <div class="adx-select__dropdown" style="display:none;">
+                          <div class="adx-menu" role="listbox" aria-labelledby="ta-ctrl-state-label">
+                            <div class="adx-menu-item adx-menu-item--selected" role="option" aria-selected="true" tabindex="0" data-value="">
+                              <span class="adx-menu-item__label">Default</span>
+                              <span class="adx-menu-item__icon" aria-hidden="true">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                              </span>
+                            </div>
+                            <div class="adx-menu-item" role="option" aria-selected="false" tabindex="0" data-value="adx-text-area--hover">
+                              <span class="adx-menu-item__label">Hover</span>
+                            </div>
+                            <div class="adx-menu-item" role="option" aria-selected="false" tabindex="0" data-value="adx-text-area--focus">
+                              <span class="adx-menu-item__label">Focus</span>
+                            </div>
+                            <div class="adx-menu-item" role="option" aria-selected="false" tabindex="0" data-value="adx-text-area--warning">
+                              <span class="adx-menu-item__label">Warning</span>
+                            </div>
+                            <div class="adx-menu-item" role="option" aria-selected="false" tabindex="0" data-value="adx-text-area--error">
+                              <span class="adx-menu-item__label">Error</span>
+                            </div>
+                            <div class="adx-menu-item" role="option" aria-selected="false" tabindex="0" data-value="adx-text-area--disabled">
+                              <span class="adx-menu-item__label">Disabled</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="input-control-group">
+                    <div class="adx-text-input" style="width: 200px;">
+                      <label class="adx-text-input__label">Label</label>
+                      <div class="adx-text-input__focus-ring">
+                        <div class="adx-text-input__content">
+                          <input class="adx-text-input__input" id="ta-ctrl-label" value="Comments" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="input-control-group">
+                    <div class="adx-text-input" style="width: 200px;">
+                      <label class="adx-text-input__label">Placeholder</label>
+                      <div class="adx-text-input__focus-ring">
+                        <div class="adx-text-input__content">
+                          <input class="adx-text-input__input" id="ta-ctrl-placeholder" value="Enter your comments..." />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="input-control-group">
+                    <div class="adx-text-input" style="width: 200px;">
+                      <label class="adx-text-input__label">Message</label>
+                      <div class="adx-text-input__focus-ring">
+                        <div class="adx-text-input__content">
+                          <input class="adx-text-input__input" id="ta-ctrl-message" value="This field is required" />
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div style="max-width: 360px;">
+                  <div id="ta-live" class="adx-text-area">
+                    <label class="adx-text-area__label" id="ta-live-label">Comments</label>
+                    <div class="adx-text-area__focus-ring">
+                      <div class="adx-text-area__content">
+                        <textarea class="adx-text-area__input" id="ta-live-field" placeholder="Enter your comments..."></textarea>
+                        <span class="adx-text-area__trailing-icon" id="ta-live-icon" style="display:none;"></span>
+                      </div>
+                    </div>
+                    <p class="adx-text-area__message" id="ta-live-message" style="display:none;"></p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="adx-footer">
+          <section class="adx-section" style="background: var(--background-light);">
+            <div class="adx-content-l">
+              <p class="footer-text">
+                Almanac DX UI Kit v0.1.0
+              </p>
+            </div>
+          </section>
+        </footer>
+
+      </div><!-- /adx-main-wrapper -->
+
+    </div><!-- /adx-wrapper -->
+
+  </div><!-- /adx-layout -->
+
+  <script>
+    function setTheme(themeId) {
+      document.documentElement.className = 'theme-' + themeId;
+      document.getElementById('btn-fcma').classList.toggle('active', themeId === 'fcma');
+      document.getElementById('btn-rural').classList.toggle('active', themeId === 'rural-first');
+    }
+
+    function toggleNav() {
+      var nav = document.getElementById('side-nav');
+      var label = document.getElementById('nav-toggle-label');
+      nav.classList.toggle('adx-nav--open');
+      if (nav.classList.contains('adx-nav--open')) {
+        label.textContent = 'Collapse';
+      } else {
+        label.textContent = 'Expand';
+      }
+    }
+
+    function toggleMobileNav() {
+      var nav = document.getElementById('side-nav');
+      nav.classList.toggle('adx-nav--mobile-open');
+    }
+
+    // ADX Select dropdown behavior
+    function initAdxSelect(selectEl, onChange) {
+      var checkSVG = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+      var content = selectEl.querySelector('.adx-select__content');
+      var trigger = selectEl.querySelector('.adx-select__trigger');
+      var chevron = selectEl.querySelector('.adx-select__chevron');
+      var dropdown = selectEl.querySelector('.adx-select__dropdown');
+      var items = selectEl.querySelectorAll('.adx-menu-item');
+      var isOpen = false;
+
+      function open() {
+        isOpen = true;
+        selectEl.classList.add('adx-select--open');
+        chevron.classList.add('adx-select__chevron--open');
+        content.setAttribute('aria-expanded', 'true');
+        dropdown.style.display = '';
+      }
+
+      function close() {
+        isOpen = false;
+        selectEl.classList.remove('adx-select--open');
+        chevron.classList.remove('adx-select__chevron--open');
+        content.setAttribute('aria-expanded', 'false');
+        dropdown.style.display = 'none';
+      }
+
+      content.addEventListener('click', function() { isOpen ? close() : open(); });
+
+      items.forEach(function(item) {
+        item.addEventListener('click', function() {
+          items.forEach(function(i) {
+            i.classList.remove('adx-menu-item--selected');
+            i.setAttribute('aria-selected', 'false');
+            var existingIcon = i.querySelector('.adx-menu-item__icon');
+            if (existingIcon) existingIcon.remove();
+          });
+          item.classList.add('adx-menu-item--selected');
+          item.setAttribute('aria-selected', 'true');
+          var icon = document.createElement('span');
+          icon.className = 'adx-menu-item__icon';
+          icon.setAttribute('aria-hidden', 'true');
+          icon.innerHTML = checkSVG;
+          item.appendChild(icon);
+          trigger.textContent = item.querySelector('.adx-menu-item__label').textContent;
+          close();
+          if (onChange) onChange(item.getAttribute('data-value'));
+        });
+      });
+
+      document.addEventListener('click', function(e) {
+        if (isOpen && !selectEl.contains(e.target)) close();
+      });
+
+      return { getValue: function() {
+        var sel = selectEl.querySelector('.adx-menu-item--selected');
+        return sel ? sel.getAttribute('data-value') : '';
+      }};
+    }
+
+    // Text Area interactive playground
+    (function() {
+      var warningIconSVG = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 1.5L14.5 13H1.5L8 1.5Z" stroke="var(--text-warning)" stroke-width="1.2" stroke-linejoin="round" fill="none"/><line x1="8" y1="6.5" x2="8" y2="9.5" stroke="var(--text-warning)" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="11.25" r="0.75" fill="var(--text-warning)"/></svg>';
+      var errorIconSVG = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="6.5" stroke="var(--text-error)" stroke-width="1.2" fill="none"/><line x1="8" y1="5" x2="8" y2="8.5" stroke="var(--text-error)" stroke-width="1.2" stroke-linecap="round"/><circle cx="8" cy="10.5" r="0.75" fill="var(--text-error)"/></svg>';
+
+      var stateSelect = initAdxSelect(document.getElementById('ta-ctrl-state'), updateTextArea);
+      var ctrlLabel = document.getElementById('ta-ctrl-label');
+      var ctrlPlaceholder = document.getElementById('ta-ctrl-placeholder');
+      var ctrlMessage = document.getElementById('ta-ctrl-message');
+      var liveRoot = document.getElementById('ta-live');
+      var liveLabel = document.getElementById('ta-live-label');
+      var liveField = document.getElementById('ta-live-field');
+      var liveIcon = document.getElementById('ta-live-icon');
+      var liveMessage = document.getElementById('ta-live-message');
+
+      function updateTextArea() {
+        liveRoot.className = 'adx-text-area';
+        var stateClass = stateSelect.getValue();
+        if (stateClass) liveRoot.classList.add(stateClass);
+
+        liveLabel.textContent = ctrlLabel.value;
+        liveField.placeholder = ctrlPlaceholder.value;
+        liveField.disabled = stateClass === 'adx-text-area--disabled';
+
+        var isWarning = stateClass === 'adx-text-area--warning';
+        var isError = stateClass === 'adx-text-area--error';
+        if (isWarning) {
+          liveIcon.innerHTML = warningIconSVG;
+          liveIcon.style.display = '';
+        } else if (isError) {
+          liveIcon.innerHTML = errorIconSVG;
+          liveIcon.style.display = '';
+        } else {
+          liveIcon.style.display = 'none';
+        }
+
+        if ((isWarning || isError) && ctrlMessage.value) {
+          liveMessage.textContent = ctrlMessage.value;
+          liveMessage.style.display = '';
+        } else {
+          liveMessage.style.display = 'none';
+        }
+      }
+
+      ctrlLabel.addEventListener('input', updateTextArea);
+      ctrlPlaceholder.addEventListener('input', updateTextArea);
+      ctrlMessage.addEventListener('input', updateTextArea);
+    })();
+  </script>
+
+</body>
+</html>

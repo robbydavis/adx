@@ -65,7 +65,7 @@
   line-height: 20px;
   color: var(--text-link);
   text-decoration: none;
-  transition: text-decoration 0.15s ease;
+  transition: text-decoration 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .adx-expansion-panel__trigger:hover {

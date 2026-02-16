@@ -73,7 +73,7 @@
   background-color: var(--background-primary);
   border: var(--border-width-thin) solid var(--border-dark);
   border-radius: var(--radius-round); /* Full circle */
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ==========================================================================
@@ -86,7 +86,7 @@
   background-color: var(--background-action); /* Green dot */
   border-radius: var(--radius-round);
   opacity: 0;
-  transition: opacity 0.15s ease;
+  transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* ==========================================================================

@@ -39,7 +39,7 @@
   border: var(--border-width-thin) solid var(--border-subtle);
   border-radius: var(--radius-xs); /* 8px */
   overflow: hidden;
-  transition: box-shadow 0.15s ease;
+  transition: box-shadow 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Optional max-width variant */
@@ -71,7 +71,7 @@
   border-bottom: var(--border-width-thin) solid transparent;
   cursor: pointer;
   text-align: left;
-  transition: border-color 0.15s ease;
+  transition: border-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 /* Show bottom border when open (separates header from panel) */
