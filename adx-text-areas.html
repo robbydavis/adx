@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="src/tokens/styles/text-area.css">
   <link rel="stylesheet" href="src/tokens/styles/select.css">
   <link rel="stylesheet" href="src/tokens/styles/menu.css">
+  <link rel="stylesheet" href="src/tokens/styles/side-nav.css">
   <link rel="stylesheet" href="adx.css">
 </head>
 <body>
@@ -31,50 +32,8 @@
     <!-- Wrapper: Nav + Content -->
     <div class="adx-wrapper">
 
-      <!-- Side Navigation -->
-      <nav class="adx-nav adx-nav--open" id="side-nav">
-        <div class="nav-items">
-          <a href="adx.html" class="nav-item">
-            <div class="nav-icon"></div>
-            <span>Overview</span>
-          </a>
-          <a href="adx-tokens.html" class="nav-item">
-            <div class="nav-icon"></div>
-            <span>Tokens</span>
-          </a>
-          <a href="adx-buttons.html" class="nav-item">
-            <div class="nav-icon"></div>
-            <span>Buttons</span>
-          </a>
-          <a href="adx-text-inputs.html" class="nav-item">
-            <div class="nav-icon"></div>
-            <span>Text Inputs</span>
-          </a>
-          <a href="adx-text-areas.html" class="nav-item active">
-            <div class="nav-icon"></div>
-            <span>Text Areas</span>
-          </a>
-          <a href="adx-selects.html" class="nav-item">
-            <div class="nav-icon"></div>
-            <span>Selects</span>
-          </a>
-          <a href="adx-menus.html" class="nav-item">
-            <div class="nav-icon"></div>
-            <span>Menus</span>
-          </a>
-          <a href="adx-cards.html" class="nav-item">
-            <div class="nav-icon"></div>
-            <span>Cards</span>
-          </a>
-          <a href="adx-alerts.html" class="nav-item">
-            <div class="nav-icon"></div>
-            <span>Alerts</span>
-          </a>
-        </div>
-        <button class="nav-toggle" onclick="toggleNav()">
-          <span id="nav-toggle-label">Collapse</span>
-        </button>
-      </nav>
+      <!-- Side Navigation (rendered by nav.js) -->
+      <nav class="adx-side-nav adx-side-nav--open" id="side-nav"></nav>
 
       <!-- Main + Footer wrapper -->
       <div class="adx-main-wrapper">
@@ -287,29 +246,9 @@
 
   </div><!-- /adx-layout -->
 
+  <script src="nav.js"></script>
+
   <script>
-    function setTheme(themeId) {
-      document.documentElement.className = 'theme-' + themeId;
-      document.getElementById('btn-fcma').classList.toggle('active', themeId === 'fcma');
-      document.getElementById('btn-rural').classList.toggle('active', themeId === 'rural-first');
-    }
-
-    function toggleNav() {
-      var nav = document.getElementById('side-nav');
-      var label = document.getElementById('nav-toggle-label');
-      nav.classList.toggle('adx-nav--open');
-      if (nav.classList.contains('adx-nav--open')) {
-        label.textContent = 'Collapse';
-      } else {
-        label.textContent = 'Expand';
-      }
-    }
-
-    function toggleMobileNav() {
-      var nav = document.getElementById('side-nav');
-      nav.classList.toggle('adx-nav--mobile-open');
-    }
-
     // ADX Select dropdown behavior
     function initAdxSelect(selectEl, onChange) {
       var checkSVG = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
