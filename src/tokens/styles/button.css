@@ -169,7 +169,7 @@
 .adx-btn--primary:disabled,
 .adx-btn--primary.adx-btn--disabled {
   background-color: var(--background-action-disabled);
-  color: var(--text-disabled);
+  color: var(--text-reverse);
   cursor: not-allowed;
   pointer-events: none;
 }
@@ -177,8 +177,8 @@
 .adx-btn--secondary:disabled,
 .adx-btn--secondary.adx-btn--disabled {
   background-color: var(--background-primary);
-  color: var(--text-disabled);
-  border-color: var(--border-subtle);
+  color: var(--text-tertiary);
+  border-color: var(--border-dark);
   cursor: not-allowed;
   pointer-events: none;
 }

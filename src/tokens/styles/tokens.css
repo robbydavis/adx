@@ -282,6 +282,7 @@
   --background-brand-subtle: var(--fcma-light);
   --background-action: var(--fcma-primary);
   --background-action-hover: var(--fcma-hover);
+  --background-action-disabled: var(--fcma-disabled);
 
   --text-brand: var(--fcma-primary);
   --text-link: var(--fcma-primary);
@@ -314,6 +315,7 @@
   --background-brand-subtle: var(--rural1st-light);
   --background-action: var(--rural1st-primary);
   --background-action-hover: var(--rural1st-hover);
+  --background-action-disabled: var(--rural1st-disabled);
 
   --text-brand: var(--rural1st-primary);
   --text-link: var(--rural1st-primary);
