@@ -111,7 +111,9 @@
   text-align: left; /* Reset inherited alignment — content is always left-aligned */
 }
 
-/* Show content when open */
+/* Show content when open — flex column so slotted sections get consistent gap */
 .adx-expansion-panel--open .adx-expansion-panel__content {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  gap: var(--component-space-l); /* 16px between sections */
 }
