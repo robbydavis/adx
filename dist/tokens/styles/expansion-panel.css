@@ -108,6 +108,7 @@
   background-color: var(--background-medium);
   border-radius: var(--radius-xs); /* 8px */
   padding: var(--component-space-l); /* 16px */
+  text-align: left; /* Reset inherited alignment — content is always left-aligned */
 }
 
 /* Show content when open */
