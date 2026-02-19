@@ -258,8 +258,8 @@
   --border-s: var(--border-width-thin);        /* 1px — size-25 */
   --border-m: var(--border-width-medium);      /* 2px — size-50 */
 
-  /* Focus Ring (Figma focus-100 effect) */
-  --focus-ring: 0 0 0 4px #C7E4F9;
+  /* Focus Ring (Figma focus-100 effect) — always #C7E4F9 across all themes */
+  --focus-ring: 0 0 0 var(--border-width-thick) var(--border-focus);
 }
 
 /* ==========================================================================
@@ -282,13 +282,13 @@
   --background-brand-subtle: var(--fcma-light);
   --background-action: var(--fcma-primary);
   --background-action-hover: var(--fcma-hover);
+  --background-action-disabled: var(--fcma-disabled);
 
   --text-brand: var(--fcma-primary);
   --text-link: var(--fcma-primary);
   --text-link-hover: var(--fcma-hover);
 
   --border-brand: var(--fcma-primary);
-  --border-focus: var(--fcma-primary);
 
   --icon-brand: var(--fcma-primary);
   --icon-link: var(--fcma-primary);
@@ -315,14 +315,30 @@
   --background-brand-subtle: var(--rural1st-light);
   --background-action: var(--rural1st-primary);
   --background-action-hover: var(--rural1st-hover);
+  --background-action-disabled: var(--rural1st-disabled);
 
   --text-brand: var(--rural1st-primary);
   --text-link: var(--rural1st-primary);
   --text-link-hover: var(--rural1st-hover);
 
   --border-brand: var(--rural1st-primary);
-  --border-focus: var(--rural1st-primary);
 
   --icon-brand: var(--rural1st-primary);
   --icon-link: var(--rural1st-primary);
+}
+
+/* ==========================================================================
+   REDUCED MOTION
+   Accessibility: Disable animations for users who prefer reduced motion
+   ========================================================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
