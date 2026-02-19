@@ -1,0 +1,167 @@
+/**
+ * Almanac DX — Accordion Card Component
+ *
+ * CSS classes matching the Figma Accordion Card spec (node 13853:34031).
+ * A flexible shell component using slot pattern for header and panel content.
+ *
+ * States:
+ *   - closed: panel hidden, chevron points down
+ *   - open: panel visible, chevron points up
+ *   - hover: elevation shadow added
+ *
+ * Usage:
+ *   <div class="adx-accordion-card">
+ *     <button class="adx-accordion-card__trigger" aria-expanded="false">
+ *       <div class="adx-accordion-card__trigger-content">
+ *         <!-- SLOT: Any header content -->
+ *       </div>
+ *       <span class="adx-accordion-card__chevron">
+ *         <svg><!-- chevron icon --></svg>
+ *       </span>
+ *     </button>
+ *     <div class="adx-accordion-card__panel">
+ *       <div class="adx-accordion-card__panel-content">
+ *         <!-- SLOT: Any expanded content -->
+ *       </div>
+ *     </div>
+ *   </div>
+ */
+
+/* ==========================================================================
+   Container
+   ========================================================================== */
+
+.adx-accordion-card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: var(--background-primary);
+  border: var(--border-width-thin) solid var(--border-subtle);
+  border-radius: var(--radius-xs); /* 8px */
+  overflow: hidden;
+  transition: box-shadow 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Optional max-width variant */
+.adx-accordion-card--constrained {
+  max-width: 343px;
+}
+
+/* ==========================================================================
+   Hover State — Elevation Shadow
+   ========================================================================== */
+
+.adx-accordion-card:hover {
+  box-shadow: 0 4px 8px rgba(39, 51, 51, 0.24); /* elevation-200 */
+}
+
+/* ==========================================================================
+   Trigger (Header Button)
+   ========================================================================== */
+
+.adx-accordion-card__trigger {
+  display: flex;
+  align-items: center;
+  gap: var(--component-space-l); /* 16px */
+  width: 100%;
+  min-height: 72px;
+  padding: var(--component-space-l); /* 16px */
+  background-color: var(--background-primary);
+  border: none;
+  border-bottom: var(--border-width-thin) solid transparent;
+  cursor: pointer;
+  text-align: left;
+  transition: border-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Show bottom border when open (separates header from panel) */
+.adx-accordion-card--open .adx-accordion-card__trigger {
+  border-bottom-color: var(--border-subtle);
+}
+
+.adx-accordion-card__trigger:focus-visible {
+  outline: none;
+  box-shadow: inset var(--focus-ring);
+}
+
+/* ==========================================================================
+   Trigger Content Slot
+   ========================================================================== */
+
+.adx-accordion-card__trigger-content {
+  flex: 1;
+  min-width: 0; /* Allow content to shrink */
+}
+
+/* ==========================================================================
+   Chevron Icon
+   ========================================================================== */
+
+.adx-accordion-card__chevron {
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--icon-brand);
+  transition: transform 160ms ease-out; /* Close duration */
+}
+
+.adx-accordion-card__chevron svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Rotate chevron when open */
+.adx-accordion-card--open .adx-accordion-card__chevron {
+  transform: rotate(180deg);
+  transition: transform 200ms ease-out; /* Open duration */
+}
+
+/* ==========================================================================
+   Panel (Expandable Content Area) — With Smooth Transition
+   ========================================================================== */
+
+.adx-accordion-card__panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  background-color: var(--background-light);
+  transition: grid-template-rows 160ms ease-out; /* Close duration */
+}
+
+/* Expand panel when open */
+.adx-accordion-card--open .adx-accordion-card__panel {
+  grid-template-rows: 1fr;
+  transition: grid-template-rows 200ms ease-out; /* Open duration */
+}
+
+/* ==========================================================================
+   Panel Content Slot
+   ========================================================================== */
+
+.adx-accordion-card__panel-content {
+  overflow: hidden;
+  min-height: 0; /* Required for grid animation */
+}
+
+/* Inner padding wrapper - use this for actual padding */
+.adx-accordion-card__panel-inner {
+  padding: var(--component-space-l); /* 16px */
+}
+
+/* ==========================================================================
+   List Container (for grouping multiple accordion cards)
+   ========================================================================== */
+
+.adx-accordion-card-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-16);
+  width: 100%;
+}
+
+/* Constrained list variant */
+.adx-accordion-card-list--constrained {
+  max-width: 343px;
+}

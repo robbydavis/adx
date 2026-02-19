@@ -1,0 +1,42 @@
+/**
+ * Almanac DX — Tooltip Component
+ *
+ * CSS classes matching the Figma Tooltip spec (node 17440:54).
+ * Uses semantic design tokens for all values.
+ *
+ * Components:
+ *   - adx-tooltip: Tooltip container
+ *
+ * Usage:
+ *   <div class="adx-tooltip">Tooltip text here</div>
+ *
+ * Positioning:
+ *   Tooltip positioning is handled by the parent/trigger element.
+ *   The tooltip itself is display: inline-block by default.
+ *   Use position: absolute on the tooltip and position: relative
+ *   on the trigger wrapper for positioning.
+ */
+
+/* ==========================================================================
+   Tooltip Container
+   ========================================================================== */
+
+.adx-tooltip {
+  display: inline-block;
+  max-width: 300px; /* ~40-50 characters at 14px */
+  padding: var(--component-space-xs); /* 8px */
+  background-color: var(--background-reverse);
+  border-radius: var(--radius-xs); /* 8px */
+  box-shadow: var(--elevation-300);
+
+  /* Typography — paragraph-s */
+  font-family: var(--font-family-trade-gothic);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-14);
+  line-height: 20px;
+  color: var(--text-reverse);
+
+  /* Text handling */
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}

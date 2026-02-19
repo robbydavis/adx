@@ -1,0 +1,236 @@
+/**
+ * Almanac DX — Select Component
+ *
+ * CSS classes matching the Figma Select spec (node 13823:671).
+ * Uses semantic design tokens for all values.
+ * Uses the Menu component as a custom dropdown.
+ *
+ * States: default, hover, focus, warning, error, disabled, open
+ *
+ * Usage:
+ *   <div class="adx-select">
+ *     <label class="adx-select__label">Label</label>
+ *     <div class="adx-select__focus-ring">
+ *       <div class="adx-select__content" tabindex="0">
+ *         <span class="adx-select__trigger">Selected value</span>
+ *         <span class="adx-select__chevron">...</span>
+ *       </div>
+ *       <div class="adx-select__dropdown">
+ *         <div class="adx-menu">...</div>
+ *       </div>
+ *     </div>
+ *   </div>
+ */
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+.adx-select {
+  display: flex;
+  flex-direction: column;
+  gap: var(--component-space-xs);
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Label — label-l: 18px / 24px, Trade Gothic 400 */
+.adx-select__label {
+  font-family: var(--font-family-trade-gothic);
+  font-size: var(--font-size-18);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.5rem;
+  color: var(--text-primary);
+}
+
+/* Focus ring wrapper — relative positioning for dropdown */
+.adx-select__focus-ring {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 100%;
+  position: relative;
+}
+
+/* Select container — holds the trigger, optional trailing icon, and chevron */
+.adx-select__content {
+  display: flex;
+  align-items: center;
+  gap: var(--component-space-xs);
+  width: 100%;
+  height: 52px;
+  padding: var(--component-space-l);
+  border: var(--border-s) solid var(--border-dark);
+  border-radius: var(--radius-xs);
+  background: var(--background-primary);
+  box-sizing: border-box;
+  cursor: pointer;
+  outline: none;
+}
+
+/* Trigger text — paragraph-m: 16px / 20px, Trade Gothic 400 */
+.adx-select__trigger {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-family-trade-gothic);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.25rem;
+  color: var(--text-primary);
+  user-select: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Placeholder text color */
+.adx-select__trigger--placeholder {
+  color: var(--text-tertiary);
+}
+
+/* Leading icon slot */
+.adx-select__leading-icon {
+  display: flex;
+  align-items: center;
+  padding: var(--component-space-3xs) 0;
+  flex-shrink: 0;
+}
+
+.adx-select__leading-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Trailing icon slot (warning/error icons) */
+.adx-select__trailing-icon {
+  display: flex;
+  align-items: center;
+  padding: var(--component-space-3xs) 0;
+  flex-shrink: 0;
+}
+
+.adx-select__trailing-icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* Chevron icon */
+.adx-select__chevron {
+  display: flex;
+  align-items: center;
+  padding: var(--component-space-3xs) 0;
+  flex-shrink: 0;
+  transition: transform 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.adx-select__chevron svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* Chevron rotated when open */
+.adx-select__chevron--open {
+  transform: rotate(180deg);
+}
+
+/* Dropdown container */
+.adx-select__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin-top: 4px;
+  z-index: 10;
+}
+
+/* Override fixed menu width when inside select dropdown */
+.adx-select__dropdown .adx-menu {
+  width: 100%;
+}
+
+/* Validation / helper message — paragraph-s: 14px / 20px, Trade Gothic 400 */
+.adx-select__message {
+  font-family: var(--font-family-trade-gothic);
+  font-size: var(--font-size-14);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.25rem;
+  margin: 0;
+}
+
+/* ==========================================================================
+   State: Hover — border-strong on content
+   ========================================================================== */
+
+.adx-select--hover .adx-select__content,
+.adx-select:not(.adx-select--disabled):hover .adx-select__content {
+  border-color: var(--border-strong);
+}
+
+/* ==========================================================================
+   State: Focus — border-strong on content + outer box-shadow ring
+   ========================================================================== */
+
+.adx-select--focus .adx-select__content,
+.adx-select:not(.adx-select--disabled) .adx-select__content:focus {
+  border-color: var(--border-strong);
+  box-shadow: var(--focus-ring);
+}
+
+/* ==========================================================================
+   State: Open — border-strong + focus ring on content
+   ========================================================================== */
+
+.adx-select--open .adx-select__content {
+  border-color: var(--border-strong);
+  box-shadow: var(--focus-ring);
+}
+
+/* ==========================================================================
+   State: Warning — border-warning, warning message color
+   ========================================================================== */
+
+.adx-select--warning .adx-select__content {
+  border-color: var(--border-warning);
+}
+
+.adx-select--warning .adx-select__message {
+  color: var(--text-warning);
+}
+
+/* ==========================================================================
+   State: Error — border-error, error message color
+   ========================================================================== */
+
+.adx-select--error .adx-select__content {
+  border-color: var(--border-error);
+}
+
+.adx-select--error .adx-select__message {
+  color: var(--text-error);
+}
+
+/* ==========================================================================
+   State: Disabled — border-subtle, no background, not-allowed cursor
+   ========================================================================== */
+
+.adx-select--disabled .adx-select__content {
+  border-color: var(--border-subtle);
+  background: transparent;
+  cursor: not-allowed;
+}
+
+.adx-select--disabled .adx-select__trigger {
+  color: var(--text-tertiary);
+}
+
+.adx-select--disabled .adx-select__chevron svg {
+  color: var(--text-tertiary);
+}
+
+.adx-select--disabled .adx-select__leading-icon svg {
+  color: var(--text-tertiary);
+}
+
+.adx-select--disabled .adx-select__trailing-icon svg {
+  color: var(--text-tertiary);
+}

@@ -1,0 +1,116 @@
+/**
+ * Almanac DX — Expansion Panel Component
+ *
+ * CSS classes matching the Figma Expansion Panel spec (node 13827:2710).
+ * Uses a slot pattern for flexible content within the expandable panel.
+ *
+ * Variants:
+ *   Alignment: left (default), center
+ *   States: closed (default), open
+ *
+ * Usage:
+ *   <div class="adx-expansion-panel">
+ *     <button class="adx-expansion-panel__trigger" aria-expanded="false">
+ *       <span class="adx-expansion-panel__icon">...</span>
+ *       <span class="adx-expansion-panel__label">Link Text</span>
+ *     </button>
+ *     <div class="adx-expansion-panel__content">
+ *       <!-- Your content here -->
+ *     </div>
+ *   </div>
+ */
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+.adx-expansion-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--component-space-l); /* 16px between trigger and content */
+  width: 100%;
+  max-width: 500px; /* Default max-width, override with inline style or modifier if needed */
+}
+
+/* Full width variant - removes max-width constraint */
+.adx-expansion-panel--full-width {
+  max-width: none;
+}
+
+/* ==========================================================================
+   Alignment Variants
+   ========================================================================== */
+
+/* Center alignment */
+.adx-expansion-panel--center {
+  align-items: center;
+}
+
+/* ==========================================================================
+   Trigger (link + icon)
+   ========================================================================== */
+
+.adx-expansion-panel__trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--component-space-2xs); /* 4px */
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: var(--font-family-trade-gothic);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-14);
+  line-height: 20px;
+  color: var(--text-link);
+  text-decoration: none;
+  transition: text-decoration 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.adx-expansion-panel__trigger:hover {
+  text-decoration: underline;
+}
+
+.adx-expansion-panel__trigger:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+  border-radius: var(--radius-2xs); /* 4px */
+}
+
+/* ==========================================================================
+   Icon
+   ========================================================================== */
+
+.adx-expansion-panel__icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-link);
+}
+
+.adx-expansion-panel__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ==========================================================================
+   Content Panel
+   ========================================================================== */
+
+/* Hidden by default */
+.adx-expansion-panel__content {
+  display: none;
+  width: 100%;
+  background-color: var(--background-medium);
+  border-radius: var(--radius-xs); /* 8px */
+  padding: var(--component-space-l); /* 16px */
+}
+
+/* Show content when open */
+.adx-expansion-panel--open .adx-expansion-panel__content {
+  display: block;
+}

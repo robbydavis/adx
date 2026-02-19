@@ -1,0 +1,182 @@
+/**
+ * Almanac DX — Radio Button Component
+ *
+ * CSS classes matching the Figma Radio spec (node 15406:2498).
+ * Supports two selection states and multiple interaction states.
+ *
+ * Selection States:
+ *   - off: unselected (empty circle)
+ *   - on: selected (white circle + colored inner dot)
+ *
+ * Interaction States:
+ *   - default: normal appearance
+ *   - hover: strong border
+ *   - focus: outer focus ring + strong border
+ *   - warning: warning border + warning dot
+ *   - error: error border + error dot
+ *   - disabled: subtle styling, non-interactive
+ *
+ * Usage:
+ *   <label class="adx-radio">
+ *     <input type="radio" class="adx-radio__input" name="group" />
+ *     <span class="adx-radio__circle">
+ *       <span class="adx-radio__dot"></span>
+ *     </span>
+ *     <span class="adx-radio__label">Label text</span>
+ *   </label>
+ */
+
+/* ==========================================================================
+   Base Container
+   ========================================================================== */
+
+.adx-radio {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-8);
+  cursor: pointer;
+  user-select: none;
+}
+
+.adx-radio--disabled {
+  cursor: not-allowed;
+}
+
+/* ==========================================================================
+   Hidden Native Input
+   ========================================================================== */
+
+.adx-radio__input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   Visual Radio Circle — Default Unselected
+   ========================================================================== */
+
+.adx-radio__circle {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-primary);
+  border: var(--border-width-thin) solid var(--border-dark);
+  border-radius: var(--radius-round); /* Full circle */
+  transition: border-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   Inner Dot (Selected Indicator)
+   ========================================================================== */
+
+.adx-radio__dot {
+  width: 16px;
+  height: 16px;
+  background-color: var(--background-action); /* Green dot */
+  border-radius: var(--radius-round);
+  opacity: 0;
+  transition: opacity 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ==========================================================================
+   Selection States — Selected (On)
+   ========================================================================== */
+
+/* Default selected: white background, keep border, show colored dot */
+.adx-radio__input:checked + .adx-radio__circle .adx-radio__dot {
+  opacity: 1;
+}
+
+/* ==========================================================================
+   Interaction States — Hover
+   ========================================================================== */
+
+/* Hover: strong (black) border */
+.adx-radio:hover .adx-radio__circle {
+  border-color: var(--border-strong);
+}
+
+/* ==========================================================================
+   Interaction States — Focus
+   ========================================================================== */
+
+/* Focus ring + strong border */
+.adx-radio__input:focus-visible + .adx-radio__circle {
+  border-color: var(--border-strong);
+  box-shadow: var(--focus-ring);
+}
+
+/* ==========================================================================
+   Validation States — Warning
+   ========================================================================== */
+
+/* Warning: warning border */
+.adx-radio--warning .adx-radio__circle {
+  border-color: var(--border-warning);
+}
+
+/* Warning dot color */
+.adx-radio--warning .adx-radio__dot {
+  background-color: var(--background-warning);
+}
+
+/* ==========================================================================
+   Validation States — Error
+   ========================================================================== */
+
+/* Error: error border */
+.adx-radio--error .adx-radio__circle {
+  border-color: var(--border-error);
+}
+
+/* Error dot color */
+.adx-radio--error .adx-radio__dot {
+  background-color: var(--background-error);
+}
+
+/* ==========================================================================
+   Disabled State
+   ========================================================================== */
+
+/* Disabled: subtle border */
+.adx-radio--disabled .adx-radio__circle {
+  background-color: var(--background-primary);
+  border-color: var(--border-subtle);
+}
+
+/* Disabled dot color */
+.adx-radio--disabled .adx-radio__dot {
+  background-color: var(--background-darker);
+}
+
+/* Disabled hover - no change */
+.adx-radio--disabled:hover .adx-radio__circle {
+  border-color: var(--border-subtle);
+}
+
+/* ==========================================================================
+   Label Text
+   ========================================================================== */
+
+.adx-radio__label {
+  font-family: var(--font-family-trade-gothic);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-14);
+  line-height: 20px;
+  color: var(--text-primary);
+}
+
+.adx-radio--disabled .adx-radio__label {
+  color: var(--text-secondary);
+}

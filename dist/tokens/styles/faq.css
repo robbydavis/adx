@@ -1,0 +1,206 @@
+/**
+ * Almanac DX — FAQ Component
+ *
+ * Simple accordion-style FAQ items.
+ *
+ * States:
+ *   - default: collapsed, answer hidden
+ *   - hover: gray background on trigger
+ *   - open: answer visible, icon rotated
+ *
+ * Usage:
+ *   <div class="adx-faq-list">
+ *     <div class="adx-faq">
+ *       <button class="adx-faq__trigger" aria-expanded="false">
+ *         <span class="adx-faq__question">Question text?</span>
+ *         <span class="adx-faq__icon">...</span>
+ *       </button>
+ *       <div class="adx-faq__answer">
+ *         <div class="adx-faq__answer-inner">
+ *           <p>Answer text...</p>
+ *         </div>
+ *       </div>
+ *     </div>
+ *   </div>
+ */
+
+/* ==========================================================================
+   FAQ List Container
+   ========================================================================== */
+
+.adx-faq-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 500px;
+}
+
+.adx-faq-list--full-width {
+  max-width: none;
+}
+
+/* ==========================================================================
+   FAQ Item
+   ========================================================================== */
+
+.adx-faq {
+  width: 100%;
+}
+
+/* ==========================================================================
+   Trigger (Question Row)
+   ========================================================================== */
+
+.adx-faq__trigger {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-16);
+  width: 100%;
+  padding: var(--component-space-l);
+  background: none;
+  border: none;
+  border-bottom: var(--border-width-thin) solid var(--border-subtle);
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.adx-faq__trigger:hover {
+  background-color: var(--background-dark);
+}
+
+.adx-faq__trigger:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.adx-faq--open .adx-faq__trigger {
+  background-color: var(--background-dark);
+}
+
+/* ==========================================================================
+   Question Text
+   ========================================================================== */
+
+.adx-faq__question {
+  flex: 1;
+  font-family: var(--font-family-trade-gothic);
+  font-weight: var(--font-weight-bold);
+  font-size: var(--font-size-20);
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+/* ==========================================================================
+   Icon
+   ========================================================================== */
+
+.adx-faq__icon {
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  transition: transform 150ms ease-out;
+}
+
+.adx-faq__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+.adx-faq--open .adx-faq__icon {
+  transform: rotate(180deg);
+  transition: transform 200ms ease-out;
+}
+
+/* ==========================================================================
+   Answer (Hidden by default, shown when open)
+   ========================================================================== */
+
+.adx-faq__answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 150ms ease-out;
+}
+
+.adx-faq--open .adx-faq__answer {
+  max-height: 1000px; /* Large enough for any content */
+  transition: max-height 200ms ease-out;
+}
+
+/* ==========================================================================
+   Answer Content
+   ========================================================================== */
+
+.adx-faq__answer-inner {
+  padding: var(--component-space-l);
+  border-bottom: var(--border-width-thin) solid var(--border-subtle);
+  font-family: var(--font-family-trade-gothic);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-18);
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+.adx-faq__answer-inner p {
+  margin: 0 0 var(--spacing-16) 0;
+}
+
+.adx-faq__answer-inner p:last-child {
+  margin-bottom: 0;
+}
+
+/* Links */
+.adx-faq__answer-inner a {
+  color: var(--text-link);
+  text-decoration: none;
+}
+
+.adx-faq__answer-inner a:hover {
+  text-decoration: underline;
+}
+
+/* Unordered lists */
+.adx-faq__answer-inner ul {
+  margin: 0 0 var(--spacing-16) 0;
+  padding-left: var(--spacing-24);
+  list-style-type: disc;
+}
+
+.adx-faq__answer-inner ul li {
+  margin-bottom: var(--spacing-8);
+}
+
+.adx-faq__answer-inner ul li:last-child {
+  margin-bottom: 0;
+}
+
+/* Ordered lists */
+.adx-faq__answer-inner ol {
+  margin: 0 0 var(--spacing-16) 0;
+  padding-left: var(--spacing-24);
+  list-style-type: decimal;
+}
+
+.adx-faq__answer-inner ol li {
+  margin-bottom: var(--spacing-8);
+}
+
+.adx-faq__answer-inner ol li:last-child {
+  margin-bottom: 0;
+}
+
+/* Bold text */
+.adx-faq__answer-inner strong,
+.adx-faq__answer-inner b {
+  font-weight: var(--font-weight-bold);
+}
+
+/* Italic text */
+.adx-faq__answer-inner em,
+.adx-faq__answer-inner i {
+  font-style: italic;
+}

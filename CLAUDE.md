@@ -221,8 +221,31 @@ Do not modify without explicit design approval:
 
 ---
 
+## dist/ Must Always Match src/
+
+**This is the most critical rule for this repo.**
+
+Consumers (e.g. the Balance Sheet app) install this package from GitHub and
+receive the committed `dist/` directory. If `src/` is updated but `dist/` is
+not rebuilt and committed, the old styles will be served — changes will appear
+to have no effect in consuming projects.
+
+**After any change to `src/tokens/styles/*.css`:**
+1. Run `npm run copy-css` to sync CSS files into `dist/tokens/styles/`
+2. Stage and commit the updated `dist/` files alongside the `src/` changes
+
+A git pre-commit hook (`.git/hooks/pre-commit`) enforces this automatically
+by running `copy-css` and staging the result before every commit.
+
+**After any change to `src/react/*.ts` or `src/tokens/*.ts`:**
+1. Run `npm run build` to recompile TypeScript into `dist/`
+2. Commit the updated `dist/` JS/declaration files
+
+---
+
 ## Build & Development
 
 ```bash
 npm run build          # Validates generated CSS then compiles TypeScript
 npm run generate-css   # Ensures token CSS files exist in src/tokens/styles/
+npm run copy-css       # Syncs src/tokens/styles/ → dist/tokens/styles/

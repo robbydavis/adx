@@ -1,0 +1,150 @@
+/**
+ * Almanac DX — Menu Component
+ *
+ * CSS classes matching the Figma Menu spec (node 13823:796).
+ * Uses semantic design tokens for all values.
+ *
+ * States (MenuItem): default, hover, selected, active, disabled
+ *
+ * Usage:
+ *   <div class="adx-menu">
+ *     <div class="adx-menu-item">
+ *       <span class="adx-menu-item__label">Menu item</span>
+ *     </div>
+ *     <div class="adx-menu-item adx-menu-item--selected">
+ *       <span class="adx-menu-item__label">Selected item</span>
+ *       <span class="adx-menu-item__icon">...</span>
+ *     </div>
+ *   </div>
+ */
+
+/* ==========================================================================
+   Menu Container
+   ========================================================================== */
+
+.adx-menu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--component-space-xs);
+  padding: var(--component-space-xs);
+  background: var(--background-primary);
+  border-radius: var(--radius-xs);
+  box-shadow: var(--elevation-300);
+  width: 272px;
+}
+
+/* ==========================================================================
+   Menu Item — Base
+   ========================================================================== */
+
+.adx-menu-item {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  padding: 0 var(--component-space-m);
+  background: var(--background-primary);
+  border-radius: 0;
+  cursor: pointer;
+  box-sizing: border-box;
+  transition: background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Label — paragraph-m: 16px / 20px, Trade Gothic 400 */
+.adx-menu-item__label {
+  flex: 1;
+  min-width: 0;
+  font-family: var(--font-family-trade-gothic);
+  font-size: var(--font-size-16);
+  font-weight: var(--font-weight-regular);
+  line-height: 1.25rem;
+  color: var(--text-primary);
+}
+
+/* Trailing check icon */
+.adx-menu-item__icon {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.adx-menu-item__icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ==========================================================================
+   State: Hover — background-light, rounded
+   ========================================================================== */
+
+.adx-menu-item--hover,
+.adx-menu-item:not(.adx-menu-item--disabled):hover {
+  background: var(--background-light);
+  border-radius: var(--radius-2xs);
+}
+
+/* ==========================================================================
+   State: Selected — brand text, bold, rounded
+   ========================================================================== */
+
+.adx-menu-item--selected {
+  border-radius: var(--radius-2xs);
+}
+
+.adx-menu-item--selected .adx-menu-item__label {
+  font-weight: var(--font-weight-bold);
+  color: var(--icon-brand);
+}
+
+.adx-menu-item--selected .adx-menu-item__icon svg {
+  color: var(--icon-brand);
+}
+
+/* Selected + Hover */
+.adx-menu-item--selected:not(.adx-menu-item--disabled):hover {
+  background: var(--background-light);
+}
+
+/* ==========================================================================
+   State: Active — brand-subtle background, rounded
+   ========================================================================== */
+
+.adx-menu-item--active,
+.adx-menu-item:not(.adx-menu-item--disabled):not(.adx-menu-item--selected):active {
+  background: var(--background-brand-subtle);
+  border-radius: var(--radius-2xs);
+}
+
+/* ==========================================================================
+   State: Disabled — tertiary text, no pointer
+   ========================================================================== */
+
+.adx-menu-item--disabled {
+  cursor: default;
+}
+
+.adx-menu-item--disabled .adx-menu-item__label {
+  color: var(--text-tertiary);
+}
+
+/* Disabled + Selected — tertiary text but still bold, check icon tertiary */
+.adx-menu-item--disabled.adx-menu-item--selected .adx-menu-item__label {
+  color: var(--text-tertiary);
+}
+
+.adx-menu-item--disabled.adx-menu-item--selected .adx-menu-item__icon svg {
+  color: var(--text-tertiary);
+}
+
+/* ==========================================================================
+   State: Focus-visible — keyboard focus indicator
+   ========================================================================== */
+
+.adx-menu-item:focus-visible {
+  outline: none;
+  background: var(--background-brand-subtle);
+  border-radius: var(--radius-2xs);
+}
+
+.adx-menu-item:focus:not(:focus-visible) {
+  outline: none;
+}
