@@ -1,0 +1,16 @@
+/**
+ * Almanac DX Design Tokens - CSS Entry Point
+ *
+ * Import this file to get all design tokens:
+ * - Brand fonts (@font-face declarations)
+ * - CSS custom properties for all semantic tokens
+ * - Theme classes (theme-fcma, theme-rural-first)
+ *
+ * Usage in your application:
+ * import '@almanac/design-tokens/dist/tokens/styles/index.css';
+ */
+
+@import './fonts.css';
+@import './tokens.css';
+@import './layout.css';
+@import './button.css';

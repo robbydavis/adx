@@ -1,0 +1,33 @@
+export declare const background: {
+    readonly page: "#ffffff";
+    readonly primary: "#ffffff";
+    readonly light: "#f9f9f9";
+    readonly medium: "#f3f4f4";
+    readonly dark: "#dee1e1";
+    readonly darker: "#c8cccc";
+    readonly disabled: "#929a9b";
+    readonly reverse: "#040404";
+    readonly overlay: "rgba(4, 4, 4, 0.20)";
+    readonly brand: "#929a9b";
+    readonly brandHover: "#040404";
+    readonly brandSubtle: "#f9f9f9";
+    readonly action: "#929a9b";
+    readonly actionHover: "#040404";
+    readonly actionDisabled: "#dee1e1";
+    readonly actionSecondary: "#dee1e1";
+    readonly actionSecondaryHover: "#c8cccc";
+    readonly success: "#2bb656";
+    readonly successSubtle: "#d4edda";
+    readonly error: "#c63434";
+    readonly errorHover: "#8d3c3e";
+    readonly errorDisabled: "#f3b4b4";
+    readonly errorSubtle: "#f8d7da";
+    readonly warning: "#dd9903";
+    readonly warningSubtle: "#fff3cd";
+    readonly information: "#2079c3";
+    readonly informationSubtle: "#d1ecf1";
+    readonly discovery: "#6f5ed3";
+    readonly discoverySubtle: "#e8e5f8";
+};
+export type Background = typeof background;
+//# sourceMappingURL=background.d.ts.map

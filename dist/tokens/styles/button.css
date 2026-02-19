@@ -1,0 +1,214 @@
+/**
+ * Almanac DX — Button Component
+ *
+ * CSS classes matching the Figma Button spec (node 26:434).
+ * Uses semantic design tokens for all values.
+ * Primary buttons use brand/action tokens so colors change per theme.
+ *
+ * Variants:
+ *   Types: primary, secondary
+ *   Sizes: large, medium, small, xsmall
+ *   Icon:  icon, icon-brand
+ *   States: hover, focus-visible, active, disabled, loading
+ *
+ * Usage:
+ *   <button class="adx-btn adx-btn--primary adx-btn--medium">Label</button>
+ *   <button class="adx-btn adx-btn--secondary adx-btn--small">Label</button>
+ *   <button class="adx-btn adx-btn--icon"><svg>...</svg></button>
+ */
+
+/* ==========================================================================
+   Base
+   ========================================================================== */
+
+.adx-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--component-space-xs); /* 8px */
+  font-family: var(--font-family-trade-gothic);
+  font-weight: var(--font-weight-bold);
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.15s ease, box-shadow 0.15s ease, opacity 0.15s ease;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ==========================================================================
+   Types — Primary uses brand/action tokens (themeable)
+   ========================================================================== */
+
+/* Primary — brand-colored fill, reverse text */
+.adx-btn--primary {
+  background-color: var(--background-action);
+  color: var(--text-reverse);
+}
+
+.adx-btn--primary:hover {
+  background-color: var(--background-action-hover);
+}
+
+.adx-btn--primary:active {
+  background-color: var(--background-action-hover);
+  filter: brightness(0.9);
+}
+
+/* Secondary — light fill, dark text, strong border */
+.adx-btn--secondary {
+  background-color: var(--background-primary);
+  color: var(--text-primary);
+  border: var(--border-width-thin) solid var(--border-strong);
+}
+
+.adx-btn--secondary:hover {
+  background-color: var(--background-light);
+}
+
+.adx-btn--secondary:active {
+  background-color: var(--background-medium);
+}
+
+/* ==========================================================================
+   Sizes (from Figma .structure-button)
+   ========================================================================== */
+
+/* Large — 52px max-height, 20px text */
+.adx-btn--large {
+  padding: var(--component-space-l); /* 16px all sides */
+  max-height: 52px;
+  border-radius: var(--radius-xs); /* 8px */
+  font-size: var(--font-size-20);
+  line-height: 24px;
+}
+
+/* Medium — 16px horizontal / 10px vertical, 16px text */
+.adx-btn--medium {
+  padding: var(--component-space-s) var(--component-space-l); /* 10px 16px */
+  border-radius: var(--radius-xs); /* 8px */
+  font-size: var(--font-size-16);
+  line-height: 20px;
+}
+
+/* Small — 8px all sides, 14px text */
+.adx-btn--small {
+  padding: var(--component-space-xs); /* 8px all sides */
+  border-radius: var(--radius-xs); /* 8px */
+  font-size: var(--font-size-14);
+  line-height: 16px;
+}
+
+/* XSmall — 2px vertical / 8px horizontal, 12px text */
+.adx-btn--xsmall {
+  padding: var(--component-space-3xs) var(--component-space-xs); /* 2px 8px */
+  border-radius: var(--radius-2xs); /* 4px */
+  font-size: var(--font-size-12);
+  line-height: 16px;
+}
+
+/* ==========================================================================
+   Icon Buttons
+   ========================================================================== */
+
+/* Icon — default icon button, transparent background */
+.adx-btn--icon {
+  padding: var(--component-space-xs); /* 8px */
+  border-radius: var(--radius-round);
+  width: 36px;
+  height: 36px;
+  background-color: transparent;
+  color: var(--icon-dark);
+}
+
+.adx-btn--icon:hover {
+  background-color: var(--background-medium);
+}
+
+.adx-btn--icon:active {
+  background-color: var(--background-dark);
+}
+
+/* Icon Brand — brand-colored icon button (themeable) */
+.adx-btn--icon-brand {
+  padding: var(--component-space-xs); /* 8px */
+  border-radius: var(--radius-round);
+  width: 36px;
+  height: 36px;
+  background-color: var(--background-action);
+  color: var(--text-reverse);
+}
+
+.adx-btn--icon-brand:hover {
+  background-color: var(--background-action-hover);
+}
+
+.adx-btn--icon-brand:active {
+  background-color: var(--background-action-hover);
+  filter: brightness(0.9);
+}
+
+/* ==========================================================================
+   States
+   ========================================================================== */
+
+/* Focus — visible ring for keyboard navigation (Figma focus-100 effect) */
+.adx-btn:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+/* Disabled — primary fades brand color, secondary fades text and border */
+.adx-btn--primary:disabled,
+.adx-btn--primary.adx-btn--disabled {
+  background-color: var(--background-action-disabled);
+  color: var(--text-disabled);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.adx-btn--secondary:disabled,
+.adx-btn--secondary.adx-btn--disabled {
+  background-color: var(--background-primary);
+  color: var(--text-disabled);
+  border-color: var(--border-subtle);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.adx-btn--icon:disabled,
+.adx-btn--icon.adx-btn--disabled,
+.adx-btn--icon-brand:disabled,
+.adx-btn--icon-brand.adx-btn--disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Loading — shows text "Loading..." with spinner, pointer-events disabled */
+.adx-btn--loading {
+  pointer-events: none;
+}
+
+.adx-btn--loading::after {
+  content: '';
+  display: inline-block;
+  width: 1.25em;
+  height: 1.25em;
+  border: 2px solid currentColor;
+  border-right-color: transparent;
+  border-radius: var(--radius-round);
+  animation: adx-btn-spin 0.6s linear infinite;
+  flex-shrink: 0;
+}
+
+.adx-btn--secondary.adx-btn--loading::after {
+  border-color: var(--background-action);
+  border-right-color: transparent;
+}
+
+@keyframes adx-btn-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}

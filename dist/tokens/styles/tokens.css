@@ -1,0 +1,328 @@
+/**
+ * Design Token CSS Custom Properties
+ *
+ * CSS variables for all semantic tokens in the Almanac DX design system.
+ * Organized by the Four Pillars: Background, Text, Border, Icon
+ * Plus typography, elevation, and sizing tokens.
+ *
+ * Values verified against Figma source file (Almanac DX UI Kit).
+ *
+ * ✅ Use these CSS variables in your stylesheets
+ * ❌ Never hardcode color or size values
+ */
+
+/* ==========================================================================
+   ROOT - Default theme values and neutral tokens
+   ========================================================================== */
+
+:root {
+  /* Neutral Colors (primitives - for reference) */
+  --neutral-0: #ffffff;
+  --neutral-50: #f9f9f9;
+  --neutral-100: #f3f4f4;
+  --neutral-200: #dee1e1;
+  --neutral-300: #c8cccc;
+  --neutral-500: #929a9b;
+  --neutral-700: #515e5f;
+  --neutral-1100: #040404;
+
+  /* Overlay */
+  --overlay: rgba(4, 4, 4, 0.20);
+
+  /* System Status Colors */
+  --system-success: #2bb656;
+  --system-success-light: #d4edda;
+  --system-error: #c63434;
+  --system-error-hover: #8d3c3e;
+  --system-error-light: #f8d7da;
+  --system-error-disabled: #f3b4b4;
+  --system-warning: #dd9903;
+  --system-warning-light: #fff3cd;
+  --system-info: #2079c3;
+  --system-info-hover: #2b67d3;
+  --system-info-light: #d1ecf1;
+
+  /* Discovery Colors */
+  --system-discovery: #6f5ed3;
+  --system-discovery-hover: #8187ea;
+  --system-discovery-light: #e8e5f8;
+
+  /* Shadow Color */
+  --shadow-base: rgba(4, 4, 4, 0.24);
+
+  /* Background Tokens */
+  --background-page: var(--neutral-0);
+  --background-primary: var(--neutral-0);
+  --background-light: var(--neutral-50);
+  --background-medium: var(--neutral-100);
+  --background-dark: var(--neutral-200);
+  --background-darker: var(--neutral-300);
+  --background-disabled: var(--neutral-500);
+  --background-reverse: var(--neutral-1100);
+  --background-overlay: var(--overlay);
+  --background-brand: var(--neutral-500); /* Overridden by theme */
+  --background-brand-hover: var(--neutral-1100); /* Overridden by theme */
+  --background-brand-subtle: var(--neutral-50); /* Overridden by theme */
+  --background-action: var(--neutral-500); /* Overridden by theme */
+  --background-action-hover: var(--neutral-1100); /* Overridden by theme */
+  --background-action-disabled: var(--neutral-200);
+  --background-action-secondary: var(--neutral-200);
+  --background-action-secondary-hover: var(--neutral-300);
+  --background-success: var(--system-success);
+  --background-success-subtle: var(--system-success-light);
+  --background-error: var(--system-error);
+  --background-error-hover: var(--system-error-hover);
+  --background-error-disabled: var(--system-error-disabled);
+  --background-error-subtle: var(--system-error-light);
+  --background-warning: var(--system-warning);
+  --background-warning-subtle: var(--system-warning-light);
+  --background-information: var(--system-info);
+  --background-information-subtle: var(--system-info-light);
+  --background-discovery: var(--system-discovery);
+  --background-discovery-subtle: var(--system-discovery-light);
+
+  /* Text Tokens */
+  --text-primary: var(--neutral-1100);
+  --text-secondary: var(--neutral-700);
+  --text-tertiary: var(--neutral-500);
+  --text-reverse: var(--neutral-0);
+  --text-brand: var(--neutral-500); /* Overridden by theme */
+  --text-link: var(--neutral-500); /* Overridden by theme */
+  --text-link-hover: var(--neutral-1100); /* Overridden by theme */
+  --text-disabled: var(--neutral-300);
+  --text-success: var(--system-success);
+  --text-success-hover: #60b369;
+  --text-error: var(--system-error);
+  --text-error-hover: #d83c3e;
+  --text-warning: var(--system-warning);
+  --text-warning-hover: #ba750b;
+  --text-information: var(--system-info);
+  --text-information-hover: var(--system-info-hover);
+  --text-discovery: var(--system-discovery);
+  --text-discovery-hover: var(--system-discovery-hover);
+
+  /* Border Tokens */
+  --border-reverse: var(--neutral-0);
+  --border-subtle: var(--neutral-200);
+  --border-dark: var(--neutral-500);
+  --border-strong: var(--neutral-1100);
+  --border-brand: var(--neutral-500); /* Overridden by theme */
+  --border-focus: #c7e4f9; /* blue-200, Figma focus ring color */
+  --border-success: var(--system-success);
+  --border-error: var(--system-error);
+  --border-warning: var(--system-warning);
+  --border-information: var(--system-info);
+  --border-discovery: var(--system-discovery);
+
+  /* Icon Tokens */
+  --icon-subtle: var(--neutral-500);
+  --icon-dark: var(--neutral-1100);
+  --icon-reverse: var(--neutral-0);
+  --icon-brand: var(--neutral-500); /* Overridden by theme */
+  --icon-link: var(--neutral-500); /* Overridden by theme */
+  --icon-disabled: var(--neutral-300);
+  --icon-success: var(--system-success);
+  --icon-error: var(--system-error);
+  --icon-warning: var(--system-warning);
+  --icon-information: var(--system-info);
+  --icon-discovery: var(--system-discovery);
+
+  /* Elevation/Shadow Tokens */
+  --elevation-100: 0 2px 4px var(--shadow-base);
+  --elevation-200: 0 4px 8px var(--shadow-base);
+  --elevation-300: 0 8px 16px var(--shadow-base);
+  --elevation-400: 0 16px 32px var(--shadow-base);
+
+  /* Typography - Font Families */
+  --font-family-trade-gothic: 'Trade Gothic Next LT Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-trade-gothic-condensed: 'Trade Gothic Next LT Pro Condensed', 'Trade Gothic Next LT Pro', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-rift: 'Rift', Georgia, 'Times New Roman', Times, serif;
+
+  /* Typography - Font Weights */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-heavy: 800;
+
+  /* Typography - Font Sizes */
+  --font-size-8: 0.5rem;
+  --font-size-10: 0.625rem;
+  --font-size-12: 0.75rem;
+  --font-size-14: 0.875rem;
+  --font-size-16: 1rem;
+  --font-size-18: 1.125rem;
+  --font-size-20: 1.25rem;
+  --font-size-24: 1.5rem;
+  --font-size-28: 1.75rem;
+  --font-size-32: 2rem;
+  --font-size-36: 2.25rem;
+  --font-size-40: 2.5rem;
+  --font-size-48: 3rem;
+  --font-size-56: 3.5rem;
+  --font-size-64: 4rem;
+  --font-size-72: 4.5rem;
+  --font-size-80: 5rem;
+  --font-size-96: 6rem;
+  --font-size-104: 6.5rem;
+
+  /* Typography - Line Heights */
+  --line-height-100: 100%;
+  --line-height-110: 110%;
+  --line-height-120: 120%;
+  --line-height-130: 130%;
+  --line-height-140: 140%;
+  --line-height-150: 150%;
+  --line-height-160: 160%;
+
+  /* Typography - Letter Spacing */
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-loose: 0.02em;
+
+  /* Spacing Scale (Figma size primitives) */
+  --spacing-0: 0;
+  --spacing-2: 0.125rem;     /* size-50 */
+  --spacing-4: 0.25rem;      /* size-100 */
+  --spacing-8: 0.5rem;       /* size-200 */
+  --spacing-10: 0.625rem;    /* size-250 */
+  --spacing-12: 0.75rem;     /* size-300 */
+  --spacing-16: 1rem;        /* size-400 */
+  --spacing-20: 1.25rem;     /* size-500 */
+  --spacing-24: 1.5rem;      /* size-600 */
+  --spacing-32: 2rem;        /* size-800 */
+  --spacing-40: 2.5rem;      /* size-1000 */
+  --spacing-48: 3rem;        /* size-1200 */
+  --spacing-56: 3.5rem;      /* size-1400 */
+  --spacing-64: 4rem;        /* size-1600 */
+  --spacing-72: 4.5rem;      /* size-1800 */
+  --spacing-80: 5rem;
+  --spacing-88: 5.5rem;      /* size-2200 */
+  --spacing-96: 6rem;        /* size-2400 */
+  --spacing-120: 7.5rem;     /* size-3000 */
+  --spacing-128: 8rem;
+
+  /* Border Radius */
+  --border-radius-none: 0;
+  --border-radius-sm: 0.125rem;   /* 2px */
+  --border-radius-md: 0.25rem;    /* 4px */
+  --border-radius-lg: 0.5rem;     /* 8px */
+  --border-radius-xl: 0.75rem;    /* 12px */
+  --border-radius-2xl: 1rem;      /* 16px */
+  --border-radius-3xl: 1.25rem;   /* 20px */
+  --border-radius-4xl: 1.5rem;    /* 24px */
+  --border-radius-5xl: 2rem;      /* 32px */
+  --border-radius-full: 9999px;
+
+  /* Border Width */
+  --border-width-none: 0;
+  --border-width-thin: 1px;
+  --border-width-medium: 2px;
+  --border-width-thick: 4px;
+
+  /* Component Space (Figma semantic variable names) */
+  --component-space-3xs: var(--spacing-2);     /* 2px — size-50 */
+  --component-space-2xs: var(--spacing-4);     /* 4px — size-100 */
+  --component-space-xs: var(--spacing-8);      /* 8px — size-200 */
+  --component-space-s: var(--spacing-10);      /* 10px — size-250 */
+  --component-space-m: var(--spacing-12);      /* 12px — size-300 */
+  --component-space-l: var(--spacing-16);      /* 16px — size-400 */
+  --component-space-xl: var(--spacing-24);     /* 24px — size-600 */
+  --component-space-2xl: var(--spacing-32);    /* 32px — size-800 */
+  --component-space-3xl: var(--spacing-40);    /* 40px — size-1000 */
+
+  /* Layout Space (Figma semantic variable names) */
+  --layout-space-3xs: var(--spacing-32);       /* 32px — size-800 */
+  --layout-space-2xs: var(--spacing-40);       /* 40px — size-1000 */
+  --layout-space-xs: var(--spacing-48);        /* 48px — size-1200 */
+  --layout-space-s: var(--spacing-56);         /* 56px — size-1400 */
+  --layout-space-m: var(--spacing-64);         /* 64px — size-1600 */
+  --layout-space-l: var(--spacing-72);         /* 72px — size-1800 */
+  --layout-space-xl: var(--spacing-88);        /* 88px — size-2200 */
+  --layout-space-2xl: var(--spacing-96);       /* 96px — size-2400 */
+  --layout-space-3xl: var(--spacing-120);      /* 120px — size-3000 */
+
+  /* Radius (Figma semantic variable names) */
+  --radius-square: var(--border-radius-none);  /* 0px — size-0 */
+  --radius-2xs: var(--border-radius-md);       /* 4px — size-100 */
+  --radius-xs: var(--border-radius-lg);        /* 8px — size-200 */
+  --radius-s: var(--border-radius-xl);         /* 12px — size-300 */
+  --radius-m: var(--border-radius-2xl);        /* 16px — size-400 */
+  --radius-l: var(--border-radius-3xl);        /* 20px — size-500 */
+  --radius-xl: var(--border-radius-4xl);       /* 24px — size-600 */
+  --radius-2xl: var(--border-radius-5xl);      /* 32px — size-800 */
+  --radius-round: var(--border-radius-full);   /* 9999px — size-9999 */
+
+  /* Border Width (Figma semantic variable names) */
+  --border-s: var(--border-width-thin);        /* 1px — size-25 */
+  --border-m: var(--border-width-medium);      /* 2px — size-50 */
+
+  /* Focus Ring (Figma focus-100 effect) */
+  --focus-ring: 0 0 0 4px #C7E4F9;
+}
+
+/* ==========================================================================
+   FCMA THEME
+   Farm Credit Mid-America brand color overrides
+   Primary: #5e9732 (brand-600)
+   Hover: #71b33c (brand-500 - lighter per Figma pattern)
+   ========================================================================== */
+
+.theme-fcma {
+  /* FCMA Brand Colors */
+  --fcma-primary: #5e9732;
+  --fcma-hover: #71b33c;
+  --fcma-disabled: #b8de9b;
+  --fcma-light: #e4f2d8;
+
+  /* Override brand/action/link tokens with FCMA green */
+  --background-brand: var(--fcma-primary);
+  --background-brand-hover: var(--fcma-hover);
+  --background-brand-subtle: var(--fcma-light);
+  --background-action: var(--fcma-primary);
+  --background-action-hover: var(--fcma-hover);
+
+  --text-brand: var(--fcma-primary);
+  --text-link: var(--fcma-primary);
+  --text-link-hover: var(--fcma-hover);
+
+  --border-brand: var(--fcma-primary);
+  --border-focus: var(--fcma-primary);
+
+  --icon-brand: var(--fcma-primary);
+  --icon-link: var(--fcma-primary);
+}
+
+/* ==========================================================================
+   RURAL 1ST THEME
+   Rural 1st brand color overrides
+   Primary: #005b94 (Rural 1st Blue)
+   Hover: #0070b8 (lighter shade, calculated)
+   Light: #e5f5f8 (from Figma)
+   ========================================================================== */
+
+.theme-rural-first {
+  /* Rural 1st Brand Colors */
+  --rural1st-primary: #005b94;
+  --rural1st-hover: #0070b8;
+  --rural1st-disabled: #99c4de;
+  --rural1st-light: #e5f5f8;
+
+  /* Override brand/action/link tokens with Rural 1st blue */
+  --background-brand: var(--rural1st-primary);
+  --background-brand-hover: var(--rural1st-hover);
+  --background-brand-subtle: var(--rural1st-light);
+  --background-action: var(--rural1st-primary);
+  --background-action-hover: var(--rural1st-hover);
+
+  --text-brand: var(--rural1st-primary);
+  --text-link: var(--rural1st-primary);
+  --text-link-hover: var(--rural1st-hover);
+
+  --border-brand: var(--rural1st-primary);
+  --border-focus: var(--rural1st-primary);
+
+  --icon-brand: var(--rural1st-primary);
+  --icon-link: var(--rural1st-primary);
+}
