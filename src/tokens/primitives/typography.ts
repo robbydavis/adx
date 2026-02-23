@@ -13,9 +13,9 @@
  * Brand fonts with web-safe fallback stacks
  */
 export const fontFamilies = {
-  tradeGothic: '"Trade Gothic Next LT Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
-  tradeGothicCondensed: '"Trade Gothic Next LT Pro Condensed", "Trade Gothic Next LT Pro", -apple-system, BlinkMacSystemFont, sans-serif',
-  rift: '"Rift", Georgia, "Times New Roman", Times, serif',
+  tradeGothic: '"trade-gothic-next", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
+  tradeGothicCondensed: '"trade-gothic-next-condensed", "trade-gothic-next", -apple-system, BlinkMacSystemFont, sans-serif',
+  rift: '"rift", Georgia, "Times New Roman", Times, serif',
 } as const;
 
 /**

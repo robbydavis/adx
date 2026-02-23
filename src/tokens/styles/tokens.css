@@ -134,9 +134,9 @@
   --elevation-400: 0 16px 32px var(--shadow-base);
 
   /* Typography - Font Families */
-  --font-family-trade-gothic: 'Trade Gothic Next LT Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
-  --font-family-trade-gothic-condensed: 'Trade Gothic Next LT Pro Condensed', 'Trade Gothic Next LT Pro', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-family-rift: 'Rift', Georgia, 'Times New Roman', Times, serif;
+  --font-family-trade-gothic: 'trade-gothic-next', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-family-trade-gothic-condensed: 'trade-gothic-next-condensed', 'trade-gothic-next', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-family-rift: 'rift', Georgia, 'Times New Roman', Times, serif;
 
   /* Typography - Font Weights */
   --font-weight-light: 300;
