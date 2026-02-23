@@ -159,10 +159,6 @@
   text-decoration: none;
 }
 
-.adx-faq__answer-inner a:hover {
-  text-decoration: underline;
-}
-
 /* Unordered lists */
 .adx-faq__answer-inner ul {
   margin: 0 0 var(--spacing-16) 0;

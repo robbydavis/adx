@@ -207,13 +207,6 @@
   border: none;
   padding: 0;
   text-align: left;
-  transition: text-decoration-color 0.15s cubic-bezier(0.4, 0, 0.2, 1);
-  text-decoration: underline;
-  text-decoration-color: transparent;
-}
-
-.adx-toast__action:hover {
-  text-decoration-color: currentColor;
 }
 
 /* ==========================================================================
