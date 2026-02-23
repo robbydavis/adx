@@ -1,7 +1,7 @@
 export declare const fontFamilies: {
-    readonly tradeGothic: "\"Trade Gothic Next LT Pro\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif";
-    readonly tradeGothicCondensed: "\"Trade Gothic Next LT Pro Condensed\", \"Trade Gothic Next LT Pro\", -apple-system, BlinkMacSystemFont, sans-serif";
-    readonly rift: "\"Rift\", Georgia, \"Times New Roman\", Times, serif";
+    readonly tradeGothic: "\"trade-gothic-next\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif";
+    readonly tradeGothicCondensed: "\"trade-gothic-next-condensed\", \"trade-gothic-next\", -apple-system, BlinkMacSystemFont, sans-serif";
+    readonly rift: "\"rift\", Georgia, \"Times New Roman\", Times, serif";
 };
 export declare const fontWeights: {
     readonly light: 300;
@@ -52,9 +52,9 @@ export declare const textTransform: {
 };
 export declare const primitiveTypography: {
     readonly fontFamilies: {
-        readonly tradeGothic: "\"Trade Gothic Next LT Pro\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif";
-        readonly tradeGothicCondensed: "\"Trade Gothic Next LT Pro Condensed\", \"Trade Gothic Next LT Pro\", -apple-system, BlinkMacSystemFont, sans-serif";
-        readonly rift: "\"Rift\", Georgia, \"Times New Roman\", Times, serif";
+        readonly tradeGothic: "\"trade-gothic-next\", -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, \"Helvetica Neue\", Arial, sans-serif";
+        readonly tradeGothicCondensed: "\"trade-gothic-next-condensed\", \"trade-gothic-next\", -apple-system, BlinkMacSystemFont, sans-serif";
+        readonly rift: "\"rift\", Georgia, \"Times New Roman\", Times, serif";
     };
     readonly fontWeights: {
         readonly light: 300;
