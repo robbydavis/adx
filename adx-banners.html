@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-fcma">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Banners — Almanac DX UI Kit</title>
+  <link rel="stylesheet" href="src/tokens/styles/fonts.css">
+  <link rel="stylesheet" href="src/tokens/styles/tokens.css">
+  <link rel="stylesheet" href="src/tokens/styles/layout.css">
+  <link rel="stylesheet" href="src/tokens/styles/button.css">
+  <link rel="stylesheet" href="src/tokens/styles/text-input.css">
+  <link rel="stylesheet" href="src/tokens/styles/select.css">
+  <link rel="stylesheet" href="src/tokens/styles/checkbox.css">
+  <link rel="stylesheet" href="src/tokens/styles/radio.css">
+  <link rel="stylesheet" href="src/tokens/styles/side-nav.css">
+  <link rel="stylesheet" href="src/tokens/styles/banner-cta.css">
+  <link rel="stylesheet" href="adx.css">
+  <style>
+    .banner-demo-stack {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-16);
+    }
+
+    .banner-demo-label {
+      font-family: var(--font-family-trade-gothic);
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-12);
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .options-panel {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-24);
+      padding: var(--spacing-16);
+      background-color: var(--background-light);
+      border-radius: var(--radius-xs);
+      margin-bottom: var(--spacing-24);
+    }
+
+    .option-group {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-8);
+    }
+
+    .option-label {
+      font-family: var(--font-family-trade-gothic);
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-12);
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: var(--spacing-4);
+    }
+
+    .banner-preview-desktop {
+      max-width: 680px;
+    }
+
+    /* Mobile preview: force the stacked layout for static demonstration.
+       In production the component switches to stacked automatically at < 768px. */
+    .banner-preview-mobile {
+      max-width: 360px;
+    }
+
+    .banner-preview-mobile .adx-banner--cta {
+      flex-direction: column;
+      align-items: flex-end;
+      gap: var(--component-space-l);
+    }
+
+    .banner-preview-mobile .adx-banner--cta .adx-banner__message {
+      flex: none;
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="adx-layout">
+
+    <!-- Top Bar -->
+    <nav class="adx-topbar">
+      <button class="adx-mobile-nav-trigger" onclick="toggleMobileNav()">Menu</button>
+      <span class="topbar-title">Almanac DX UI Kit</span>
+      <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('fcma')" id="btn-fcma">FCMA</button>
+        <button class="theme-btn" onclick="setTheme('rural-first')" id="btn-rural">Rural 1st</button>
+      </div>
+    </nav>
+
+    <!-- Wrapper: Nav + Content -->
+    <div class="adx-wrapper">
+
+      <!-- Side Navigation (rendered by nav.js) -->
+      <nav class="adx-side-nav adx-side-nav--open" id="side-nav"></nav>
+
+      <!-- Main + Footer wrapper -->
+      <div class="adx-main-wrapper">
+
+        <!-- Main Content -->
+        <main class="adx-main">
+
+          <!-- ============================================================
+               CTA Banner
+               ============================================================ -->
+          <section class="adx-section" id="banner-cta">
+            <div class="adx-content-l">
+              <div class="section-inner">
+
+                <h2 class="section-title">Banner — CTA</h2>
+                <p class="section-subtitle">
+                  An inline banner for contextual calls to action. Pairs a message with an
+                  optional text link and button. Use to communicate status, prompt action, or
+                  surface important context inline within a page. Five semantic color variants
+                  signal intent at a glance.
+                </p>
+
+                <!-- Live Demo -->
+                <div class="type-label">Live Demo</div>
+
+                <div class="options-panel">
+                  <div class="option-group">
+                    <span class="option-label">Color</span>
+                    <label class="adx-radio">
+                      <input type="radio" class="adx-radio__input" name="banner-color" value="brand" checked />
+                      <span class="adx-radio__circle"><span class="adx-radio__dot"></span></span>
+                      <span class="adx-radio__label">Brand</span>
+                    </label>
+                    <label class="adx-radio">
+                      <input type="radio" class="adx-radio__input" name="banner-color" value="information" />
+                      <span class="adx-radio__circle"><span class="adx-radio__dot"></span></span>
+                      <span class="adx-radio__label">Information</span>
+                    </label>
+                    <label class="adx-radio">
+                      <input type="radio" class="adx-radio__input" name="banner-color" value="warning" />
+                      <span class="adx-radio__circle"><span class="adx-radio__dot"></span></span>
+                      <span class="adx-radio__label">Warning</span>
+                    </label>
+                    <label class="adx-radio">
+                      <input type="radio" class="adx-radio__input" name="banner-color" value="error" />
+                      <span class="adx-radio__circle"><span class="adx-radio__dot"></span></span>
+                      <span class="adx-radio__label">Error</span>
+                    </label>
+                    <label class="adx-radio">
+                      <input type="radio" class="adx-radio__input" name="banner-color" value="discovery" />
+                      <span class="adx-radio__circle"><span class="adx-radio__dot"></span></span>
+                      <span class="adx-radio__label">Discovery</span>
+                    </label>
+                  </div>
+
+                  <div class="option-group">
+                    <span class="option-label">Content</span>
+                    <label class="adx-checkbox">
+                      <input type="checkbox" class="adx-checkbox__input" id="demo-show-link" checked />
+                      <span class="adx-checkbox__box">
+                        <svg class="adx-checkbox__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      </span>
+                      <span class="adx-checkbox__label">Show link</span>
+                    </label>
+                    <label class="adx-checkbox">
+                      <input type="checkbox" class="adx-checkbox__input" id="demo-show-button" checked />
+                      <span class="adx-checkbox__box">
+                        <svg class="adx-checkbox__icon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                      </span>
+                      <span class="adx-checkbox__label">Show button</span>
+                    </label>
+                  </div>
+                </div>
+
+                <div class="component-row">
+                  <div id="banner-live-demo">
+                    <div class="adx-banner adx-banner--cta adx-banner--brand" role="region" aria-label="Promotional message">
+                      <p class="adx-banner__message">Your loan application is ready for review. Complete it before the deadline.</p>
+                      <div class="adx-banner__actions">
+                        <a class="adx-banner__link" href="#">Learn more</a>
+                        <button class="adx-btn adx-btn--primary adx-btn--small">Review now</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- ======================================================
+                     All Color Variants
+                     ====================================================== -->
+                <div class="type-label">All Color Variants</div>
+                <p class="section-note">Choose a color based on the intent of the message — not decoration.</p>
+
+                <div class="component-row banner-demo-stack banner-preview-desktop">
+
+                  <!-- Brand -->
+                  <div>
+                    <p class="banner-demo-label">Brand</p>
+                    <div class="adx-banner adx-banner--cta adx-banner--brand" role="region" aria-label="Brand message">
+                      <p class="adx-banner__message">Your pre-qualification is ready. Take the next step today.</p>
+                      <div class="adx-banner__actions">
+                        <a class="adx-banner__link" href="#">Learn more</a>
+                        <button class="adx-btn adx-btn--primary adx-btn--small">Get started</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Information -->
+                  <div>
+                    <p class="banner-demo-label">Information</p>
+                    <div class="adx-banner adx-banner--cta adx-banner--information" role="region" aria-label="Informational message">
+                      <p class="adx-banner__message">Document processing typically takes 1–2 business days.</p>
+                      <div class="adx-banner__actions">
+                        <a class="adx-banner__link" href="#">View status</a>
+                        <button class="adx-btn adx-btn--primary adx-btn--small">Track</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Warning -->
+                  <div>
+                    <p class="banner-demo-label">Warning</p>
+                    <div class="adx-banner adx-banner--cta adx-banner--warning" role="region" aria-label="Warning message">
+                      <p class="adx-banner__message">Your rate lock expires in 3 days. Take action to avoid delays.</p>
+                      <div class="adx-banner__actions">
+                        <a class="adx-banner__link" href="#">Learn more</a>
+                        <button class="adx-btn adx-btn--primary adx-btn--small">Extend</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Error -->
+                  <div>
+                    <p class="banner-demo-label">Error</p>
+                    <div class="adx-banner adx-banner--cta adx-banner--error" role="region" aria-label="Error message">
+                      <p class="adx-banner__message">We could not verify your identity. Please update your information.</p>
+                      <div class="adx-banner__actions">
+                        <a class="adx-banner__link" href="#">Get help</a>
+                        <button class="adx-btn adx-btn--primary adx-btn--small">Resolve</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Discovery -->
+                  <div>
+                    <p class="banner-demo-label">Discovery</p>
+                    <div class="adx-banner adx-banner--cta adx-banner--discovery" role="region" aria-label="Discovery message">
+                      <p class="adx-banner__message">Did you know? You may qualify for a lower rate based on your profile.</p>
+                      <div class="adx-banner__actions">
+                        <a class="adx-banner__link" href="#">Dismiss</a>
+                        <button class="adx-btn adx-btn--primary adx-btn--small">Explore</button>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- ======================================================
+                     Actions Visibility
+                     ====================================================== -->
+                <div class="type-label">Action Combinations</div>
+
+                <div class="component-row banner-demo-stack banner-preview-desktop">
+
+                  <!-- Link + Button (full) -->
+                  <div>
+                    <p class="banner-demo-label">Link + Button</p>
+                    <div class="adx-banner adx-banner--cta adx-banner--brand" role="region" aria-label="Message with link and button">
+                      <p class="adx-banner__message">Your loan application is ready for review.</p>
+                      <div class="adx-banner__actions">
+                        <a class="adx-banner__link" href="#">Learn more</a>
+                        <button class="adx-btn adx-btn--primary adx-btn--small">Review now</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Button only -->
+                  <div>
+                    <p class="banner-demo-label">Button Only</p>
+                    <div class="adx-banner adx-banner--cta adx-banner--information" role="region" aria-label="Message with button only">
+                      <p class="adx-banner__message">A new document is available for your review.</p>
+                      <div class="adx-banner__actions">
+                        <button class="adx-btn adx-btn--primary adx-btn--small">View document</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Link only -->
+                  <div>
+                    <p class="banner-demo-label">Link Only</p>
+                    <div class="adx-banner adx-banner--cta adx-banner--warning" role="region" aria-label="Message with link only">
+                      <p class="adx-banner__message">Your profile information may be out of date.</p>
+                      <div class="adx-banner__actions">
+                        <a class="adx-banner__link" href="#">Update now</a>
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Message only -->
+                  <div>
+                    <p class="banner-demo-label">Message Only</p>
+                    <div class="adx-banner adx-banner--cta adx-banner--error" role="region" aria-label="Message only">
+                      <p class="adx-banner__message">Scheduled maintenance is in progress. Some features may be temporarily unavailable.</p>
+                    </div>
+                  </div>
+
+                </div>
+
+                <!-- ======================================================
+                     Mobile Layout
+                     ====================================================== -->
+                <div class="type-label">Mobile Layout</div>
+                <p class="section-note">On viewports narrower than 768px the banner stacks vertically — message full-width on top, actions right-aligned below.</p>
+
+                <div class="component-row banner-demo-stack banner-preview-mobile">
+
+                  <div>
+                    <p class="banner-demo-label">Brand — Mobile</p>
+                    <div class="adx-banner adx-banner--cta adx-banner--brand" role="region" aria-label="Brand message mobile">
+                      <p class="adx-banner__message">Your pre-qualification is ready.</p>
+                      <div class="adx-banner__actions">
+                        <a class="adx-banner__link" href="#">Learn more</a>
+                        <button class="adx-btn adx-btn--primary adx-btn--small">Get started</button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div>
+                    <p class="banner-demo-label">Warning — Mobile</p>
+                    <div class="adx-banner adx-banner--cta adx-banner--warning" role="region" aria-label="Warning message mobile">
+                      <p class="adx-banner__message">Your rate lock expires in 3 days.</p>
+                      <div class="adx-banner__actions">
+                        <a class="adx-banner__link" href="#">Learn more</a>
+                        <button class="adx-btn adx-btn--primary adx-btn--small">Extend</button>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="adx-footer">
+          <section class="adx-section">
+            <div class="adx-content-l">
+              <p class="footer-text">
+                Almanac DX UI Kit v0.1.0
+              </p>
+            </div>
+          </section>
+        </footer>
+
+      </div><!-- /adx-main-wrapper -->
+
+    </div><!-- /adx-wrapper -->
+
+  </div><!-- /adx-layout -->
+
+  <script src="nav.js"></script>
+  <script>
+    // Live demo: update banner color and content options
+    function updateDemo() {
+      var color = document.querySelector('input[name="banner-color"]:checked').value;
+      var showLink = document.getElementById('demo-show-link').checked;
+      var showButton = document.getElementById('demo-show-button').checked;
+
+      var container = document.getElementById('banner-live-demo');
+      var banner = container.querySelector('.adx-banner');
+      var actions = container.querySelector('.adx-banner__actions');
+
+      // Update color modifier
+      banner.className = 'adx-banner adx-banner--cta adx-banner--' + color;
+
+      // Toggle link
+      var link = actions.querySelector('.adx-banner__link');
+      if (link) link.style.display = showLink ? '' : 'none';
+
+      // Toggle button
+      var btn = actions.querySelector('.adx-btn');
+      if (btn) btn.style.display = showButton ? '' : 'none';
+
+      // Hide actions div entirely if both are hidden
+      actions.style.display = (!showLink && !showButton) ? 'none' : '';
+    }
+
+    document.querySelectorAll('input[name="banner-color"]').forEach(function(el) {
+      el.addEventListener('change', updateDemo);
+    });
+    document.getElementById('demo-show-link').addEventListener('change', updateDemo);
+    document.getElementById('demo-show-button').addEventListener('change', updateDemo);
+  </script>
+
+</body>
+</html>

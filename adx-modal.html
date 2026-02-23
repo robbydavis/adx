@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en" class="theme-fcma">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Modal — Almanac DX UI Kit</title>
+  <link rel="stylesheet" href="src/tokens/styles/fonts.css">
+  <link rel="stylesheet" href="src/tokens/styles/tokens.css">
+  <link rel="stylesheet" href="src/tokens/styles/layout.css">
+  <link rel="stylesheet" href="src/tokens/styles/button.css">
+  <link rel="stylesheet" href="src/tokens/styles/text-input.css">
+  <link rel="stylesheet" href="src/tokens/styles/select.css">
+  <link rel="stylesheet" href="src/tokens/styles/checkbox.css">
+  <link rel="stylesheet" href="src/tokens/styles/radio.css">
+  <link rel="stylesheet" href="src/tokens/styles/side-nav.css">
+  <link rel="stylesheet" href="src/tokens/styles/modal.css">
+  <link rel="stylesheet" href="adx.css">
+  <style>
+    /* Slot placeholder — matches Figma's discovery-colored content slot convention */
+    .modal-slot-placeholder {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-8);
+      padding: var(--spacing-32);
+      background-color: var(--background-discovery-subtle);
+      border: var(--border-width-thin) solid var(--border-discovery);
+      border-radius: var(--radius-2xs);
+      text-align: center;
+      color: var(--text-discovery);
+    }
+
+    .modal-slot-placeholder svg {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+
+    .modal-slot-placeholder__title {
+      margin: 0;
+      font-family: var(--font-family-mono);
+      font-weight: var(--font-weight-bold);
+      font-size: var(--font-size-16);
+      line-height: 24px;
+    }
+
+    .modal-slot-placeholder__desc {
+      margin: 0;
+      font-family: var(--font-family-mono);
+      font-weight: var(--font-weight-regular);
+      font-size: var(--font-size-16);
+      line-height: 24px;
+    }
+
+    /* Demo trigger button row */
+    .demo-trigger-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-12);
+    }
+
+    /* Static preview grid */
+    .modal-preview-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-24);
+      align-items: start;
+    }
+
+    @media (max-width: 900px) {
+      .modal-preview-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Static modal previews (not overlaid, shown inline) */
+    .modal-static-preview {
+      position: relative;
+      border: var(--border-width-thin) solid var(--border-subtle);
+      border-radius: var(--radius-xs);
+      overflow: hidden;
+    }
+
+    .modal-static-preview .adx-modal {
+      position: static;
+      width: 100%;
+      max-height: none;
+      transform: none;
+      box-shadow: var(--elevation-400);
+    }
+
+    /* Mobile frame: 375×800px phone viewport simulation */
+    .modal-mobile-frame {
+      width: 375px;
+      height: 800px;
+      display: flex;
+      align-items: stretch;
+      border: var(--border-width-thin) solid var(--border-subtle);
+      border-radius: var(--radius-xs);
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(39, 51, 51, 0.24); /* elevation-200 */
+    }
+
+    /* The modal fills the frame — simulates full-screen mobile behavior */
+    .modal-mobile-preview {
+      flex: 1;
+      max-height: none;
+      border-radius: 0;
+      box-shadow: none;
+      transform: none;
+    }
+
+    /* Footer: equal-width items, left-aligned */
+    .modal-mobile-preview .adx-modal__footer {
+      gap: var(--component-space-s);
+      justify-content: flex-start;
+    }
+
+    .modal-mobile-preview .adx-modal__tertiary {
+      flex: 1;
+      text-align: center;
+    }
+
+    .modal-mobile-preview .adx-modal__footer-actions {
+      flex: 1;
+    }
+
+    .modal-mobile-preview .adx-modal__footer-actions .adx-btn {
+      flex: 1;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="adx-layout">
+
+    <!-- Top Bar -->
+    <nav class="adx-topbar">
+      <button class="adx-mobile-nav-trigger" onclick="toggleMobileNav()">Menu</button>
+      <span class="topbar-title">Almanac DX UI Kit</span>
+      <div class="theme-switcher">
+        <button class="theme-btn active" onclick="setTheme('fcma')" id="btn-fcma">FCMA</button>
+        <button class="theme-btn" onclick="setTheme('rural-first')" id="btn-rural">Rural 1st</button>
+      </div>
+    </nav>
+
+    <!-- Wrapper: Nav + Content -->
+    <div class="adx-wrapper">
+
+      <!-- Side Navigation (rendered by nav.js) -->
+      <nav class="adx-side-nav adx-side-nav--open" id="side-nav"></nav>
+
+      <!-- Main + Footer wrapper -->
+      <div class="adx-main-wrapper">
+
+        <!-- Main Content -->
+        <main class="adx-main">
+
+          <section class="adx-section" id="modal">
+            <div class="adx-content-l">
+              <div class="section-inner">
+
+                <h2 class="section-title">Modal</h2>
+                <p class="section-subtitle">
+                  A dialog that interrupts the user with a focused task or critical information.
+                  Content area uses a slot pattern — drop any markup inside
+                  <code>.adx-modal__content</code>. On mobile the modal fills the full viewport
+                  with no shadow or rounded corners.
+                </p>
+
+                <!-- ======================================================
+                     Live Demo
+                     ====================================================== -->
+                <div class="type-label">Live Demo</div>
+                <div class="component-row">
+                  <div class="demo-trigger-row">
+                    <button class="adx-btn adx-btn--primary adx-btn--medium" onclick="openModal('modal-wide')">
+                      Open Wide (768px)
+                    </button>
+                    <button class="adx-btn adx-btn--secondary adx-btn--medium" onclick="openModal('modal-narrow')">
+                      Open Narrow (500px)
+                    </button>
+                  </div>
+                </div>
+
+                <!-- ======================================================
+                     Desktop: Wide vs Narrow
+                     ====================================================== -->
+                <div class="type-label">Desktop Variants</div>
+                <p class="section-note">Wide (768px) suits complex or form-heavy content. Narrow (500px) is for confirmations and short copy.</p>
+
+                <div class="component-row modal-preview-grid">
+
+                  <!-- Wide -->
+                  <div class="modal-static-preview">
+                    <div class="adx-modal adx-modal--wide">
+                      <div class="adx-modal__header">
+                        <div class="adx-modal__header-text">
+                          <h2 class="adx-modal__title">Title</h2>
+                          <p class="adx-modal__description">Description</p>
+                        </div>
+                        <button class="adx-btn adx-btn--icon adx-modal__close" aria-label="Close" tabindex="-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        </button>
+                      </div>
+                      <div class="adx-modal__content">
+                        <div class="modal-slot-placeholder">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                          <p class="modal-slot-placeholder__title">Swap this slot.</p>
+                          <p class="modal-slot-placeholder__desc">Replace this with any content — forms, tables, imagery, or other components.</p>
+                        </div>
+                      </div>
+                      <div class="adx-modal__footer">
+                        <div class="adx-modal__footer-actions">
+                          <button class="adx-btn adx-btn--secondary adx-btn--medium" tabindex="-1">Secondary</button>
+                          <button class="adx-btn adx-btn--primary adx-btn--medium" tabindex="-1">Continue</button>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="banner-demo-label" style="padding: var(--spacing-12) var(--spacing-16) var(--spacing-8);">Wide — 768px</p>
+                  </div>
+
+                  <!-- Narrow -->
+                  <div class="modal-static-preview">
+                    <div class="adx-modal adx-modal--narrow" style="width: 100%;">
+                      <div class="adx-modal__header">
+                        <div class="adx-modal__header-text">
+                          <h2 class="adx-modal__title">Title</h2>
+                          <p class="adx-modal__description">Description</p>
+                        </div>
+                        <button class="adx-btn adx-btn--icon adx-modal__close" aria-label="Close" tabindex="-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        </button>
+                      </div>
+                      <div class="adx-modal__content">
+                        <div class="modal-slot-placeholder">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                          <p class="modal-slot-placeholder__title">Swap this slot.</p>
+                          <p class="modal-slot-placeholder__desc">Replace this with any content.</p>
+                        </div>
+                      </div>
+                      <div class="adx-modal__footer">
+                        <div class="adx-modal__footer-actions">
+                          <button class="adx-btn adx-btn--secondary adx-btn--medium" tabindex="-1">Secondary</button>
+                          <button class="adx-btn adx-btn--primary adx-btn--medium" tabindex="-1">Continue</button>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="banner-demo-label" style="padding: var(--spacing-12) var(--spacing-16) var(--spacing-8);">Narrow — 500px</p>
+                  </div>
+
+                </div>
+
+                <!-- ======================================================
+                     Header: with / without description
+                     ====================================================== -->
+                <div class="type-label">Header Variants</div>
+                <p class="section-note">The description is optional — omit the <code>.adx-modal__description</code> element when not needed.</p>
+
+                <div class="component-row modal-preview-grid">
+
+                  <!-- With description -->
+                  <div class="modal-static-preview">
+                    <div class="adx-modal" style="width: 100%;">
+                      <div class="adx-modal__header">
+                        <div class="adx-modal__header-text">
+                          <h2 class="adx-modal__title">Title</h2>
+                          <p class="adx-modal__description">Description is shown here when context is helpful.</p>
+                        </div>
+                        <button class="adx-btn adx-btn--icon adx-modal__close" aria-label="Close" tabindex="-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        </button>
+                      </div>
+                    </div>
+                    <p class="banner-demo-label" style="padding: var(--spacing-12) var(--spacing-16) var(--spacing-8);">With Description</p>
+                  </div>
+
+                  <!-- Without description -->
+                  <div class="modal-static-preview">
+                    <div class="adx-modal" style="width: 100%;">
+                      <div class="adx-modal__header">
+                        <div class="adx-modal__header-text">
+                          <h2 class="adx-modal__title">Title</h2>
+                        </div>
+                        <button class="adx-btn adx-btn--icon adx-modal__close" aria-label="Close" tabindex="-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        </button>
+                      </div>
+                    </div>
+                    <p class="banner-demo-label" style="padding: var(--spacing-12) var(--spacing-16) var(--spacing-8);">Without Description</p>
+                  </div>
+
+                </div>
+
+                <!-- ======================================================
+                     Footer Variants
+                     ====================================================== -->
+                <div class="type-label">Footer Variants</div>
+                <p class="section-note">Secondary button and tertiary link are both optional. On mobile all items are equal-width.</p>
+
+                <div class="component-row modal-preview-grid">
+
+                  <!-- Primary + Secondary + Tertiary -->
+                  <div class="modal-static-preview">
+                    <div class="adx-modal" style="width: 100%;">
+                      <div class="adx-modal__footer">
+                        <a class="adx-modal__tertiary" href="#" tabindex="-1">Cancel</a>
+                        <div class="adx-modal__footer-actions">
+                          <button class="adx-btn adx-btn--secondary adx-btn--medium" tabindex="-1">Secondary</button>
+                          <button class="adx-btn adx-btn--primary adx-btn--medium" tabindex="-1">Continue</button>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="banner-demo-label" style="padding: var(--spacing-12) var(--spacing-16) var(--spacing-8);">Tertiary + Secondary + Primary</p>
+                  </div>
+
+                  <!-- Primary + Secondary (no tertiary) -->
+                  <div class="modal-static-preview">
+                    <div class="adx-modal" style="width: 100%;">
+                      <div class="adx-modal__footer">
+                        <div class="adx-modal__footer-actions">
+                          <button class="adx-btn adx-btn--secondary adx-btn--medium" tabindex="-1">Secondary</button>
+                          <button class="adx-btn adx-btn--primary adx-btn--medium" tabindex="-1">Continue</button>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="banner-demo-label" style="padding: var(--spacing-12) var(--spacing-16) var(--spacing-8);">Secondary + Primary</p>
+                  </div>
+
+                  <!-- Primary only -->
+                  <div class="modal-static-preview">
+                    <div class="adx-modal" style="width: 100%;">
+                      <div class="adx-modal__footer">
+                        <div class="adx-modal__footer-actions">
+                          <button class="adx-btn adx-btn--primary adx-btn--medium" tabindex="-1">Continue</button>
+                        </div>
+                      </div>
+                    </div>
+                    <p class="banner-demo-label" style="padding: var(--spacing-12) var(--spacing-16) var(--spacing-8);">Primary Only</p>
+                  </div>
+
+                </div>
+
+                <!-- ======================================================
+                     Mobile Layout
+                     ====================================================== -->
+                <div class="type-label">Mobile Layout</div>
+                <p class="section-note">Simulated at 375×800px. On mobile the modal fills the full viewport with no border-radius or shadow. Footer buttons and optional tertiary link each expand to equal width.</p>
+
+                <div class="component-row">
+                  <div class="modal-mobile-frame">
+                    <div class="adx-modal modal-mobile-preview">
+                      <div class="adx-modal__header">
+                        <div class="adx-modal__header-text">
+                          <h2 class="adx-modal__title">Title</h2>
+                          <p class="adx-modal__description">Description</p>
+                        </div>
+                        <button class="adx-btn adx-btn--icon adx-modal__close" aria-label="Close" tabindex="-1">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                        </button>
+                      </div>
+                      <div class="adx-modal__content">
+                        <div class="modal-slot-placeholder">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                          <p class="modal-slot-placeholder__title">Swap this slot.</p>
+                          <p class="modal-slot-placeholder__desc">Replace with your content.</p>
+                        </div>
+                      </div>
+                      <div class="adx-modal__footer">
+                        <a class="adx-modal__tertiary" href="#" tabindex="-1">Cancel</a>
+                        <div class="adx-modal__footer-actions">
+                          <button class="adx-btn adx-btn--secondary adx-btn--medium" tabindex="-1">Back</button>
+                          <button class="adx-btn adx-btn--primary adx-btn--medium" tabindex="-1">Continue</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </section>
+
+        </main>
+
+        <!-- Footer -->
+        <footer class="adx-footer">
+          <section class="adx-section">
+            <div class="adx-content-l">
+              <p class="footer-text">Almanac DX UI Kit v0.1.0</p>
+            </div>
+          </section>
+        </footer>
+
+      </div><!-- /adx-main-wrapper -->
+    </div><!-- /adx-wrapper -->
+  </div><!-- /adx-layout -->
+
+
+  <!-- ============================================================
+       Live Demo Modals (overlaid)
+       ============================================================ -->
+
+  <!-- Wide modal -->
+  <div class="adx-modal-overlay" id="modal-wide" role="dialog" aria-modal="true" aria-labelledby="modal-wide-title">
+    <div class="adx-modal adx-modal--wide">
+      <div class="adx-modal__header">
+        <div class="adx-modal__header-text">
+          <h2 class="adx-modal__title" id="modal-wide-title">Go Paperless</h2>
+          <p class="adx-modal__description">Get your billing statements and notices faster.</p>
+        </div>
+        <button class="adx-btn adx-btn--icon adx-modal__close" aria-label="Close" onclick="closeModal('modal-wide')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="adx-modal__content">
+        <!-- SLOT: Replace with your content -->
+        <div class="modal-slot-placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <p class="modal-slot-placeholder__title">Swap this slot.</p>
+          <p class="modal-slot-placeholder__desc">Replace this with any content — forms, tables, imagery, or other components.</p>
+        </div>
+      </div>
+      <div class="adx-modal__footer">
+        <div class="adx-modal__footer-actions">
+          <button class="adx-btn adx-btn--secondary adx-btn--medium" onclick="closeModal('modal-wide')">Cancel</button>
+          <button class="adx-btn adx-btn--primary adx-btn--medium" onclick="closeModal('modal-wide')">Go Paperless</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Narrow modal -->
+  <div class="adx-modal-overlay" id="modal-narrow" role="dialog" aria-modal="true" aria-labelledby="modal-narrow-title">
+    <div class="adx-modal adx-modal--narrow">
+      <div class="adx-modal__header">
+        <div class="adx-modal__header-text">
+          <h2 class="adx-modal__title" id="modal-narrow-title">Confirm Action</h2>
+        </div>
+        <button class="adx-btn adx-btn--icon adx-modal__close" aria-label="Close" onclick="closeModal('modal-narrow')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="adx-modal__content">
+        <!-- SLOT: Replace with your content -->
+        <div class="modal-slot-placeholder">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          <p class="modal-slot-placeholder__title">Swap this slot.</p>
+          <p class="modal-slot-placeholder__desc">Replace this with your content.</p>
+        </div>
+      </div>
+      <div class="adx-modal__footer">
+        <div class="adx-modal__footer-actions">
+          <button class="adx-btn adx-btn--secondary adx-btn--medium" onclick="closeModal('modal-narrow')">Cancel</button>
+          <button class="adx-btn adx-btn--primary adx-btn--medium" onclick="closeModal('modal-narrow')">Confirm</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="nav.js"></script>
+  <script>
+    function openModal(id) {
+      var overlay = document.getElementById(id);
+      overlay.classList.add('adx-modal-overlay--open');
+
+      // Focus the close button on open
+      var closeBtn = overlay.querySelector('.adx-modal__close');
+      if (closeBtn) closeBtn.focus();
+    }
+
+    function closeModal(id) {
+      var overlay = document.getElementById(id);
+      overlay.classList.remove('adx-modal-overlay--open');
+    }
+
+    // Close on backdrop click
+    document.querySelectorAll('.adx-modal-overlay').forEach(function(overlay) {
+      overlay.addEventListener('click', function(e) {
+        if (e.target === overlay) closeModal(overlay.id);
+      });
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.adx-modal-overlay--open').forEach(function(overlay) {
+          closeModal(overlay.id);
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
