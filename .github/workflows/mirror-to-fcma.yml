@@ -1,0 +1,29 @@
+name: Mirror to FCMA
+
+on:
+  push:
+    branches: ['**']
+    tags: ['**']
+  workflow_dispatch:
+
+concurrency:
+  group: mirror-to-fcma
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mirror to fcma-robbydavis/adx
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          FCMA_TOKEN: ${{ secrets.FCMA_MIRROR_TOKEN }}
+          REPO: ${{ github.repository }}
+        run: |
+          set -euo pipefail
+          git clone --mirror "https://x-access-token:${GH_TOKEN}@github.com/${REPO}.git" mirror.git
+          cd mirror.git
+          git push --mirror "https://x-access-token:${FCMA_TOKEN}@github.com/fcma-robbydavis/adx.git"
